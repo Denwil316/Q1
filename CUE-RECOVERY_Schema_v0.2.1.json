@@ -1,0 +1,83 @@
+{
+  "title": "CUE-RECOVERY v0.2.1 Schema",
+  "type": "object",
+  "properties": {
+    "SOT": {
+      "type": "string",
+      "description": "Sistema/SoT y versión. Ej: QEL/v0.2, NONE, ADHOC/2025-08-05"
+    },
+    "CHAT": {
+      "type": "string",
+      "description": "Nombre humano del chat o conversación"
+    },
+    "WHEN≈": {
+      "type": "string",
+      "description": "Fecha aproximada con margen. Ej: 2025-08-11 ±2d"
+    },
+    "ECO≈": {
+      "type": "string",
+      "description": "Eco de dos dígitos o '??'"
+    },
+    "KEYS": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 2,
+      "maxItems": 5
+    },
+    "RUMBO≈": {
+      "type": "string",
+      "enum": [
+        "Oriente",
+        "Norte",
+        "Occidente",
+        "Sur",
+        "desconocido"
+      ]
+    },
+    "PLANO≈": {
+      "type": "string",
+      "enum": [
+        "Rito",
+        "Numero",
+        "Lengua",
+        "mixto",
+        "desconocido"
+      ]
+    },
+    "FONEMAS≈": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ASSET≈": {
+      "type": "string"
+    },
+    "CONTEXT≈": {
+      "type": "string"
+    },
+    "AUTHOR≈": {
+      "type": "string",
+      "enum": [
+        "usuario",
+        "modelo",
+        "mixto",
+        ""
+      ]
+    },
+    "CONFIDENCE≈": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    }
+  },
+  "required": [
+    "SOT",
+    "CHAT",
+    "WHEN≈",
+    "KEYS"
+  ],
+  "additionalProperties": false
+}

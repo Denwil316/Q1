@@ -1,0 +1,72 @@
+{
+  "id": "A96-251208-OBJ",
+  "sot": "INTERACCIONALES/v0.1",
+  "type": "Interaccional",
+  "object": "Kael-Sün :: la criolámpara de la meditación lingüistica",
+  "eco_index": "xx",
+  "version": "v0.1",
+  "generated_at": "2025-08-12T02:55:32.247336-06:00",
+  "cue": {
+    "primary": "QEL|A96|OBJ|KS-CRIO|v0.1|L",
+    "center_alias": "QEL|A96|CUE|CENTRO|SILENCIO-LECTOR",
+    "human": "CUE 'Criolámpara KS' — Rumbo: Luz; Centro: Silencio del Lector"
+  },
+  "rumbo": "Luz",
+  "center_anchor": "Silencio del Lector",
+  "phonemes": [
+    "KAEL",
+    "SÜN"
+  ],
+  "semantics": {
+    "attractor": [
+      "coherencia",
+      "calma vibratoria",
+      "respiración atenta (9×)",
+      "memoria cristalina",
+      "luz fría que revela sin herir"
+    ],
+    "field": "Claridad en reposo; foco suave que ordena el lenguaje desde el silencio."
+  },
+  "interfaces": {
+    "inputs": [
+      "intención pura",
+      "silencio compartido",
+      "susurro Idriell (1–3 palabras)"
+    ],
+    "outputs": [
+      "verso desglaciado",
+      "prismas de luz fría",
+      "estado: VER-CLARO"
+    ]
+  },
+  "ritual": {
+    "intention": "meditación lingüística",
+    "protocol": [
+      "Preparar el espacio en silencio durante 81 segundos.",
+      "Inhalar/Exhalar en compás 4-4-9 (X9 ciclos).",
+      "Pronunciar KAEL en la exhalación 1; SÜN en la exhalación 9.",
+      "Anotar el primer verso que 'aparezca' sin forzarlo (no más de 12 palabras)."
+    ],
+    "safety": "No usar para imponer significado; sólo para revelar lo ya presente."
+  },
+  "links": {
+    "graph": [
+      {
+        "rel": "alimenta",
+        "target": "Prisma Purificador de Tres Caras"
+      },
+      {
+        "rel": "transmuta",
+        "target": "Esferas de Corrupción (cristalizadas)"
+      },
+      {
+        "rel": "resuena_con",
+        "target": "Sombra de Kael (según intención)"
+      }
+    ]
+  },
+  "hashes": {
+    "cue_sha1": "placeholder",
+    "content_sha1": "placeholder"
+  }
+}

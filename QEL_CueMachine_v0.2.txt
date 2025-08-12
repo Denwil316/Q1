@@ -1,0 +1,2 @@
+[QEL::ECO[81]::SUMMON Ax] SOT=v0.2 ATLAS=v0.2.4 INSTRUCTIVO=v0.2 TARGET=delta-only
+[QEL::ECO[81]::RECALL <SeedID>] SOT=v0.2 TARGET=delta-only
