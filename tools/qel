@@ -35,4 +35,17 @@ case "$cmd" in
     echo "[QEL::ECO[$ECO]::RECALL $ID] SOT=QEL/v0.2 TARGET=delta-only"
     ;;
   *) usage; exit 1;;
+
+# dentro del switch/case de tools/qel
+park)
+  branch="$(git branch --show-current)"
+  [[ "$branch" == "PreH" ]] || { echo "Cámbiate a PreH primero (estás en $branch)"; exit 1; }
+  msg="qel-park $(date +%F-%H%M)"
+  git stash push -u -m "$msg"
+  git pull --rebase origin PreH || { echo "Revisa conflictos del rebase (git status)"; exit 1; }
+  # intenta recuperar; si hay conflictos, deja aviso y no falla el script
+  if ! git stash pop; then
+    echo "Hay conflictos al aplicar el stash. Resuelve, 'git add', y commitea."
+  fi
+  ;;
 esac
