@@ -1,0 +1,30 @@
+{
+  "sot_name": "QEL",
+  "version": "0.2",
+  "created": "2025-08-12T06:23:19Z",
+  "anchors": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "A6",
+    "A7",
+    "A8",
+    "A9",
+    "A81"
+  ],
+  "assets": {
+    "GLYPHAS_DIR": "GLYPHAS_v0.2/",
+    "INSTRUCTIVO": "Esculpido_en_Qel_Guia_de_Trabajo_v0.2.pdf",
+    "MANDRALA_PDF": "QEL_Mandrala_Template_v0.2.pdf",
+    "MANDRALA_SVG": "QEL_Mandrala_Template_v0.2.svg",
+    "ATLAS": "Tarjetas_Atlas_QEL_v0.2.4_color.pdf"
+  },
+  "ethic": [
+    "propósito ritual",
+    "no-manipulación",
+    "vacíos-diseñados",
+    "repetición transformante"
+  ]
+}

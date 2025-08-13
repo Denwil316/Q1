@@ -1,0 +1,72 @@
+{
+  "id": "A96-251208-OBJ",
+  "sot": "INTERACCIONALES/v0.1",
+  "type": "Interaccional",
+  "object": "Zeh-Ora :: el prisma interaccional interdimensional",
+  "eco_index": "xx",
+  "version": "v0.1",
+  "generated_at": "2025-08-12T02:59:47.129628-06:00",
+  "cue": {
+    "primary": "QEL|A96|OBJ|ZO-PRISMA|v0.1|P",
+    "center_alias": "QEL|A96|CUE|CENTRO|SILENCIO-LECTOR",
+    "human": "CUE 'Prisma ZO' — Rumbo: Puente; Centro: Silencio del Lector"
+  },
+  "rumbo": "Puente",
+  "center_anchor": "Silencio del Lector",
+  "phonemes": [
+    "ZEH",
+    "ORA"
+  ],
+  "semantics": {
+    "attractor": [
+      "alineación triádica",
+      "refracción consciente",
+      "purificación por paso",
+      "coincidencia de rutas",
+      "negentropía aplicada"
+    ],
+    "field": "Puente entre Luz y Sombra; filtra significado por tres caras: Intención–Silencio–Transformación."
+  },
+  "interfaces": {
+    "inputs": [
+      "luz de la criolámpara KS",
+      "esfera de corrupción (cristalizada)",
+      "intención declarada (1 frase)"
+    ],
+    "outputs": [
+      "verso purificado",
+      "trayectoria rectificada (rumbo)",
+      "clave triádica (3 runas)"
+    ]
+  },
+  "ritual": {
+    "intention": "purificar y dirigir el tránsito semántico",
+    "protocol": [
+      "Colocar el prisma entre la criolámpara y el Espejo/lector.",
+      "Respirar 4-4-9 por 3 ciclos mirando cada cara en orden: Intención → Silencio → Transformación.",
+      "Pronunciar ZEH durante el giro; ORA al sellar la alineación.",
+      "Depositar una esfera cristalizada y pasar la luz a través; registrar la 'clave triádica' (3 runas)."
+    ],
+    "safety": "No forzar rutas: si no aparece la clave triádica, regresar al Silencio (81 s) y repetir."
+  },
+  "links": {
+    "graph": [
+      {
+        "rel": "resuena_con",
+        "target": "Kael-Sün :: la criolámpara de la meditación lingüistica"
+      },
+      {
+        "rel": "purifica",
+        "target": "Esferas de Corrupción (cristalizadas)"
+      },
+      {
+        "rel": "abre_paso_a",
+        "target": "Espejo Reconstruido / Centro"
+      }
+    ]
+  },
+  "hashes": {
+    "cue_sha1": "placeholder",
+    "content_sha1": "placeholder"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "title": "Ledger de Memoria de QEL — Kael-Sün :: Criolámpara",
+  "version": "v0.1.1",
+  "type": "object",
+  "properties": {
+    "type": {
+      "const": "RUN"
+    },
+    "eco": {
+      "type": "string",
+      "pattern": "^\\d{2}$"
+    },
+    "e_class": {
+      "type": "string",
+      "pattern": "^E[0-7]$"
+    },
+    "fecha": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sot_objeto": {
+      "const": "Kael-Sün :: Criolámpara"
+    },
+    "alpha_pre": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "alpha_post": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "sigma": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "tau_pre": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "tau_post": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "delta_tau": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 1
+    },
+    "decision_sombra": {
+      "enum": [
+        "afirmar",
+        "suspender",
+        "transmutar"
+      ]
+    },
+    "rattr_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rattr_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "audit": {
+      "type": "object"
+    },
+    "safety": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "eco",
+    "e_class",
+    "fecha",
+    "sot_objeto",
+    "alpha_pre",
+    "alpha_post",
+    "sigma",
+    "tau_pre",
+    "tau_post",
+    "delta_tau",
+    "decision_sombra"
+  ]
+}

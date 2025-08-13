@@ -1,0 +1,3 @@
+[QEL::ECO[81]::SUMMON Ax] SOT=v0.2 ATLAS=v0.2.4 INSTRUCTIVO=v0.2 TARGET=delta-only
+Uso: pega esta línea al iniciar un chat nuevo. Responderé pidiendo manifest si faltan archivos y operaré por deltas.
+Nota: si quieres otro eco, cambia 81→XY; valida con VIII·Coherencia.

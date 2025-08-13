@@ -1,0 +1,38 @@
+{
+  "version": "0.2",
+  "created": "2025-08-12T06:23:19Z",
+  "project": "QEL",
+  "seeds": [
+    {
+      "SeedID": "A81-250811-KAEL-PORTAL",
+      "Eco": 81,
+      "Cue": "[QEL::ECO[81]::RECALL A81-250811-KAEL-PORTAL] SOT=v0.2 TARGET=delta-only",
+      "Title": "Mandrala Kael‑Ora con eco 81 (ajuste de decay y ataque)",
+      "Type": "idea",
+      "Plane": [
+        "Lengua",
+        "Rito"
+      ],
+      "Rumbo": "Sur",
+      "Fonemas": [
+        "Kael",
+        "Ora"
+      ],
+      "Operators": [
+        "0+9",
+        "9+0"
+      ],
+      "Body": "Explorar cierre cálido con Kael 256→240 y bendición Ora 432; validar 7/9 señas (VIII).",
+      "Attachments": [],
+      "Status": "en_proceso",
+      "Maturity": 6,
+      "Caida": false,
+      "NextCheck": "2025-08-21T00:00:00Z",
+      "Trace": [
+        "[A6.short]",
+        "[ATL:Kael]"
+      ],
+      "Notes": "Probar modulación ECO(81): Oriente +8 Hz; Norte −1 Hz; Occidente ±1 Hz; Sur decay +19%."
+    }
+  ]
+}
