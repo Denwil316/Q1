@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+QEL_REPO="${QEL_REPO:-$HOME/Projects/codex}"
+QEL_ASSETS="${QEL_ASSETS:-$HOME/Descargas/Q1}"
+
+usage(){ cat <<EOF
+qel <comando>
+
+Comandos:
+  sync           Sincroniza docs/memory en branch PreH
+  check          Verifica rutas y archivos requeridos
+  recall ECO ID  Imprime CUE RECALL canónico
+
+Variables env (opcionales):
+  QEL_REPO   (ruta repo)
+  QEL_ASSETS (ruta assets)
+EOF
+}
+
+cmd="${1:-}"; shift || true
+case "$cmd" in
+  sync)
+    bash "$QEL_ASSETS/codex_preh_sync.sh" "$QEL_REPO" "$QEL_ASSETS"
+    ;;
+  check)
+    test -x "$QEL_ASSETS/codex_preh_sync.sh" && echo "ok script" || echo "falta script"
+    test -d "$QEL_REPO/.git" && echo "ok repo" || echo "repo inválido"
+    for f in README_QEL_MASTER_v0.2.1.md A81_Notas_Espontaneasv_0.3.md CUE-RECOVERY_Plantilla_Caos_v0.2.1.md CUE-RECOVERY_Schema_v0.2.1.json; do
+      test -f "$QEL_ASSETS/$f" || echo "falta $f"
+    done
+    ;;
+  recall)
+    ECO="${1:-}"; ID="${2:-}"; [[ -n "$ECO" && -n "$ID" ]] || { usage; exit 1; }
+    echo "[QEL::ECO[$ECO]::RECALL $ID] SOT=QEL/v0.2 TARGET=delta-only"
+    ;;
+  *) usage; exit 1;;
+esac
