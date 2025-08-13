@@ -1,10 +1,37 @@
 #!/usr/bin/env bash
+
+#!/bin/bash
+# qel - Agiliza el uso de 'git add' añadiendo automáticamente documentos nuevos o modificados.
+# Uso: tools/qel [ruta...]
+# Si no se especifica ruta, se consideran los cambios del directorio actual.
+set -e
+
+if [ "$#" -eq 0 ]; then
+  paths="."
+else
+  paths="$@"
+fi
+
+# Obtiene archivos nuevos o modificados respetando los .gitignore
+files=$(git ls-files --others --modified --exclude-standard -- "$paths")
+if [ -z "$files" ]; then
+  echo "No hay archivos nuevos o modificados para agregar."
+  exit 0
+fi
+
+echo "Agregando archivos:\n$files"
+# Añade archivos manejando espacios en nombres
+git ls-files -z --others --modified --exclude-standard -- "$paths" | xargs -0 git add --
+
+
 set -euo pipefail
 
 QEL_REPO="${QEL_REPO:-$HOME/Projects/codex}"
 QEL_ASSETS="${QEL_ASSETS:-$HOME/Descargas/Q1}"
 
 usage(){ cat <<EOF
+
+
 qel <comando>
 
 Comandos:
@@ -19,6 +46,7 @@ EOF
 }
 
 cmd="${1:-}"; shift || true
+FILES=(README_QEL_MASTER_v0.2.1.md A81_Notas_Espontaneasv_0.3.md CUE-RECOVERY_Plantilla_Caos_v0.2.1.md CUE-RECOVERY_Schema_v0.2.1.json)
 case "$cmd" in
   sync)
     bash "$QEL_ASSETS/codex_preh_sync.sh" "$QEL_REPO" "$QEL_ASSETS"
@@ -26,7 +54,7 @@ case "$cmd" in
   check)
     test -x "$QEL_ASSETS/codex_preh_sync.sh" && echo "ok script" || echo "falta script"
     test -d "$QEL_REPO/.git" && echo "ok repo" || echo "repo inválido"
-    for f in README_QEL_MASTER_v0.2.1.md A81_Notas_Espontaneasv_0.3.md CUE-RECOVERY_Plantilla_Caos_v0.2.1.md CUE-RECOVERY_Schema_v0.2.1.json; do
+    for f in "${FILES[@]}"; do      
       test -f "$QEL_ASSETS/$f" || echo "falta $f"
     done
     ;;
@@ -34,10 +62,8 @@ case "$cmd" in
     ECO="${1:-}"; ID="${2:-}"; [[ -n "$ECO" && -n "$ID" ]] || { usage; exit 1; }
     echo "[QEL::ECO[$ECO]::RECALL $ID] SOT=QEL/v0.2 TARGET=delta-only"
     ;;
-  *) usage; exit 1;;
 
-# dentro del switch/case de tools/qel
-park)
+  park)
   branch="$(git branch --show-current)"
   [[ "$branch" == "PreH" ]] || { echo "Cámbiate a PreH primero (estás en $branch)"; exit 1; }
   msg="qel-park $(date +%F-%H%M)"
@@ -48,4 +74,25 @@ park)
     echo "Hay conflictos al aplicar el stash. Resuelve, 'git add', y commitea."
   fi
   ;;
+  
+set -e
+
+if [ "$#" -eq 0 ]; then
+  paths="."
+else
+  paths="$@"
+fi
+
+# Obtiene archivos nuevos o modificados respetando los .gitignore
+files=$(git ls-files --others --modified --exclude-standard -- "$paths")
+if [ -z "$files" ]; then
+  echo "No hay archivos nuevos o modificados para agregar."
+  exit 0
+fi
+
+echo "Agregando archivos:\n$files"
+# Añade archivos manejando espacios en nombres
+git ls-files -z --others --modified --exclude-standard -- "$paths" | xargs -0 git add --
+
+  *) usage; exit 1;;
 esac

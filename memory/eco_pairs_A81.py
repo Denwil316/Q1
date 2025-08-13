@@ -4,7 +4,16 @@ eco_pairs_A81.py — QEL A81 utility
 Given a two-digit number XY (10..99), compute suggested cardinal modulation.
 Validation must be somatic/ritual (see QEL VIII).
 """
-def mod_from_two_digit(xy: int):
+def mod_from_two_digit(xy: int) -> dict[str, int | dict[str, str]]:
+    """Calculate modulation parameters from a two-digit code.
+
+    Args:
+        xy: Two-digit number representing paired cues.
+
+    Returns:
+        Mapping with cardinal direction labels and their modulation values,
+        including a nested bridge map.
+    """
     if xy < 10 or xy > 99:
         raise ValueError("xy must be between 10 and 99")
     X = xy // 10
