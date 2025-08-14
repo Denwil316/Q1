@@ -1,0 +1,50 @@
+{
+  "manifest_version": "0.5",
+  "updated_at": "2025-08-13 18:31:30 CST",
+  "files": [
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.2.md",
+      "role": "diario",
+      "depends_on": [
+        "QEL_Diario_del_Conjurador_v1.1.md"
+      ],
+      "summary": "Diario con Ficha 𝒱, instructivos, diccionario ampliado y ejemplos."
+    },
+    {
+      "name": "QEL_Glosario_v1.2.md",
+      "role": "glosario",
+      "depends_on": [
+        "QEL_Glosario_v1.0.md"
+      ],
+      "summary": "Glosario con Lámina 𝒱 y definiciones clave."
+    },
+    {
+      "name": "QEL_Matriz_Fonemica_Habilidades_v1.2.md",
+      "role": "mfh",
+      "depends_on": [
+        "QEL_Matriz_Fonemica_Habilidades_v1.0.md"
+      ],
+      "summary": "Matriz fonémica con afinidades, χ_r, H_k, gates y ejemplos."
+    },
+    {
+      "name": "QEL_Sellos_y_Cues_Idriell_v1.0.md",
+      "role": "sellos_cues",
+      "depends_on": [],
+      "summary": "Registro de sellos (micro-sellos) y cues; índice de 𝒱 y notas de estudio."
+    },
+    {
+      "name": "QEL_ListadoR_A96_v1.2.md",
+      "role": "listado_r",
+      "depends_on": [
+        "QEL_ListadoR_A96_v1.1.md"
+      ],
+      "summary": "Registro de cambios con el último cristal (Sellos & Cues v1.0)."
+    },
+    {
+      "name": "QEL_SoT_Study_Guide_v1.0.md",
+      "role": "guide",
+      "depends_on": [],
+      "summary": "Guía de estudio: orden sugerido de lectura y archivos esenciales del SoT."
+    }
+  ]
+}

@@ -75,24 +75,7 @@ case "$cmd" in
   fi
   ;;
   
-set -e
 
-if [ "$#" -eq 0 ]; then
-  paths="."
-else
-  paths="$@"
-fi
-
-# Obtiene archivos nuevos o modificados respetando los .gitignore
-files=$(git ls-files --others --modified --exclude-standard -- "$paths")
-if [ -z "$files" ]; then
-  echo "No hay archivos nuevos o modificados para agregar."
-  exit 0
-fi
-
-echo "Agregando archivos:\n$files"
-# Añade archivos manejando espacios en nombres
-git ls-files -z --others --modified --exclude-standard -- "$paths" | xargs -0 git add --
 
   *) usage; exit 1;;
 esac
