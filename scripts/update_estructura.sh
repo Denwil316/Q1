@@ -1,6 +1,6 @@
-SeedI=PREH-NAV::M0
-SOT=PREH-NAV/v0.2 TARGET=estructura|tree|docs
-VERSION=v0.2 UPDATED=2025-08-15
+# SeedI=PREH-NAV::M0
+# SOT=PREH-NAV/v0.2 TARGET=estructura|tree|docs
+# VERSION=v0.2 UPDATED=2025-08-15
 
 set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
