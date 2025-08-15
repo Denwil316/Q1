@@ -134,4 +134,11 @@ proximo_paso:
 - **Listado R:** `QEL_ListadoR_A96_v1.0.md`
 - **SoT Manifest:** `QEL_SoT_Manifest_v0.3.json`
 
+/*
+[QEL::ECO[96]::RECALL A96-250814-UI-NAVEGADOR]
+SOT=INTERFAZ-HTML/v0.2 TARGET=atlas|manifest|zip|docs
+VERSION=v0.2 UPDATED=2025-08-14
+*/
+
+
 > Espacio de co‑creación: escribe aquí lo que quieras recordarme en la próxima vuelta.

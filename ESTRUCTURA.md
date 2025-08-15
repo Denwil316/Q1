@@ -1,9 +1,14 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-15 13:21:17_
+_Generado: 2025-08-15 15:36:58_
 
 ```text
 .
+├── apps
+│   └── preh-nav
+│       ├── PLAN_ORG_Codex_M0.md
+│       ├── app.jsx
+│       └── index.html
 ├── docs
 │   ├── attachments
 │   ├── core
@@ -57,16 +62,27 @@ _Generado: 2025-08-15 13:21:17_
 │   │   ├── QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
 │   │   ├── QEL_Sellos_y_Cues_Idriell_v1.0.md
 │   │   └── Tarjetas_Atlas_QEL_v2.2.md
-│   └── tools
-│       ├── QEL_Aurora_Spec_v1.0.md
-│       ├── QEL_CUE_Exception_v1.0.md
-│       ├── QEL_CueMachineA96_v1.0.txt
-│       ├── QEL_CueMachine_81.txt
-│       ├── QEL_CueMachine_v0.2.txt
-│       ├── QEL_CueMachine_v0.3.txt
-│       ├── QEL_CueMachine_v0.4.txt
-│       └── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
+│   ├── tools
+│   │   ├── QEL_Aurora_Spec_v1.0.md
+│   │   ├── QEL_CUE_Exception_v1.0.md
+│   │   ├── QEL_CueMachineA96_v1.0.txt
+│   │   ├── QEL_CueMachine_81.txt
+│   │   ├── QEL_CueMachine_v0.2.txt
+│   │   ├── QEL_CueMachine_v0.3.txt
+│   │   ├── QEL_CueMachine_v0.4.txt
+│   │   └── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
+│   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
+│   └── NAVEGADOR_M0_Manual_v0.2.md
+├── legacy
+│   ├── scripts
+│   ├── index.html
+│   └── qel_navegador.py
 ├── memory
+│   ├── archive
+│   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
+│   │   ├── Matematicas Resonantes (DS).md
+│   │   ├── QEL_Sistema_Consolidado_v0.2_Confirmacion_v0.1.md
+│   │   └── QEL_SoT_Study_Guide_v1.0.md
 │   ├── cue-recovery
 │   │   ├── CUE-RECOVERY_Plantilla_Caos_v0.2.1.md
 │   │   ├── CUE-RECOVERY_Plantilla_Caos_v0.2.md
@@ -102,6 +118,7 @@ _Generado: 2025-08-15 13:21:17_
 │   ├── QEL_Instrumentos_Medicion_v1.0.md
 │   ├── QEL_ListadoR_A96_v1.3.md
 │   ├── QEL_PR_TEMPLATE_v0.2.2.md
+│   ├── QEL_SoT_Manifest_v0.5.json
 │   ├── QEL_SoT_Manifest_v0.7.json
 │   ├── QEL_SoT_Study_Guide_v1.0.md
 │   ├── QEL_VF_Carta_Lun-Nai_v1.0.md
@@ -118,20 +135,11 @@ _Generado: 2025-08-15 13:21:17_
 │   ├── objetos_interaccionales_cues_v0.1.json
 │   └── objetos_interaccionales_v0.1.1.json
 ├── memory_v0.4
-│   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
-│   ├── Matematicas Resonantes (DS).md
-│   ├── QEL_Sistema_Consolidado_v0.2_Confirmacion_v0.1.md
-│   ├── QEL_SoT_Manifest_v0.5.json
-│   └── QEL_SoT_Study_Guide_v1.0.md
 ├── motor_qel
 │   ├── src
 │   └── test
 │       ├── QEL_MotorQEL_Indice_DRAFT.md
 │       └── QEL_MotorQEL_Orbita_DRAFT.md
-├── preh_nav
-│   ├── scripts
-│   ├── index.html
-│   └── qel_navegador.py
 ├── pub
 │   ├── an
 │   │   ├── A81_Notas_Espontaneas_v0.1.md
@@ -153,7 +161,9 @@ _Generado: 2025-08-15 13:21:17_
 │   └── README_QEL_MASTER_v0.2.1.md
 ├── scripts
 │   ├── cx_navegador.zsh
-│   └── pre-commit-codex-structure.sh
+│   ├── pre-commit-codex-structure.sh
+│   ├── serve_preh_nav.sh
+│   └── update_estructura.sh
 ├── tools
 │   └── qel
 ├── ESTRUCTURA.md
@@ -166,5 +176,5 @@ _Generado: 2025-08-15 13:21:17_
 ├── README_Q1.md
 └── README_QEL_MASTER_v0.2.1.md
 
-26 directories, 136 files
+29 directories, 143 files
 ```
