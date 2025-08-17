@@ -1,14 +1,26 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-17 12:12:04_
+_Generado: 2025-08-17 15:15:31_
 
 ```text
 .
 ├── apps
-│   └── preh-nav
-│       ├── PLAN_ORG_Codex_M0.md
-│       ├── app.jsx
-│       └── index.html
+│   ├── preh-nav-m1
+│   │   ├── public
+│   │   │   ├── docs
+│   │   │   └── sot-manifest.json.json
+│   │   ├── src
+│   │   │   └── components
+│   │   ├── PLAN_ORG_Codex_M0.md
+│   │   ├── app.jsx
+│   │   ├── fix_prehnav_layout.sh
+│   │   ├── index.html
+│   │   ├── package-lock.json
+│   │   ├── package-lock.json.RENOMBRADO
+│   │   └── package.json
+│   └── src
+│       └── components
+│           └── DocViewer.tsx
 ├── docs
 │   ├── attachments
 │   ├── core
@@ -160,22 +172,39 @@ _Generado: 2025-08-17 12:12:04_
 │   ├── manuales
 │   │   └── INSTALL_NOTES_PREH.md
 │   └── README_QEL_MASTER_v0.2.1.md
+├── public
+│   ├── docs
+│   └── sot-manifest.json
 ├── scripts
 │   ├── cx_navegador.zsh
 │   ├── pre-commit-codex-structure.sh
 │   ├── serve_preh_nav.sh
 │   └── update_estructura.sh
+├── src
+│   ├── components
+│   │   ├── ManifestContext.tsx
+│   │   └── Sidebar.tsx
+│   ├── lib
+│   │   └── b64url.ts
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── styles.css
 ├── tools
 │   └── qel
 ├── ESTRUCTURA.md
 ├── LICENSE
+├── PREH-NAV_README_v0.2.md
 ├── QEL_Diario_del_Conjurador_v1.0.md
 ├── QEL_Guia_Operacion_QEL_Consolidada_v1.0.md
 ├── README.md
 ├── README_Consolidado_v0.4.md
 ├── README_Q1 (1).md
 ├── README_Q1.md
-└── README_QEL_MASTER_v0.2.1.md
+├── README_QEL_MASTER_v0.2.1.md
+├── index.html
+├── package-lock.json
+├── tsconfig.json
+└── vite.config.ts
 
-29 directories, 144 files
+40 directories, 162 files
 ```
