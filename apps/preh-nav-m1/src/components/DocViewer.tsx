@@ -1,7 +1,9 @@
-// [QEL::ECO[96]::RECALL A96-250815-NAVEGADOR-REACT-M0]
+/* 
+[QEL::ECO[96]::RECALL A96-250815-NAVEGADOR-REACT-M0]
 SeedI=PREH-NAV::M0
 SOT=PREH-NAV/v0.2 TARGET=react|navegador|m0
 VERSION=v0.2 UPDATED=2025-08-15
+*/
 // src/components/DocViewer.tsx
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
