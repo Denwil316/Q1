@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-15 16:13:30_
+_Generado: 2025-08-17 12:12:04_
 
 ```text
 .
@@ -18,6 +18,7 @@ _Generado: 2025-08-15 16:13:30_
 │   │   ├── QEL_Lamina_V_Detallada_v1.0.md
 │   │   ├── QEL_Manual_Interpretacion_Sombras_v1.1.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
+│   │   ├── QEL_SoT_Manifest_v0.7.json
 │   │   ├── QEL_Tratado_Metahumano_Nota_v0.1.md
 │   │   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md
 │   ├── history
@@ -176,5 +177,5 @@ _Generado: 2025-08-15 16:13:30_
 ├── README_Q1.md
 └── README_QEL_MASTER_v0.2.1.md
 
-29 directories, 143 files
+29 directories, 144 files
 ```
