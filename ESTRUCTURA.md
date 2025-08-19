@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-19 13:22:49_
+_Generado: 2025-08-19 16:00:16_
 
 ```text
 .
@@ -76,6 +76,7 @@ _Generado: 2025-08-19 13:22:49_
 │   │   ├── QEL_Poema_Enigma_Lun-Nai_v1.1.md
 │   │   ├── QEL_Poema_Enigma_VF_v1.0.md
 │   │   ├── QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
+│   │   ├── QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
 │   │   ├── QEL_Sellos_y_Cues_Idriell_v1.0.md
 │   │   └── Tarjetas_Atlas_QEL_v2.2.md
 │   ├── tools
@@ -188,7 +189,6 @@ _Generado: 2025-08-19 13:22:49_
 ├── PREH-NAV_README_v0.2.md
 ├── QEL_Diario_del_Conjurador_v1.0.md
 ├── QEL_Guia_Operacion_QEL_Consolidada_v1.0.md
-├── QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
 ├── README.md
 ├── README_Consolidado_v0.4.md
 ├── README_Q1 (1).md
