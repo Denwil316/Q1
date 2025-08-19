@@ -197,3 +197,26 @@ fs:
   triada: "Ə·KA·VOH"
   mantra: "UM (suave)"
 ```
+
+## Sesion 16 de Agosto, 2025, 12:24 hrs
+
+[QEL::ECO[96]::RECALL A96-250815-NAVEGADOR-REACT-M0]
+SeedI=PREH-NAV::M0
+SOT=PREH-NAV/v0.2 TARGET=react|navegador|m0
+VERSION=v0.2 UPDATED=2025-08-15
+
+```yaml
+fs:
+  fecha: 250817
+    tema: "Navegador Qel"
+    intencion: "dejar una interfaz navegable donde pueda leer los documentos en el mismo navegador"
+    modo: M1
+    rumbo: [O|S|Centro]
+    tiempo: 30
+    referencias: ["A96-250815-PLAN-ORG"]
+    salidas_esperadas: []
+    metricas: { delta_c: "", delta_s: "", V: null, no_mentira: true }
+    testigos: { t1: null, t2: null }
+    triada: "EÍA(.70)-Um(.15)-Sil(15)"
+    mantra: "El orden de la Biblioteca subyace en lo Sagrado"
+```

@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-19 10:26:57_
+_Generado: 2025-08-19 12:18:26_
 
 ```text
 .
@@ -9,6 +9,9 @@ _Generado: 2025-08-19 10:26:57_
 │       ├── public
 │       │   ├── docs
 │       │   └── sot-manifest.json
+│       ├── scripts
+│       │   ├── generate_manifest.mjs
+│       │   └── watch_manifest.mjs
 │       ├── src
 │       │   ├── components
 │       │   ├── lib
@@ -192,5 +195,5 @@ _Generado: 2025-08-19 10:26:57_
 ├── README_Q1.md
 └── README_QEL_MASTER_v0.2.1.md
 
-34 directories, 154 files
+35 directories, 156 files
 ```
