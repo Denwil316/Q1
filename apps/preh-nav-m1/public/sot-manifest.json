@@ -1,1 +1,276 @@
-{ "files": [] }
+{
+  "files": [
+    {
+      "name": "Esculpido_en_Qel_Guia_de_Trabajo_v0.3",
+      "role": "history",
+      "path": "docs/history/Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md"
+    },
+    {
+      "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2",
+      "role": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
+      "path": "docs/GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md"
+    },
+    {
+      "name": "NAVEGADOR_M0_Manual_v0.2",
+      "role": "NAVEGADOR_M0_Manual_v0.2.md",
+      "path": "docs/NAVEGADOR_M0_Manual_v0.2.md"
+    },
+    {
+      "name": "QEL_Aurora_Spec_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_Aurora_Spec_v0.1.md"
+    },
+    {
+      "name": "QEL_Aurora_Spec_v1.0",
+      "role": "tools",
+      "path": "docs/tools/QEL_Aurora_Spec_v1.0.md"
+    },
+    {
+      "name": "QEL_CUE_Exception_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_CUE_Exception_v0.1.md"
+    },
+    {
+      "name": "QEL_CUE_Exception_v1.0",
+      "role": "tools",
+      "path": "docs/tools/QEL_CUE_Exception_v1.0.md"
+    },
+    {
+      "name": "QEL_CueMachine_81",
+      "role": "tools",
+      "path": "docs/tools/QEL_CueMachine_81.txt"
+    },
+    {
+      "name": "QEL_CueMachine_v0.2",
+      "role": "tools",
+      "path": "docs/tools/QEL_CueMachine_v0.2.txt"
+    },
+    {
+      "name": "QEL_CueMachine_v0.3",
+      "role": "tools",
+      "path": "docs/tools/QEL_CueMachine_v0.3.txt"
+    },
+    {
+      "name": "QEL_CueMachine_v0.4",
+      "role": "tools",
+      "path": "docs/tools/QEL_CueMachine_v0.4.txt"
+    },
+    {
+      "name": "QEL_CueMachineA96_v1.0",
+      "role": "ritual",
+      "path": "docs/ritual/QEL_CueMachineA96_v1.0.txt"
+    },
+    {
+      "name": "QEL_CueMachineA96_v1.0",
+      "role": "tools",
+      "path": "docs/tools/QEL_CueMachineA96_v1.0.txt"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.1",
+      "role": "history",
+      "path": "docs/history/QEL_Diario_del_Conjurador_v1.1.md"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.2",
+      "role": "core",
+      "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.2_Confirmacion_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_Diario_del_Conjurador_v1.2_Confirmacion_v0.1.md"
+    },
+    {
+      "name": "QEL_Formato_VF_Arbol_Habilidades_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_Formato_VF_Arbol_Habilidades_v0.1.md"
+    },
+    {
+      "name": "QEL_Formato_VF_Arbol_Habilidades_v1.0",
+      "role": "core",
+      "path": "docs/core/QEL_Formato_VF_Arbol_Habilidades_v1.0.md"
+    },
+    {
+      "name": "QEL_Formato_VF_Arbol_Habilidades_v1.0",
+      "role": "tools",
+      "path": "docs/tools/QEL_Formato_VF_Arbol_Habilidades_v1.0.md"
+    },
+    {
+      "name": "QEL_Glosario_v1.0",
+      "role": "history",
+      "path": "docs/history/QEL_Glosario_v1.0.md"
+    },
+    {
+      "name": "QEL_Glosario_v1.2",
+      "role": "core",
+      "path": "docs/core/QEL_Glosario_v1.2.md"
+    },
+    {
+      "name": "QEL_Lamina_V_Detallada_v1.0",
+      "role": "core",
+      "path": "docs/core/QEL_Lamina_V_Detallada_v1.0.md"
+    },
+    {
+      "name": "QEL_ListadoR_A96_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_ListadoR_A96_v0.1.md"
+    },
+    {
+      "name": "QEL_ListadoR_A96_v0.2",
+      "role": "history",
+      "path": "docs/history/QEL_ListadoR_A96_v0.2.md"
+    },
+    {
+      "name": "QEL_ListadoR_A96_v0.3",
+      "role": "history",
+      "path": "docs/history/QEL_ListadoR_A96_v0.3.md"
+    },
+    {
+      "name": "QEL_ListadoR_A96_v1.0",
+      "role": "history",
+      "path": "docs/history/QEL_ListadoR_A96_v1.0.md"
+    },
+    {
+      "name": "QEL_ListadoR_A96_v1.1",
+      "role": "history",
+      "path": "docs/history/QEL_ListadoR_A96_v1.1.md"
+    },
+    {
+      "name": "QEL_ListadoR_A96_v1.2",
+      "role": "history",
+      "path": "docs/history/QEL_ListadoR_A96_v1.2.md"
+    },
+    {
+      "name": "QEL_ListadoR_A96_v1.2_Confirmacion_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_ListadoR_A96_v1.2_Confirmacion_v0.1.md"
+    },
+    {
+      "name": "QEL_Manual_Interpretacion_Sombras_v1.0",
+      "role": "history",
+      "path": "docs/history/QEL_Manual_Interpretacion_Sombras_v1.0.md"
+    },
+    {
+      "name": "QEL_Manual_Interpretacion_Sombras_v1.1",
+      "role": "core",
+      "path": "docs/core/QEL_Manual_Interpretacion_Sombras_v1.1.md"
+    },
+    {
+      "name": "QEL_Manual_Lectura_VF_Tonalpohualli_v1.0",
+      "role": "history",
+      "path": "docs/history/QEL_Manual_Lectura_VF_Tonalpohualli_v1.0.md"
+    },
+    {
+      "name": "QEL_Matriz_Fonemica_Habilidades_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_Matriz_Fonemica_Habilidades_v0.1.md"
+    },
+    {
+      "name": "QEL_Matriz_Fonemica_Habilidades_v1.0",
+      "role": "history",
+      "path": "docs/history/QEL_Matriz_Fonemica_Habilidades_v1.0.md"
+    },
+    {
+      "name": "QEL_Matriz_Fonemica_Habilidades_v1.2",
+      "role": "core",
+      "path": "docs/core/QEL_Matriz_Fonemica_Habilidades_v1.2.md"
+    },
+    {
+      "name": "QEL_Meditacion_Reiteracion_Lun-Nai_v1.1",
+      "role": "ritual",
+      "path": "docs/ritual/QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md"
+    },
+    {
+      "name": "QEL_Meditaciones_Primordiales_v1.0",
+      "role": "ritual",
+      "path": "docs/ritual/QEL_Meditaciones_Primordiales_v1.0.md"
+    },
+    {
+      "name": "QEL_Poema_Enigma_Lun-Nai_v1.1",
+      "role": "ritual",
+      "path": "docs/ritual/QEL_Poema_Enigma_Lun-Nai_v1.1.md"
+    },
+    {
+      "name": "QEL_Poema_Enigma_VF_v1.0",
+      "role": "ritual",
+      "path": "docs/ritual/QEL_Poema_Enigma_VF_v1.0.md"
+    },
+    {
+      "name": "QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0",
+      "role": "ritual",
+      "path": "docs/ritual/QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md"
+    },
+    {
+      "name": "QEL_Sellos_y_Cues_Idriell_v1.0",
+      "role": "ritual",
+      "path": "docs/ritual/QEL_Sellos_y_Cues_Idriell_v1.0.md"
+    },
+    {
+      "name": "QEL_Sistema_Completo_v0.2_Consolidado",
+      "role": "history",
+      "path": "docs/history/QEL_Sistema_Completo_v0.2_Consolidado.md"
+    },
+    {
+      "name": "QEL_Sistema_Consolidado_v0.2_Confirmacion_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_Sistema_Consolidado_v0.2_Confirmacion_v0.1.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Nota_v0.1",
+      "role": "core",
+      "path": "docs/core/QEL_Tratado_Metahumano_Nota_v0.1.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.2",
+      "role": "history",
+      "path": "docs/history/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.2.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.3",
+      "role": "history",
+      "path": "docs/history/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.3.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.4",
+      "role": "history",
+      "path": "docs/history/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.4.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.5",
+      "role": "history",
+      "path": "docs/history/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.5.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.6",
+      "role": "history",
+      "path": "docs/history/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.6.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.0",
+      "role": "history",
+      "path": "docs/history/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.0.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1",
+      "role": "core",
+      "path": "docs/core/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_RECALL_A96-250812_v1.0_Confirmacion_v0.1",
+      "role": "history",
+      "path": "docs/history/QEL_Tratado_Metahumano_RECALL_A96-250812_v1.0_Confirmacion_v0.1.md"
+    },
+    {
+      "name": "Tarjetas_Atlas_QEL_v0.2.1",
+      "role": "history",
+      "path": "docs/history/Tarjetas_Atlas_QEL_v0.2.1.md"
+    },
+    {
+      "name": "Tarjetas_Atlas_QEL_v2.2",
+      "role": "ritual",
+      "path": "docs/ritual/Tarjetas_Atlas_QEL_v2.2.md"
+    }
+  ],
+  "recommended_core": [],
+  "optional": []
+}

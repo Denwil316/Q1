@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-19 09:33:16_
+_Generado: 2025-08-19 09:50:48_
 
 ```text
 .
@@ -26,6 +26,7 @@ _Generado: 2025-08-19 09:33:16_
 │   │   └── vite.config.ts
 │   └── src
 │       └── components
+│           └── DocViewer.tsx
 ├── docs
 │   ├── attachments
 │   ├── core
@@ -196,5 +197,5 @@ _Generado: 2025-08-19 09:33:16_
 ├── README_QEL_MASTER_v0.2.1.md
 └── package-lock.json
 
-36 directories, 156 files
+36 directories, 157 files
 ```
