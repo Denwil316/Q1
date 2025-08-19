@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-19 12:18:26_
+_Generado: 2025-08-19 13:22:49_
 
 ```text
 .
@@ -193,7 +193,9 @@ _Generado: 2025-08-19 12:18:26_
 ├── README_Consolidado_v0.4.md
 ├── README_Q1 (1).md
 ├── README_Q1.md
-└── README_QEL_MASTER_v0.2.1.md
+├── README_QEL_MASTER_v0.2.1.md
+├── package-lock.json
+└── package.json
 
-35 directories, 156 files
+35 directories, 158 files
 ```
