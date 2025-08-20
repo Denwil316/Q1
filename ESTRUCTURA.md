@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-20 17:37:43_
+_Generado: 2025-08-20 17:46:36_
 
 ```text
 .
@@ -31,11 +31,13 @@ _Generado: 2025-08-20 17:37:43_
 │   │   ├── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 │   │   ├── QEL_Glosario_v1.2.md
 │   │   ├── QEL_Lamina_V_Detallada_v1.0.md
+│   │   ├── QEL_Manual_Conjurador_Avanzado_v1.0.md
 │   │   ├── QEL_Manual_Interpretacion_Sombras_v1.1.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
 │   │   ├── QEL_SoT_Manifest_v0.7.json
 │   │   ├── QEL_Tratado_Metahumano_Nota_v0.1.md
-│   │   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md
+│   │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md
+│   │   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
 │   ├── history
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
 │   │   ├── QEL_Aurora_Spec_v0.1.md
@@ -82,6 +84,7 @@ _Generado: 2025-08-20 17:37:43_
 │   │   └── Tarjetas_Atlas_QEL_v2.2.md
 │   ├── tools
 │   │   ├── QEL_Aurora_Spec_v1.0.md
+│   │   ├── QEL_Aurora_Spec_v1.1.md
 │   │   ├── QEL_CUE_Exception_v1.0.md
 │   │   ├── QEL_CueMachineA96_v1.0.txt
 │   │   ├── QEL_CueMachine_81.txt
@@ -90,10 +93,7 @@ _Generado: 2025-08-20 17:37:43_
 │   │   ├── QEL_CueMachine_v0.4.txt
 │   │   └── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 │   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
-│   ├── NAVEGADOR_M0_Manual_v0.2.md
-│   ├── QEL_Aurora_Spec_v1.1.md
-│   ├── QEL_Manual_Conjurador_Avanzado_v1.0.md
-│   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
+│   └── NAVEGADOR_M0_Manual_v0.2.md
 ├── docscat
 ├── legacy
 │   ├── scripts
