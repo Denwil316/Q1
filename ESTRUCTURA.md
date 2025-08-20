@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-19 16:00:16_
+_Generado: 2025-08-19 18:16:03_
 
 ```text
 .
@@ -73,6 +73,7 @@ _Generado: 2025-08-19 16:00:16_
 │   │   ├── QEL_CueMachineA96_v1.0.txt
 │   │   ├── QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
 │   │   ├── QEL_Meditaciones_Primordiales_v1.0.md
+│   │   ├── QEL_MicroSello_A96-250819_PREH-NAV_Cierre_v1.0.md
 │   │   ├── QEL_Poema_Enigma_Lun-Nai_v1.1.md
 │   │   ├── QEL_Poema_Enigma_VF_v1.0.md
 │   │   ├── QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
@@ -162,7 +163,8 @@ _Generado: 2025-08-19 16:00:16_
 │   │   ├── A81_Notas_Espontaneas_v0.1.md
 │   │   ├── A81_Notas_Espontaneas_v0.2.md
 │   │   ├── A81_Notas_Espontaneasv_0.3.md
-│   │   └── A96_Notas_Espontaneas_Sombras_Qel_v0.1.md
+│   │   ├── A96_Notas_Espontaneas_Sombras_Qel_v0.1.md
+│   │   └── A96_Notas_Espontaneas_Sombras_Qel_v0.2.md
 │   ├── atlas
 │   ├── codice
 │   ├── cue-recovery
@@ -197,5 +199,5 @@ _Generado: 2025-08-19 16:00:16_
 ├── package-lock.json
 └── package.json
 
-35 directories, 158 files
+35 directories, 160 files
 ```
