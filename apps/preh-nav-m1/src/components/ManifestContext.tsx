@@ -1,7 +1,9 @@
+// [QEL::ECO[96]::RECALL A96-250817-PREH-NAV-REHIDRATA]
 // [QEL::ECO[96]::RECALL A96-250819-MANIFEST-CONTEXT]
 /* SeedI=PREH-NAV::M1
    SOT=PREH-NAV/v0.3 TARGET=context|refresh
    VERSION=v0.3 UPDATED=2025-08-19 */
+
 import React,{createContext,useContext,useEffect,useState,useCallback} from 'react'
 
 type FileItem = { name:string; role:string; path:string }
