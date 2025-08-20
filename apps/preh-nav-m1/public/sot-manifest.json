@@ -26,6 +26,11 @@
       "path": "docs/tools/QEL_Aurora_Spec_v1.0.md"
     },
     {
+      "name": "QEL_Aurora_Spec_v1.1",
+      "role": "QEL_Aurora_Spec_v1.1.md",
+      "path": "docs/QEL_Aurora_Spec_v1.1.md"
+    },
+    {
       "name": "QEL_CUE_Exception_v0.1",
       "role": "history",
       "path": "docs/history/QEL_CUE_Exception_v0.1.md"
@@ -146,6 +151,11 @@
       "path": "docs/history/QEL_ListadoR_A96_v1.2_Confirmacion_v0.1.md"
     },
     {
+      "name": "QEL_Manual_Conjurador_Avanzado_v1.0",
+      "role": "QEL_Manual_Conjurador_Avanzado_v1.0.md",
+      "path": "docs/QEL_Manual_Conjurador_Avanzado_v1.0.md"
+    },
+    {
       "name": "QEL_Manual_Interpretacion_Sombras_v1.0",
       "role": "history",
       "path": "docs/history/QEL_Manual_Interpretacion_Sombras_v1.0.md"
@@ -254,6 +264,11 @@
       "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1",
       "role": "core",
       "path": "docs/core/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2",
+      "role": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md",
+      "path": "docs/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md"
     },
     {
       "name": "QEL_Tratado_Metahumano_RECALL_A96-250812_v1.0_Confirmacion_v0.1",
