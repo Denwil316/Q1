@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-19 18:37:40_
+_Generado: 2025-08-20 17:37:43_
 
 ```text
 .
@@ -90,7 +90,11 @@ _Generado: 2025-08-19 18:37:40_
 │   │   ├── QEL_CueMachine_v0.4.txt
 │   │   └── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 │   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
-│   └── NAVEGADOR_M0_Manual_v0.2.md
+│   ├── NAVEGADOR_M0_Manual_v0.2.md
+│   ├── QEL_Aurora_Spec_v1.1.md
+│   ├── QEL_Manual_Conjurador_Avanzado_v1.0.md
+│   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
+├── docscat
 ├── legacy
 │   ├── scripts
 │   ├── index.html
@@ -199,5 +203,5 @@ _Generado: 2025-08-19 18:37:40_
 ├── package-lock.json
 └── package.json
 
-35 directories, 160 files
+36 directories, 163 files
 ```
