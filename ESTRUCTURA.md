@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-20 20:02:47_
+_Generado: 2025-08-20 20:31:00_
 
 ```text
 .
@@ -191,6 +191,7 @@ _Generado: 2025-08-20 20:02:47_
 │   ├── gen_manifest.sh
 │   ├── pre-commit-codex-structure.sh
 │   ├── qel_session_finalize.sh
+│   ├── qel_vcalc.sh
 │   ├── serve_preh_nav.sh
 │   └── update_estructura.sh
 ├── tools
@@ -208,5 +209,5 @@ _Generado: 2025-08-20 20:02:47_
 ├── package-lock.json
 └── package.json
 
-36 directories, 168 files
+36 directories, 169 files
 ```
