@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-20 18:22:58_
+_Generado: 2025-08-20 18:59:22_
 
 ```text
 .
@@ -77,6 +77,7 @@ _Generado: 2025-08-20 18:22:58_
 │   │   ├── QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
 │   │   ├── QEL_Meditaciones_Primordiales_v1.0.md
 │   │   ├── QEL_MicroSello_A96-250819_PREH-NAV_Cierre_v1.0.md
+│   │   ├── QEL_MicroSello_A96-250820_PREH-NAV_Cierre_v1.0.md
 │   │   ├── QEL_Poema_Enigma_Lun-Nai_v1.1.md
 │   │   ├── QEL_Poema_Enigma_VF_v1.0.md
 │   │   ├── QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
@@ -205,5 +206,5 @@ _Generado: 2025-08-20 18:22:58_
 ├── package-lock.json
 └── package.json
 
-36 directories, 165 files
+36 directories, 166 files
 ```
