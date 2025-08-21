@@ -196,6 +196,11 @@
       "path": "docs/ritual/QEL_Meditaciones_Primordiales_v1.0.md"
     },
     {
+      "name": "QEL_MicroSello_A96-250820_PREH-NAV_Cierre_v1.0",
+      "role": "QEL_MicroSello_A96-250820_PREH-NAV_Cierre_v1.0.md",
+      "path": "docs/QEL_MicroSello_A96-250820_PREH-NAV_Cierre_v1.0.md"
+    },
+    {
       "name": "QEL_Poema_Enigma_Lun-Nai_v1.1",
       "role": "ritual",
       "path": "docs/ritual/QEL_Poema_Enigma_Lun-Nai_v1.1.md"
@@ -274,6 +279,11 @@
       "name": "QEL_Tratado_Metahumano_RECALL_A96-250812_v1.0_Confirmacion_v0.1",
       "role": "history",
       "path": "docs/history/QEL_Tratado_Metahumano_RECALL_A96-250812_v1.0_Confirmacion_v0.1.md"
+    },
+    {
+      "name": "QEL_VF_PRIMA_A96-250820_SEAL_v1.0",
+      "role": "QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md",
+      "path": "docs/QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md"
     },
     {
       "name": "Tarjetas_Atlas_QEL_v0.2.1",

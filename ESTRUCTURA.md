@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-20 19:00:07_
+_Generado: 2025-08-20 19:09:57_
 
 ```text
 .
@@ -83,6 +83,7 @@ _Generado: 2025-08-20 19:00:07_
 │   │   ├── QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
 │   │   ├── QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
 │   │   ├── QEL_Sellos_y_Cues_Idriell_v1.0.md
+│   │   ├── QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
 │   │   └── Tarjetas_Atlas_QEL_v2.2.md
 │   ├── tools
 │   │   ├── QEL_Aurora_Spec_v1.0.md
@@ -206,5 +207,5 @@ _Generado: 2025-08-20 19:00:07_
 ├── package-lock.json
 └── package.json
 
-36 directories, 166 files
+36 directories, 167 files
 ```
