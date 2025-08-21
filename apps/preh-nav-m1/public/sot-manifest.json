@@ -151,6 +151,11 @@
       "path": "docs/history/QEL_ListadoR_A96_v1.2_Confirmacion_v0.1.md"
     },
     {
+      "name": "QEL_ListadoR_A96_v1.3",
+      "role": "QEL_ListadoR_A96_v1.3.md",
+      "path": "docs/QEL_ListadoR_A96_v1.3.md"
+    },
+    {
       "name": "QEL_Manual_Conjurador_Avanzado_v1.0",
       "role": "QEL_Manual_Conjurador_Avanzado_v1.0.md",
       "path": "docs/QEL_Manual_Conjurador_Avanzado_v1.0.md"
