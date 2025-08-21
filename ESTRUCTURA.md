@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-20 20:35:47_
+_Generado: 2025-08-21 10:16:48_
 
 ```text
 .
@@ -28,17 +28,23 @@ _Generado: 2025-08-20 20:35:47_
 │   ├── attachments
 │   ├── core
 │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
+│   │   ├── QEL_Diario_del_Conjurador_v1.3.md
 │   │   ├── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 │   │   ├── QEL_Glosario_v1.2.md
+│   │   ├── QEL_Glosario_v1.3.md
 │   │   ├── QEL_Lamina_V_Detallada_v1.0.md
 │   │   ├── QEL_Manual_Conjurador_Avanzado_v1.0.md
+│   │   ├── QEL_Manual_Conjurador_Avanzado_v1.1.md
 │   │   ├── QEL_Manual_Interpretacion_Sombras_v1.1.md
+│   │   ├── QEL_Manual_Interpretacion_Sombras_v1.2.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
+│   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.3.md
 │   │   ├── QEL_SoT_Manifest_v0.7.json
 │   │   ├── QEL_SoT_Manifest_v0.7.json.bak
 │   │   ├── QEL_Tratado_Metahumano_Nota_v0.1.md
 │   │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md
-│   │   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
+│   │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
+│   │   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.3.md
 │   ├── history
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
 │   │   ├── QEL_Aurora_Spec_v0.1.md
@@ -88,6 +94,7 @@ _Generado: 2025-08-20 20:35:47_
 │   ├── tools
 │   │   ├── QEL_Aurora_Spec_v1.0.md
 │   │   ├── QEL_Aurora_Spec_v1.1.md
+│   │   ├── QEL_Aurora_Spec_v1.2.md
 │   │   ├── QEL_CUE_Exception_v1.0.md
 │   │   ├── QEL_CueMachineA96_v1.0.txt
 │   │   ├── QEL_CueMachine_81.txt
@@ -144,6 +151,7 @@ _Generado: 2025-08-20 20:35:47_
 │   ├── QEL_Index_v1.1.md
 │   ├── QEL_Instrumentos_Medicion_v1.0.md
 │   ├── QEL_ListadoR_A96_v1.3.md
+│   ├── QEL_ListadoR_A96_v1.4.md
 │   ├── QEL_PR_TEMPLATE_v0.2.2.md
 │   ├── QEL_SoT_Manifest_v0.5.json
 │   ├── QEL_SoT_Manifest_v0.7.json
@@ -209,5 +217,5 @@ _Generado: 2025-08-20 20:35:47_
 ├── package-lock.json
 └── package.json
 
-36 directories, 169 files
+36 directories, 177 files
 ```
