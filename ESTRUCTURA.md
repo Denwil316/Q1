@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-20 20:31:35_
+_Generado: 2025-08-20 20:35:47_
 
 ```text
 .
@@ -135,9 +135,11 @@ _Generado: 2025-08-20 20:31:35_
 │   ├── QEL_CUE_Recovery_Primer_Pecado_v0.1.md
 │   ├── QEL_Chat_Index.md
 │   ├── QEL_Chat_Register_All.md
+│   ├── QEL_Diario_del_Conjurador_v1.0.md
 │   ├── QEL_ECO_A96-250812-PRIMER-PECADO_delta-only_v0.1.md
 │   ├── QEL_FormatoR_Manual_v0.1.md
 │   ├── QEL_FormatoR_Manual_v0.2.md
+│   ├── QEL_Guia_Operacion_QEL_Consolidada_v1.0.md
 │   ├── QEL_Index_v1.0.md
 │   ├── QEL_Index_v1.1.md
 │   ├── QEL_Instrumentos_Medicion_v1.0.md
@@ -199,8 +201,6 @@ _Generado: 2025-08-20 20:31:35_
 ├── ESTRUCTURA.md
 ├── LICENSE
 ├── PREH-NAV_README_v0.2.md
-├── QEL_Diario_del_Conjurador_v1.0.md
-├── QEL_Guia_Operacion_QEL_Consolidada_v1.0.md
 ├── README.md
 ├── README_Consolidado_v0.4.md
 ├── README_Q1 (1).md
