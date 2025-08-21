@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-20 17:57:20_
+_Generado: 2025-08-20 18:22:58_
 
 ```text
 .
@@ -35,6 +35,7 @@ _Generado: 2025-08-20 17:57:20_
 │   │   ├── QEL_Manual_Interpretacion_Sombras_v1.1.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
 │   │   ├── QEL_SoT_Manifest_v0.7.json
+│   │   ├── QEL_SoT_Manifest_v0.7.json.bak
 │   │   ├── QEL_Tratado_Metahumano_Nota_v0.1.md
 │   │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md
 │   │   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
@@ -185,6 +186,7 @@ _Generado: 2025-08-20 17:57:20_
 ├── scripts
 │   ├── cx_navegador.zsh
 │   ├── fix_prehnav_layout.sh
+│   ├── gen_manifest.sh
 │   ├── pre-commit-codex-structure.sh
 │   ├── serve_preh_nav.sh
 │   └── update_estructura.sh
@@ -203,5 +205,5 @@ _Generado: 2025-08-20 17:57:20_
 ├── package-lock.json
 └── package.json
 
-36 directories, 163 files
+36 directories, 165 files
 ```
