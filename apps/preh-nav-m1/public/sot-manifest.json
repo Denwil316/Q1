@@ -77,6 +77,11 @@
     },
     {
       "name": "QEL_Diario_del_Conjurador_v1.2",
+      "role": "QEL_Diario_del_Conjurador_v1.2.md",
+      "path": "docs/QEL_Diario_del_Conjurador_v1.2.md"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.2",
       "role": "core",
       "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md"
     },
