@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-24 04:09:57_
+_Generado: 2025-08-24 04:38:23_
 
 ```text
 .
@@ -29,6 +29,7 @@ _Generado: 2025-08-24 04:09:57_
 │   ├── core
 │   │   ├── Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md
 │   │   ├── PLAN_ORG_Codex_M0_v0.3.md
+│   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.4.md
 │   │   ├── QEL_FormatoR_Manual_v1.1.md
 │   │   ├── QEL_Formato_VF_AH_v1.4.md
@@ -84,12 +85,15 @@ _Generado: 2025-08-24 04:09:57_
 │   │   ├── QEL_Meditaciones_Primordiales_v1.0.md
 │   │   ├── QEL_MicroSello_A96-250819_PREH-NAV_Cierre_v1.0.md
 │   │   ├── QEL_MicroSello_A96-250820_PREH-NAV_Cierre_v1.0.md
+│   │   ├── QEL_MicroSello_A96-250824_PREH-NAV_Cierre_v1.0.md
 │   │   ├── QEL_Poema_Enigma_Lun-Nai_v1.1.md
 │   │   ├── QEL_Poema_Enigma_VF_v1.0.md
 │   │   ├── QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
 │   │   ├── QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
+│   │   ├── QEL_Sello_A96-250824_Centro_Sur_Norte_EIA-A-THON_Cierre_SIL-UM-Əv1.0.md
 │   │   ├── QEL_Sellos_y_Cues_Idriell_v1.0.md
 │   │   ├── QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
+│   │   ├── QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
 │   │   └── Tarjetas_Atlas_QEL_v2.2.md
 │   ├── tools
 │   │   ├── QEL_Aurora_Spec_v1.0.md
@@ -240,5 +244,5 @@ _Generado: 2025-08-24 04:09:57_
 ├── package-lock.json
 └── package.json
 
-36 directories, 200 files
+36 directories, 204 files
 ```
