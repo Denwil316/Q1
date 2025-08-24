@@ -2,11 +2,20 @@
   "scripts": {
     "qel:help": "scripts/qel help",
     "qel:doctor": "scripts/qel doctor",
+
+    "qel:hash": "scripts/qel hash10",
+    "qel:promote": "scripts/qel promote",
+    "qel:promote:manual": "scripts/qel promote --rubro HERRAMIENTAS --file docs/core/QEL_Manual_Esculpido_en_Qel_v1.0.md --titulo \"Manual del Esculpido en Qel\" --rumbo Sur",
+
+    "qel:doc:move": "scripts/qel doc move",
     "qel:structure": "scripts/qel structure update",
+
+    "qel:core:publish": "scripts/qel nav publish --mode copy",
+    "qel:core:link:watch": "scripts/qel nav publish --mode link --watch",
+
     "qel:manifest": "scripts/qel manifest build",
     "qel:manifest:sync": "scripts/qel manifest sync",
-    "qel:nav:publish": "scripts/qel nav publish --mode copy",
-    "qel:nav:watch": "scripts/qel nav publish --mode copy --watch",
+    "qel:manifest:core": "scripts/qel manifest core",
     "qel:serve": "scripts/qel nav serve 8080 127.0.0.1"
   }
 }

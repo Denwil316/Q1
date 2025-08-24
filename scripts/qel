@@ -93,6 +93,7 @@ Subcomandos principales:
   doctor                      Verifica dependencias y rutas.
   structure update            Actualiza ESTRUCTURA.md y ejecuta pre-commit-codex-structure.sh
   manifest build              Regenera el manifiesto del front (apps/.../public/sot-manifest.json)
+  manifest core               Regenera el manifest maestro de docs/core (QEL_SoT_Manifest_v0.8.json)
   manifest sync               Concilia maestro v0.8 con front y muestra diff (requiere jq)
   nav publish [--mode copy|link] [--watch]
                               Publica docs/core → apps/.../public/docs y regenera manifest (opcional watch)
@@ -431,6 +432,18 @@ hash10_cmd(){
   fi
 }
 
+manifest_core(){
+  if [ "$DRYRUN" -eq 1 ]; then
+    log "dry-run core manifest"
+    return 0
+  fi
+  if [ -f "scripts/gen_core_manifest.sh" ]; then
+    scripts/gen_core_manifest.sh
+  else
+    node scripts/gen_core_manifest.mjs
+  fi
+}
+
 # ---------- ROUTER ----------
 SUB="${1:-help}"; shift || true
 case "$SUB" in
@@ -464,4 +477,10 @@ case "$SUB" in
   --dry-run) DRYRUN=1; shift; "$0" "$@";;
   *) help; exit 2;;
   hash10) shift; hash10_cmd "$@";;
+  manifest) case "${1:-}" in
+              build) shift; manifest_build "$@";;
+              sync)  shift; manifest_sync "$@";;
+              core)  shift; manifest_core "$@";;
+              *) help;;
+            esac ;;
 esac
