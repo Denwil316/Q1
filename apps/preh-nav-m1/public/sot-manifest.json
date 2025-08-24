@@ -16,9 +16,9 @@
       "path": "docs/QEL_Diario_del_Conjurador_v1.2.md"
     },
     {
-      "name": "QEL_Diario_del_Conjurador_v1.4",
-      "role": "QEL_Diario_del_Conjurador_v1.4.md",
-      "path": "docs/QEL_Diario_del_Conjurador_v1.4.md"
+      "name": "QEL_Diario_del_Conjurador_v1.5",
+      "role": "QEL_Diario_del_Conjurador_v1.5.md",
+      "path": "docs/QEL_Diario_del_Conjurador_v1.5.md"
     },
     {
       "name": "QEL_Formato_VF_AH_v1.4",
@@ -71,6 +71,11 @@
       "path": "docs/QEL_MFH_v1.4.md"
     },
     {
+      "name": "QEL_MicroSello_A96-250824_PREH-NAV_Cierre_v1.0",
+      "role": "QEL_MicroSello_A96-250824_PREH-NAV_Cierre_v1.0.md",
+      "path": "docs/QEL_MicroSello_A96-250824_PREH-NAV_Cierre_v1.0.md"
+    },
+    {
       "name": "QEL_SoT_Study_Guide_v1.1",
       "role": "QEL_SoT_Study_Guide_v1.1.md",
       "path": "docs/QEL_SoT_Study_Guide_v1.1.md"
@@ -79,6 +84,11 @@
       "name": "QEL_Tratado_Metahumano_v1.4",
       "role": "QEL_Tratado_Metahumano_v1.4.md",
       "path": "docs/QEL_Tratado_Metahumano_v1.4.md"
+    },
+    {
+      "name": "QEL_VF_PRIMA_A96-250824_SEAL_v1.0",
+      "role": "QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md",
+      "path": "docs/QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md"
     },
     {
       "name": "Tarjetas_Atlas_QEL_v2.3",

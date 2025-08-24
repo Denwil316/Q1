@@ -84,14 +84,14 @@ fi
 # Construir dict para Diario (V: {k: v, ...}) y lista para ListadoR
 V_DICT="" ; OBJ_YAML=""
 for entry in "${OBJ_LIST[@]}"; do
-  key="${entry%%=*}"
-  val="${entry#*=}"
+ key="$(printf "%s" "${entry%%=*}" | xargs)"
+ val="$(printf "%s" "${entry#*=}"   | xargs)"
   # quitar comillas potenciales en val
   val="${val%\"}" ; val="${val#\"}"
   # armar strings
   if [ -n "$V_DICT" ]; then V_DICT="${V_DICT}, "; fi
   V_DICT="${V_DICT}${key}: ${val}"
-  OBJ_YAML="${OBJ_YAML}\n  - ${key}: ${val}"
+  printf -v OBJ_YAML '%s\n  - %s: %s' "$OBJ_YAML" "$key" "$val"
 done
 
 # ---------- 1) VF.PRIMA (crear/actualizar) ----------
