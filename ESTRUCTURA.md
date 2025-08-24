@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-21 14:27:57_
+_Generado: 2025-08-24 00:32:41_
 
 ```text
 .
