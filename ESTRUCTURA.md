@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-24 02:17:56_
+_Generado: 2025-08-24 03:17:31_
 
 ```text
 .
@@ -35,8 +35,8 @@ _Generado: 2025-08-24 02:17:56_
 │   │   ├── QEL_Lamina_V_Detallada_v1.0.md
 │   │   ├── QEL_Manual_Conjurador_Avanzado_v1.0.md
 │   │   ├── QEL_Manual_Conjurador_Avanzado_v1.1.md
+│   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
 │   │   ├── QEL_Manual_Interpretacion_Sombras_v1.1.md
-│   │   ├── QEL_Manual_Interpretacion_Sombras_v1.2.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.3.md
 │   │   ├── QEL_SoT_Manifest_v0.7.json
@@ -61,6 +61,7 @@ _Generado: 2025-08-24 02:17:56_
 │   │   ├── QEL_ListadoR_A96_v1.2.md
 │   │   ├── QEL_ListadoR_A96_v1.2_Confirmacion_v0.1.md
 │   │   ├── QEL_Manual_Interpretacion_Sombras_v1.0.md
+│   │   ├── QEL_Manual_Interpretacion_Sombras_v1.2.md
 │   │   ├── QEL_Manual_Lectura_VF_Tonalpohualli_v1.0.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v0.1.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.0.md
@@ -223,5 +224,5 @@ _Generado: 2025-08-24 02:17:56_
 ├── package-lock.json
 └── package.json
 
-36 directories, 183 files
+36 directories, 184 files
 ```
