@@ -14,7 +14,7 @@
 - Notas: Integración *Tejera en Sur*, relaciones SoT, y Tres Árboles.
 
 
-## QEL_Diario_del_Conjurador__v1.4.md
+## QEL_Diario_del_Conjurador_v1.4.md
 - SoT: DIARIO
 - Cambio: v1.4 → v1.5
 - Notas: Integración *Tejera en Sur*, relaciones SoT, y Tres Árboles.
@@ -63,7 +63,7 @@
 - Notas: Integración *Tejera en Sur*, relaciones SoT, y Tres Árboles.
 
 
-## QEL_Manual_ Interpretación_Sombras_v1.3.md
+## QEL_Manual_Interpretación_Sombras_v1.4.md
 - SoT: INTERPRETACION-SOMBRAS
 - Cambio: v1.3 → v1.4
 - Notas: Integración *Tejera en Sur*, relaciones SoT, y Tres Árboles.
@@ -92,10 +92,3 @@
 - Cambio: v2.2 → v2.3
 - Notas: Integración *Tejera en Sur*, relaciones SoT, y Tres Árboles.
 
-## Parches a scripts/qel vcalc
-
-cue=[QEL::ECO[96]::A96-250820-VCALC-PARCHES] · SeedI=A96-250820 · SoT=HERRAMIENTAS/v0.2 · Version=v0.2 · Updated=2025-08-24
-
-## Unificacion de qel_vcalc
-
-cue=A96-250824-VCALC-UNIFIED • SeedI=A96-250820 • SoT=HERRAMIENTAS/v0.2 • Version=v0.2 • Updated=2025-08-24

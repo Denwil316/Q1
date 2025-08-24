@@ -460,6 +460,12 @@ Estimada, he tratado de usar scripts/qel vcalc con los siguientes parametros: --
 
     En tu corrida usaste --delta-c up --delta-s up, así que el script calcula FDELTA = 1 + 0.02 + 0.02 = 1.04 (línea donde se arma F(ΔC,ΔS) con printf)】. En macOS, si tu entorno tiene LC_NUMERIC con separador decimal “,”, o si cae en un printf externo que respeta locale, printf %f no acepta 1.04 y arroja justo ese error. Es un clásico choque locale ⇄ printf.
 
-  - Solución:
+  - Solución [cue=A96-250824-VCALC-UNIFIED • SeedI=A96-250820 • SoT=HERRAMIENTAS/v0.2 • Version=v0.2 • Updated=2025-08-24] :
     Te propongo convertir qel_vcalc_json.sh y qel_vcalc_io.sh en parches (wrappers) oficiales de vcalc que respetan la tabla canónica (χ_r, H_k, gates, ΔC/ΔS, ruido) y resuelven los problemas de locale/decimales que dispararon el “printf: 1.04: invalid number”. Ambos invocan internamente a tu qel_vcalc.sh y, cuando hace falta, replican la misma fórmula documentada en nuestros assets (clip₀¹(A·χ_r·H_k·Π_gates·FΔ·(1−ρ))).
 
+Qué corrige
+
+    No hay bloqueos: el modo interactivo solo corre con io.
+    Los flags core ya no chocan con el modo JSON.
+    Una sola tabla χ_r/H_k coherente con el SoT actual.
+    Sin recursión: io y json reusan el núcleo del mismo archivo.
