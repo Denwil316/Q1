@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-24 00:59:25_
+_Generado: 2025-08-24 02:17:56_
 
 ```text
 .
@@ -201,7 +201,9 @@ _Generado: 2025-08-24 00:59:25_
 │   ├── cx_navegador.zsh
 │   ├── fix_prehnav_layout.sh
 │   ├── gen_manifest.sh
+│   ├── package.json
 │   ├── pre-commit-codex-structure.sh
+│   ├── qel
 │   ├── qel_scripts_help.sh
 │   ├── qel_session_finalize.sh
 │   ├── qel_vcalc.sh
@@ -209,6 +211,7 @@ _Generado: 2025-08-24 00:59:25_
 │   └── update_estructura.sh
 ├── tools
 │   └── qel
+├── .qelrc
 ├── ESTRUCTURA.md
 ├── LICENSE
 ├── PREH-NAV_README_v0.2.md
@@ -220,5 +223,5 @@ _Generado: 2025-08-24 00:59:25_
 ├── package-lock.json
 └── package.json
 
-36 directories, 180 files
+36 directories, 183 files
 ```

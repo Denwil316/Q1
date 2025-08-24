@@ -1,5 +1,4 @@
 # 1) PROTOCOLO v1.2 — contenido completo
-cat > docs/core/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md <<'EOF'
 [QEL::ECO[96]::RECALL A96-250820-PROTOCOLO-SEGURIDAD]
 SeedI=A96-250820
 SoT=TRATADO-METAHUMANO/v1.2
