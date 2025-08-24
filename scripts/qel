@@ -456,6 +456,7 @@ case "$SUB" in
   manifest) case "${1:-}" in
               build) shift; manifest_build "$@";;
               sync)  shift; manifest_sync "$@";;
+              core)  shift; manifest_core "$@";;
               *) help;;
             esac ;;
   nav) case "${1:-}" in
@@ -477,10 +478,5 @@ case "$SUB" in
   --dry-run) DRYRUN=1; shift; "$0" "$@";;
   *) help; exit 2;;
   hash10) shift; hash10_cmd "$@";;
-  manifest) case "${1:-}" in
-              build) shift; manifest_build "$@";;
-              sync)  shift; manifest_sync "$@";;
-              core)  shift; manifest_core "$@";;
-              *) help;;
-            esac ;;
 esac
+

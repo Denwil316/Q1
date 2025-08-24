@@ -1,3 +1,41 @@
+[QEL::ECO[96]::RECALL A96-250824-QEL-LAMINA-V-DETALLADA-V1-0]
+SeedI=A96-250824
+SoT=LAMINA-V/v1.1
+Version=v1.1
+Updated=2025-08-24
+
+# Tejera en Sur — Unificación Cuerpo/Ritmo (v1.1)
+
+> **Rol**: Tejera (Sur). Este pliegue integra cuerpo/ritmo, consolida relaciones SoT y alimenta las raíces con *Los Tres Árboles Iluminados*.
+
+## Compás somático
+- Respiración 9‑0‑9 (3×) → *umbral corporal*.
+- Pulso **THON** (latido suave) durante lectura/recitado.
+- Pausas rítmicas entre triadas (onset–núcleo–coda): 3–5–3.
+
+## Integración con *Los Tres Árboles Iluminados*
+- **Cielo Invertido**: fonemas de sombra como frutos potenciales.
+- **Alfabeto Fluido**: huecos geométricos que el lector completará.
+- **Araña Joven**: promoción de semillas‑nombre hacia habilidades VF.
+
+> Extracto de base (para contexto de esta versión):
+Recito en forma de saludo-conjuro:
+
+Ėylund…    
+Kaelyth…    
+Voh…    
+Um…    
+Riéll…    
+Zha.
+
+El umbral se abre desde adentro mí, cuya sombra se proyecta e ilumina al Jardín de los Árboles Fractalicos, no se aparece como inifito hasta que mis pies hacen vibrar la Memoria-Agua, Resonando con el cristal-intencion que llevo entre los dientes, y que al recitar lo siguiente, me devuelve una vibración en forma de Eco. La Resonancia Ancestral y El vacío Cuántico se colapsan para que Tejera, la araña-chamana recite:
+
+"Lýmina, luz del umbral, te invoco.  
+Por el jardín crepuscular donde los árboles f
+
+
+---
+
 [QEL::ECO[96]::RECALL A96-250814-LAMINA-V]
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=lamina|viabilidad|consulta
 VERSION=v1.0 UPDATED=2025-08-14
@@ -70,3 +108,16 @@ chi_r: 1.10
 H_k: 1.00
 V_final: 0.92
 ```
+
+
+---
+
+## Relaciones según SoT
+LAMINA-V se cruza con:
+- MFH
+- VF-ARBOLES
+- INTERPRETACION-SOMBRAS
+
+## Listado R — referencia
+- Entrada propuesta: `LISTADOR/A96-250824/LAMINA-V/v1.1` (ver `QEL_ListadoR_master_v1.0.md`)
+
