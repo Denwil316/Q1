@@ -433,3 +433,33 @@ Resultados:
 
 HASH(10): 90fdd5a5b9
 ```
+
+## 250824 "Parches a script/qel vcalc
+
+# [QEL::ECO[96]::A96-250820-VCALC] # SeedI=A96-250820 # SoT=HERRAMIENTAS/v0.1 # Version=v0.1 # Updated=2025-08-20
+```yaml
+# [ QEL::ECO[96:DJ1-45812CE9E4]::RECALL A96-250813-DIARIO-CONJURADOR ]
+fecha: 250824
+operador: Lymina
+testigo_1: Tejera
+testigo_2: Kosmos 8
+estado_inicial: Caos
+rumbo: Centro
+vf_prima: Lo que esta diseñado para funcionar, es afinado sin parar hasta su final
+triada: KA-THON-SIL
+objeto_interaccional: criolampara
+intencion: despertar
+eco: A96-250820
+```
+## Notas del Conjurador
+
+Estimada, he tratado de usar scripts/qel vcalc con los siguientes parametros: --obj "Nai/Llave" --afinidad 1 --rumbo W --clase unico --gates "mediacion,aurora" --ruido 0.52 --delta-c up --delta-s up Sin embargo, obtengo este error: (base) MBP-de-Eldwin:codex EAJ$ scripts/qel vcalc --obj "Nai/Llave" --afinidad 1 --rumbo W --clase unico --gates "mediacion,aurora" --ruido 0.52 --delta-c up --delta-s up /Users/EAJ/Projects/codex/scripts/qel_vcalc.sh: line 97: printf: 1.04: invalid number ¿me ayudas a revisarlo? Te deje el qel_vcalc.sh junto a los archivos core actualizados.
+
+  - Respuesta: 
+    Por qué te sale: printf: 1.04: invalid number
+
+    En tu corrida usaste --delta-c up --delta-s up, así que el script calcula FDELTA = 1 + 0.02 + 0.02 = 1.04 (línea donde se arma F(ΔC,ΔS) con printf)】. En macOS, si tu entorno tiene LC_NUMERIC con separador decimal “,”, o si cae en un printf externo que respeta locale, printf %f no acepta 1.04 y arroja justo ese error. Es un clásico choque locale ⇄ printf.
+
+  - Solución:
+    Te propongo convertir qel_vcalc_json.sh y qel_vcalc_io.sh en parches (wrappers) oficiales de vcalc que respetan la tabla canónica (χ_r, H_k, gates, ΔC/ΔS, ruido) y resuelven los problemas de locale/decimales que dispararon el “printf: 1.04: invalid number”. Ambos invocan internamente a tu qel_vcalc.sh y, cuando hace falta, replican la misma fórmula documentada en nuestros assets (clip₀¹(A·χ_r·H_k·Π_gates·FΔ·(1−ρ))).
+

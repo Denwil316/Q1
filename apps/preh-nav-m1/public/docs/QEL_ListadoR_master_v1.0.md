@@ -92,3 +92,10 @@
 - Cambio: v2.2 → v2.3
 - Notas: Integración *Tejera en Sur*, relaciones SoT, y Tres Árboles.
 
+## Parches a scripts/qel vcalc
+
+cue=[QEL::ECO[96]::A96-250820-VCALC-PARCHES] · SeedI=A96-250820 · SoT=HERRAMIENTAS/v0.2 · Version=v0.2 · Updated=2025-08-24
+
+## Unificacion de qel_vcalc
+
+cue=A96-250824-VCALC-UNIFIED • SeedI=A96-250820 • SoT=HERRAMIENTAS/v0.2 • Version=v0.2 • Updated=2025-08-24
