@@ -1,0 +1,115 @@
+{
+  "cue": "[QEL::ECO[96]::RECALL A96-250824-QEL-SOT-MANIFEST-V0-7]",
+  "SeedI": "A96-250824",
+  "SoT": "SOT/v0.8",
+  "Version": "v0.8",
+  "Updated": "2025-08-24",
+  "manifest": [
+    {
+      "name": "Los Tres Árboles Iluminados (DS).md",
+      "sot": "DOCUMENTO",
+      "version": "v1.1",
+      "updated": "2025-08-24",
+      "hash10": "f4dcabbd94"
+    },
+    {
+      "name": "PLAN_ORG_Codex_M0.md",
+      "sot": "PLAN-ORG",
+      "version": "v0.3",
+      "updated": "2025-08-24",
+      "hash10": "757d820774"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador__v1.4.md",
+      "sot": "DIARIO",
+      "version": "v1.5",
+      "updated": "2025-08-24",
+      "hash10": "8a4c616160"
+    },
+    {
+      "name": "QEL_FormatoR_Manual_v1.0.md",
+      "sot": "FORMATOR",
+      "version": "v1.1",
+      "updated": "2025-08-24",
+      "hash10": "72a3c5f70d"
+    },
+    {
+      "name": "QEL_Formato_VF_AH_v1.4.md",
+      "sot": "VF-ARBOLES",
+      "version": "v1.5",
+      "updated": "2025-08-24",
+      "hash10": "75e8e3c830"
+    },
+    {
+      "name": "QEL_Formato_VF_Arbol_Habilidades_v1.4.md",
+      "sot": "VF-ARBOLES",
+      "version": "v1.5",
+      "updated": "2025-08-24",
+      "hash10": "ad6c7b8e18"
+    },
+    {
+      "name": "QEL_Glosario_v1.4.md",
+      "sot": "GLOSARIO",
+      "version": "v1.5",
+      "updated": "2025-08-24",
+      "hash10": "ebe2878e6b"
+    },
+    {
+      "name": "QEL_Lamina_V_Detallada_v1.0.md",
+      "sot": "LAMINA-V",
+      "version": "v1.1",
+      "updated": "2025-08-24",
+      "hash10": "82ac90020d"
+    },
+    {
+      "name": "QEL_ListadoR_cue.md",
+      "sot": "DOCUMENTO",
+      "version": "v1.1",
+      "updated": "2025-08-24",
+      "hash10": "bfae3a82c3"
+    },
+    {
+      "name": "QEL_MFH_v1.4.md",
+      "sot": "MFH",
+      "version": "v1.4",
+      "updated": "2025-08-24",
+      "hash10": "f47c7ac47f"
+    },
+    {
+      "name": "QEL_Manual_ Interpretación_Sombras_v1.3.md",
+      "sot": "INTERPRETACION-SOMBRAS",
+      "version": "v1.3",
+      "updated": "2025-08-24",
+      "hash10": "115a44019b"
+    },
+  
+    {
+      "name": "QEL_SoT_Manifest_v0.8.json",
+      "sot": "SOT",
+      "version": "v0.8",
+      "updated": "2025-08-24",
+      "hash10": "e15095dc34"
+    },
+    {
+      "name": "QEL_SoT_Study_Guide_v1.1.md",
+      "sot": "SOT-STUDY-GUIDE",
+      "version": "v1.1",
+      "updated": "2025-08-24",
+      "hash10": "ce61dfb19c"
+    },
+    {
+      "name": "QEL_Tratado_Metahumano_v1.4.md",
+      "sot": "TRATADO-METAHUMANO",
+      "version": "v1.4",
+      "updated": "2025-08-24",
+      "hash10": "f1f97f3fd2"
+    },
+    {
+      "name": "Tarjetas_Atlas_QEL_v2.3.md",
+      "sot": "ATLAS-TARJETAS",
+      "version": "v2.3",
+      "updated": "2025-08-24",
+      "hash10": "4490befbb5"
+    }
+  ]
+}

@@ -33,8 +33,8 @@ while [ $# -gt 0 ]; do
     -h|--help)
       echo "Uso: $0 --zip <archivo.zip> [--branch PreH] [--expose-public] [--no-git]"
       exit 0;;
-    *) echo "Flag desconocida: $1"; exit 2;;
-  end esac
+    *) echo "Flag desconocida: $1"; exit 2;; 
+  esac
 done
 
 if [ -z "${ZIP}" ]; then

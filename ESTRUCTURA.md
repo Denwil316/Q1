@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-24 03:17:31_
+_Generado: 2025-08-24 03:50:01_
 
 ```text
 .
@@ -27,24 +27,23 @@ _Generado: 2025-08-24 03:17:31_
 ├── docs
 │   ├── attachments
 │   ├── core
-│   │   ├── QEL_Diario_del_Conjurador_v1.2.md
-│   │   ├── QEL_Diario_del_Conjurador_v1.3.md
-│   │   ├── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
-│   │   ├── QEL_Glosario_v1.2.md
-│   │   ├── QEL_Glosario_v1.3.md
-│   │   ├── QEL_Lamina_V_Detallada_v1.0.md
-│   │   ├── QEL_Manual_Conjurador_Avanzado_v1.0.md
-│   │   ├── QEL_Manual_Conjurador_Avanzado_v1.1.md
+│   │   ├── Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md
+│   │   ├── PLAN_ORG_Codex_M0_v0.3.md
+│   │   ├── QEL_Diario_del_Conjurador_v1.4.md
+│   │   ├── QEL_FormatoR_Manual_v1.1.md
+│   │   ├── QEL_Formato_VF_AH_v1.4.md
+│   │   ├── QEL_Formato_VF_Arbol_Habilidades_v1.4.md
+│   │   ├── QEL_Glosario_v1.4.md
+│   │   ├── QEL_Lamina_V_Detallada_v1.1.md
+│   │   ├── QEL_ListadoR_cue_v1.1.md
+│   │   ├── QEL_ListadoR_master_v1.0.md
+│   │   ├── QEL_MFH_v1.4.md
 │   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
-│   │   ├── QEL_Manual_Interpretacion_Sombras_v1.1.md
-│   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
-│   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.3.md
-│   │   ├── QEL_SoT_Manifest_v0.7.json
-│   │   ├── QEL_SoT_Manifest_v0.7.json.bak
-│   │   ├── QEL_Tratado_Metahumano_Nota_v0.1.md
-│   │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md
-│   │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
-│   │   └── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.3.md
+│   │   ├── QEL_Manual_Interpretación_Sombras_v1.3.md
+│   │   ├── QEL_SoT_Manifest_v0.8.json
+│   │   ├── QEL_SoT_Study_Guide_v1.1.md
+│   │   ├── QEL_Tratado_Metahumano_v1.4.md
+│   │   └── Tarjetas_Atlas_QEL_v2.3.md
 │   ├── history
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
 │   │   ├── QEL_Aurora_Spec_v0.1.md
@@ -144,19 +143,34 @@ _Generado: 2025-08-24 03:17:31_
 │   ├── QEL_Chat_Index.md
 │   ├── QEL_Chat_Register_All.md
 │   ├── QEL_Diario_del_Conjurador_v1.0.md
+│   ├── QEL_Diario_del_Conjurador_v1.2.md
+│   ├── QEL_Diario_del_Conjurador_v1.3.md
 │   ├── QEL_ECO_A96-250812-PRIMER-PECADO_delta-only_v0.1.md
 │   ├── QEL_FormatoR_Manual_v0.1.md
 │   ├── QEL_FormatoR_Manual_v0.2.md
+│   ├── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
+│   ├── QEL_Glosario_v1.2.md
+│   ├── QEL_Glosario_v1.3.md
 │   ├── QEL_Guia_Operacion_QEL_Consolidada_v1.0.md
 │   ├── QEL_Index_v1.0.md
 │   ├── QEL_Index_v1.1.md
 │   ├── QEL_Instrumentos_Medicion_v1.0.md
 │   ├── QEL_ListadoR_A96_v1.3.md
 │   ├── QEL_ListadoR_A96_v1.4.md
+│   ├── QEL_Manual_Conjurador_Avanzado_v1.0.md
+│   ├── QEL_Manual_Conjurador_Avanzado_v1.1.md
+│   ├── QEL_Manual_Interpretacion_Sombras_v1.1.md
+│   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
+│   ├── QEL_Matriz_Fonemica_Habilidades_v1.3.md
 │   ├── QEL_PR_TEMPLATE_v0.2.2.md
 │   ├── QEL_SoT_Manifest_v0.5.json
 │   ├── QEL_SoT_Manifest_v0.7.json
+│   ├── QEL_SoT_Manifest_v0.7.json.bak
 │   ├── QEL_SoT_Study_Guide_v1.0.md
+│   ├── QEL_Tratado_Metahumano_Nota_v0.1.md
+│   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md
+│   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
+│   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.3.md
 │   ├── QEL_VF_Carta_Lun-Nai_v1.0.md
 │   ├── README_Consolidado_v0.3.md
 │   ├── README_Consolidado_v0.4.md
@@ -224,5 +238,5 @@ _Generado: 2025-08-24 03:17:31_
 ├── package-lock.json
 └── package.json
 
-36 directories, 184 files
+36 directories, 198 files
 ```

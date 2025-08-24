@@ -103,6 +103,10 @@ Subcomandos principales:
                               Proxy a scripts/apply_qel_update.sh
   session finalize [args...]  Proxy a scripts/qel_session_finalize.sh (pasa flags tal cual)
   vcalc [args...]             Proxy a scripts/qel_vcalc.sh (cálculo 𝒱)
+  doc move --from A --to B [--commit] [--msg "..."]   Mueve archivos sin cristalizar (opcional commit)
+  hash10 --file F [--mode canon|file] [--titulo T] [--canon "CUE=...|..."] [--print-canon] [--write]
+                              Calcula HASH(10). Con --write lo inserta/actualiza en el archivo.
+
 
 Global:
   --dry-run                   Simula sin escribir (en promote/nav/manifest build).
@@ -205,7 +209,10 @@ vcalc_proxy(){
 }
 
 promote(){
-  local RUBRO="" FILE="" TITULO="" CUE="" RUMBO="Sur" SEEDI="$SEEDI_DEFAULT"
+  local RUBRO="" FILE="" TITULO="" CUE="" RUMBO="Sur" SEEDI="${SEEDI_DEFAULT}"
+  local ARCHIVE_OLD=0
+
+  # ---- parseo de flags (único bucle) ----
   while [ $# -gt 0 ]; do
     case "$1" in
       --rubro) RUBRO="$2"; shift 2;;
@@ -214,17 +221,40 @@ promote(){
       --cue) CUE="$2"; shift 2;;
       --rumbo) RUMBO="$2"; shift 2;;
       --seed) SEEDI="$2"; shift 2;;
+      --archive-old) ARCHIVE_OLD=1; shift 1;;
       --dry-run) DRYRUN=1; shift 1;;
       *) die "Flag desconocida: $1";;
     esac
   done
-  [ -n "$RUBRO" ] || die "Falta --rubro"
+
+  [ -n "$RUBRO" ] || die "Falta --rubro (o SoT en cabecera)"
   [ -n "$FILE" ]  || die "Falta --file"
   [ -n "$TITULO" ]|| die "Falta --titulo"
   [ -f "$FILE" ]  || die "No existe $FILE"
-  CUE="${CUE:-$CUE_PREFIX_DEFAULT ${SEEDI}-${RUBRO}]}"
-  UPDATED="$(today)"
 
+ # Si no vino --rubro, intenta inferirlo de la cabecera SoT
+  if [ -z "$RUBRO" ]; then
+    sot_in_header="$(read_header_val "$FILE" "SoT" || true)"
+    if [ -n "$sot_in_header" ]; then
+      RUBRO="${sot_in_header%%/*}"   # toma lo de antes del "/"
+    fi
+  fi
+
+  # ---- archivado previo opcional ----
+  if [ "$ARCHIVE_OLD" -eq 1 ]; then
+    local HIST_DIR="${ARCHIVE_HISTORY_DIR:-$ROOT/docs/history}"
+    local MEM_DIR="${ARCHIVE_MEMORY_DIR:-$ROOT/memory/archive}"
+    mkdir -p "$HIST_DIR" "$MEM_DIR"
+    local TS="$(date +%Y%m%d%H%M%S)"
+    local BASE="$(basename "$FILE")"
+    cp -f "$FILE" "$HIST_DIR/${BASE%.md}_arch_${TS}.md"
+    cp -f "$FILE" "$MEM_DIR/${BASE%.md}_arch_${TS}.md"
+    log "Archivado previo → $HIST_DIR/ y $MEM_DIR/"
+  fi
+
+  # ---- metadatos y bump ----
+  CUE="${CUE:-$CUE_PREFIX_DEFAULT ${SEEDI}-${RUBRO}]}"
+  local UPDATED; UPDATED="$(today)"
   local CURV; CURV="$(read_header_val "$FILE" "Version")"; CURV="${CURV:-v1.0}"
   local NEXT; NEXT="$(bump_minor "$CURV")"
 
@@ -234,22 +264,25 @@ promote(){
     set_header_kv "$FILE" "cue=$CUE" "SeedI=$SEEDI" "SoT=$RUBRO/$NEXT" "Version=$NEXT" "Updated=$UPDATED"
   fi
 
-  # Rel/ListadoR (apéndices, si faltan)
+  # ---- apéndices mínimos ----
   append_if_missing "$FILE" "## Relaciones según SoT"
   append_if_missing "$FILE" "## Listado R — referencia"
   append_if_missing "$FILE" "- Entrada: LISTADOR/$SEEDI/$RUBRO/$NEXT (r=$RUMBO — *$TITULO*)"
 
-  # HASH(10) canónico (obligatorio para cristalización)
+  # ---- HASH(10) obligatorio ----
   local CANON="CUE=${CUE}|SeedI=${SEEDI}|SoT=${RUBRO}/${NEXT}|Version=${NEXT}|Updated=${UPDATED}|Titulo=${TITULO}"
   local H10; H10="$(hash10 "$CANON")"
-  append_if_missing "$FILE" "HASH(10): ${H10}"
+  set_or_update_hash10 "$FILE" "$H10"
 
-  # ListadoR maestro (elige el más alto; si no existe, usa default)
+  # ---- ListadoR (elige el más reciente) ----
   local LISTADOR; LISTADOR="$LISTADOR_PATH_DEFAULT"
   if ls "$ROOT/memory/QEL_ListadoR_A96_v"*.md >/dev/null 2>&1; then
     LISTADOR="$(ls -t "$ROOT"/memory/QEL_ListadoR_A96_v*.md | head -1)"
   fi
-  [ -f "$LISTADOR" ] || { log "No hay ListadoR; creando $LISTADOR"; echo -e "[QEL] ListadoR creado\nSeedI=$SEEDI\nSoT=LISTADOR/A96/$(basename "$LISTADOR" | sed -E 's/.*_v([0-9.]+)\.md/\1/')\nVersion=$(basename "$LISTADOR" | sed -E 's/.*_v([0-9.]+)\.md/v\1/')\nUpdated=$UPDATED\n" > "$LISTADOR"; }
+  [ -f "$LISTADOR" ] || {
+    log "No hay ListadoR; creando $LISTADOR"
+    echo -e "[QEL] ListadoR creado\nSeedI=$SEEDI\nSoT=LISTADOR/A96/$(basename "$LISTADOR" | sed -E 's/.*_v([0-9.]+)\.md/\1/')\nVersion=$(basename "$LISTADOR" | sed -E 's/.*_v([0-9.]+)\.md/v\1/')\nUpdated=$UPDATED\n" > "$LISTADOR"
+  }
 
   local RLINE="R?. Proyecto A96/QEL. ($UPDATED). QEL|A96|$RUBRO|$SEEDI|$NEXT|$RUMBO — *$TITULO*  [${H10}]"
   if [ "$DRYRUN" -eq 1 ]; then
@@ -258,7 +291,7 @@ promote(){
     printf "%s\n" "$RLINE" >> "$LISTADOR"
   fi
 
-  # Maestro v0.8 (si existe): actualiza item name=basename(FILE)
+  # ---- Manifest maestro v0.8 (si existe) ----
   if [ -f "$MASTER_MANIFEST" ] && has jq; then
     local NAME; NAME="$(basename "$FILE")"
     local TMP="$MASTER_MANIFEST.tmp.$(ts)"
@@ -274,7 +307,7 @@ promote(){
        ' "$MASTER_MANIFEST" > "$TMP" && mv "$TMP" "$MASTER_MANIFEST"
   fi
 
-  # Publicación al Navegador (copia el archivo y regenera manifest)
+  # ---- Publicación al Navegador ----
   mkdir -p "$PUB_DOCS"
   if [ "$DRYRUN" -eq 1 ]; then
     log "dry-run cp $FILE → $PUB_DOCS/"
@@ -283,7 +316,7 @@ promote(){
   fi
   manifest_build
 
-  # Git (suave)
+  # ---- Git suave ----
   if has git; then
     git add "$FILE" "$LISTADOR" "$MASTER_MANIFEST" "$PUB_DOCS" 2>/dev/null || true
     git commit -m "QEL: Promoción ($RUBRO) $(basename "$FILE") → $NEXT [${H10}]" || true
@@ -292,18 +325,143 @@ promote(){
   log "Promoción completada. HASH(10)=${H10}"
 }
 
+doc_move(){
+  local FROM="" TO="" DO_COMMIT=0 MSG="QEL: move document"
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --from) FROM="$2"; shift 2;;
+      --to)   TO="$2";   shift 2;;
+      --commit) DO_COMMIT=1; shift 1;;
+      --msg) MSG="$2"; shift 2;;
+      *) die "Flag desconocida: $1";;
+    esac
+  done
+  [ -n "$FROM" ] && [ -n "$TO" ] || die "Faltan --from y/o --to"
+  [ -f "$FROM" ] || die "No existe $FROM"
+  mkdir -p "$(dirname "$TO")"
+
+  log "Move: $FROM → $TO"
+  if has git && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git mv -v "$FROM" "$TO"
+    [ $DO_COMMIT -eq 1 ] && git commit -m "$MSG" || true
+  else
+    mv "$FROM" "$TO"
+    if has git; then
+      git add -A 2>/dev/null || true
+      [ $DO_COMMIT -eq 1 ] && git commit -m "$MSG" || true
+    fi
+  fi
+  log "OK move."
+}
+
+# Lee el primer H1 como título (si no pasas --titulo)
+get_title_from_file(){
+  local file="$1"
+  grep -m1 '^# ' "$file" | sed 's/^# //'
+}
+
+# Construye CANON desde cabeceras + (opcional) título
+build_canon(){
+  local file="$1" titulo="$2"
+  local cue seed sot ver upd
+  cue="$(read_header_val "$file" "cue")"
+  seed="$(read_header_val "$file" "SeedI")"
+  sot="$(read_header_val "$file" "SoT")"
+  ver="$(read_header_val "$file" "Version")"
+  upd="$(read_header_val "$file" "Updated")"
+  [ -z "$titulo" ] && titulo="$(get_title_from_file "$file")"
+  printf 'CUE=%s|SeedI=%s|SoT=%s|Version=%s|Updated=%s|Titulo=%s' "$cue" "$seed" "$sot" "$ver" "$upd" "$titulo"
+}
+
+# Reemplaza o añade la línea HASH(10): <hash>
+set_or_update_hash10(){
+  local file="$1" h="$2"
+  if grep -q '^HASH(10): ' "$file"; then
+    if [[ "$OSTYPE" == darwin* ]]; then
+      sed -i '' -E "s/^HASH\(10\): .*/HASH(10): $h/" "$file"
+    else
+      sed -i -E "s/^HASH\(10\): .*/HASH(10): $h/" "$file"
+    fi
+  else
+    printf "\nHASH(10): %s\n" "$h" >> "$file"
+  fi
+}
+
+hash10_cmd(){
+  local FILE="" MODE="canon" TITULO="" WRITE=0 PRINT_CANON=0 CANON_IN=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --file) FILE="$2"; shift 2;;
+      --mode) MODE="$2"; shift 2;;        # canon | file
+      --titulo) TITULO="$2"; shift 2;;
+      --canon) CANON_IN="$2"; shift 2;;   # si mandas el CANON explícito
+      --print-canon) PRINT_CANON=1; shift 1;;
+      --write) WRITE=1; shift 1;;
+      *) die "Flag desconocida: $1";;
+    esac
+  done
+  [ -n "$FILE" ] || die "Falta --file"
+  [ -f "$FILE" ] || die "No existe $FILE"
+
+  local H10 CANON
+  if [ "$MODE" = "file" ]; then
+    if has shasum; then
+      H10="$(shasum -a 256 "$FILE" | awk '{print $1}' | cut -c1-10)"
+    elif has sha256sum; then
+      H10="$(sha256sum "$FILE" | awk '{print $1}' | cut -c1-10)"
+    else
+      die "Falta shasum/sha256sum para modo file"
+    fi
+    CANON="FILE::<$(basename "$FILE")>"
+  else
+    if [ -n "$CANON_IN" ]; then
+      CANON="$CANON_IN"
+    else
+      CANON="$(build_canon "$FILE" "$TITULO")"
+    fi
+    H10="$(hash10 "$CANON")"
+  fi
+
+  [ $PRINT_CANON -eq 1 ] && echo "$CANON" >&2
+  echo "$H10"
+
+  if [ $WRITE -eq 1 ]; then
+    set_or_update_hash10 "$FILE" "$H10"
+    log "HASH(10) escrito en $(basename "$FILE") → $H10"
+  fi
+}
+
 # ---------- ROUTER ----------
 SUB="${1:-help}"; shift || true
 case "$SUB" in
   help|-h|--help) help ;;
   doctor) doctor ;;
-  structure) case "${1:-}" in update) shift; structure_update "$@";; *) help;; esac ;;
-  manifest) case "${1:-}" in build) shift; manifest_build "$@";; sync) shift; manifest_sync "$@";; *) help;; esac ;;
-  nav) case "${1:-}" in publish) shift; nav_publish "$@";; serve) shift; nav_serve "$@";; *) help;; esac ;;
+  structure) case "${1:-}" in
+               update) shift; structure_update "$@";;
+               *) help;;
+             esac ;;
+  manifest) case "${1:-}" in
+              build) shift; manifest_build "$@";;
+              sync)  shift; manifest_sync "$@";;
+              *) help;;
+            esac ;;
+  nav) case "${1:-}" in
+         publish) shift; nav_publish "$@";;
+         serve)   shift; nav_serve "$@";;
+         *) help;;
+       esac ;;
   promote) promote "$@";;
-  apply) apply_zip "$@";;
-  session) case "${1:-}" in finalize) shift; session_finalize "$@";; *) help;; esac ;;
+  apply)   apply_zip "$@";;
+  session) case "${1:-}" in
+             finalize) shift; session_finalize "$@";;
+             *) help;;
+           esac ;;
   vcalc) vcalc_proxy "$@";;
+  doc) case "${1:-}" in
+         move) shift; doc_move "$@";;
+         *) help;;
+       esac ;;
   --dry-run) DRYRUN=1; shift; "$0" "$@";;
   *) help; exit 2;;
+  hash10) shift; hash10_cmd "$@";;
 esac
