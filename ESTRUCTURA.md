@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-24 15:15:04_
+_Generado: 2025-08-24 15:16:11_
 
 ```text
 .
@@ -30,7 +30,7 @@ _Generado: 2025-08-24 15:15:04_
 |   |   |-- Los_Tres_A\314\201rboles_Iluminados_DS_v1.1_SUR.md
 |   |   |-- PLAN_ORG_Codex_M0_v0.3.md
 |   |   |-- QEL_Diario_del_Conjurador_v1.2.md
-|   |   |-- QEL_Diario_del_Conjurador_v1.4.md
+|   |   |-- QEL_Diario_del_Conjurador_v1.5.md
 |   |   |-- QEL_FormatoR_Manual_v1.1.md
 |   |   |-- QEL_Formato_VF_AH_v1.4.md
 |   |   |-- QEL_Formato_VF_Arbol_Habilidades_v1.4.md
