@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-24 00:32:41_
+_Generado: 2025-08-24 00:59:25_
 
 ```text
 .
@@ -188,6 +188,7 @@ _Generado: 2025-08-24 00:32:41_
 │   │   ├── CUE-RECOVERY_Plantilla_Caos_v0.2.1.md
 │   │   └── CUE-RECOVERY_Schema_v0.2.1.json
 │   ├── ecri
+│   │   ├── Los Tres Árboles Iluminados (DS).md
 │   │   └── Matematicas Resonantes (DS).md
 │   ├── mandrala
 │   ├── manifests
@@ -219,5 +220,5 @@ _Generado: 2025-08-24 00:32:41_
 ├── package-lock.json
 └── package.json
 
-36 directories, 179 files
+36 directories, 180 files
 ```
