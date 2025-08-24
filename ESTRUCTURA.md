@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-24 15:27:36_
+_Generado: 2025-08-24 15:39:19_
 
 ```text
 .
@@ -238,6 +238,7 @@ _Generado: 2025-08-24 15:27:36_
 |-- .qelrc
 |-- ESTRUCTURA.md
 |-- LICENSE
+|-- Makefile
 |-- PREH-NAV_README_v0.2.md
 |-- QEL_Diario_del_Conjurador_v1.5.md
 |-- QEL_ListadoR_master_v1.0.md
@@ -249,5 +250,5 @@ _Generado: 2025-08-24 15:27:36_
 |-- package-lock.json
 `-- package.json
 
-36 directories, 209 files
+36 directories, 210 files
 ```
