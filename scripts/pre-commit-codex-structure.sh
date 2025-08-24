@@ -18,3 +18,8 @@ if command -v tree >/dev/null 2>&1; then
   } > ESTRUCTURA.md
   git add ESTRUCTURA.md || true
 fi
+
+if git diff --cached --name-only | grep -q '^docs/core/'; then
+  echo "[PRE-COMMIT] Cambios en docs/core → publish + manifest"
+  scripts/qel nav publish --mode copy || true
+fi
