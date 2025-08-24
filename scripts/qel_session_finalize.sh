@@ -20,15 +20,23 @@ set -euo pipefail
 #   --sot-diario "TRATADO-METAHUMANO/v1.2"  # default
 #   --veredicto "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
 
+: "${LC_ALL:=C}"; export LC_ALL
+
+need(){ command -v "$1" >/dev/null 2>&1 || { echo "Falta '$1'"; exit 1; }; }
+need git; need awk; need shasum
+
 # ---------- Parseo simple de flags ----------
 FECHA="" ; SEED="" ; CUE="" ; VF=""
 UPDATED="$(date '+%Y-%m-%d')"
 SOT_SELLO="SELLOS/v1.0"
 SOT_DIARIO="TRATADO-METAHUMANO/v1.2"
 VEREDICTO="M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+DIARIO_FILE=""
+LISTADOR_FILE=""
 declare -a OBJ_LIST=()
 
 while [ $# -gt 0 ]; do
+  
   case "$1" in
     --fecha) FECHA="$2"; shift 2;;
     --seed) SEED="$2"; shift 2;;
@@ -39,6 +47,8 @@ while [ $# -gt 0 ]; do
     --sot-diario) SOT_DIARIO="$2"; shift 2;;
     --veredicto) VEREDICTO="$2"; shift 2;;
     --obj) OBJ_LIST+=("$2"); shift 2;;
+    --diario-file) DIARIO_FILE="$2"; shift 2;;
+    --listador-file) LISTADOR_FILE="$2"; shift 2;;
     *) echo "Flag desconocida: $1" >&2; exit 2;;
   esac
 done
@@ -49,6 +59,8 @@ done
 [ -n "$CUE" ]   || { echo "Falta --cue (ej. [QEL::ECO[96]::A96-250820-SEAL])"; exit 1; }
 [ -n "$VF" ]    || { echo "Falta --vf (texto de VF.PRIMA)"; exit 1; }
 
+# Validación de flags mínimos
+#
 # ---------- Rutas ----------
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 cd "$ROOT"
@@ -56,8 +68,8 @@ mkdir -p docs/ritual docs/core apps/preh-nav-m1/public/docs memory
 
 F_MS="docs/ritual/QEL_MicroSello_${SEED}_PREH-NAV_Cierre_v1.0.md"
 F_VF="docs/ritual/QEL_VF_PRIMA_${SEED}_SEAL_v1.0.md"
-F_DI="docs/core/QEL_Diario_del_Conjurador_v1.2.md"
-F_LR="memory/QEL_ListadoR_A96_v1.3.md"
+F_DI="${DIARIO_FILE:-docs/core/QEL_Diario_del_Conjurador_v1.2.md}"
+F_LR="${LISTADOR_FILE:-memory/QEL_ListadoR_A96_v1.3.md}"
 
 # ---------- HASH(10) canónico ----------
 CANON="CUE=${CUE}|VF.PRIMA=${VF}|SeedI=${SEED}|SoT=${SOT_SELLO}|Version=v1.0|Updated=${UPDATED}"

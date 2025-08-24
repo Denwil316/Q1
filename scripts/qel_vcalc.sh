@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 # [QEL::ECO[96]::A96-250820-VCALC-UNIFIED]
 # SeedI=A96-250820
 # SoT=HERRAMIENTAS/v0.2
@@ -21,9 +24,6 @@
 # SoT=HERRAMIENTAS/v0.1
 # Version=v0.1
 # Updated=2025-08-20
-
-#!/usr/bin/env bash
-set -euo pipefail
 
 : "${LC_NUMERIC:=C}"; export LC_NUMERIC
 
@@ -58,8 +58,21 @@ USAGE
 }
 
 # ---------- Tablas SoT (operativas) ----------
-chi_r(){ case "$(upper "$1")" in N|C) echo 1.00;; O|E) echo 0.95;; W) echo 0.90;; S) echo 0.88;; *) echo ""; fi; }
-H_k(){ case "$(lower "$1")" in comun|básica|basica) echo 0.85;; raro|poco-comun|poco-común) echo 0.92;; singular|rara) echo 1.00;; unico|único) echo 1.00;; *) echo ""; fi; }
+chi_r(){ case "$(upper "$1")" in
+  N|C) echo 1.00;;
+  O|E) echo 0.95;;
+  W)   echo 0.90;;
+  S)   echo 0.88;;
+  *)   echo "";;
+esac; }
+
+H_k(){ case "$(lower "$1")" in
+  comun|básica|basica)        echo 0.85;;
+  raro|poco-comun|poco-común) echo 0.92;;
+  singular|rara)              echo 1.00;;
+  unico|único)                echo 1.00;;
+  *)                          echo "";;
+esac; }
 
 gates_product(){
   local gates_raw="$1"
@@ -68,37 +81,37 @@ gates_product(){
   for g in "${GA[@]}"; do
     g="$(lower "$(trim "$g")")"
     case "$g" in
-      mediacion|mediación) MED=1.00;;
-      doble|doble_testigo) DOB=1.00;;
+      mediacion|mediación)    MED=1.00;;
+      doble|doble_testigo)    DOB=1.00;;
       aurora|contacto_aurora) AUR=0.95;;
       "" ) :;;
     esac
   done
-  printf '%.6f' "$(echo "$MED * $DOB * $AUR" | bc -l)"
+  awk -v med="$MED" -v dob="$DOB" -v aur="$AUR" 'BEGIN{printf "%.6f", med*dob*aur}'
 }
 
 fdelta(){
   local dc="$1" ds="$2" dC=0 dS=0
   case "$(lower "$dc")" in up) dC=0.02;; down) dC=-0.02;; esac
   case "$(lower "$ds")" in up) dS=0.02;; down) dS=-0.02;; esac
-  printf '%.4f' "$(echo "1 + $dC + $dS" | bc -l)"
+  awk -v dC="$dC" -v dS="$dS" 'BEGIN{printf "%.4f", 1 + dC + dS}'
 }
 
 fruido(){
   local r="$(printf "%s" "$1" | sed 's/,/./g')"
   local clip
   clip="$(awk -v x="$r" 'BEGIN{ if(x<0)print 0; else if(x>0.15)print 0.15; else print x }')"
-  printf '%.4f' "$(echo "1 - $clip" | bc -l)"
+  awk -v c="$clip" 'BEGIN{printf "%.4f", 1 - c}'
 }
 
 # ---------- Cálculo central ----------
 compute_v(){
   local A="$1" XR="$2" HK="$3" GP="$4" FD="$5" FR="$6"
-  local raw clip
-  raw="$(printf '%.6f' "$(echo "$A * $XR * $HK * $GP * $FD * $FR" | bc -l)")"
-  clip="$(printf '%.2f' "$(echo "if($raw<0)0 else if($raw>1)1 else $raw" | bc -l)")"
-  printf '%s' "$clip"
+  awk -v A="$A" -v XR="$XR" -v HK="$HK" -v GP="$GP" -v FD="$FD" -v FR="$FR" \
+      'BEGIN{ raw=A*XR*HK*GP*FD*FR; if(raw<0)raw=0; if(raw>1)raw=1; printf "%.2f", raw }'
 }
+
+
 
 # ---------- Núcleo (core) ----------
 core_main(){
@@ -247,8 +260,9 @@ io_main(){
 
 # ---------- Router ----------
 case "${1-}" in
-  json) shift; json_main "$@";;
-  io)   shift; io_main "$@";;
-  ""|-h|--help) usage_core;;
-  *) core_main "$@";;
+  json) shift; json_main "$@"; exit 0;;
+  io)   shift; io_main "$@"; exit 0;;
+  ""|-h|--help) usage_core; exit 0;;
+  *) core_main "$@"; exit 0;;
 esac
+
