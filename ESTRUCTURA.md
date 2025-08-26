@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-26 14:14:45_
+_Generado: 2025-08-26 14:32:59_
 
 ```text
 .
@@ -232,6 +232,7 @@ _Generado: 2025-08-26 14:14:45_
 │   ├── qel
 │   ├── qel_scripts_help.sh
 │   ├── qel_session_finalize.sh
+│   ├── qel_session_finalize.sh.bak.20250826143158
 │   ├── qel_vcalc.sh
 │   ├── qel_vcalc_io.sh
 │   ├── qel_vcalc_json.sh
@@ -252,5 +253,5 @@ _Generado: 2025-08-26 14:14:45_
 ├── package-lock.json
 └── package.json
 
-36 directories, 212 files
+36 directories, 213 files
 ```
