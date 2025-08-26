@@ -1,5 +1,3 @@
-FILE="docs/core/QEL_Esculpido_Manual_v1.0.md"
-cat > "$FILE" <<'MD'
 [QEL::ECO[96]::RECALL A96-250824-ESCU]
 SeedI=A96-250824
 SoT=MANUAL/v1.1
