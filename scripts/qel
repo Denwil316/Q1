@@ -212,7 +212,10 @@ vcalc_proxy(){
 promote(){
   local RUBRO="" FILE="" TITULO="" CUE="" RUMBO="Sur" SEEDI="${SEEDI_DEFAULT}"
   local ARCHIVE_OLD=0
-
+  if [[ "${OSTYPE:-}" == darwin* ]]; then
+  # Deriva al wrapper portable para evitar diferencias GNU/BSD
+  exec "$SCRIPTS/qel_promote_mac.sh" --rubro "$RUBRO" --file "$FILE" --titulo "$TITULO" --rumbo "$RUMBO"
+fi
   # ---- parseo de flags (único bucle) ----
   while [ $# -gt 0 ]; do
     case "$1" in
@@ -475,8 +478,8 @@ case "$SUB" in
          move) shift; doc_move "$@";;
          *) help;;
        esac ;;
+  hash10) shift; hash10_cmd "$@";;
   --dry-run) DRYRUN=1; shift; "$0" "$@";;
   *) help; exit 2;;
-  hash10) shift; hash10_cmd "$@";;
 esac
 

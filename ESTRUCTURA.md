@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-26 20:29:40_
+_Generado: 2025-08-26 20:56:52_
 
 ```text
 .
@@ -33,7 +33,6 @@ _Generado: 2025-08-26 20:29:40_
 │   │   ├── QEL_Diario_del_Conjurador_v1.5.md
 │   │   ├── QEL_FormatoR_Manual_v1.1.md
 │   │   ├── QEL_Formato_VF_AH_v1.4.md
-│   │   ├── QEL_Formato_VF_Arbol_Habilidades_v1.4.md
 │   │   ├── QEL_Glosario_v1.4.md
 │   │   ├── QEL_Lamina_V_Detallada_v1.1.md
 │   │   ├── QEL_ListadoR_cue_v1.1.md
@@ -81,6 +80,7 @@ _Generado: 2025-08-26 20:29:40_
 │   │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.0.md
 │   │   ├── QEL_Tratado_Metahumano_RECALL_A96-250812_v1.0_Confirmacion_v0.1.md
 │   │   ├── Tarjetas_Atlas_QEL_v0.2.1.md
+│   │   ├── Tarjetas_Atlas_QEL_v2.2.md
 │   │   └── Tarjetas_Atlas_QEL_v2.3.md
 │   ├── ritual
 │   │   ├── QEL_CueMachineA96_v1.0.txt
@@ -98,7 +98,6 @@ _Generado: 2025-08-26 20:29:40_
 │   │   ├── QEL_Sellos_y_Cues_Idriell_v1.0.md
 │   │   ├── QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
 │   │   ├── QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
-│   │   ├── Tarjetas_Atlas_QEL_v2.2.md
 │   │   └── qel_manual_vcalc_v_1_0.md
 │   ├── tools
 │   │   ├── QEL_Aurora_Spec_v1.0.md
@@ -254,5 +253,5 @@ _Generado: 2025-08-26 20:29:40_
 ├── package-lock.json
 └── package.json
 
-36 directories, 214 files
+36 directories, 213 files
 ```
