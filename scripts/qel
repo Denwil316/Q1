@@ -247,7 +247,7 @@ promote(){
     [ "${DRYRUN:-0}" -eq 1 ] && ARGS+=(--dry-run)
     exec "$SCRIPTS/qel_promote_mac.sh" "${ARGS[@]}"
   fi
-  
+
   # ---- archivado previo opcional ----
   if [ "$ARCHIVE_OLD" -eq 1 ]; then
     local HIST_DIR="${ARCHIVE_HISTORY_DIR:-$ROOT/docs/history}"
@@ -482,7 +482,7 @@ case "$SUB" in
          move) shift; doc_move "$@";;
          *) help;;
        esac ;;
-  hash10) shift; hash10_cmd "$@";;
+  hash10) hash10_cmd "$@";;
   --dry-run) DRYRUN=1; shift; "$0" "$@";;
   *) help; exit 2;;
 esac
