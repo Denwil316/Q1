@@ -127,10 +127,3 @@ HASH(10): aca9473aac
 
 - Entrada: LISTADOR/A96-250824/MANUAL/v1.1 (r=Sur — *Manual del Esculpido en Qel*)
 
-- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.2 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
-
-- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.2 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
-
-- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.2 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
-
-- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.3 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
