@@ -212,10 +212,7 @@ vcalc_proxy(){
 promote(){
   local RUBRO="" FILE="" TITULO="" CUE="" RUMBO="Sur" SEEDI="${SEEDI_DEFAULT}"
   local ARCHIVE_OLD=0
-  if [[ "${OSTYPE:-}" == darwin* ]]; then
-  # Deriva al wrapper portable para evitar diferencias GNU/BSD
-  exec "$SCRIPTS/qel_promote_mac.sh" --rubro "$RUBRO" --file "$FILE" --titulo "$TITULO" --rumbo "$RUMBO"
-fi
+
   # ---- parseo de flags (único bucle) ----
   while [ $# -gt 0 ]; do
     case "$1" in
@@ -243,7 +240,14 @@ fi
       RUBRO="${sot_in_header%%/*}"   # toma lo de antes del "/"
     fi
   fi
-
+  # ---- desvío opcional al wrapper mac (si y solo si lo pides) ----
+  if [[ "${OSTYPE:-}" == darwin* ]] && [ -n "${QEL_USE_MAC_WRAPPER:-}" ] && [ -x "$SCRIPTS/qel_promote_mac.sh" ]; then
+    ARGS=(--rubro "$RUBRO" --file "$FILE" --titulo "$TITULO" --rumbo "$RUMBO" --seed "$SEEDI")
+    [ -n "${CUE:-}" ] && ARGS+=(--cue "$CUE")
+    [ "${DRYRUN:-0}" -eq 1 ] && ARGS+=(--dry-run)
+    exec "$SCRIPTS/qel_promote_mac.sh" "${ARGS[@]}"
+  fi
+  
   # ---- archivado previo opcional ----
   if [ "$ARCHIVE_OLD" -eq 1 ]; then
     local HIST_DIR="${ARCHIVE_HISTORY_DIR:-$ROOT/docs/history}"
