@@ -444,11 +444,11 @@ manifest_core(){
     log "dry-run core manifest"
     return 0
   fi
-  if [ -f "scripts/gen_core_manifest.sh" ]; then
-    scripts/gen_core_manifest.sh
-  else
-    node scripts/gen_core_manifest.mjs
-  fi
+ if [ -f "$SCRIPTS/gen_core_manifest.sh" ]; then
+  "$SCRIPTS/gen_core_manifest.sh"
+else
+  node "$SCRIPTS/gen_core_manifest.mjs"
+fi
 }
 
 # ---------- ROUTER ----------

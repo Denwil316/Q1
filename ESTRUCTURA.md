@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-27 13:08:05_
+_Generado: 2025-08-27 13:16:14_
 
 ```text
 .
@@ -27,7 +27,6 @@ _Generado: 2025-08-27 13:08:05_
 ├── docs
 │   ├── attachments
 │   ├── core
-│   │   ├── Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md
 │   │   ├── PLAN_ORG_Codex_M0_v0.3.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.5.md
@@ -212,6 +211,7 @@ _Generado: 2025-08-27 13:08:05_
 │   │   └── CUE-RECOVERY_Schema_v0.2.1.json
 │   ├── ecri
 │   │   ├── Los Tres Árboles Iluminados (DS).md
+│   │   ├── Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md
 │   │   ├── Matematicas Resonantes (DS).md
 │   │   └── QEL.md
 │   ├── mandrala
