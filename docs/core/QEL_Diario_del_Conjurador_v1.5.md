@@ -527,3 +527,6 @@ Resultados:
 
 HASH(10): d84061f404
 
+## 250826 · M1 · Integración Manual Instructivo (Ritual)
+cue: [QEL::ECO[96]::RECALL A96-250826-MANUAL-INSTRUCTIVO]
+SeedI: A96-250824

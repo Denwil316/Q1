@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-08-27T01:54:20.936Z",
+  "Updated": "2025-08-27T02:21:32.053Z",
   "manifest": [
     {
       "name": "Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md",
@@ -152,8 +152,8 @@
       "title": "QEL · Manual Instructivo — v1.1 (Nutrido con Capa Ritual)",
       "cue": "[QEL::ECO[96]::RECALL A96-250824-HERRAMIENTAS]",
       "seed": "A96-250824",
-      "sot": "HERRAMIENTAS/v1.2",
-      "version": "v1.2",
+      "sot": "HERRAMIENTAS/v1.4",
+      "version": "v1.4",
       "updated": "2025-08-26",
       "hash10": "7ca6494f4b",
       "kind": "core-doc"
