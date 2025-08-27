@@ -63,7 +63,7 @@ set_header_kv(){
 append_if_missing(){
   local file="$1"; shift
   local tag="$1"; shift
-  grep -qF "$tag" "$file" || { printf "\n%s\n" "$tag" >> "$file"; [ "$DRYRUN" -eq 1 ] && log "dry-run append: $tag"; }
+  grep -qF -- "$tag" "$file" || { printf "\n%s\n" "$tag" >> "$file"; [ "$DRYRUN" -eq 1 ] && log "dry-run append: $tag"; }
 }
 
 # Bump menor de Version=vX.Y → vX.(Y+1)

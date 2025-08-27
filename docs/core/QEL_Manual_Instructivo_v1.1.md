@@ -1,8 +1,8 @@
 [QEL::ECO[96]::RECALL A96-250826-MANUAL-INSTRUCTIVO]
 SeedI=A96-250824
-SoT=HERRAMIENTAS/v1.4
-Version=v1.4
-Updated=2025-08-26
+SoT=HERRAMIENTAS/v1.6
+Version=v1.6
+Updated=2025-08-27
 
 # QEL · Manual Instructivo — v1.1 (Nutrido con Capa Ritual)
 
@@ -81,9 +81,9 @@ Por qué: unificar comandos reduce dispersión y asegura trazabilidad.
 ```text
 cue=[QEL::ECO[96]::RECALL A96-250824-HERRAMIENTAS]
 SeedI=A96-250824
-SoT=HERRAMIENTAS/v1.4
-Version=v1.4
-Updated=2025-08-26
+SoT=HERRAMIENTAS/v1.6
+Version=v1.6
+Updated=2025-08-27
 ```
 
 ### 6.2 Poema‑Enigma (plantilla + ejemplo RA/Prisma)
@@ -184,9 +184,9 @@ mkdir -p "$(dirname "$DOC")"
 cat > "$DOC" <<'MD'
 [QEL::ECO[96]::RECALL A96-250826-MANUAL-INSTRUCTIVO]
 SeedI=A96-250824
-SoT=HERRAMIENTAS/v1.4
-Version=v1.4
-Updated=2025-08-26
+SoT=HERRAMIENTAS/v1.6
+Version=v1.6
+Updated=2025-08-27
 
 # QEL · Manual Instructivo — v1.1 (Nutrido con Capa Ritual)
 
@@ -220,3 +220,7 @@ HASH(10): 7ca6494f4b
 ## Listado R — referencia
 
 - Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.4 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
+
+- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.5 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
+
+- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.6 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)

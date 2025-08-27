@@ -1,8 +1,8 @@
 [QEL::ECO[96]::RECALL A96-250824-ESCU]
 SeedI=A96-250824
-SoT=MANUAL/v1.1
-Version=v1.1
-Updated=2025-08-24
+SoT=HERRAMIENTAS/v1.3
+Version=v1.3
+Updated=2025-08-27
 
 # Manual de Esculpido en Qel — v1.0 (Unificado)
 
@@ -33,11 +33,11 @@ Updated=2025-08-24
 
 ## 2) Cabecera canónica (k=v)
 Cada documento comienza con:
-cue=[QEL::ECO[96]::RECALL A96-250824-MANUAL]
+cue=[QEL::ECO[96]::RECALL A96-250824-HERRAMIENTAS]
 SeedI=A96-250824
-SoT=MANUAL/v1.1
-Version=v1.1
-Updated=2025-08-24
+SoT=HERRAMIENTAS/v1.3
+Version=v1.3
+Updated=2025-08-27
 
 > *Si prefieres SUMMON, cambia `RECALL` por `SUMMON` (ver .qelrc).*
 
@@ -71,9 +71,9 @@ FILE="docs/core/NUEVO_QEL_v1.0.md"
 cat > "$FILE" <<'MD'
 [QEL::ECO[96]::RECALL A96-AAAAmmdd-NUEVO]
 SeedI=A96-250824
-SoT=MANUAL/v1.1
-Version=v1.1
-Updated=2025-08-24
+SoT=HERRAMIENTAS/v1.3
+Version=v1.3
+Updated=2025-08-27
 
 Título
 Cuerpo inicial...
@@ -130,3 +130,7 @@ HASH(10): aca9473aac
 - Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.2 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
 
 - Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.2 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
+
+- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.2 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
+
+- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.3 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
