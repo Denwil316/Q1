@@ -1,7 +1,7 @@
 [QEL::ECO[96]::RECALL A96-250826-MANUAL-INSTRUCTIVO]
 SeedI=A96-250824
-SoT=HERRAMIENTAS/v1.2
-Version=v1.2
+SoT=HERRAMIENTAS/v1.4
+Version=v1.4
 Updated=2025-08-26
 
 # QEL · Manual Instructivo — v1.1 (Nutrido con Capa Ritual)
@@ -81,8 +81,8 @@ Por qué: unificar comandos reduce dispersión y asegura trazabilidad.
 ```text
 cue=[QEL::ECO[96]::RECALL A96-250824-HERRAMIENTAS]
 SeedI=A96-250824
-SoT=HERRAMIENTAS/v1.2
-Version=v1.2
+SoT=HERRAMIENTAS/v1.4
+Version=v1.4
 Updated=2025-08-26
 ```
 
@@ -184,8 +184,8 @@ mkdir -p "$(dirname "$DOC")"
 cat > "$DOC" <<'MD'
 [QEL::ECO[96]::RECALL A96-250826-MANUAL-INSTRUCTIVO]
 SeedI=A96-250824
-SoT=HERRAMIENTAS/v1.2
-Version=v1.2
+SoT=HERRAMIENTAS/v1.4
+Version=v1.4
 Updated=2025-08-26
 
 # QEL · Manual Instructivo — v1.1 (Nutrido con Capa Ritual)
@@ -195,3 +195,28 @@ Updated=2025-08-26
 HASH(10): 7ca6494f4b
 
 ## Relaciones según SoT
+
+# 2) Promover (añade a ListadoR y sincroniza manifests)
+scripts/qel promote   --rubro HERRAMIENTAS   --file "$DOC"   --titulo "Manual Instructivo QEL v1.1 — Capa Ritual"   --rumbo Centro
+
+# 3) Exponer a pre‑nav y sincronizar manifests
+scripts/qel nav publish --mode copy
+scripts/qel manifest build
+scripts/qel manifest core
+```
+
+---
+
+## 11) Metadatos de versión
+- cue: [QEL::ECO[96]::RECALL A96-250826-MANUAL-INSTRUCTIVO]
+- SeedI: A96-250824
+- SoT: MANUAL-INSTRUCTIVO/v1.1
+- Version: v1.1
+- Updated: 2025-08-26
+
+Estado: **CRISTAL**.
+HASH(10): 7ca6494f4b
+
+## Listado R — referencia
+
+- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.4 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
