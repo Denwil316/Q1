@@ -220,7 +220,3 @@ HASH(10): 7ca6494f4b
 ## Listado R — referencia
 
 - Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.4 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
-
-- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.5 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
-
-- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.6 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
