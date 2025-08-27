@@ -109,3 +109,7 @@ Resultados:
   objetos:\n  - Nai/Llave: 0.51
   notas: "Contacto de Aurora se puede postergar, no evitar su creación (PIG/TPC)"
 hash(10): d84061f404
+
+- (2025-08-26) HERRAMIENTAS | A96-250824 | MANUAL-INSTRUCTIVO/v1.1 | Manual Instructivo v1.1 (CRISTAL)
+  refs: [docs/core/QEL_Manual_Instructivo_v1.1.md]
+  hash(10): 7ca6494f4b
