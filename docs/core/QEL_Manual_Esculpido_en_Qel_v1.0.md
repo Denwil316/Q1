@@ -48,7 +48,7 @@ CANON="CUE=...[...]|SeedI=A96-...|SoT=RUBRO/vX.Y|Version=vX.Y|Updated=AAAA-MM-DD
 HASH10=$(printf '%s' "$CANON" | shasum -a 256 | awk '{print $1}' | cut -c1-10)
 
 Añade al final:
-HASH(10): <hash10>
+HASH(10): e9772782ba
 
 ## 4) Promoción (Cristalización)
 **Wrapper:**
@@ -123,6 +123,8 @@ scripts/qel session finalize
 ## Listado R — referencia
 - Entrada: LISTADOR/A96/HERRAMIENTAS/v1.0
 
-HASH(10): 02e0ce9840
+HASH(10): e9772782ba
 
 - Entrada: LISTADOR/A96-250824/MANUAL/v1.1 (r=Sur — *Manual del Esculpido en Qel*)
+
+- Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.2 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
