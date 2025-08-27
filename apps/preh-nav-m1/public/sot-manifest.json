@@ -61,6 +61,11 @@
       "path": "docs/QEL_Manual_Esculpido_en_Qel_v1.0.md"
     },
     {
+      "name": "QEL_Manual_Instructivo_v1.1",
+      "role": "QEL_Manual_Instructivo_v1.1.md",
+      "path": "docs/QEL_Manual_Instructivo_v1.1.md"
+    },
+    {
       "name": "QEL_Manual_Interpretación_Sombras_v1.3",
       "role": "QEL_Manual_Interpretación_Sombras_v1.3.md",
       "path": "docs/QEL_Manual_Interpretación_Sombras_v1.3.md"

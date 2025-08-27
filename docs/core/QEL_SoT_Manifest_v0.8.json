@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-08-24T10:19:28.164Z",
+  "Updated": "2025-08-27T01:54:20.936Z",
   "manifest": [
     {
       "name": "Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md",
@@ -27,8 +27,20 @@
       "kind": "core-doc"
     },
     {
-      "name": "QEL_Diario_del_Conjurador_v1.4.md",
-      "path": "docs/core/QEL_Diario_del_Conjurador_v1.4.md",
+      "name": "QEL_Diario_del_Conjurador_v1.2.md",
+      "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md",
+      "title": "Diario del Conjurador · v1.2",
+      "cue": "",
+      "seed": "A96-250824",
+      "sot": "TRATADO-METAHUMANO/v1.2",
+      "version": "v1.2",
+      "updated": "2025-08-24",
+      "hash10": "90fdd5a5b9",
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.5.md",
+      "path": "docs/core/QEL_Diario_del_Conjurador_v1.5.md",
       "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)",
       "cue": "",
       "seed": "A96-250824",
@@ -119,7 +131,7 @@
       "sot": "",
       "version": "",
       "updated": "",
-      "hash10": null,
+      "hash10": "d84061f404",
       "kind": "core-doc"
     },
     {
@@ -132,6 +144,18 @@
       "version": "v1.1",
       "updated": "2025-08-24",
       "hash10": "02e0ce9840",
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_Manual_Instructivo_v1.1.md",
+      "path": "docs/core/QEL_Manual_Instructivo_v1.1.md",
+      "title": "QEL · Manual Instructivo — v1.1 (Nutrido con Capa Ritual)",
+      "cue": "[QEL::ECO[96]::RECALL A96-250824-HERRAMIENTAS]",
+      "seed": "A96-250824",
+      "sot": "HERRAMIENTAS/v1.2",
+      "version": "v1.2",
+      "updated": "2025-08-26",
+      "hash10": "7ca6494f4b",
       "kind": "core-doc"
     },
     {
@@ -156,6 +180,18 @@
       "version": "v1.5",
       "updated": "2025-08-24",
       "hash10": null,
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_SoT_Atlas_v1.0_250826.md",
+      "path": "docs/core/QEL_SoT_Atlas_v1.0_250826.md",
+      "title": "SoT v1.0 — Sistema Operativo para **Tarjetas Atlas** (Integrando Documentos Core)",
+      "cue": "[QEL::ECO[96]::RECALL A96-250826-SOT-ATLAS-V1-0]",
+      "seed": "A96-250824",
+      "sot": "SOT-ATLAS/v1.0",
+      "version": "v1.0",
+      "updated": "2025-08-26",
+      "hash10": "18370a5f63",
       "kind": "core-doc"
     },
     {
@@ -195,15 +231,15 @@
       "kind": "core-doc"
     },
     {
-      "name": "Tarjetas_Atlas_QEL_v2.3.md",
-      "path": "docs/core/Tarjetas_Atlas_QEL_v2.3.md",
-      "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v2.3)",
-      "cue": "",
+      "name": "Tarjetas_Atlas_QEL_v2.4.md",
+      "path": "docs/core/Tarjetas_Atlas_QEL_v2.4.md",
+      "title": "Tarjetas Atlas QEL — v2.4 (Interfaz de práctica)",
+      "cue": "[QEL::ECO[96]::RECALL A96-250826-ATLAS-TARJETAS-V2-4]",
       "seed": "A96-250824",
-      "sot": "ATLAS-TARJETAS/v2.3",
-      "version": "v2.3",
-      "updated": "2025-08-24",
-      "hash10": null,
+      "sot": "ATLAS-TARJETAS/v2.4",
+      "version": "v2.4",
+      "updated": "2025-08-26",
+      "hash10": "848633612d",
       "kind": "core-doc"
     }
   ]

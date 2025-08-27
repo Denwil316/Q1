@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-26 14:14:45_
+_Generado: 2025-08-26 20:01:36_
 
 ```text
 .
@@ -40,6 +40,7 @@ _Generado: 2025-08-26 14:14:45_
 │   │   ├── QEL_ListadoR_master_v1.0.md
 │   │   ├── QEL_MFH_v1.4.md
 │   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
+│   │   ├── QEL_Manual_Instructivo_v1.1.md
 │   │   ├── QEL_Manual_Interpretación_Sombras_v1.3.md
 │   │   ├── QEL_SoT_Atlas_v1.0_250826.md
 │   │   ├── QEL_SoT_Manifest_v0.8.json
@@ -252,5 +253,5 @@ _Generado: 2025-08-26 14:14:45_
 ├── package-lock.json
 └── package.json
 
-36 directories, 212 files
+36 directories, 213 files
 ```
