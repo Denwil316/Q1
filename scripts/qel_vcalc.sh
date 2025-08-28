@@ -25,7 +25,9 @@ set -euo pipefail
 # Version=v0.1
 # Updated=2025-08-20
 
-: "${LC_NUMERIC:=C}"; export LC_NUMERIC
+: "${LC_NUMERIC:=C}"; 
+export LC_ALL=C
+export LC_NUMERIC
 
 # ---------- Utilidades ----------
 trim(){ awk '{$1=$1;print}' <<<"$1"; }
@@ -148,11 +150,15 @@ core_main(){
     json)
       printf '{'
       printf '"obj":"%s",' "$(json_escape "$OBJ")"
-      printf '"A":%.3f,' "$A"
-      printf '"chi_r":%.2f,"H_k":%.2f,' "$XR" "$HK"
-      printf '"gates_p":%.2f,' "$GP"
-      printf '"fdelta":%.2f,"fruido":%.2f,' "$FD" "$FR"
-      printf '"V":%.2f' "$V"
+      printf '"A":%s,'   "$(awk -v x="$A"  'BEGIN{printf "%.3f", x+0}')"
+      printf '"chi_r":%s,"H_k":%s,' \
+            "$(awk -v x="$XR" 'BEGIN{printf "%.2f", x+0}')" \
+            "$(awk -v x="$HK" 'BEGIN{printf "%.2f", x+0}')"
+      printf '"gates_p":%s,' "$(awk -v x="$GP" 'BEGIN{printf "%.2f", x+0}')"
+      printf '"fdelta":%s,"fruido":%s,' \
+            "$(awk -v x="$FD" 'BEGIN{printf "%.2f", x+0}')" \
+            "$(awk -v x="$FR" 'BEGIN{printf "%.2f", x+0}')"
+      printf '"V":%s'     "$(awk -v x="$V"  'BEGIN{printf "%.2f", x+0}')"
       printf '}\n'
       ;;
     pretty|*)
@@ -249,7 +255,8 @@ io_main(){
   read -r -p "delta-s (up|flat|down) [flat]: " DS; DS="${DS:-flat}"
   read -r -p "¿Salida JSON? (y/N): " WANTJSON; WANTJSON="${WANTJSON:-N}"
 
-  if [[ "${WANTJSON^^}" == "Y" ]]; then
+WANTJSON_UP="$(printf '%s' "$WANTJSON" | tr '[:lower:]' '[:upper:]')"
+  if [ "$WANTJSON_UP" = "Y" ]; then
     printf '%s' "{\"obj\":\"$OBJ\",\"afinidad\":$A,\"rumbo\":\"$RUM\",\"clase\":\"$K\",\"gates\":[${G:+\"${G//,/\",\"}\"}],\"ruido\":$R,\"delta\":{\"c\":\"$DC\",\"s\":\"$DS\"}}" \
     | "$0" json
   else
