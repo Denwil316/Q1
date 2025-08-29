@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-28 17:08:35_
+_Generado: 2025-08-28 23:51:55_
 
 ```text
 .
@@ -27,6 +27,13 @@ _Generado: 2025-08-28 17:08:35_
 ├── docs
 │   ├── attachments
 │   ├── core
+│   │   ├── Manuales
+│   │   │   ├── QEL_LLPE_Manual_v1.3.md
+│   │   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
+│   │   │   ├── QEL_Manual_Instructivo_v1.1.md
+│   │   │   └── QEL_Manual_Interpretación_Sombras_v1.3.md
+│   │   ├── cartas
+│   │   │   └── LLPE_Kosmos8_Primera_v1.3.yaml
 │   │   ├── PLAN_ORG_Codex_M0_v0.3.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.5.md
@@ -37,9 +44,6 @@ _Generado: 2025-08-28 17:08:35_
 │   │   ├── QEL_ListadoR_cue_v1.1.md
 │   │   ├── QEL_ListadoR_master_v1.0.md
 │   │   ├── QEL_MFH_v1.4.md
-│   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
-│   │   ├── QEL_Manual_Instructivo_v1.1.md
-│   │   ├── QEL_Manual_Interpretación_Sombras_v1.3.md
 │   │   ├── QEL_SoT_Atlas_v1.0_250826.md
 │   │   ├── QEL_SoT_Manifest_v0.8.json
 │   │   ├── QEL_SoT_Study_Guide_v1.1.md
@@ -82,6 +86,7 @@ _Generado: 2025-08-28 17:08:35_
 │   │   ├── Tarjetas_Atlas_QEL_v2.2.md
 │   │   └── Tarjetas_Atlas_QEL_v2.3.md
 │   ├── ritual
+│   │   ├── cartas
 │   │   ├── QEL_CueMachineA96_v1.0.txt
 │   │   ├── QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
 │   │   ├── QEL_Meditaciones_Primordiales_v1.0.md
@@ -230,6 +235,7 @@ _Generado: 2025-08-28 17:08:35_
 │   ├── package.json
 │   ├── pre-commit-codex-structure.sh
 │   ├── qel
+│   ├── qel_pe_generate.mjs
 │   ├── qel_promote_mac.sh
 │   ├── qel_scripts_help.sh
 │   ├── qel_session_finalize.sh
@@ -253,5 +259,5 @@ _Generado: 2025-08-28 17:08:35_
 ├── package-lock.json
 └── package.json
 
-36 directories, 213 files
+39 directories, 216 files
 ```
