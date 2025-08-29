@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-29 13:11:35_
+_Generado: 2025-08-29 14:15:21_
 
 ```text
 .
@@ -30,14 +30,15 @@ _Generado: 2025-08-29 13:11:35_
 │   │   ├── cartas
 │   │   │   └── LLPE_Kosmos8_Primera_v1.3.yaml
 │   │   ├── manuales
+│   │   │   ├── QEL_FormatoR_Manual_v1.1.md
 │   │   │   ├── QEL_LLPE_Manual_v1.4.md
 │   │   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
 │   │   │   ├── QEL_Manual_Instructivo_v1.1.md
-│   │   │   └── QEL_Manual_Interpretación_Sombras_v1.3.md
+│   │   │   ├── QEL_Manual_Interpretación_Sombras_v1.3.md
+│   │   │   └── QEL_SoT_Study_Guide_v1.1.md
 │   │   ├── PLAN_ORG_Codex_M0_v0.3.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.5.md
-│   │   ├── QEL_FormatoR_Manual_v1.1.md
 │   │   ├── QEL_Formato_VF_AH_v1.4.md
 │   │   ├── QEL_Glosario_v1.4.md
 │   │   ├── QEL_Lamina_V_Detallada_v1.1.md
@@ -46,7 +47,6 @@ _Generado: 2025-08-29 13:11:35_
 │   │   ├── QEL_MFH_v1.4.md
 │   │   ├── QEL_SoT_Atlas_v1.0_250826.md
 │   │   ├── QEL_SoT_Manifest_v0.8.json
-│   │   ├── QEL_SoT_Study_Guide_v1.1.md
 │   │   ├── QEL_Tratado_Metahumano_v1.4.md
 │   │   └── Tarjetas_Atlas_QEL_v2.4.md
 │   ├── history
@@ -87,6 +87,9 @@ _Generado: 2025-08-29 13:11:35_
 │   │   ├── Tarjetas_Atlas_QEL_v2.2.md
 │   │   └── Tarjetas_Atlas_QEL_v2.3.md
 │   ├── nutria
+│   │   ├── Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md
+│   │   ├── Matematicas Resonantes (DS).md
+│   │   ├── QEL.md
 │   │   ├── QEL_Poema_Enigma_Lun-Nai_v1.1.md
 │   │   └── QEL_Poema_Enigma_VF_v1.0.md
 │   ├── ritual
@@ -119,7 +122,6 @@ _Generado: 2025-08-29 13:11:35_
 │   │   └── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 │   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
 │   └── NAVEGADOR_M0_Manual_v0.2.md
-├── docscat
 ├── legacy
 │   ├── scripts
 │   ├── index.html
@@ -218,10 +220,7 @@ _Generado: 2025-08-29 13:11:35_
 │   │   ├── CUE-RECOVERY_Plantilla_Caos_v0.2.1.md
 │   │   └── CUE-RECOVERY_Schema_v0.2.1.json
 │   ├── ecri
-│   │   ├── Los Tres Árboles Iluminados (DS).md
-│   │   ├── Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md
-│   │   ├── Matematicas Resonantes (DS).md
-│   │   └── QEL.md
+│   │   └── Los Tres Árboles Iluminados (DS).md
 │   ├── mandrala
 │   ├── manifests
 │   │   └── QEL_SoT_Manifest_v0.2.json
@@ -262,5 +261,5 @@ _Generado: 2025-08-29 13:11:35_
 ├── package-lock.json
 └── package.json
 
-40 directories, 218 files
+39 directories, 218 files
 ```
