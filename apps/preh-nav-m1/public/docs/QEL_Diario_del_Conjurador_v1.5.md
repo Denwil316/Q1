@@ -530,3 +530,30 @@ HASH(10): d84061f404
 ## 250826 · M1 · Integración Manual Instructivo (Ritual)
 cue: [QEL::ECO[96]::RECALL A96-250826-MANUAL-INSTRUCTIVO]
 SeedI: A96-250824
+
+## 250828
+(base) MBP-de-Eldwin:codex EAJ$ node scripts/qel_pe_generate.mjs \
+>   --vf docs/core/cartas/LLPE_Kosmos8_Primera_v1.3.yaml \
+>   --materia aire \
+>   --preset Apertura \
+>   --ruido 0.00 --delta-c flat --delta-s flat \
+>   --answer "Ə·UM·A — abre en A, sostiene en UM" \
+>   --emit md
+# Poema-Enigma (v1.3)
+
+ID: PE::0198772adb
+Tipo: pliegue-tiempo
+
+> PISTA: Devuelve el patrón que maximiza 𝒱 (rumbo=C) para objeto=Llave. PRUEBA: τ=0.62.
+
+
+---
+**HABILIDAD CRISTALIZADA**
+
+- ID: HAB::K8-LL-APERT-019877
+- Nombre: Llave de Matrices (Apertura I)
+- PE: PE::0198772adb
+- V: 0.77 (τ=0.62)
+- Materia: aire
+- Efecto: abrir_sello:1, ΔC:+, ρ≤0.02
+---
