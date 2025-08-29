@@ -124,3 +124,13 @@ Resultados:
   registro: "Actualizar Árbol VF y Listado R si aplica"
 
 HASH(10): d84061f404
+
+## 2025-08-29 — PROMOCIÓN
+- Rubro: LL-PE
+- Título: LL-PE — Manual Operativo v1.4 (Germinación)
+- Archivo: docs/core/manuales/QEL_LLPE_Manual_v1.4.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_LLPE_Manual_v1.4.md
+- Rumbo: Centro
+- HASH(10): c528033ebb
+
+_ECO (delta-only):_ Se cristaliza **LL-PE — Manual Operativo v1.4 (Germinación)** con hash **c528033ebb**; se actualiza ListadoR y se publica espejo en preh-nav.
