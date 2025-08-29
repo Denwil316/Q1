@@ -5,8 +5,32 @@
    Version=v1.3
    Updated=2025-08-28 */
 
-import fs from 'fs'; import crypto from 'crypto'; import { spawnSync } from 'child_process';
+import fs from 'fs'; 
+import crypto from 'crypto'; 
+import { spawnSync } from 'child_process';
+import path from 'path';
 
+function ensureDir(p){ fs.mkdirSync(p,{recursive:true}); }
+function writeText(filePath, s){ ensureDir(path.dirname(filePath)); fs.writeFileSync(filePath, s, 'utf8'); }
+function writeJSON(filePath, obj){ ensureDir(path.dirname(filePath)); fs.writeFileSync(filePath, JSON.stringify(obj,null,2)+'\n', 'utf8'); }
+
+function updateManifest(manifestPath, entry){
+  try{
+    const j = JSON.parse(fs.readFileSync(manifestPath,'utf8'));
+    j.manifest = j.manifest || [];
+    const i = j.manifest.findIndex(x=>x.path===entry.path);
+    if(i>=0) j.manifest[i] = {...j.manifest[i], ...entry};
+    else j.manifest.push(entry);
+    j.Updated = new Date().toISOString();
+    writeJSON(manifestPath, j);
+  }catch(e){ /* opcional: silente */ }
+}
+
+function appendListadoR(listadoPath, linea){
+  const hdr = fs.existsSync(listadoPath) ? '' :
+    '# Listado R · Maestro — Tejera en Sur\n\n';
+  fs.appendFileSync(listadoPath, hdr + linea + '\n', 'utf8');
+}
 const TAU = 0.62;
 const CHI_R = { N:1.00, C:1.00, O:0.95, E:0.95, W:0.90, S:0.88 };
 const H_K   = { comun:0.85, 'poco-comun':0.92, 'poco-común':0.92, raro:0.92, singular:1.00, unico:1.00, 'único':1.00 };
@@ -23,7 +47,35 @@ const MAT = { // fonema -> altas/medias/bajas
 
 function sha1(x){ return crypto.createHash('sha1').update(String(x)).digest('hex'); }
 function pick(arr, seedHex){ const n=parseInt(seedHex.slice(0,8),16); return arr[n%arr.length]; }
-function readAny(path){ const s = fs.readFileSync(path,'utf8'); try{return JSON.parse(s)}catch{}; return s; }
+function readAny(path){ const s = fs.readFileSync(path,'utf8'); try{return JSON.parse(s)}catch{}; return s;
+function harvestSnippetsDir(dirPath){
+  const allow = new Set(['.md','.txt','.yaml','.yml','.json']);
+  const bags = {inv:[], umbral:[], pista:[], prueba:[]};
+  const push=(k,v)=>{ if(v && v.trim()) bags[k].push(v.trim()); };
+  let files=[];
+  try{
+    const walk = p=>{
+      for(const f of fs.readdirSync(p)){
+        const fp = path.join(p,f);
+        const st = fs.statSync(fp);
+        if(st.isDirectory()) walk(fp);
+        else if(allow.has(path.extname(fp).toLowerCase())) files.push(fp);
+      }
+    };
+    walk(dirPath);
+  }catch(_){ return bags; }
+
+  for(const fp of files){
+    let s=''; try{ s=fs.readFileSync(fp,'utf8'); }catch{ continue; }
+    s.split(/\r?\n/).forEach(l=>{
+      if(/INV:|INVOCACION|INVOCACIÓN/.test(l)) push('inv', l.replace(/.*?:\s*/,''));
+      if(/UMBRAL|Veo /.test(l))                 push('umbral', l.replace(/.*?:\s*/,''));
+      if(/PISTA|Si /.test(l))                   push('pista', l.replace(/.*?:\s*/,''));
+      if(/PRUEBA|ΔC|𝒱|Sello|τ=/.test(l))        push('prueba', l.replace(/.*?:\s*/,''));
+    });
+  }
+  return bags;
+} }
 function parseVF(src){ // JSON o YAML plano sencillo
   if(typeof src==='object') return src;
   const o={}; src.split(/\r?\n/).forEach(l=>{const m=l.match(/^\s*([A-Za-z0-9_.-]+)\s*:\s*(.+?)\s*$/); if(m)o[m[1]]=m[2];});
@@ -93,16 +145,46 @@ function vcalcJSON({obj,A,r,k,gates,ruido,dc,ds}){
 
 function main(){
   const args=Object.fromEntries(process.argv.slice(2).map((v,i,a)=>v.startsWith('--')?[v.slice(2),a[i+1]??true]:null).filter(Boolean));
+  const save = args.save === 'true' || args.save === true;
+  const outPe = args['out-pe'];            // opcional
+  const outHab = args['out-hab'];          // opcional
+  const registry = args['registry'] || 'docs/core/QEL_SoT_Manifest_v0.8.json';
+  const listadoR = args['listado-r'] || 'docs/core/QEL_ListadoR_master_v1.0.md';
+  const nutriaDir = args['nutria-dir'] || null;
   const vfPath=args.vf||args.in||'docs/atlas/Tarjeta_VF_Kosmos8_v1.0.yaml';
   const materia=(args.materia||'').toLowerCase(); // ej. aire|agua|metal|organico|vacio…
   const answer=args.answer||null; const emit=args.emit||'json'; const preset=args.preset||'Apertura';
   const ruido=parseFloat(args.ruido||0); const dc=args['delta-c']||'flat'; const ds=args['delta-s']||'flat'; const tau=parseFloat(args.tau||TAU);
   const raw=parseVF(readAny(vfPath));
   const built=buildPE(raw,materia);
+  if(nutriaDir){
+  const bags = harvestSnippetsDir(nutriaDir);
+  const extra = [bags.inv[0], bags.umbral[0], bags.pista[0], bags.prueba[0]]
+    .filter(Boolean).map(x=>'• '+x).join('  ');
+  if(extra) built.pe.texto += `\n\n${extra}`;
+  }
   if(emit==='md'){ console.log(`# Poema-Enigma (v1.3)\n\nID: ${built.pe.id}\nTipo: ${built.pe.tipo}\n\n> ${built.pe.texto}\n`);}
   else{ console.log(JSON.stringify({pe:built.pe, vf:built.vf},null,2)); }
-  if(!answer) return;
-
+    if(!answer){
+      if(save){
+        const pePath = outPe || `docs/pe/${(built.pe.id||'PE').replace(/[:]/g,'')}.md`;
+        const mdPE = `# Poema-Enigma (v1.3)\n\nID: ${built.pe.id}\nTipo: ${built.pe.tipo}\n\n> ${built.pe.texto}\n`;
+        writeText(pePath, (emit==='md') ? mdPE : JSON.stringify({pe:built.pe},null,2));
+        // Manifest (opcional, si existe)
+        if(fs.existsSync(registry)){
+          updateManifest(registry, {
+            name: path.basename(pePath),
+            path: pePath,
+            title: `PE — ${built.pe.id}`,
+            sot: 'LL-PE/v1.3',
+            version: 'v1.0',
+            updated: new Date().toISOString().slice(0,10),
+            kind: 'pe'
+          });
+        }
+      }
+      return;
+    }
   // Validación
   const mode=built.pe.validador.modo, data=built.pe.validador.data;
   let ok=false;
@@ -129,5 +211,41 @@ function main(){
   const hab={ id:hid, nombre, vf_ref:built.vf.cue||"VF::?", pe_ref:built.pe.id, efecto:(preset==='Puente')?["cierre_en:SIL","ΔS:+","residuo:0"]:["abrir_sello:1","ΔC:+","ρ≤0.02"], params:{ r:built.vf.r, O:built.vf.O, V, materia:built.vf.materia }, cierre:"SIL→UM→Ə" };
   if(emit==='md'){ console.log(`\n---\n**HABILIDAD CRISTALIZADA**\n\n- ID: ${hab.id}\n- Nombre: ${hab.nombre}\n- PE: ${hab.pe_ref}\n- V: ${V.toFixed(2)} (τ=${tau})\n- Materia: ${built.vf.materia||'-'}\n- Efecto: ${hab.efecto.join(', ')}\n`); }
   else{ console.log(JSON.stringify({habilidad:hab, V, tau},null,2)); }
+  if(save){
+  // destinos por defecto si no te pasan --out-*
+  const triSafe = (built.vf.p||'').replace(/[·\.]/g,'-') || 'triada';
+  const hash10 = (built.vf.hash10 || (built.pe.id||'').replace(/^PE::/,'').slice(0,10) || '0000000000');
+  const pePath  = outPe  || `docs/pe/${(built.pe.id||'PE').replace(/[:]/g,'')}.md`;
+  const habPath = outHab || `docs/habilidades/${triSafe}/${built.vf.O}/${built.vf.r}/${built.vf.k}/${hash10}.md`;
+
+  // 1) escribir archivos
+  const mdPE  = `# Poema-Enigma (v1.3)\n\nID: ${built.pe.id}\nTipo: ${built.pe.tipo}\n\n> ${built.pe.texto}\n`;
+  const mdHab = `---\n**HABILIDAD CRISTALIZADA**\n\n- ID: ${hab.id}\n- Nombre: ${hab.nombre}\n- PE: ${hab.pe_ref}\n- V: ${V.toFixed(2)} (τ=${tau})\n- Materia: ${built.vf.materia||'-'}\n- Efecto: ${hab.efecto.join(', ')}\n`;
+  if(emit==='md'){
+    writeText(pePath, mdPE);
+    writeText(habPath, mdHab);
+  }else{
+    writeJSON(pePath.replace(/\.md$/,'.json'), {pe:built.pe});
+    writeJSON(habPath.replace(/\.md$/,'.json'), {habilidad:hab});
+  }
+
+  // 2) Manifest (si existe)
+  if(fs.existsSync(registry)){
+    updateManifest(registry, {
+      name: path.basename(habPath),
+      path: habPath,
+      title: `Habilidad — ${hab.nombre}`,
+      cue: built.vf.cue || '',
+      sot: 'ATLAS-HAB/v1.0',
+      version: 'v1.0',
+      updated: new Date().toISOString().slice(0,10),
+      kind: 'habilidad'
+    });
+  }
+
+  // 3) Listado R
+  const lineaR = `R#. Proyecto A96/QEL. (${new Date().toISOString().slice(0,10)}). QEL|A96|HABILIDAD|${hab.id}|v1.0|${built.vf.r} — ${hab.nombre} [${(built.pe.id||'').replace(/^PE::/,'')}]`;
+  appendListadoR(listadoR, lineaR);
+}
 }
 main();
