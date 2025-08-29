@@ -117,3 +117,7 @@ hash(10): d84061f404
 - (2025-08-29) LL-PE | A96-250829 | PROMOCION/v1.0 | LL-PE — Manual Operativo v1.3 (CRISTAL @ Centro)
   refs: [docs/core/manuales/QEL_LLPE_Manual_v1.4.md]
   hash(10): c528033ebb
+
+- (2025-08-29) LL-PE | A96-250829 | PROMOCION/v1.0 | LL-PE — Manual Operativo v1.4 (Germinación) (CRISTAL @ Centro)
+  refs: [docs/core/manuales/QEL_LLPE_Manual_v1.4.md]
+  hash(10): c528033ebb

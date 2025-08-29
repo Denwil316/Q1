@@ -1,19 +1,7 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-08-27T02:21:32.053Z",
+  "Updated": "2025-08-29T17:38:23.272Z",
   "manifest": [
-    {
-      "name": "Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md",
-      "path": "docs/core/Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md",
-      "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.1)",
-      "cue": "",
-      "seed": "A96-250824",
-      "sot": "DOCUMENTO/v1.1",
-      "version": "v1.1",
-      "updated": "2025-08-24",
-      "hash10": null,
-      "kind": "core-doc"
-    },
     {
       "name": "PLAN_ORG_Codex_M0_v0.3.md",
       "path": "docs/core/PLAN_ORG_Codex_M0_v0.3.md",
@@ -53,18 +41,6 @@
     {
       "name": "QEL_Formato_VF_AH_v1.4.md",
       "path": "docs/core/QEL_Formato_VF_AH_v1.4.md",
-      "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)",
-      "cue": "",
-      "seed": "A96-250824",
-      "sot": "VF-ARBOLES/v1.5",
-      "version": "v1.5",
-      "updated": "2025-08-24",
-      "hash10": null,
-      "kind": "core-doc"
-    },
-    {
-      "name": "QEL_Formato_VF_Arbol_Habilidades_v1.4.md",
-      "path": "docs/core/QEL_Formato_VF_Arbol_Habilidades_v1.4.md",
       "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)",
       "cue": "",
       "seed": "A96-250824",
@@ -135,32 +111,44 @@
       "kind": "core-doc"
     },
     {
+      "name": "QEL_LLPE_Manual_v1.4.md",
+      "path": "docs/core/manuales/QEL_LLPE_Manual_v1.4.md",
+      "title": "**LL-PE v1.4 — Manual Operativo (Germinación)**",
+      "cue": "",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": "c528033ebb",
+      "kind": "core-doc"
+    },
+    {
       "name": "QEL_Manual_Esculpido_en_Qel_v1.0.md",
-      "path": "docs/core/QEL_Manual_Esculpido_en_Qel_v1.0.md",
+      "path": "docs/core/manuales/QEL_Manual_Esculpido_en_Qel_v1.0.md",
       "title": "Manual de Esculpido en Qel — v1.0 (Unificado)",
-      "cue": "[QEL::ECO[96]::RECALL A96-250824-MANUAL]",
+      "cue": "[QEL::ECO[96]::RECALL A96-250824-HERRAMIENTAS]",
       "seed": "A96-250824",
-      "sot": "MANUAL/v1.1",
-      "version": "v1.1",
-      "updated": "2025-08-24",
-      "hash10": "02e0ce9840",
+      "sot": "HERRAMIENTAS/v1.3",
+      "version": "v1.3",
+      "updated": "2025-08-27",
+      "hash10": "aca9473aac",
       "kind": "core-doc"
     },
     {
       "name": "QEL_Manual_Instructivo_v1.1.md",
-      "path": "docs/core/QEL_Manual_Instructivo_v1.1.md",
+      "path": "docs/core/manuales/QEL_Manual_Instructivo_v1.1.md",
       "title": "QEL · Manual Instructivo — v1.1 (Nutrido con Capa Ritual)",
       "cue": "[QEL::ECO[96]::RECALL A96-250824-HERRAMIENTAS]",
       "seed": "A96-250824",
-      "sot": "HERRAMIENTAS/v1.4",
-      "version": "v1.4",
-      "updated": "2025-08-26",
+      "sot": "HERRAMIENTAS/v1.6",
+      "version": "v1.6",
+      "updated": "2025-08-27",
       "hash10": "7ca6494f4b",
       "kind": "core-doc"
     },
     {
-      "name": "QEL_Manual_Interpretación_Sombras_v1.3.md",
-      "path": "docs/core/QEL_Manual_Interpretación_Sombras_v1.3.md",
+      "name": "QEL_Manual_Interpretación_Sombras_v1.3.md",
+      "path": "docs/core/manuales/QEL_Manual_Interpretación_Sombras_v1.3.md",
       "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.4)",
       "cue": "",
       "seed": "A96-250824",
