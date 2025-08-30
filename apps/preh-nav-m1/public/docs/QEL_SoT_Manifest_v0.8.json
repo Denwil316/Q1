@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-08-30T06:01:29.536Z",
+  "Updated": "2025-08-30T06:19:47.690Z",
   "manifest": [
     {
       "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
@@ -149,13 +149,13 @@
     {
       "name": "QEL_Manual_Atlas_MicroRegistro_v1.0.md",
       "path": "docs/core/manuales/QEL_Manual_Atlas_MicroRegistro_v1.0.md",
-      "title": "QEL_Manual_Atlas_MicroRegistro_v1.0",
+      "title": "**Manual Extensivo — Atlas Micro-Registro (scripts/qel\\_atlas\\_microreg.sh)**",
       "cue": "",
       "seed": "",
       "sot": "",
       "version": "",
       "updated": "",
-      "hash10": null,
+      "hash10": "714d48bbaf",
       "kind": "core-doc"
     },
     {

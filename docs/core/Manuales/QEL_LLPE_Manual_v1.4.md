@@ -167,4 +167,4 @@ El script crea el archivo de Habilidad (MD+metadatos), ubica la **ruta del Árbo
 
 * **PE-Generator** (`scripts/qel_pe_generate.mjs`): crea PE, valida, calcula V, “mintea” Habilidad, **opcional** guarda y registra.
 
-HASH(10): c528033ebb
+HASH(10): eb85a6c0a9

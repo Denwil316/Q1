@@ -56,6 +56,11 @@
       "path": "docs/QEL_LLPE_Manual_v1.4.md"
     },
     {
+      "name": "QEL_Manual_Atlas_MicroRegistro_v1.0",
+      "role": "QEL_Manual_Atlas_MicroRegistro_v1.0.md",
+      "path": "docs/QEL_Manual_Atlas_MicroRegistro_v1.0.md"
+    },
+    {
       "name": "QEL_Manual_Esculpido_en_Qel_v1.0",
       "role": "QEL_Manual_Esculpido_en_Qel_v1.0.md",
       "path": "docs/QEL_Manual_Esculpido_en_Qel_v1.0.md"

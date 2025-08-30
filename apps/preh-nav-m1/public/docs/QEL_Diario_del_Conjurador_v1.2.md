@@ -25,3 +25,13 @@ _ECO (delta-only):_ Se cristaliza **LL-PE — Manual Operativo v1.4 (Germinació
 - HASH(10): 5d341d185c
 
 _ECO (delta-only):_ Se cristaliza **Micro-Sello · LAB Tecnoalquímico — Cristal 2025-08-29** con hash **5d341d185c**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 2025-08-30 — PROMOCIÓN
+- Rubro: ATLAS/MICROREG
+- Título: Manual Extensivo — Atlas Micro-Registro v1.0
+- Archivo: docs/core/manuales/QEL_Manual_Atlas_MicroRegistro_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Manual_Atlas_MicroRegistro_v1.0.md
+- Rumbo: Centro
+- HASH(10): 714d48bbaf
+
+_ECO (delta-only):_ Se cristaliza **Manual Extensivo — Atlas Micro-Registro v1.0** con hash **714d48bbaf**; se actualiza ListadoR y se publica espejo en preh-nav.

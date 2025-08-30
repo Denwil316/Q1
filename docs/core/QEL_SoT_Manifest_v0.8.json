@@ -1,22 +1,46 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-08-29T19:10:56.907Z",
+  "Updated": "2025-08-30T06:19:47.690Z",
   "manifest": [
     {
-      "name": "PLAN_ORG_Codex_M0_v0.3.md",
-      "path": "docs/core/PLAN_ORG_Codex_M0_v0.3.md",
-      "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v0.3)",
+      "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
+      "path": "docs/core/manuales/GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
+      "title": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2",
       "cue": "",
-      "seed": "A96-250824",
-      "sot": "PLAN-ORG/v0.3",
-      "version": "v0.3",
-      "updated": "2025-08-24",
+      "seed": "PREH-NAV::M0",
+      "sot": "PREH-NAV/v0.2 TARGET=guia|estructura|promocion",
+      "version": "v0.2 UPDATED=2025-08-15",
+      "updated": "",
+      "hash10": null,
+      "kind": "core-doc"
+    },
+    {
+      "name": "NAVEGADOR_M0_Manual_v0.2.md",
+      "path": "docs/core/manuales/NAVEGADOR_M0_Manual_v0.2.md",
+      "title": "NAVEGADOR_M0_Manual_v0.2",
+      "cue": "",
+      "seed": "PREH-NAV::M0",
+      "sot": "PREH-NAV/v0.2 TARGET=manual|navegador|arranque",
+      "version": "v0.2 UPDATED=2025-08-15",
+      "updated": "",
       "hash10": null,
       "kind": "core-doc"
     },
     {
       "name": "QEL_Diario_del_Conjurador_v1.2.md",
       "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md",
+      "title": "Diario del Conjurador (v1.2)",
+      "cue": "",
+      "seed": "A96-250824",
+      "sot": "DIARIO/v1.2",
+      "version": "v1.2",
+      "updated": "2025-08-30",
+      "hash10": null,
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.2.md",
+      "path": "docs/core/diarios/QEL_Diario_del_Conjurador_v1.2.md",
       "title": "Diario del Conjurador · v1.2",
       "cue": "",
       "seed": "A96-250824",
@@ -28,7 +52,7 @@
     },
     {
       "name": "QEL_Diario_del_Conjurador_v1.5.md",
-      "path": "docs/core/QEL_Diario_del_Conjurador_v1.5.md",
+      "path": "docs/core/diarios/QEL_Diario_del_Conjurador_v1.5.md",
       "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)",
       "cue": "",
       "seed": "A96-250824",
@@ -52,7 +76,7 @@
     },
     {
       "name": "QEL_FormatoR_Manual_v1.1.md",
-      "path": "docs/core/QEL_FormatoR_Manual_v1.1.md",
+      "path": "docs/core/manuales/QEL_FormatoR_Manual_v1.1.md",
       "title": "Manual de Formato R — v1.1 (Integrado · Tejera en Sur)",
       "cue": "",
       "seed": "A96-250824",
@@ -119,7 +143,19 @@
       "sot": "",
       "version": "",
       "updated": "",
-      "hash10": "c528033ebb",
+      "hash10": "eb85a6c0a9",
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_Manual_Atlas_MicroRegistro_v1.0.md",
+      "path": "docs/core/manuales/QEL_Manual_Atlas_MicroRegistro_v1.0.md",
+      "title": "**Manual Extensivo — Atlas Micro-Registro (scripts/qel\\_atlas\\_microreg.sh)**",
+      "cue": "",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": "714d48bbaf",
       "kind": "core-doc"
     },
     {
@@ -196,7 +232,7 @@
     },
     {
       "name": "QEL_SoT_Study_Guide_v1.1.md",
-      "path": "docs/core/QEL_SoT_Study_Guide_v1.1.md",
+      "path": "docs/core/manuales/QEL_SoT_Study_Guide_v1.1.md",
       "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.1)",
       "cue": "",
       "seed": "A96-250824",
@@ -207,8 +243,8 @@
       "kind": "core-doc"
     },
     {
-      "name": "QEL_Tratado_Metahumano_v1.4.md",
-      "path": "docs/core/QEL_Tratado_Metahumano_v1.4.md",
+      "name": "QEL_Tratado_Metahumano_v1.5.md",
+      "path": "docs/core/QEL_Tratado_Metahumano_v1.5.md",
       "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)",
       "cue": "",
       "seed": "A96-250824",
@@ -220,7 +256,7 @@
     },
     {
       "name": "Tarjetas_Atlas_QEL_v2.4.md",
-      "path": "docs/core/Tarjetas_Atlas_QEL_v2.4.md",
+      "path": "docs/core/atlas/Tarjetas_Atlas_QEL_v2.4.md",
       "title": "Tarjetas Atlas QEL — v2.4 (Interfaz de práctica)",
       "cue": "[QEL::ECO[96]::RECALL A96-250826-ATLAS-TARJETAS-V2-4]",
       "seed": "A96-250824",
