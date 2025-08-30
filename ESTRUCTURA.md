@@ -1,9 +1,16 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-29 14:15:21_
+_Generado: 2025-08-29 18:18:49_
 
 ```text
 .
+├── README
+│   ├── PREH-NAV_README_v0.2.md
+│   ├── README.md
+│   ├── README_Consolidado_v0.4.md
+│   ├── README_Q1 (1).md
+│   ├── README_Q1.md
+│   └── README_QEL_MASTER_v0.2.1.md
 ├── apps
 │   └── preh-nav-m1
 │       ├── public
@@ -27,18 +34,22 @@ _Generado: 2025-08-29 14:15:21_
 ├── docs
 │   ├── attachments
 │   ├── core
+│   │   ├── atlas
+│   │   │   └── Tarjetas_Atlas_QEL_v2.4.md
 │   │   ├── cartas
 │   │   │   └── LLPE_Kosmos8_Primera_v1.3.yaml
+│   │   ├── diarios
+│   │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
+│   │   │   └── QEL_Diario_del_Conjurador_v1.5.md
 │   │   ├── manuales
+│   │   │   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
+│   │   │   ├── NAVEGADOR_M0_Manual_v0.2.md
 │   │   │   ├── QEL_FormatoR_Manual_v1.1.md
 │   │   │   ├── QEL_LLPE_Manual_v1.4.md
 │   │   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
 │   │   │   ├── QEL_Manual_Instructivo_v1.1.md
 │   │   │   ├── QEL_Manual_Interpretación_Sombras_v1.3.md
 │   │   │   └── QEL_SoT_Study_Guide_v1.1.md
-│   │   ├── PLAN_ORG_Codex_M0_v0.3.md
-│   │   ├── QEL_Diario_del_Conjurador_v1.2.md
-│   │   ├── QEL_Diario_del_Conjurador_v1.5.md
 │   │   ├── QEL_Formato_VF_AH_v1.4.md
 │   │   ├── QEL_Glosario_v1.4.md
 │   │   ├── QEL_Lamina_V_Detallada_v1.1.md
@@ -47,10 +58,10 @@ _Generado: 2025-08-29 14:15:21_
 │   │   ├── QEL_MFH_v1.4.md
 │   │   ├── QEL_SoT_Atlas_v1.0_250826.md
 │   │   ├── QEL_SoT_Manifest_v0.8.json
-│   │   ├── QEL_Tratado_Metahumano_v1.4.md
-│   │   └── Tarjetas_Atlas_QEL_v2.4.md
+│   │   └── QEL_Tratado_Metahumano_v1.5.md
 │   ├── history
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
+│   │   ├── PLAN_ORG_Codex_M0_v0.3.md
 │   │   ├── QEL_Aurora_Spec_v0.1.md
 │   │   ├── QEL_CUE_Exception_v0.1.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.1.md
@@ -109,19 +120,17 @@ _Generado: 2025-08-29 14:15:21_
 │   │   ├── QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
 │   │   ├── QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
 │   │   └── qel_manual_vcalc_v_1_0.md
-│   ├── tools
-│   │   ├── QEL_Aurora_Spec_v1.0.md
-│   │   ├── QEL_Aurora_Spec_v1.1.md
-│   │   ├── QEL_Aurora_Spec_v1.2.md
-│   │   ├── QEL_CUE_Exception_v1.0.md
-│   │   ├── QEL_CueMachineA96_v1.0.txt
-│   │   ├── QEL_CueMachine_81.txt
-│   │   ├── QEL_CueMachine_v0.2.txt
-│   │   ├── QEL_CueMachine_v0.3.txt
-│   │   ├── QEL_CueMachine_v0.4.txt
-│   │   └── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
-│   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
-│   └── NAVEGADOR_M0_Manual_v0.2.md
+│   └── tools
+│       ├── QEL_Aurora_Spec_v1.0.md
+│       ├── QEL_Aurora_Spec_v1.1.md
+│       ├── QEL_Aurora_Spec_v1.2.md
+│       ├── QEL_CUE_Exception_v1.0.md
+│       ├── QEL_CueMachineA96_v1.0.txt
+│       ├── QEL_CueMachine_81.txt
+│       ├── QEL_CueMachine_v0.2.txt
+│       ├── QEL_CueMachine_v0.3.txt
+│       ├── QEL_CueMachine_v0.4.txt
+│       └── QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 ├── legacy
 │   ├── scripts
 │   ├── index.html
@@ -188,6 +197,7 @@ _Generado: 2025-08-29 14:15:21_
 │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md
 │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
 │   ├── QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.3.md
+│   ├── QEL_Tratado_Metahumano_v1.4.md
 │   ├── QEL_VF_Carta_Lun-Nai_v1.0.md
 │   ├── README_Consolidado_v0.3.md
 │   ├── README_Consolidado_v0.4.md
@@ -252,14 +262,8 @@ _Generado: 2025-08-29 14:15:21_
 ├── ESTRUCTURA.md
 ├── LICENSE
 ├── Makefile
-├── PREH-NAV_README_v0.2.md
-├── README.md
-├── README_Consolidado_v0.4.md
-├── README_Q1 (1).md
-├── README_Q1.md
-├── README_QEL_MASTER_v0.2.1.md
 ├── package-lock.json
 └── package.json
 
-39 directories, 218 files
+42 directories, 219 files
 ```
