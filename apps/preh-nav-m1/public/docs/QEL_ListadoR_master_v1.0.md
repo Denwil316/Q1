@@ -129,3 +129,7 @@ hash(10): d84061f404
 - (2025-08-30) LL-PE | A96-250830 | PROMOCION/v1.0 | LL-PE — Manual Operativo v1.4 (Germinación) (CRISTAL @ Centro)
   refs: [docs/core/manuales/QEL_LLPE_Manual_v1.4.md]
   hash(10): eb85a6c0a9
+
+- (2025-08-30) MICRO-SELLO | A96-250824 | MICRO-SELLO/v1.0 | Micro-Sello · LAB Tecnoalquímico — Cristal 2025-08-29 (CRISTAL @ Centro)
+  refs: [docs/ritual/QEL_MicroSello_A96-250829_LAB-TECNOALQ_Cristal_v1.0.md]
+  hash(10): 5d341d185c
