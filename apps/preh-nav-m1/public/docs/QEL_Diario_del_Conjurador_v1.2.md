@@ -35,3 +35,13 @@ _ECO (delta-only):_ Se cristaliza **Micro-Sello · LAB Tecnoalquímico — Crist
 - HASH(10): 714d48bbaf
 
 _ECO (delta-only):_ Se cristaliza **Manual Extensivo — Atlas Micro-Registro v1.0** con hash **714d48bbaf**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 2025-08-30 — PROMOCIÓN
+- Rubro: TEST
+- Título: TEST promote sin .qelrc
+- Archivo: docs/core/manuales/QEL_LLPE_Manual_v1.4.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_LLPE_Manual_v1.4.md
+- Rumbo: Centro
+- HASH(10): eb85a6c0a9
+
+_ECO (delta-only):_ Se cristaliza **TEST promote sin .qelrc** con hash **eb85a6c0a9**; se actualiza ListadoR y se publica espejo en preh-nav.

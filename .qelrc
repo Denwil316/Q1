@@ -1,3 +1,18 @@
-SEEDI_DEFAULT="A96-250824"
-LISTADOR_PATH_DEFAULT="$PWD/memory/QEL_ListadoR_A96_v1.4.md"
-CUE_PREFIX_DEFAULT="[QEL::ECO[96]::RECALL"
+# .qelrc (sin comillas)
+SEEDI_DEFAULT=A96-250824
+LISTADOR_PATH_DEFAULT=docs/core/QEL_ListadoR_master_v1.0.md
+CUE_PREFIX_DEFAULT=[QEL::ECO[96]::RECALL
+
+# metadatos de sesión (se puedes cambiar cada día/ritual)
+QEL_SESSION_DATE=$(date +%Y-%m-%d)
+QEL_SESSION_ID=$(date +A96-%y%m%d)        # ej. A96-250829
+QEL_SESSION_SOT=PROMOCION/v1.0            # fallback si falta SoT
+QEL_SESSION_VERSION=v1.0                  # fallback si falta Version
+QEL_SESSION_UPDATED=$(date +%Y-%m-%d)     # fecha ISO actual
+
+# opcionales
+QEL_LISTADOR=docs/core/QEL_ListadoR_master_v1.0.md
+QEL_MICROREG=docs/core/atlas_microreg_v1.0.jsonl
+QEL_DEFAULT_RUMBO=C
+QEL_DEFAULT_TAU=0.62
+LC_ALL=C
