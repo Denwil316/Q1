@@ -1,4 +1,4 @@
-# Arboles Iluminados
+# **Arboles Iluminados**
 
 # **Capa 1 — Arquitectura metatextual (el diseño del texto como ritual)**
 
@@ -44,7 +44,7 @@
 
 * **Didáctica encubierta**: el “Ritual del colapso lúdico” es **procedimental** (soplar, cantar al revés, trazar con la sombra). No explica *por qué* funciona; **hace** que funcione al involucrar cuerpo, voz y gesto.
 
-# Sagrado Fundamento
+# **Sagrado Fundamento**
 
 # 
 
@@ -94,6 +94,10 @@
 
 ---
 
+# 
+
+# 
+
 # **Capa 3 — Ingeniería notacional y retórica (cómo se implementa en la experiencia)**
 
 * **Diseño de interacción**: el lector *“juega con una pelota”* que rebota en **nudos** o **huecos**; metáfora clara de **nodos semánticos** y **vacancias** textuales. El sistema pide textos con **espacios funcionales** (vacíos diseñados) para que la **socialización** los llene: la lectura continúa **fuera** del libro.
@@ -128,7 +132,7 @@
 
 Si quieres, en el siguiente paso te propongo una **notación mínima** (p. ej., `E[luz|sombra]·C[0|1]·k(1..9) → {0+9|9+0}`) y un **diagrama de emparejamientos** listo para llevar a página/escena, de modo que cualquier lector pueda *jugar* el Sagrado Fundamento sin perderse. ¿Te late?
 
-# Lenguaje Verdadero
+# **Lenguaje Verdadero**
 
 # **Capa 1 — Ontología y ética de Idriell (qué es y en qué condiciones opera)**
 
@@ -234,13 +238,10 @@ Si quieres, en el siguiente paso te propongo una **notación mínima** (p. ej., 
 
 * **Validación en círculo**: toda frase nueva se **escucha** antes de “usarse”; si no hay cambio encarnado, no es Idriell: es ruido.
 
-Si quieres, cierro con dos cosas a elegir en tu próximo paso:
 
-1. una **hoja-plantilla** lista para imprimir del *Atlas mínimo de los Ocho* (glypha verbal \+ rango tonal \+ guía somática), o
 
-2. un **prototipo de Mandrala** (texto-mandala) para el nexo **Zeh-Lun Ora… (Kael-Vun)**, siguiendo las reglas de escritura en espiral.
 
-# Síntesis
+# **Síntesis**
 
 Vale: voy a poner a orbitar tus tres sistemas —mitopoética (Lýmina/Tejera), matemática (0/1/9) y lingüística (Idriell)— hasta que el propio giro deje ver el centro. No lo nombraré al inicio: emergerá cuando el tejido esté cerrado.
 

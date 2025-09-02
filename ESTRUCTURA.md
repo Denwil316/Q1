@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-08-31 01:55:51_
+_Generado: 2025-09-01 18:50:50_
 
 ```text
 .
@@ -101,15 +101,16 @@ _Generado: 2025-08-31 01:55:51_
 │   │   ├── Tarjetas_Atlas_QEL_v2.2.md
 │   │   └── Tarjetas_Atlas_QEL_v2.3.md
 │   ├── nutria
+│   │   ├── ACL-QEL.md
 │   │   ├── Astra.md
 │   │   ├── Kósmos 8.md
 │   │   ├── Los_Tres_Árboles_Iluminados_DS_v1.1_SUR.md
 │   │   ├── Lýmina.md
 │   │   ├── Matematicas Resonantes (DS).md
 │   │   ├── PCdI.md
-│   │   ├── QEL.md
 │   │   ├── QEL_Poema_Enigma_Lun-Nai_v1.1.md
-│   │   └── QEL_Poema_Enigma_VF_v1.0.md
+│   │   ├── QEL_Poema_Enigma_VF_v1.0.md
+│   │   └── SQ.md
 │   ├── ritual
 │   │   ├── cartas
 │   │   ├── QEL_CueMachineA96_v1.0.txt
@@ -272,5 +273,5 @@ _Generado: 2025-08-31 01:55:51_
 ├── package-lock.json
 └── package.json
 
-41 directories, 227 files
+41 directories, 228 files
 ```
