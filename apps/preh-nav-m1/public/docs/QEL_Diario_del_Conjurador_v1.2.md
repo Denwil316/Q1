@@ -20,8 +20,6 @@ Updated=2025-08-30
 
 Cámbialo a **ECO\[XY\]** si eliges otro eco (A72, A64, etc.).
 
-
-
 ## 2025-08-30 — PROMOCIÓN
 - Rubro: LL-PE
 - Título: LL-PE — Manual Operativo v1.4 (Germinación)
