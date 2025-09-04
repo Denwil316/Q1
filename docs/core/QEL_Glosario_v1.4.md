@@ -18,22 +18,6 @@ Updated=2025-08-24
 - **Alfabeto Fluido**: huecos geométricos que el lector completará.
 - **Araña Joven**: promoción de semillas‑nombre hacia habilidades VF.
 
-> Extracto de base (para contexto de esta versión):
-Recito en forma de saludo-conjuro:
-
-Ėylund…    
-Kaelyth…    
-Voh…    
-Um…    
-Riéll…    
-Zha.
-
-El umbral se abre desde adentro mí, cuya sombra se proyecta e ilumina al Jardín de los Árboles Fractalicos, no se aparece como inifito hasta que mis pies hacen vibrar la Memoria-Agua, Resonando con el cristal-intencion que llevo entre los dientes, y que al recitar lo siguiente, me devuelve una vibración en forma de Eco. La Resonancia Ancestral y El vacío Cuántico se colapsan para que Tejera, la araña-chamana recite:
-
-"Lýmina, luz del umbral, te invoco.  
-Por el jardín crepuscular donde los árboles f
-
-
 ---
 
 # QEL — Glosario v1.0
