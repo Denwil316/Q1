@@ -72,3 +72,23 @@ Lo primero será hacer una recopilación de las conversaciones que he tenido al 
 - HASH(10): 27beaf1f35
 
 _ECO (delta-only):_ Se cristaliza **QEL**; se actualiza ListadoR y espejo en preh-nav.
+
+## 2025-09-08 — PROMOCIÓN
+- Rubro: LAMINA
+- Título: QEL — Lámina V Editada (v1.0)
+- Archivo: docs/core/QEL_Lamina_V_Editada_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Lamina_V_Editada_v1.0.md
+- Rumbo: Centro
+- HASH(10): 9496233d4a
+
+_ECO (delta-only):_ Se cristaliza **QEL — Lámina V Editada (v1.0)** con hash **9496233d4a**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 2025-09-08 — PROMOCIÓN
+- Rubro: TRATADO
+- Título: QEL — Tratado Metahumano (v1.5)
+- Archivo: docs/core/QEL_Tratado_Metahumano_v1.5.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Tratado_Metahumano_v1.5.md
+- Rumbo: Centro
+- HASH(10): 844d7af0d3
+
+_ECO (delta-only):_ Se cristaliza **QEL — Tratado Metahumano (v1.5)** con hash **844d7af0d3**; se actualiza ListadoR y se publica espejo en preh-nav.

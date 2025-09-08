@@ -135,3 +135,11 @@ hash(10): d84061f404
 - (2025-09-07) SISTEMA | A96-250824 | SISTEMA-QEL/v1.0 | QEL — Ontología y Arquitectura Primordial (v1.0) (CRISTAL @ Centro)
   refs: [docs/core/QEL.md]
   hash(10): 27beaf1f35
+
+- (2025-09-08) LAMINA | A96-250824 | LAMINA-V/v1.2 | QEL — Lámina V Editada (v1.0) (CRISTAL @ Centro)
+  refs: [docs/core/QEL_Lamina_V_Editada_v1.0.md]
+  hash(10): 9496233d4a
+
+- (2025-09-08) TRATADO | A96-250824 | TRATADO-METAHUMANO/v1.6 | QEL — Tratado Metahumano (v1.5) (CRISTAL @ Centro)
+  refs: [docs/core/QEL_Tratado_Metahumano_v1.5.md]
+  hash(10): 844d7af0d3

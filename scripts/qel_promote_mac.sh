@@ -2,7 +2,15 @@
 set -euo pipefail
 
 export LC_ALL=C
+
+# define DEBUG antes de usarlo (evita "unbound variable" con set -u)
 DEBUG=false
+# traza si DEBUG=true
+[ "${DEBUG}" = true ] && set -x || true
+
+# anclar a raíz del repo (o cwd si no hay git)
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+cd "$ROOT"
 DIARIO="docs/core/QEL_Diario_del_Conjurador_v1.2.md"
 
 # imprime si --debug
@@ -39,6 +47,9 @@ while [ $# -gt 0 ]; do
     *) echo "arg desconocido: $1" >&2; exit 2;;
   esac
 done
+# validaciones estrictas    
+[ -n "$RUBRO" ]  || { echo "--rubro requerido" >&2; exit 2; }
+[ -n "$TITULO" ] || { echo "--titulo requerido" >&2; exit 2; }
 log(){ $DEBUG && echo "[DBG] $*" >&2 || true; }
 [ -n "$FILE" ] || { echo "--file requerido" >&2; exit 2; }
 [ -f "$FILE" ] || { echo "No existe el archivo: $FILE" >&2; exit 2; }
@@ -93,7 +104,11 @@ log "HASH10=$HASH10"
 if grep -q '^HASH(10):' "$FILE"; then
   sed -i '' "s/^HASH(10):.*/HASH(10): $HASH10/" "$FILE"
 else
-  tail -c1 "$FILE" | read -r _ || echo >> "$FILE"
+  # añade un newline sólo si el archivo no termina en \n
+  if [ -s "$FILE" ]; then
+    last_char="$(tail -c1 "$FILE" 2>/dev/null || printf '\n')"
+    [ "$last_char" = "" ] || [ "$last_char" = $'\n' ] || printf '\n' >> "$FILE"
+  fi
   printf "HASH(10): %s\n" "$HASH10" >> "$FILE"
 fi
 
@@ -136,7 +151,7 @@ cp -f "$FILE" "$PRENAV/" || { echo "No pude copiar $FILE a $PRENAV/" >&2; exit 2
 [ -x scripts/gen_manifest.sh ]     && scripts/gen_manifest.sh     || true
 [ -x scripts/gen_core_manifest.sh ]&& scripts/gen_core_manifest.sh || true
 
-git add "$FILE" "$LISTADOR" "$PRENAV" "$DIARIO"|| true
+git add "$FILE" "$LISTADOR" "$DIARIO" "$PRENAV/$(basename "$FILE")" || true
 git commit -m "QEL($SEED/${RUBRO}): cristaliza — $TITULO · hash=$HASH10" || true
 git push origin PreH || true
 
