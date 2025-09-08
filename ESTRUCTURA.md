@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-09-03 23:37:28_
+_Generado: 2025-09-07 23:16:45_
 
 ```text
 .
@@ -51,10 +51,11 @@ _Generado: 2025-09-03 23:37:28_
 │   │   │   ├── QEL_Manual_Instructivo_v1.1.md
 │   │   │   ├── QEL_Manual_Interpretación_Sombras_v1.3.md
 │   │   │   └── QEL_SoT_Study_Guide_v1.1.md
+│   │   ├── QEL.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   ├── QEL_Formato_VF_AH_v1.4.md
 │   │   ├── QEL_Glosario_v1.4.md
-│   │   ├── QEL_Lamina_V_Detallada_v1.1.md
+│   │   ├── QEL_Lamina_V_Editada_v1.0.md
 │   │   ├── QEL_ListadoR_cue_v1.1.md
 │   │   ├── QEL_ListadoR_master_v1.0.md
 │   │   ├── QEL_MFH_v1.4.md
@@ -71,6 +72,7 @@ _Generado: 2025-09-03 23:37:28_
 │   │   ├── QEL_Diario_del_Conjurador_v1.2_Confirmacion_v0.1.md
 │   │   ├── QEL_Formato_VF_Arbol_Habilidades_v0.1.md
 │   │   ├── QEL_Glosario_v1.0.md
+│   │   ├── QEL_Lamina_V_Detallada_v1.1.md
 │   │   ├── QEL_ListadoR_A96_v0.1.md
 │   │   ├── QEL_ListadoR_A96_v0.2.md
 │   │   ├── QEL_ListadoR_A96_v0.3.md
@@ -108,6 +110,7 @@ _Generado: 2025-09-03 23:37:28_
 │   │   ├── Lýmina.md
 │   │   ├── Matematicas Resonantes (DS).md
 │   │   ├── PCdI.md
+│   │   ├── QEL.md
 │   │   ├── QEL_Poema_Enigma_Lun-Nai_v1.1.md
 │   │   ├── QEL_Poema_Enigma_VF_v1.0.md
 │   │   └── SQ.md
@@ -273,5 +276,5 @@ _Generado: 2025-09-03 23:37:28_
 ├── package-lock.json
 └── package.json
 
-41 directories, 228 files
+41 directories, 231 files
 ```
