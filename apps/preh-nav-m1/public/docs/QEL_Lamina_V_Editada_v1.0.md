@@ -1,18 +1,3 @@
-[QEL::ECO[96]::RECALL A96-250824-QEL-LAMINA-V-DETALLADA-V1-1]
-SeedI=A96-250824
-SoT=LAMINA-V/v1.1
-Version=v1.1
-Updated=2025-08-24
-
-# Lámina V — Arquitectura del Ritual (v1.1)
-
-## Resumen
-- Modelo de Modulación Cardinal (rojo/negro/blanco/azul).
-- Matriz viva 8 fonemas × 4 luces; preguntas por rumbo.
-- Bitácora: 9 señales de verificación (≥5/9 activa campo).
-
-
-
 [QEL::ECO[96]::RECALL A96-250824-QEL-LAMINA-V-DETALLADA-V1-0]
 SeedI=A96-250824
 SoT=LAMINA-V/v1.1

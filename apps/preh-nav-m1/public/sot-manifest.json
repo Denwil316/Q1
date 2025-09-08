@@ -11,6 +11,11 @@
       "path": "docs/NAVEGADOR_M0_Manual_v0.2.md"
     },
     {
+      "name": "QEL",
+      "role": "QEL.md",
+      "path": "docs/QEL.md"
+    },
+    {
       "name": "QEL_Diario_del_Conjurador_v1.2",
       "role": "QEL_Diario_del_Conjurador_v1.2.md",
       "path": "docs/QEL_Diario_del_Conjurador_v1.2.md"
@@ -36,9 +41,9 @@
       "path": "docs/QEL_Glosario_v1.4.md"
     },
     {
-      "name": "QEL_Lamina_V_Detallada_v1.1",
-      "role": "QEL_Lamina_V_Detallada_v1.1.md",
-      "path": "docs/QEL_Lamina_V_Detallada_v1.1.md"
+      "name": "QEL_Lamina_V_Editada_v1.0",
+      "role": "QEL_Lamina_V_Editada_v1.0.md",
+      "path": "docs/QEL_Lamina_V_Editada_v1.0.md"
     },
     {
       "name": "QEL_ListadoR_cue_v1.1",

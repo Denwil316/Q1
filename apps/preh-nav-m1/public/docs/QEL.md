@@ -1,15 +1,3 @@
-cue=[QEL::ECO[96]::RECALL A96-250824-SISTEMA]
-[QEL::ECO[96]::RECALL A96-250830-QEL-TEXTO-PRIMORDIAL-V1-0]
-SeedI=A96-250824
-SoT=SISTEMA/v1.1
-Version=v1.1
-Updated=2025-09-07
-
-# QEL — Ontología y Arquitectura Primordial (v1.0)
-
-**QEL = (Intención sincera) × (Silencio compartido) → (Transformación encarnada).**  
-Tres planos co-vibrantes: Rito (Jardín/Agua/Obsidiana/Cristal), Número (0/1/9; 9 círculos; 9+0/0+9) y Lengua (Idriell; 8 fonemas; nexos).
-
 # **I. Ontología de QEL (qué es, dónde opera, para qué sirve) — Desarrollo 9×**
 
 **Resumen fiel**: QEL es el **compás respiratorio del umbral**: un procedimiento que sincroniza **intención sincera**, **silencio compartido** y **transformación encarnada** para **colapsar** (y **re-abrir**) realidad **narrativa**, **matemática** y **lingüística**.  
@@ -1719,7 +1707,3 @@ Permanece como **técnica** de **contracción/emerger** por excelencia:
 
 Con estas **pruebas**, **preservas** el linaje de cada elemento y evitas el auto-encantamiento. Si la tríada es coherente, la resonancia se comparte, el vacío está bien diseñado, la ética está viva y se siente la **octava arriba**, QEL **ha ocurrido**. Si falta cualquiera de estos pilares, no forzamos: **plegamos** con Tejera, **reabrimos** con Lýmina, y dejamos que el compás nos vuelva a alinear.
 
-
-## Relaciones según SoT
-
-HASH(10): 27beaf1f35

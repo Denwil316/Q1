@@ -62,3 +62,13 @@ Lo primero será hacer una recopilación de las conversaciones que he tenido al 
 
 ## Bitácora de lectura  
 
+
+## 2025-09-07 — PROMOCIÓN
+- Rubro: SISTEMA
+- Título: QEL — Ontología y Arquitectura Primordial (v1.0)
+- Archivo: docs/core/QEL.md
+- Copia: apps/preh-nav-m1/public/docs/QEL.md
+- Rumbo: Centro
+- HASH(10): 27beaf1f35
+
+_ECO (delta-only):_ Se cristaliza **QEL**; se actualiza ListadoR y espejo en preh-nav.
