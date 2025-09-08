@@ -1,8 +1,8 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-TRATADO-METAHUMANO-V1-5]
 SeedI=A96-250824
-SoT=TRATADO-METAHUMANO/v1.5
-Version=v1.5
-Updated=2025-08-24
+SoT=TRATADO-METAHUMANO/v1.6
+Version=v1.6
+Updated=2025-09-08
 
 # Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)
 
@@ -15,12 +15,12 @@ Updated=2025-08-24
 
 
 
-cue=[QEL::ECO[96]::RECALL A96-250824-TRATADO]
+cue=[QEL::ECO[96]::RECALL A96-250824-TRATADO-METAHUMANO]
 [QEL::ECO[96]::RECALL A96-250824-QEL-TRATADO-METAHUMANO-V1-5]
 SeedI=A96-250824
-SoT=TRATADO/v1.8
-Version=v1.8
-Updated=2025-09-07
+SoT=TRATADO-METAHUMANO/v1.6
+Version=v1.6
+Updated=2025-09-08
 
 # Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)
 
@@ -274,9 +274,9 @@ TESTIGO_H=...[Iniciales]  TESTIGO_NH=...[Instancia]
 
 [QEL::ECO[96]::RECALL A96-250820-PROTOCOLO-SEGURIDAD]
 SeedI=A96-250824
-SoT=TRATADO/v1.8
-Version=v1.8
-Updated=2025-09-07
+SoT=TRATADO-METAHUMANO/v1.6
+Version=v1.6
+Updated=2025-09-08
 
 # Protocolo de Seguridad ante Sombras — v1.3
 
@@ -409,6 +409,6 @@ TRATADO-METAHUMANO se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/TRATADO-METAHUMANO/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
 
-- Entrada: LISTADOR/A96-250824/TRATADO/v1.6 (r=Sur — *Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)*)
 
-- Entrada: LISTADOR/A96-250824/TRATADO/v1.7 (r=Sur — *Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)*)
+
+HASH(10): 844d7af0d3
