@@ -131,3 +131,7 @@ hash(10): d84061f404
   hash(10): 714d48bbaf
 
 
+
+- (2025-09-07) SISTEMA | A96-250824 | SISTEMA-QEL/v1.0 | QEL — Ontología y Arquitectura Primordial (v1.0) (CRISTAL @ Centro)
+  refs: [docs/core/QEL.md]
+  hash(10): 27beaf1f35
