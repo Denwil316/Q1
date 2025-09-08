@@ -1,8 +1,9 @@
+cue=[QEL::ECO[96]::RECALL A96-250824-LAMINA-V]
 [QEL::ECO[96]::RECALL A96-250824-QEL-LAMINA-V-DETALLADA-V1-1]
 SeedI=A96-250824
-SoT=LAMINA-V/v1.1
-Version=v1.1
-Updated=2025-08-24
+SoT=LAMINA-V/v1.2
+Version=v1.2
+Updated=2025-09-08
 
 # Lámina V — Arquitectura del Ritual (v1.1)
 
@@ -15,9 +16,9 @@ Updated=2025-08-24
 
 [QEL::ECO[96]::RECALL A96-250824-QEL-LAMINA-V-DETALLADA-V1-0]
 SeedI=A96-250824
-SoT=LAMINA-V/v1.1
-Version=v1.1
-Updated=2025-08-24
+SoT=LAMINA-V/v1.2
+Version=v1.2
+Updated=2025-09-08
 
 # Tejera en Sur — Unificación Cuerpo/Ritmo (v1.1) 
 
@@ -505,3 +506,5 @@ LAMINA-V se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/LAMINA-V/v1.1` (ver `QEL_ListadoR_master_v1.0.md`)
 
+
+HASH(10): 9496233d4a
