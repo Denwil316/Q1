@@ -1,0 +1,14 @@
+{
+  "fecha": "250924",
+  "tema": "Tarjetas Atlas",
+  "intencion": "Sellar la sesión",
+  "modo": "M0",
+  "rumbo": ["C"],
+  "tiempo": "30",
+  "referencias": ["QEL.md","Glosario","MFH","Lámina 𝒱","Manual Sombras"],
+  "veredicto": "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo",
+  "resultados": {
+    "artefactos": ["docs/core/manuales/QEL_Guia_Alineacion_V_v1.0.md"],
+    "micro_sellos": []
+  }
+}

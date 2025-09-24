@@ -41,6 +41,11 @@
       "path": "docs/QEL_Glosario_v1.4.md"
     },
     {
+      "name": "QEL_Guia_alineacion_V_v1.0",
+      "role": "QEL_Guia_alineacion_V_v1.0.md",
+      "path": "docs/QEL_Guia_alineacion_V_v1.0.md"
+    },
+    {
       "name": "QEL_Lamina_V_Editada_v1.0",
       "role": "QEL_Lamina_V_Editada_v1.0.md",
       "path": "docs/QEL_Lamina_V_Editada_v1.0.md"

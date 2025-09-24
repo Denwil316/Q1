@@ -7,7 +7,6 @@
 # Updated=2025-08-26
 
 set -euo pipefail
-
 : "${LC_ALL:=C}"; export LC_ALL
 
 need(){ command -v "$1" >/dev/null 2>&1 || { echo "Falta '$1'"; exit 1; }; }
@@ -19,23 +18,18 @@ UPDATED="$(date '+%Y-%m-%d')"
 SOT_SELLO="SELLOS/v1.0"
 SOT_DIARIO="TRATADO-METAHUMANO/v1.2"
 VEREDICTO="M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
-DIARIO_FILE=""
-LISTADOR_FILE=""
+DIARIO_FILE="" ; LISTADOR_FILE=""
 declare -a OBJ_LIST=()
 
 # NUEVOS: FS y contexto operacional
-MODO="M0"
-TEMA=""
-INTENCION=""
-RUMBO="Centro"     # puede ser string o lista coma
+MODO="M0"; TEMA=""; INTENCION=""
+RUMBO="Centro"     # string o lista coma
 TIEMPO="30"
 REFS=""            # coma-separada
-DELTA_C=""
-DELTA_S=""
+DELTA_C=""; DELTA_S=""
 NO_MENTIRA="true"
-declare -a ARTEFACTOS=()
-declare -a MICROS=()
-FS_JSON=""         # ruta a JSON opcional que llena estos campos
+declare -a ARTEFACTOS=() MICROS=()
+FS_JSON=""
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -50,7 +44,6 @@ while [ $# -gt 0 ]; do
     --obj) OBJ_LIST+=("$2"); shift 2;;
     --diario-file) DIARIO_FILE="$2"; shift 2;;
     --listador-file) LISTADOR_FILE="$2"; shift 2;;
-    # nuevos
     --modo) MODO="$2"; shift 2;;
     --tema) TEMA="$2"; shift 2;;
     --intencion) INTENCION="$2"; shift 2;;
@@ -78,27 +71,27 @@ ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 cd "$ROOT"
 mkdir -p docs/ritual docs/core apps/preh-nav-m1/public/docs memory scripts
 
-# ListadoR dinámico por prefijo del SEED (A96)
 SEED_PREFIX="$(printf "%s" "$SEED" | cut -d- -f1)"
 F_MS="docs/ritual/QEL_MicroSello_${SEED}_PREH-NAV_Cierre_v1.0.md"
 F_VF="docs/ritual/QEL_VF_PRIMA_${SEED}_SEAL_v1.0.md"
 F_DI="${DIARIO_FILE:-docs/core/QEL_Diario_del_Conjurador_v1.2.md}"
 F_LR="${LISTADOR_FILE:-memory/QEL_ListadoR_${SEED_PREFIX}_v1.3.md}"
 
-# ---------- FS desde JSON (si se provee) ----------
-if [ -n "$FS_JSON" ]; then
-  # Campos básicos
+# ---------- FS desde JSON (si se provee y existe) ----------
+if [ -n "$FS_JSON" ] && [ -f "$FS_JSON" ]; then
   FECHA="$(jq -r '.fecha // empty' "$FS_JSON")" || true
   TEMA="$(jq -r '.tema // empty' "$FS_JSON")" || true
   INTENCION="$(jq -r '.intencion // empty' "$FS_JSON")" || true
   MODO="$(jq -r '.modo // empty' "$FS_JSON")" || true
-  RUMBO="$(jq -r '(.rumbo | (if type==\"array\" then join(\",\") else . end)) // empty' "$FS_JSON")" || true
+  RUMBO="$(jq -r '(.rumbo | if type=="array" then join(",") else . end) // empty' "$FS_JSON")" || true
   TIEMPO="$(jq -r '.tiempo // empty' "$FS_JSON")" || true
-  REFS="$(jq -r '.referencias | join(\",\") // empty' "$FS_JSON")" || true
+  REFS="$(jq -r '(.referencias | if type=="array" then join(",") else . end) // empty' "$FS_JSON")" || true
   VEREDICTO="$(jq -r '.veredicto // empty' "$FS_JSON")" || true
-  # Arrays a listas bash
-  mapfile -t ARTEFACTOS < <(jq -r '.resultados.artefactos[]? // empty' "$FS_JSON")
-  mapfile -t MICROS < <(jq -r '.resultados.micro_sellos[]? // empty' "$FS_JSON")
+  # arrays → bash (sin mapfile, compatible con bash 3.2)
+  while IFS= read -r a; do [ -n "$a" ] && ARTEFACTOS+=("$a"); done < <(jq -r '.resultados.artefactos[]? // empty' "$FS_JSON")
+  while IFS= read -r m; do [ -n "$m" ] && MICROS+=("$m"); done < <(jq -r '.resultados.micro_sellos[]? // empty' "$FS_JSON")
+elif [ -n "$FS_JSON" ] && [ ! -f "$FS_JSON" ]; then
+  echo "[WARN] FS JSON no encontrado, ignoro: $FS_JSON" >&2
 fi
 
 # ---------- HASH(10) canónico ----------
@@ -114,8 +107,8 @@ V_DICT="" ; OBJ_YAML=""
 for entry in "${OBJ_LIST[@]}"; do
   key="$(printf "%s" "${entry%%=*}" | xargs)"
   val="$(printf "%s" "${entry#*=}"   | xargs)"
-  val="${val%\"}" ; val="${val#\"}"
-  if [ -n "$V_DICT" ]; then V_DICT="${V_DICT}, "; fi
+  val="${val%\"}"; val="${val#\"}"
+  [ -n "$V_DICT" ] && V_DICT="${V_DICT}, "
   V_DICT="${V_DICT}${key}: ${val}"
   printf -v OBJ_YAML '%s\n  - %s: %s' "$OBJ_YAML" "$key" "$val"
 done
@@ -135,10 +128,9 @@ yaml_list_from_array(){
   done
 }
 rumbo_list_bracket(){
-  # convierte "S" o "N,S" a "[S]" o "[N, S]" para VF.PRIMA
-  if [[ "$RUMBO" == *","* ]]; then
+  if [[ "${RUMBO}" == *","* ]]; then
     IFS=',' read -r -a arr <<< "$RUMBO"
-    local out="["; local first=1
+    local out="[" first=1
     for r in "${arr[@]}"; do
       r="$(printf "%s" "$r" | xargs)"
       if [ $first -eq 1 ]; then out="${out}${r}"; first=0; else out="${out}, ${r}"; fi
@@ -188,7 +180,7 @@ else
   grep -q '^HASH(10): ' "$F_MS" || printf '\nHASH(10): %s\n' "$HASH10" >> "$F_MS"
 fi
 
-# ---------- 3) Diario v1.2 (FS del día) ----------
+# ---------- 3) Diario v1.2 ----------
 if [ ! -f "$F_DI" ]; then
   cat > "$F_DI" <<EOF
 [QEL::ECO[96]::RECALL ${SEED}-DIARIO]
@@ -245,7 +237,7 @@ $(yaml_list_from_array "${MICROS[@]}")
 HASH(10): ${HASH10}
 EOF
 
-# ---------- 4) ListadoR (crear/actualizar) ----------
+# ---------- 4) ListadoR ----------
 if [ ! -f "$F_LR" ]; then
   cat > "$F_LR" <<EOF
 [QEL::ECO[96]::RECALL ${SEED}-LISTADOR]
@@ -258,8 +250,8 @@ Updated=${UPDATED}
 # Registro cronológico de sellos, cierres y decisiones (M0→M2).
 EOF
 else
-  # BSD sed compat
-  sed -i '' "s/^Updated=.*/Updated=${UPDATED}/" "$F_LR" 2>/dev/null || sed -i "s/^Updated=.*/Updated=${UPDATED}/" "$F_LR" || true
+  # BSD/GNU sed
+  (sed -i '' "s/^Updated=.*/Updated=${UPDATED}/" "$F_LR" 2>/dev/null) || sed -i "s/^Updated=.*/Updated=${UPDATED}/" "$F_LR" || true
 fi
 
 TAG="## ${FECHA} · ${MODO} · ${TEMA:-PREH-NAV}"
@@ -273,10 +265,7 @@ if ! grep -qF "$TAG" "$F_LR"; then
     echo "  - docs/ritual/$(basename "$F_MS")"
     echo "  - docs/ritual/$(basename "$F_VF")"
     echo "  - docs/core/$(basename "$F_DI")"
-    # anexar artefactos como refs adicionales si son rutas
-    for a in "${ARTEFACTOS[@]}"; do
-      [ -n "$a" ] && printf "  - %s\n" "$a"
-    done
+    for a in "${ARTEFACTOS[@]}"; do [ -n "$a" ] && printf "  - %s\n" "$a"; done
     cat <<EOF2
 Resultados:
   veredicto: "${VEREDICTO}"
@@ -290,21 +279,18 @@ fi
 
 # ---------- 5) Exponer a PREH-NAV y manifest ----------
 cp "$F_MS" "$F_VF" "$F_DI" "$F_LR" apps/preh-nav-m1/public/docs/ 2>/dev/null || true
-# expón artefactos si están dentro de docs/ o memory/
 for a in "${ARTEFACTOS[@]}"; do
   if [ -f "$a" ]; then
-    base="$(basename "$a")"
-    cp -f "$a" "apps/preh-nav-m1/public/docs/${base}" 2>/dev/null || true
+    cp -f "$a" "apps/preh-nav-m1/public/docs/$(basename "$a")" 2>/dev/null || true
   fi
 done
 
-# manifest de la app
 if [ -f "scripts/gen_manifest.sh" ]; then
   ./scripts/gen_manifest.sh || true
 elif [ -f "apps/preh-nav-m1/scripts/generate_manifest.mjs" ]; then
   ( cd apps/preh-nav-m1 && node scripts/generate_manifest.mjs ) || true
 fi
-# manifest core (docs/core/QEL_SoT_Manifest_v0.8.json), si existe
+
 if [ -f "scripts/gen_core_manifest.sh" ]; then
   ./scripts/gen_core_manifest.sh || true
 elif [ -f "scripts/gen_core_manifest.mjs" ]; then
@@ -313,9 +299,7 @@ fi
 
 # ---------- 6) Commit + push ----------
 git add "$F_MS" "$F_VF" "$F_DI" "$F_LR" apps/preh-nav-m1/public/docs 2>/dev/null || true
-# añadir artefactos si existen
 for a in "${ARTEFACTOS[@]}"; do git add "$a" 2>/dev/null || true; done
-# incluir manifest core si se regeneró
 git add docs/core/QEL_SoT_Manifest_v0.8.json 2>/dev/null || true
 
 git commit -m "QEL: cierre ${FECHA} — FS(${MODO}/${TEMA}); VF.PRIMA, MicroSello, Diario, ListadoR; HASH(10)=${HASH10}." || true
