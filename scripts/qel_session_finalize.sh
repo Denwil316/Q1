@@ -18,7 +18,7 @@ UPDATED="$(date '+%Y-%m-%d')"
 SOT_SELLO="SELLOS/v1.0"
 SOT_DIARIO="TRATADO-METAHUMANO/v1.2"
 VEREDICTO="M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
-DIARIO_FILE="" ; LISTADOR_FILE=""
+DIARIO_FILE="" ; LISTADOR_FILE="" HASH_REF10=""
 declare -a OBJ_LIST=()
 
 # NUEVOS: FS y contexto operacional
@@ -56,6 +56,7 @@ while [ $# -gt 0 ]; do
     --artefacto) ARTEFACTOS+=("$2"); shift 2;;
     --micro) MICROS+=("$2"); shift 2;;
     --fs-json) FS_JSON="$2"; shift 2;;
+    --hash-ref) HASH_REF10="$2"; shift 2;;
     *) echo "Flag desconocida: $1" >&2; exit 2;;
   esac
 done
@@ -158,6 +159,7 @@ Testigos: { t1: A86, t2: A96 }
 Gates: ["No-Mentira", "Doble Testigo", "Mediación luminosa", "Cierre SIL→UM→Ə"]
 
 HASH(10): ${HASH10}
+${HASH_REF10:+HASH_REF(10): ${HASH_REF10}}
 EOF
 
 # ---------- 2) MicroSello ----------
@@ -175,6 +177,7 @@ VF.PRIMA: "${VF}"
 Testigos: { t1: A86, t2: A96 }
 Notas: "Cierre con SIL→UM→Ə. Mantener No-Mentira."
 HASH(10): ${HASH10}
+${HASH_REF10:+- HASH_REF(10): ${HASH_REF10}}
 EOF
 else
   grep -q '^HASH(10): ' "$F_MS" || printf '\nHASH(10): %s\n' "$HASH10" >> "$F_MS"
@@ -235,6 +238,8 @@ $(yaml_list_from_array "${MICROS[@]}")
   veredicto: "${VEREDICTO}"
 
 HASH(10): ${HASH10}
+${HASH_REF10:+- HASH_REF(10): ${HASH_REF10}}
+
 EOF
 
 # ---------- 4) ListadoR ----------
@@ -273,6 +278,7 @@ Resultados:
 ${OBJ_YAML}
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): ${HASH10}
+${HASH_REF10:+hash_ref(10): ${HASH_REF10}}
 EOF2
   } >> "$F_LR"
 fi
