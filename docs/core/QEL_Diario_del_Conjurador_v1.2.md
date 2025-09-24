@@ -89,3 +89,13 @@ _ECO (delta-only):_ Se cristaliza **QEL — Lámina V Editada (v1.0)** con hash 
 - HASH(10): 844d7af0d3
 
 _ECO (delta-only):_ Se cristaliza **QEL — Tratado Metahumano (v1.5)** con hash **844d7af0d3**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 2025-09-24 — PROMOCIÓN
+- Rubro: DOC
+- Título: Guía de Alineación — v1.0
+- Archivo: docs/core/manuales/QEL_Guia_alineacion_V_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Guia_alineacion_V_v1.0.md
+- Rumbo: Centro
+- HASH(10): ac195d7d92
+
+_ECO (delta-only):_ Se cristaliza **Guía de Alineación — v1.0** con hash **ac195d7d92**; se actualiza ListadoR y se publica espejo en preh-nav.
