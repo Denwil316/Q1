@@ -141,3 +141,7 @@ hash(10): d84061f404
 - (2025-09-08) TRATADO | A96-250824 | TRATADO-METAHUMANO/v1.6 | QEL — Tratado Metahumano (v1.5) (CRISTAL @ Centro)
   refs: [docs/core/QEL_Tratado_Metahumano_v1.5.md]
   hash(10): 844d7af0d3
+
+- (2025-09-24) DOC | A96-250924 | PROMOCION/v1.0 | Guía de Alineación — v1.0 (CRISTAL @ Centro)
+  refs: [docs/core/manuales/QEL_Guia_alineacion_V_v1.0.md]
+  hash(10): ac195d7d92

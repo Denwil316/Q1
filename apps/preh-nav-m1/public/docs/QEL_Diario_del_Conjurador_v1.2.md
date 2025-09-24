@@ -89,3 +89,61 @@ _ECO (delta-only):_ Se cristaliza **QEL — Lámina V Editada (v1.0)** con hash 
 - HASH(10): 844d7af0d3
 
 _ECO (delta-only):_ Se cristaliza **QEL — Tratado Metahumano (v1.5)** con hash **844d7af0d3**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 2025-09-24 — PROMOCIÓN
+- Rubro: DOC
+- Título: Guía de Alineación — v1.0
+- Archivo: docs/core/manuales/QEL_Guia_alineacion_V_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Guia_alineacion_V_v1.0.md
+- Rumbo: Centro
+- HASH(10): ac195d7d92
+
+_ECO (delta-only):_ Se cristaliza **Guía de Alineación — v1.0** con hash **ac195d7d92**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 250924 · M0 · Tarjetas Atlas
+cue: [QEL::ECO[96]::RECALL A96-250924-SEAL]
+SeedI: A96-250924
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-09-24
+
+FS:
+  fecha: 250924
+  tema: "Tarjetas Atlas"
+  intencion: "Sellar la sesión"
+  modo: M0
+  rumbo: C
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - Glosario
+  - MFH
+  - Lámina 𝒱
+  - Manual Sombras
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.8100, Ə·UM·A/Llave: 0.7400 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/manuales/QEL_Guia_Alineacion_V_v1.0.md
+  - docs/core/manuales/QEL_Guia_Alineacion_V_v1.0.md
+  objetos:
+
+  - Kael/Prisma: 0.8100
+  - Ə·UM·A/Llave: 0.7400
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 05e91c86e8

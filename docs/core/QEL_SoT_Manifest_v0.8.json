@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-09-08T06:22:12.550Z",
+  "Updated": "2025-09-24T20:13:32.238Z",
   "manifest": [
     {
       "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
@@ -35,7 +35,7 @@
       "sot": "DIARIO/v1.2",
       "version": "v1.2",
       "updated": "2025-08-30",
-      "hash10": null,
+      "hash10": "05e91c86e8",
       "kind": "core-doc"
     },
     {
@@ -96,6 +96,18 @@
       "version": "v1.5",
       "updated": "2025-08-24",
       "hash10": null,
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_Guia_alineacion_V_v1.0.md",
+      "path": "docs/core/manuales/QEL_Guia_alineacion_V_v1.0.md",
+      "title": "**Guía de Alineación 𝒱 (canon) — v1.0**",
+      "cue": "\\[QEL::ECO\\[96\\]::RECALL A96-250924-GUIA-ALINEACION-V\\]",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": "ac195d7d92",
       "kind": "core-doc"
     },
     {

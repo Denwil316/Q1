@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-09-24 13:57:48_
+_Generado: 2025-09-24 14:13:36_
 
 ```text
 .
@@ -125,12 +125,14 @@ _Generado: 2025-09-24 13:57:48_
 |   |   |-- QEL_MicroSello_A96-250824_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_MicroSello_A96-250824_VCALC_UNIFIED_SEAL_v.10.md
 |   |   |-- QEL_MicroSello_A96-250829_LAB-TECNOALQ_Cristal_v1.0.md
+|   |   |-- QEL_MicroSello_A96-250924_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
 |   |   |-- QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
 |   |   |-- QEL_Sello_A96-250824_Centro_Sur_Norte_EIA-A-THON_Cierre_SIL-UM-\306\217v1.0.md
 |   |   |-- QEL_Sellos_y_Cues_Idriell_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
+|   |   |-- QEL_VF_PRIMA_A96-250924_SEAL_v1.0.md
 |   |   `-- qel_manual_vcalc_v_1_0.md
 |   `-- tools
 |       |-- QEL_Aurora_Spec_v1.0.md
@@ -160,6 +162,7 @@ _Generado: 2025-09-24 13:57:48_
 |   |   |-- CUE-RECOVERY_Schema_v0.2.json
 |   |   `-- Cue_METAHUMANO_TRATADO_v0.1.txt
 |   |-- Esculpido_en_Qel_Guia_de_Trabajo_v0.3_completo.md
+|   |-- FS_250924.json
 |   |-- Listado_CUEs_FormatoR_Q1+A96_v0.1.md
 |   |-- Listado_CUEs_FormatoR_Q1+A96_v0.2.md
 |   |-- Listado_CUEs_FormatoR_Q1+A96_v0.3.md
@@ -279,5 +282,5 @@ _Generado: 2025-09-24 13:57:48_
 |-- package-lock.json
 `-- package.json
 
-41 directories, 234 files
+41 directories, 237 files
 ```
