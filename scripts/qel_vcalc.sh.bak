@@ -35,24 +35,6 @@ lower(){ tr '[:upper:]' '[:lower:]' <<<"$1"; }
 upper(){ tr '[:lower:]' '[:upper:]' <<<"$1"; }
 json_escape(){ local s=$1; s=${s//\\/\\\\}; s=${s//\"/\\\"}; s=${s//$'\n'/\\n}; echo -n "$s"; }
 
-# ---------- UID ε (determinista; no altera 𝒱_canónica) ----------
-uid_hash(){ # $1=key
-  if command -v shasum >/dev/null 2>&1; then
-    printf "%s" "$1" | shasum -a 1 | awk '{print $1}'
-  else
-    printf "%s" "$1" | openssl dgst -sha1 | awk '{print $2}'
-  fi
-}
-uid_eps(){ # $1=key  $2=max (def QEL_UID_EPS_MAX o 0.000005)
-  local key="$1" max="${2:-${QEL_UID_EPS_MAX:-0.000005}}"
-  local h sub n maxn
-  h="$(uid_hash "$key")"
-  sub="${h:0:6}"                # 24 bits
-  n=$((16#$sub))                # 0..16777215
-  maxn=$((16#FFFFFF))
-  awk -v n="$n" -v maxn="$maxn" -v max="$max" 'BEGIN{printf "%.8f", (n/maxn)*max}'
-}
-
 usage_core(){
 cat <<USAGE
 Uso (core):
@@ -67,7 +49,7 @@ Subcomandos:
 Flags core:
   --obj "Fonema/Objeto"             (requerido)
   --afinidad [0..1]                 (def=0.60)
-  --rumbo N|O|E|W|S|C                 (def=C)
+  --rumbo N|O|W|S|C                 (def=C)
   --clase comun|raro|singular|unico (def=singular)
   --gates "mediacion[,doble][,aurora]"
   --ruido [0..1] (clip 0.15)        (def=0.00)
@@ -79,21 +61,19 @@ USAGE
 
 # ---------- Tablas SoT (operativas) ----------
 chi_r(){ case "$(upper "$1")" in
-O|E) echo 1.10;; # Oriente / Este
-N) echo 1.05;; # Norte
-C) echo 1.00;; # Centro
-W) echo 0.95;; # Occidente
-S) echo 0.90;; # Sur
-*) echo "";;
+  N|C) echo 1.00;;
+  O|E) echo 0.95;;
+  W)   echo 0.90;;
+  S)   echo 0.88;;
+  *)   echo "";;
 esac; }
 
 H_k(){ case "$(lower "$1")" in
-basica|básica) echo 0.50;;
-"poco comun"|"poco común"|poco-comun|poco-común) echo 0.80;;
-rara|raro|singular|unico|único) echo 1.00;;
-metalica|metálica) echo 1.20;;
-obsidiana) echo 1.60;;
-*) echo "";;
+  comun|básica|basica)        echo 0.85;;
+  raro|poco-comun|poco-común) echo 0.92;;
+  singular|rara)              echo 1.00;;
+  unico|único)                echo 1.00;;
+  *)                          echo "";;
 esac; }
 
 gates_product(){
@@ -105,7 +85,7 @@ gates_product(){
     case "$g" in
       mediacion|mediación)    MED=1.00;;
       doble|doble_testigo)    DOB=1.00;;
-      aurora|contacto_aurora) AUR=1.00;;
+      aurora|contacto_aurora) AUR=0.95;;
       "" ) :;;
     esac
   done
@@ -164,19 +144,10 @@ core_main(){
   FD="$(fdelta "$DC" "$DS")"
   FR="$(fruido "$R")"
   V="$(compute_v "$A" "$XR" "$HK" "$GP" "$FD" "$FR")"
-  V_CANON="$(awk -v A="$A" -v XR="$XR" -v HK="$HK" -v GP="$GP" 'BEGIN{v=A*XR*HK*GP; if(v<0)v=0; if(v>1)v=1; printf "%.4f", v}')"
-  V_OPER="$(awk -v Vc="$V_CANON" -v FD="$FD" -v FR="$FR" 'BEGIN{v=Vc*FD*FR; if(v<0)v=0; if(v>1)v=1; printf "%.4f", v}')"
-  
-# UID determinista (solo desempate; no usar para τ)
-local UID_KEY UID_EPS V_UID_CANON V_UID_OPER
-UID_KEY="obj=$(trim "$OBJ")|A=$(awk -v x="$A" 'BEGIN{printf "%.4f", x+0}')|rumbo=$(upper "$RUM")|clase=$(lower "$K")|gates=$(lower "$(echo "$G" | tr -s " ," "," )")"
-UID_EPS="$(uid_eps "$UID_KEY")"
-V_UID_CANON="$(awk -v v="$V_CANON" -v e="$UID_EPS" 'BEGIN{u=v+e; if(u>1)u=1; printf "%.6f", u}')"
-V_UID_OPER="$(awk -v v="$V_OPER"  -v e="$UID_EPS" 'BEGIN{u=v+e; if(u>1)u=1; printf "%.6f", u}')"
 
   case "$EMIT" in
     quiet) echo "$V";;
-   json)
+    json)
       printf '{'
       printf '"obj":"%s",' "$(json_escape "$OBJ")"
       printf '"A":%s,'   "$(awk -v x="$A"  'BEGIN{printf "%.3f", x+0}')"
@@ -187,12 +158,7 @@ V_UID_OPER="$(awk -v v="$V_OPER"  -v e="$UID_EPS" 'BEGIN{u=v+e; if(u>1)u=1; prin
       printf '"fdelta":%s,"fruido":%s,' \
             "$(awk -v x="$FD" 'BEGIN{printf "%.2f", x+0}')" \
             "$(awk -v x="$FR" 'BEGIN{printf "%.2f", x+0}')"
-      printf '"uid_key":"%s",' "$(json_escape "$UID_KEY")"
-      printf '"uid_epsilon":%s,' "$(awk -v x="$UID_EPS" 'BEGIN{printf "%.8f", x+0}')"
-      printf '"V_canon":%s,' "$(awk -v x="$V_CANON" 'BEGIN{printf "%.4f", x+0}')"
-      printf '"V_oper":%s,'  "$(awk -v x="$V_OPER"  'BEGIN{printf "%.4f", x+0}')"
-      printf '"V_uid_canon":%s,' "$(awk -v x="$V_UID_CANON" 'BEGIN{printf "%.6f", x+0}')"
-      printf '"V_uid_oper":%s'  "$(awk -v x="$V_UID_OPER"  'BEGIN{printf "%.6f", x+0}')"
+      printf '"V":%s'     "$(awk -v x="$V"  'BEGIN{printf "%.2f", x+0}')"
       printf '}\n'
       ;;
     pretty|*)
@@ -204,11 +170,8 @@ H_k (clase $K): $HK
 Π_gates: $GP   (from: $G)
 ΔC/ΔS factor: $FD   | Ruido factor: $FR
 -----------------------------------------------
-𝒱_canónica: $V_CANON
-𝒱_operativa (×Δ,×ruido): $V_OPER
-UID ε: $UID_EPS  |  𝒱_uid (canon): $V_UID_CANON
------------------------------------------------
-Sugerencia --obj: "${OBJ}=${V_CANON}"
+𝒱 (clip 0..1): $V
+Sugerencia --obj: "${OBJ}=${V}"
 OUT
       ;;
   esac
@@ -264,15 +227,15 @@ H
   GP="$(gates_product "$G")"
   FD="$(fdelta "$DC" "$DS")"
   FR="$(fruido "$R")"
-  V6=$(awk -v A="$A" -v XR="$XR" -v HK="$HK" -v GP="$GP" -v FD="$FD" -v FR="$FR" 'BEGIN{v=A*XR*HK*GP*FD*FR; if(v<0)v=0; if(v>1)v=1; printf "%.6f", v}')
-  
+  V="$(compute_v "$A" "$XR" "$HK" "$GP" "$FD" "$FR")"
+
   printf '{'
   printf '"obj":"%s",' "$(json_escape "$OBJ")"
   printf '"A":%.3f,' "$A"
   printf '"chi_r":%.2f,"H_k":%.2f,' "$XR" "$HK"
   printf '"gates_p":%.2f,' "$GP"
   printf '"fdelta":%.2f,"fruido":%.2f,' "$FD" "$FR"
-  printf '"V":%s' "$V6"
+  printf '"V":%.2f' "$V"
   printf '}\n'
 }
 
@@ -281,10 +244,11 @@ io_main(){
   echo "┌─ VCALC·IO (SoT HERRAMIENTAS/v0.2)"; echo "└─ valores por defecto entre [ ]"
   read -r -p "obj (Fonema/Objeto) [Kael/Prisma]: " OBJ; OBJ="${OBJ:-Kael/Prisma}"
   read -r -p "afinidad A [0.60]: " A; A="${A:-0.60}"; A="$(echo "$A" | sed 's/,/./g')"
-  echo "χ_r (operativo): O/E=1.10, N=1.05, C=1.00, W=0.95, S=0.90"
-  read -r -p "rumbo (N/O/E/W/S/C) [C]: " RUM; RUM="${RUM:-C}"
-  echo "H_k: básica 0.50 · poco común 0.80 · rara/singular/único 1.00 · metálica 1.20 · obsidiana 1.60"
-  echo "Gates: mediacion(1.00|0.80), doble(1.00|0.90), aurora(1.00)"
+  echo "χ_r (operativo): N/C=1.00, O=0.95, W=0.90, S=0.88"
+  read -r -p "rumbo (N/O/W/S/C) [C]: " RUM; RUM="${RUM:-C}"
+  echo "H_k: comun 0.85 · raro 0.92 · singular/unico 1.00 (clip ≤1)"
+  read -r -p "clase (comun|raro|singular|unico) [singular]: " K; K="${K:-singular}"
+  echo "Gates: mediacion(1.00|0.80), doble(1.00|0.90), aurora(0.95)"
   read -r -p "gates (lista coma) []: " G
   read -r -p "ruido ρ [0..0.15] [0]: " R; R="${R:-0}"; R="$(echo "$R" | sed 's/,/./g')"
   read -r -p "delta-c (up|flat|down) [flat]: " DC; DC="${DC:-flat}"

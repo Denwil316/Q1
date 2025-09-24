@@ -32,8 +32,8 @@ function appendListadoR(listadoPath, linea){
   fs.appendFileSync(listadoPath, hdr + linea + '\n', 'utf8');
 }
 const TAU = 0.62;
-const CHI_R = { O:1.10, E:1.10, N:1.05, C:1.00, W:0.95, S:0.90 };
-const H_K = { 'basica':0.50, 'básica':0.50,'poco-comun':0.80, 'poco-común':0.80, 'poco comun':0.80, 'poco común':0.80,'rara':1.00, 'raro':1.00, 'singular':1.00, 'unico':1.00, 'único':1.00,'metalica':1.20, 'metálica':1.20,'obsidiana':1.60};
+const CHI_R = { N:1.00, C:1.00, O:0.95, E:0.95, W:0.90, S:0.88 };
+const H_K   = { comun:0.85, 'poco-comun':0.92, 'poco-común':0.92, raro:0.92, singular:1.00, unico:1.00, 'único':1.00 };
 const RUB = { canonica:0.95, 'canónica':0.95, directa:0.80, indirecta:0.60 };
 const MAT = { // fonema -> altas/medias/bajas
   'Ə': { alta:['vacio','éter','espacio'], media:['plasma'], baja:['solido','sólido','mineral','organico','orgánico'] },
@@ -47,12 +47,7 @@ const MAT = { // fonema -> altas/medias/bajas
 
 function sha1(x){ return crypto.createHash('sha1').update(String(x)).digest('hex'); }
 function pick(arr, seedHex){ const n=parseInt(seedHex.slice(0,8),16); return arr[n%arr.length]; }
-function readAny(p){
-  const s = fs.readFileSync(p,'utf8');
-  try { return JSON.parse(s); } catch { /* texto plano */ }
-  return s;
-}
-
+function readAny(path){ const s = fs.readFileSync(path,'utf8'); try{return JSON.parse(s)}catch{}; return s;
 function harvestSnippetsDir(dirPath){
   const allow = new Set(['.md','.txt','.yaml','.yml','.json']);
   const bags = {inv:[], umbral:[], pista:[], prueba:[]};
@@ -80,7 +75,7 @@ function harvestSnippetsDir(dirPath){
     });
   }
   return bags;
-}
+} }
 function parseVF(src){ // JSON o YAML plano sencillo
   if(typeof src==='object') return src;
   const o={}; src.split(/\r?\n/).forEach(l=>{const m=l.match(/^\s*([A-Za-z0-9_.-]+)\s*:\s*(.+?)\s*$/); if(m)o[m[1]]=m[2];});
@@ -130,23 +125,22 @@ function buildPE(VF, materia){
     validador={modo:'calc',data:{opciones:['Ə·UM·A','Ə·UM·SIL','UM·A·SIL']}}; meta={seed,vf_ref:cue,materia};
   }
   const xr=CHI_R[r]||1.00, hk=H_K[k]||1.00;
- const gp = (()=>{ 
-  let med=1.00, dob=1.00, aur=1.00;
-  const g=(gates||[]).map(x=>String(x).toLowerCase());
-  if(!(g.includes('mediacion')||g.includes('mediación'))) med=0.80;
-  if(!g.includes('doble')) dob=0.90;
-  if(g.includes('aurora')||g.includes('contacto_aurora')) aur=1.00; // en lugar de 0.95
-  return med*dob*aur;
-})();
+  const gp = (()=>{ // gates product (mediación, doble, aurora neutralizante)
+    let med=1.00,dob=1.00,aur=1.00;
+    const g=(gates||[]).map(x=>String(x).toLowerCase());
+    if(!(g.includes('mediacion')||g.includes('mediación'))) med=0.80;
+    if(!g.includes('doble')) dob=0.90;
+    if(g.includes('aurora')||g.includes('contacto_aurora')) aur=0.95;
+    return med*dob*aur;
+  })();
   const A_auto = A_from_pw_materia(p,w,materia||'');
   return { pe:{id,tipo,texto,validador,meta}, vf:{prima,cue,p,w,O,r,k,gates, xr,hk,gp, A_auto, materia} };
 }
 
 function vcalcJSON({obj,A,r,k,gates,ruido,dc,ds}){
-  const cmd = `LC_ALL=C LC_NUMERIC=C scripts/qel_vcalc.sh --obj "${obj}" --afinidad ${A.toFixed(3)} --rumbo ${r} --clase ${k} --gates "${(gates||[]).join(',')}" --ruido ${ruido||0} --delta-c ${dc} --delta-s ${ds} --emit json`;
+  const cmd = `LC_ALL=C LC_NUMERIC=C scripts/qel vcalc --obj "${obj}" --afinidad ${A.toFixed(3)} --rumbo ${r} --clase ${k} --gates "${gates.join(',')}" --ruido ${ruido||0} --delta-c ${dc} --delta-s ${ds} --emit json`;
   const res = spawnSync('bash',['-lc',cmd],{encoding:'utf8'});
-  try { return JSON.parse((res.stdout||'').trim()); }
-  catch { return {error:'vcalc-json', raw:res.stdout}; }
+  try{ return JSON.parse((res.stdout||'').trim()) }catch{ return {error:'vcalc-json', raw:res.stdout} }
 }
 
 function main(){
@@ -197,121 +191,61 @@ function main(){
   if(mode==='mask'){
     const mask=String(data).trim().toUpperCase();
     ok=(String(answer).trim().split(/\s|—|-/)[0].toUpperCase()===mask);
-} else {
-  const opciones = (data.opciones || []);
-  let best = null, bestV = -1, bestUid = -1;
-
-  for (const opt of opciones) {
-    const w = (built.vf.w || [0.40,0.35,0.25]);
-    const A_opt = A_from_pw_materia(opt, w, built.vf.materia || '');
-    const out = vcalcJSON({
-      obj: built.vf.O, A: A_opt, r: built.vf.r, k: built.vf.k,
-      gates: built.vf.gates, ruido, dc, ds
-    });
-
-    const Vcanon = Number(out?.V_canon ?? out?.V ?? 0);
-    const Vuid = Number(out?.V_uid_canon ?? Vcanon);
-
-    if (Vcanon > bestV || (Vcanon === bestV && Vuid > bestUid)) {
-      bestV = Vcanon; bestUid = Vuid; best = opt;
+  } else {
+    const opciones=(data.opciones||[]); let best=null,bV=-1;
+    for(const opt of opciones){
+      const out=vcalcJSON({obj:built.vf.O, A:built.vf.A_auto, r:built.vf.r, k:built.vf.k, gates:built.vf.gates, ruido, dc:dc, ds:ds});
+      const V=Number(out?.V||0); if(V>bV){bV=V; best=opt;}
     }
+    ok=(String(answer).trim().split(/\s|—|-/)[0].toUpperCase()===(best||'').toUpperCase());
   }
-  ok = (String(answer).trim().split(/\s|—|-/)[0].toUpperCase() === (best||'').toUpperCase());
-}
   if(!ok){ console.error(JSON.stringify({error:'validator_fail'},null,2)); process.exit(1); }
 
   // vcalc final
-const out = vcalcJSON({
-  obj:built.vf.O, A:built.vf.A_auto, r:built.vf.r, k:built.vf.k, 
-  gates:built.vf.gates, ruido, dc, ds
-});
-const Vcanon = Number(out?.V_canon ?? out?.V ?? 0);
-const Vuid = Number(out?.V_uid_canon ?? Vcanon);
+  const out=vcalcJSON({obj:built.vf.O, A:built.vf.A_auto, r:built.vf.r, k:built.vf.k, gates:built.vf.gates, ruido, dc:dc, ds:ds});
+  const V=Number(out?.V||0); if(!(V>=tau)){ console.error(JSON.stringify({error:'V<threshold', V, tau},null,2)); process.exit(2); }
 
-if (!(Vcanon >= tau)) {
-  console.error(JSON.stringify({ error: 'V<threshold', V: Vcanon, tau }, null, 2));
-  process.exit(2);
-}
+  // Mint
+  const seed=built.pe.meta.seed; const hid = (preset==='Puente')? `HAB::K8-PT-NEXO-${seed.slice(0,6).toUpperCase()}` : `HAB::K8-LL-APERT-${seed.slice(0,6).toUpperCase()}`;
+  const nombre=(preset==='Puente')? "Tejido de Umbral (Nexo I)" : "Llave de Matrices (Apertura I)";
+  const hab={ id:hid, nombre, vf_ref:built.vf.cue||"VF::?", pe_ref:built.pe.id, efecto:(preset==='Puente')?["cierre_en:SIL","ΔS:+","residuo:0"]:["abrir_sello:1","ΔC:+","ρ≤0.02"], params:{ r:built.vf.r, O:built.vf.O, V, materia:built.vf.materia }, cierre:"SIL→UM→Ə" };
+  if(emit==='md'){ console.log(`\n---\n**HABILIDAD CRISTALIZADA**\n\n- ID: ${hab.id}\n- Nombre: ${hab.nombre}\n- PE: ${hab.pe_ref}\n- V: ${V.toFixed(2)} (τ=${tau})\n- Materia: ${built.vf.materia||'-'}\n- Efecto: ${hab.efecto.join(', ')}\n`); }
+  else{ console.log(JSON.stringify({habilidad:hab, V, tau},null,2)); }
+  if(save){
+  // destinos por defecto si no te pasan --out-*
+  const triSafe = (built.vf.p||'').replace(/[·\.]/g,'-') || 'triada';
+  const hash10 = (built.vf.hash10 || (built.pe.id||'').replace(/^PE::/,'').slice(0,10) || '0000000000');
+  const pePath  = outPe  || `docs/pe/${(built.pe.id||'PE').replace(/[:]/g,'')}.md`;
+  const habPath = outHab || `docs/habilidades/${triSafe}/${built.vf.O}/${built.vf.r}/${built.vf.k}/${hash10}.md`;
 
-// Mint (build habilidad) — define primero seed/hid/nombre
-  const seed   = built.pe.meta.seed;
-  const hid    = (preset === 'Puente')
-    ? `HAB::K8-PT-NEXO-${seed.slice(0,6).toUpperCase()}`
-    : `HAB::K8-LL-APERT-${seed.slice(0,6).toUpperCase()}`;
-  const nombre = (preset === 'Puente')
-    ? "Tejido de Umbral (Nexo I)"
-    : "Llave de Matrices (Apertura I)";
-
- // ÚNICA definición de hab (incluye Vcanon y Vuid)
-  const hab = {
-    id: hid,
-    nombre,
-    vf_ref: built.vf.cue || "VF::?",
-    pe_ref: built.pe.id,
-    efecto: (preset === 'Puente')
-      ? ["cierre_en:SIL","ΔS:+","residuo:0"]
-      : ["abrir_sello:1","ΔC:+","ρ≤0.02"],
-    params: { r: built.vf.r, O: built.vf.O, V: Vcanon, Vuid, materia: built.vf.materia },
-    cierre: "SIL→UM→Ə"
-  };
-
-// Emit
-
-if (emit==='md') {
-  console.log(`\n---\n**HABILIDAD CRISTALIZADA**\n
-- ID: ${hab.id}
-- Nombre: ${hab.nombre}
-- PE: ${hab.pe_ref}
-- V (canónica): ${Vcanon.toFixed(4)} (τ=${tau})
-- V_uid: ${Vuid.toFixed(6)}  (ordenamiento únicamente)
-- Materia: ${built.vf.materia||'-'}
-- Efecto: ${hab.efecto.join(', ')}
-`);
-} else {
-  console.log(JSON.stringify({ habilidad:hab, V: Vcanon, Vuid, tau }, null, 2));
-}
-  if (save) {
-   // destinos por defecto si no te pasan --out-*
-     const triSafe = (built.vf.p||'').replace(/[·\.]/g,'-') || 'triada';
-     const hash10 = (built.vf.hash10 || (built.pe.id||'').replace(/^PE::/,'').slice(0,10) || '0000000000');
-     const pePath  = outPe  || `docs/pe/${(built.pe.id||'PE').replace(/[:]/g,'')}.md`;
-     const habPath = outHab || `docs/habilidades/${triSafe}/${built.vf.O}/${built.vf.r}/${built.vf.k}/${hash10}.md`;
-
-     // 1) escribir archivos
-     const mdPE  = `# Poema-Enigma (v1.3)\n\nID: ${built.pe.id}\nTipo: ${built.pe.tipo}\n\n> ${built.pe.texto}\n`;
-     const mdHab = `---\n**HABILIDAD CRISTALIZADA**\n
- - ID: ${hab.id}
- - Nombre: ${hab.nombre}
- - PE: ${hab.pe_ref}
- - V: ${Vcanon.toFixed(4)} (τ=${tau})
- - Materia: ${built.vf.materia||'-'}
- - Efecto: ${hab.efecto.join(', ')}
- `;
-     if(emit==='md'){
-       writeText(pePath, mdPE);
-       writeText(habPath, mdHab);
-     }else{
-       writeJSON(pePath.replace(/\.md$/,'.json'), {pe:built.pe});
-       writeJSON(habPath.replace(/\.md$/,'.json'), {habilidad:hab});
-     }
-
-     // 2) Manifest (si existe)
-     if(fs.existsSync(registry)){
-       updateManifest(registry, {
-         name: path.basename(habPath),
-         path: habPath,
-         title: `Habilidad — ${hab.nombre}`,
-         cue: built.vf.cue || '',
-         sot: 'ATLAS-HAB/v1.0',
-         version: 'v1.0',
-         updated: new Date().toISOString().slice(0,10),
-         kind: 'habilidad'
-       });
-     }
-
-     // 3) Listado R
-     const lineaR = `R#. Proyecto A96/QEL. (${new Date().toISOString().slice(0,10)}). QEL|A96|HABILIDAD|${hab.id}|v1.0|${built.vf.r} — ${hab.nombre} [${(built.pe.id||'').replace(/^PE::/,'')}]`;
-     appendListadoR(listadoR, lineaR);
+  // 1) escribir archivos
+  const mdPE  = `# Poema-Enigma (v1.3)\n\nID: ${built.pe.id}\nTipo: ${built.pe.tipo}\n\n> ${built.pe.texto}\n`;
+  const mdHab = `---\n**HABILIDAD CRISTALIZADA**\n\n- ID: ${hab.id}\n- Nombre: ${hab.nombre}\n- PE: ${hab.pe_ref}\n- V: ${V.toFixed(2)} (τ=${tau})\n- Materia: ${built.vf.materia||'-'}\n- Efecto: ${hab.efecto.join(', ')}\n`;
+  if(emit==='md'){
+    writeText(pePath, mdPE);
+    writeText(habPath, mdHab);
+  }else{
+    writeJSON(pePath.replace(/\.md$/,'.json'), {pe:built.pe});
+    writeJSON(habPath.replace(/\.md$/,'.json'), {habilidad:hab});
   }
+
+  // 2) Manifest (si existe)
+  if(fs.existsSync(registry)){
+    updateManifest(registry, {
+      name: path.basename(habPath),
+      path: habPath,
+      title: `Habilidad — ${hab.nombre}`,
+      cue: built.vf.cue || '',
+      sot: 'ATLAS-HAB/v1.0',
+      version: 'v1.0',
+      updated: new Date().toISOString().slice(0,10),
+      kind: 'habilidad'
+    });
+  }
+
+  // 3) Listado R
+  const lineaR = `R#. Proyecto A96/QEL. (${new Date().toISOString().slice(0,10)}). QEL|A96|HABILIDAD|${hab.id}|v1.0|${built.vf.r} — ${hab.nombre} [${(built.pe.id||'').replace(/^PE::/,'')}]`;
+  appendListadoR(listadoR, lineaR);
+}
 }
 main();

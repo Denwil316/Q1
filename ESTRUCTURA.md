@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-09-08 00:32:00_
+_Generado: 2025-09-24 13:44:44_
 
 ```text
 .
@@ -45,6 +45,7 @@ _Generado: 2025-09-08 00:32:00_
 │   │   │   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
 │   │   │   ├── NAVEGADOR_M0_Manual_v0.2.md
 │   │   │   ├── QEL_FormatoR_Manual_v1.1.md
+│   │   │   ├── QEL_Guia_alineación_V_v1.0.md
 │   │   │   ├── QEL_LLPE_Manual_v1.4.md
 │   │   │   ├── QEL_Manual_Atlas_MicroRegistro_v1.0.md
 │   │   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
@@ -259,10 +260,12 @@ _Generado: 2025-09-08 00:32:00_
 │   ├── qel
 │   ├── qel_atlas_microreg.sh
 │   ├── qel_pe_generate.mjs
+│   ├── qel_pe_generate.mjs.bak
 │   ├── qel_promote_mac.sh
 │   ├── qel_scripts_help.sh
 │   ├── qel_session_finalize.sh
 │   ├── qel_vcalc.sh
+│   ├── qel_vcalc.sh.bak
 │   ├── qel_vcalc_io.sh
 │   ├── qel_vcalc_json.sh
 │   ├── serve_preh_nav.sh
@@ -276,5 +279,5 @@ _Generado: 2025-09-08 00:32:00_
 ├── package-lock.json
 └── package.json
 
-41 directories, 231 files
+41 directories, 234 files
 ```
