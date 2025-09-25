@@ -23,7 +23,7 @@ Cada sello se anota con **triada propuesta**, **objeto**, **rumbo** y **clase**,
 - **Gates**: sin riesgo; ×1.00.  
 - **Afinidades (rúbrica MFH)**: Ə↔Llave 0.55; UM↔Llave 0.95; SIL↔Llave 0.60.  
 - **Afinidad ponderada A**: 0.35×0.55 + 0.40×0.95 + 0.25×0.60 = **0.7225**.  
-- **χ_r (baseline)**: O×1.10 · N×1.05 · **C×1.00** · W×0.95 · S×0.90.  
+- **χ_r (baseline)**: O/E×1.10 · N×1.05 · **C×1.00** · W×0.95 · S×0.90.
 - **𝒱 por rumbo**:  
   - Oriente **0.79**, Norte **0.76**, **Centro 0.72**, Occidente **0.69**, Sur **0.65**.  
 - **Lectura**: Centro/Norte naturales; Oriente si hace falta articular el cierre.
@@ -38,7 +38,7 @@ Cada sello se anota con **triada propuesta**, **objeto**, **rumbo** y **clase**,
 - **Gates**: protección luminosa presente; ×1.00.  
 - **Afinidades (rúbrica MFH)**: RA↔Prisma 0.95; SIL↔Prisma 0.60; A↔Prisma 0.60.  
 - **Afinidad ponderada A**: 0.40×0.95 + 0.30×0.60 + 0.30×0.60 = **0.7400**.  
-- **χ_r (baseline)**: **O×1.10** · N×1.05 · C×1.00 · W×0.95 · S×0.90.  
+- **χ_r (baseline)**: **O/E×1.10** · N×1.05 · C×1.00 · W×0.95 · S×0.90.
 - **𝒱 por rumbo**:  
   - **Oriente 0.81**, Norte **0.78**, Centro **0.74**, Occidente **0.70**, Sur **0.67**.  
 - **Lectura**: Oriente maximiza; Occidente si se busca eco/memoria del aprendizaje.
@@ -46,12 +46,22 @@ Cada sello se anota con **triada propuesta**, **objeto**, **rumbo** y **clase**,
 ---
 
 ## 3) Índice de Viabilidad (resumen por sello)
-| Sello | Triada (p) | Objeto | A (afinidad) | O (1.10) | N (1.05) | C (1.00) | W (0.95) | S (0.90) |
+| Sello | Triada (p) | Objeto | A (afinidad) | O/E (1.10) | N (1.05) | C (1.00) | W (0.95) | S (0.90) |
 |---|---|---|---:|---:|---:|---:|---:|---:|
 | A: “Respiro, asiento…” | Ə·UM·SIL | Llave–sello | 0.7225 | 0.79 | 0.76 | 0.72 | 0.69 | 0.65 |
 | B: “Respiro, velo y filo…” | RA·SIL·A | Prisma | 0.7400 | 0.81 | 0.78 | 0.74 | 0.70 | 0.67 |
 
 > **Umbral operativo**: 𝒱≥0.62 (+ΔC≥0 + No-Mentira) para considerar “cristalizar” un sello como práctica o interfaz del motor.
+> **Nota χ_r:** `E` (Este) **comparte** el coeficiente con `O` (Oriente) → **1.10**.
+
+> **Orden estable (UID ε):** si dos 𝒱_canónica empatan, usa `uid_epsilon` y `V_uid_canon` (de `--emit json`) para **desempatar sin alterar** 𝒱.
+>
+> Ejemplo rápido:
+> ```bash
+> scripts/qel_vcalc.sh --obj "Llave" --afinidad 0.7400 --rumbo C \
+>   --clase rara --gates "mediacion,doble" --emit json \
+> | jq '.V_canon, .uid_epsilon, .V_uid_canon'
+> ```
 
 ---
 
@@ -61,6 +71,7 @@ Cada sello se anota con **triada propuesta**, **objeto**, **rumbo** y **clase**,
 | `RECALL` | Traer un FS o contexto de sesión (A96…) | Establece foco, tiempo, rumbo; alista plantillas. |
 | `CRISTALIZA` | Promover cambios a versión/archivo | Actualiza Diario/Glosario/MFH/Listado R/Manifest. |
 | `DRAFT` | Generar documento **no versionado** | Facilita pensar sin tocar versiones oficiales. |
+| `FINALIZA_SESION` | Cerrar sesión y consolidar FS/artefactos | Genera VF.PRIMA, MicroSello, Diario, ListadoR; expone a PREH-NAV. |
 | `PAUSA_DE_CAMBIOS` | Congelar promociones | Asegura descanso o revisión sin difundir cambios. |
 
 > Referencias: **CueMachine v1.0** y **CUE Exception v1.0** detallan sintaxis y salvaguardas.
