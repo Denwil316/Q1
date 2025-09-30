@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-09-24 18:18:23_
+_Generado: 2025-09-29 23:26:24_
 
 ```text
 .
@@ -29,6 +29,7 @@ _Generado: 2025-09-24 18:18:23_
 │       ├── index.html
 │       ├── package-lock.json
 │       ├── package.json
+│       ├── server.mjs
 │       ├── tsconfig.json
 │       └── vite.config.ts
 ├── docs
@@ -282,5 +283,5 @@ _Generado: 2025-09-24 18:18:23_
 ├── package-lock.json
 └── package.json
 
-41 directories, 237 files
+41 directories, 238 files
 ```
