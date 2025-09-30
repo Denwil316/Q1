@@ -22,14 +22,17 @@ const okRumbo = new Set(['N','O','E','W','S','C']);
 const okClase = new Set(['basica','básica','raro','rara','singular','unico','único','metalica','metálica','obsidiana']);
 const okDelta = new Set(['up','flat','down']);
 
-// ----- Rutas de cortesía -----
-app.get('/', (_req, res) => {
-  res.type('text').send('PREH-NAV API OK. Use POST /api/v1/vcalc');
-});
+// Health
 app.get('/health', (_req, res) => res.json({ ok: true }));
-// (opcional) sirve docs estáticos si quieres verlos en el navegador
-app.use('/docs', express.static(path.join(ROOT, 'apps/preh-nav-m1/public/docs')));
 
+// Estáticos (primero)
+app.use('/docs', express.static(path.join(ROOT, 'apps/preh-nav-m1/public/docs')));
+app.use(express.static(path.join(ROOT, 'apps/preh-nav-m1/public')));
+
+// Raíz -> vcalc.html
+app.get('/', (_req, res) =>
+  res.sendFile(path.join(ROOT, 'apps/preh-nav-m1/public', 'vcalc.html'))
+);
 // ----- API: vcalc -----
 app.post('/api/v1/vcalc', (req, res) => {
   try {

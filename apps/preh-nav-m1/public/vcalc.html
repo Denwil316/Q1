@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PREH-NAV · VCALC</title>
+<style>
+  body{font:16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin:2rem; max-width:900px}
+  fieldset{border:1px solid #ddd; border-radius:8px; padding:1rem; margin:0 0 1rem}
+  label{display:block; margin:.4rem 0 .1rem; font-weight:600}
+  input,select{width:100%; max-width:420px; padding:.45rem .6rem; border:1px solid #ccc; border-radius:6px}
+  .row{display:flex; gap:1rem; flex-wrap:wrap}
+  button{padding:.6rem 1rem; border:0; border-radius:8px; background:#111; color:#fff; cursor:pointer}
+  pre{background:#f6f8fa; padding:1rem; border-radius:8px; overflow:auto; max-height:50vh}
+  small{color:#666}
+</style>
+
+<h1>PREH-NAV · VCALC</h1>
+<p>Calcula 𝒱 desde el navegador (POST a <code>/api/v1/vcalc</code>).</p>
+
+<form id="f">
+  <fieldset>
+    <legend>Parámetros</legend>
+    <div class="row">
+      <div>
+        <label>obj</label>
+        <input name="obj" value="Llave" required />
+        <small>Ej: <code>Llave</code> o <code>Ə·UM·A/Llave</code></small>
+      </div>
+      <div>
+        <label>A (afinidad)</label>
+        <input name="A" type="number" min="0" max="1" step="0.0001" value="0.7400" />
+      </div>
+      <div>
+        <label>rumbo</label>
+        <select name="rumbo">
+          <option>C</option><option>N</option><option>O</option><option>E</option><option>W</option><option>S</option>
+        </select>
+      </div>
+      <div>
+        <label>clase</label>
+        <select name="clase">
+          <option>rara</option><option>singular</option><option>unico</option>
+          <option>basica</option><option>metalica</option><option>obsidiana</option>
+        </select>
+      </div>
+      <div>
+        <label>gates (coma)</label>
+        <input name="gates" value="mediacion,doble" />
+      </div>
+      <div>
+        <label>ruido ρ</label>
+        <input name="ruido" type="number" min="0" max="1" step="0.01" value="0" />
+      </div>
+      <div>
+        <label>ΔC</label>
+        <select name="dc"><option>flat</option><option>up</option><option>down</option></select>
+      </div>
+      <div>
+        <label>ΔS</label>
+        <select name="ds"><option>flat</option><option>up</option><option>down</option></select>
+      </div>
+    </div>
+  </fieldset>
+  <button>Calcular 𝒱</button>
+</form>
+
+<h3>Resultado</h3>
+<pre id="out">—</pre>
+
+<script>
+const $ = s => document.querySelector(s);
+$('#f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.currentTarget);
+  const payload = {
+    obj:   fd.get('obj') || '',
+    A:     Number(fd.get('A') || 0),
+    rumbo: String(fd.get('rumbo') || 'C'),
+    clase: String(fd.get('clase') || 'rara'),
+    gates: String(fd.get('gates') || '').split(',').map(s=>s.trim()).filter(Boolean),
+    ruido: Number(fd.get('ruido') || 0),
+    delta: { c: String(fd.get('dc') || 'flat'), s: String(fd.get('ds') || 'flat') }
+  };
+  $('#out').textContent = 'Calculando…';
+  try{
+    const r = await fetch('/api/v1/vcalc', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    const j = await r.json();
+    $('#out').textContent = JSON.stringify(j, null, 2);
+  }catch(err){
+    $('#out').textContent = 'Error: ' + err;
+  }
+});
+</script>
+</html>
