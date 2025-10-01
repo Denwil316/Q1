@@ -4,6 +4,7 @@ import cors from 'cors';
 import { spawn } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 // (opcional) si prefieres body-parser: import bodyParser from 'body-parser';
 
 const app = express();
@@ -28,6 +29,46 @@ app.get('/health', (_req, res) => res.json({ ok: true }));
 // Estáticos (primero)
 app.use('/docs', express.static(path.join(ROOT, 'apps/preh-nav-m1/public/docs')));
 app.use(express.static(path.join(ROOT, 'apps/preh-nav-m1/public')));
+// === Montajes de documentos (lectura) ===
+app.use('/core',   express.static(path.join(ROOT, 'docs/core')));
+app.use('/ritual', express.static(path.join(ROOT, 'docs/ritual')));
+app.use('/atlas',  express.static(path.join(ROOT, 'docs/atlas')));
+app.use('/memory', express.static(path.join(ROOT, 'memory')));
+
+// === API: Biblioteca (listado compacto) ===
+const EXT_OK = new Set(['.md','.json','.yaml','.yml','.pdf']);
+
+function listDir(baseRel, depth = 2) {
+  const base = path.join(ROOT, baseRel);
+  const out = [];
+  const walk = (dir, d) => {
+    if (d < 0) return;
+    for (const name of fs.readdirSync(dir)) {
+      const p = path.join(dir, name);
+      const st = fs.statSync(p);
+      if (st.isDirectory()) walk(p, d - 1);
+      else {
+        const ext = path.extname(name).toLowerCase();
+        if (EXT_OK.has(ext)) {
+          const relPath = path.relative(base, p).split(path.sep).join('/');
+          out.push({ name, rel: relPath });
+        }
+      }
+    }
+  };
+  if (fs.existsSync(base)) walk(base, depth);
+  return out.sort((a, b) => a.rel.localeCompare(b.rel));
+}
+
+app.get('/api/v1/library', (_req, res) => {
+  const data = {
+    core:   listDir('docs/core',   3).map(x => ({ ...x, url: '/core/'   + x.rel })),
+    ritual: listDir('docs/ritual', 3).map(x => ({ ...x, url: '/ritual/' + x.rel })),
+    atlas:  listDir('docs/atlas',  2).map(x => ({ ...x, url: '/atlas/'  + x.rel })),
+    memory: listDir('memory',      2).map(x => ({ ...x, url: '/memory/' + x.rel })),
+  };
+  res.json(data);
+});
 
 // Raíz -> vcalc.html
 app.get('/', (_req, res) =>

@@ -2,24 +2,40 @@
 <html lang="es">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PREH-NAV · VCALC</title>
+<title>PREH-NAV · VCALC (Básico + Avanzado)</title>
 <style>
-  body{font:16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin:2rem; max-width:900px}
-  fieldset{border:1px solid #ddd; border-radius:8px; padding:1rem; margin:0 0 1rem}
-  label{display:block; margin:.4rem 0 .1rem; font-weight:600}
+  body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:2rem; max-width:1100px}
+  nav a{margin-right:1rem}
+  fieldset{border:1px solid #e5e5e5; border-radius:10px; padding:1rem; margin:0 0 1rem}
+  legend{font-weight:700}
+  label{display:block; margin:.45rem 0 .1rem; font-weight:600}
   input,select{width:100%; max-width:420px; padding:.45rem .6rem; border:1px solid #ccc; border-radius:6px}
   .row{display:flex; gap:1rem; flex-wrap:wrap}
   button{padding:.6rem 1rem; border:0; border-radius:8px; background:#111; color:#fff; cursor:pointer}
   pre{background:#f6f8fa; padding:1rem; border-radius:8px; overflow:auto; max-height:50vh}
   small{color:#666}
+  .grid3{display:grid; grid-template-columns:240px 120px 120px; gap:.6rem; align-items:end}
+  .pill{display:inline-block; padding:.25rem .5rem; border-radius:999px; background:#f0f0f0; margin-left:.5rem}
+  .ok{color:#0a7a3d; font-weight:700}
+  .warn{color:#a15a00; font-weight:700}
+  .bad{color:#b00020; font-weight:700}
+  .muted{color:#666}
+  .tips{background:#fafafa; border:1px dashed #ddd; padding:.7rem .9rem; border-radius:10px}
+  .inline{display:flex; align-items:center; gap:.5rem}
 </style>
 
+<nav>
+  <a href="/vcalc.html"><b>VCALC</b></a>
+  <a href="/library.html">Biblioteca</a>
+</nav>
+
 <h1>PREH-NAV · VCALC</h1>
-<p>Calcula 𝒱 desde el navegador (POST a <code>/api/v1/vcalc</code>).</p>
+<p>Calcula 𝒱 desde el navegador (POST a <code>/api/v1/vcalc</code>). Usa el modo <b>Avanzado (M2)</b> si quieres que la afinidad <code>A</code> se derive de <i>triada + pesos + afinidades</i> (Lámina 𝒱).</p>
 
 <form id="f">
+  <!-- BÁSICO -->
   <fieldset>
-    <legend>Parámetros</legend>
+    <legend>Parámetros (Básico)</legend>
     <div class="row">
       <div>
         <label>obj</label>
@@ -29,6 +45,7 @@
       <div>
         <label>A (afinidad)</label>
         <input name="A" type="number" min="0" max="1" step="0.0001" value="0.7400" />
+        <small class="muted">En M2 se recalcula desde la triada.</small>
       </div>
       <div>
         <label>rumbo</label>
@@ -61,17 +78,129 @@
       </div>
     </div>
   </fieldset>
+
+  <!-- AVANZADO (M2) -->
+  <fieldset>
+    <legend>Avanzado (M2) — Lámina 𝒱</legend>
+
+    <div class="row">
+      <div style="min-width:260px">
+        <label class="inline">
+          <input type="checkbox" id="m2" />
+          Activar M2 (calcular <code>A</code> desde triada)
+        </label>
+        <small class="muted">Si está activo, sobrescribe el campo A del bloque Básico.</small>
+      </div>
+      <div class="inline">
+        <label class="inline" title="No-Mentira como salvaguarda">
+          <input type="checkbox" id="noMentira" checked />
+          No-Mentira
+        </label>
+        <div class="inline">
+          <label for="signals">Señales (0–9)</label>
+          <input id="signals" type="number" min="0" max="9" step="1" value="5" style="width:80px" />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid3" style="margin-top:.6rem">
+      <div><label>Fonema 1</label><input id="p1" value="Ə" /></div>
+      <div><label>Peso w1</label><input id="w1" type="number" min="0" max="1" step="0.01" value="0.40" /></div>
+      <div><label>Afinidad a1</label><input id="a1" type="number" min="0" max="1" step="0.01" value="0.55" /></div>
+
+      <div><label>Fonema 2</label><input id="p2" value="UM" /></div>
+      <div><label>Peso w2</label><input id="w2" type="number" min="0" max="1" step="0.01" value="0.35" /></div>
+      <div><label>Afinidad a2</label><input id="a2" type="number" min="0" max="1" step="0.01" value="0.95" /></div>
+
+      <div><label>Fonema 3</label><input id="p3" value="A" /></div>
+      <div><label>Peso w3</label><input id="w3" type="number" min="0" max="1" step="0.01" value="0.25" /></div>
+      <div><label>Afinidad a3</label><input id="a3" type="number" min="0" max="1" step="0.01" value="0.75" /></div>
+    </div>
+
+    <div class="row" style="margin-top:.6rem">
+      <div>
+        <button type="button" id="norm">Normalizar pesos</button>
+        <small class="muted">Suma w≈1.00</small>
+      </div>
+      <div>
+        <span> A (triada) = <b id="Atri">0.7400</b> <span class="pill muted" id="sumW">Σw=1.00</span> </span>
+      </div>
+    </div>
+
+    <div class="tips" id="cardinalTips">
+      <b>Tips cardinales</b> (según rumbo):
+      <div id="tipTxt" class="muted">—</div>
+    </div>
+  </fieldset>
+
   <button>Calcular 𝒱</button>
 </form>
 
 <h3>Resultado</h3>
+<div id="status" class="muted">—</div>
 <pre id="out">—</pre>
 
 <script>
 const $ = s => document.querySelector(s);
+const UM_BRAL = 0.62;
+
+function clamp(x, a, b){ return Math.max(a, Math.min(b, x)); }
+
+function computeA(){
+  const w1 = Number($('#w1').value||0), w2 = Number($('#w2').value||0), w3 = Number($('#w3').value||0);
+  const a1 = Number($('#a1').value||0), a2 = Number($('#a2').value||0), a3 = Number($('#a3').value||0);
+  const sum = w1 + w2 + w3 || 1;
+  const A   = w1*a1 + w2*a2 + w3*a3;
+  $('#Atri').textContent = A.toFixed(4);
+  $('#sumW').textContent = 'Σw=' + (sum).toFixed(2);
+  return A;
+}
+['#w1','#w2','#w3','#a1','#a2','#a3'].forEach(sel => {
+  document.querySelector(sel).addEventListener('input', computeA);
+});
+$('#norm').addEventListener('click', ()=>{
+  const w = [Number($('#w1').value||0), Number($('#w2').value||0), Number($('#w3').value||0)];
+  const s = w[0]+w[1]+w[2] || 1;
+  $('#w1').value = (w[0]/s).toFixed(2);
+  $('#w2').value = (w[1]/s).toFixed(2);
+  $('#w3').value = (w[2]/s).toFixed(2);
+  computeA();
+});
+computeA();
+
+const CARDINAL = {
+  O: 'Oriente (rojo): +2–6 Hz en el arranque; ataque un poco más vivo; infinitivo.',
+  E: 'Oriente (rojo): +2–6 Hz en el arranque; ataque un poco más vivo; infinitivo.',
+  N: 'Norte (negro): −3–8 Hz en la meseta; raíz; voz más baja, más pausas.',
+  W: 'Occidente (blanco): vibrato ±1–2 Hz; ritmo un poco más lento; silencios nítidos.',
+  S: 'Sur (azul): decay 10–25% más largo; bendice y calla.',
+  C: 'Centro: base neutra; usa curva/timbre propios del fonema.'
+};
+function renderTips(){
+  const r = String($('select[name="rumbo"]').value||'C').toUpperCase();
+  $('#tipTxt').textContent = CARDINAL[r] || '—';
+}
+$('select[name="rumbo"]').addEventListener('change', renderTips);
+renderTips();
+
 $('#f').addEventListener('submit', async (e) => {
   e.preventDefault();
   const fd = new FormData(e.currentTarget);
+
+  // A desde M2 si está activo
+  const useM2 = $('#m2').checked;
+  const AfromTriada = computeA();
+  if(useM2){
+    $('input[name="A"]').value = AfromTriada.toFixed(4);
+  }
+  const inputA = document.querySelector('input[name="A"]');
+    document.querySelector('#m2').addEventListener('change', (e) => {
+  const on = e.target.checked;
+    inputA.readOnly = on;
+  if (on) inputA.value = computeA().toFixed(4);
+  });
+
+  // payload
   const payload = {
     obj:   fd.get('obj') || '',
     A:     Number(fd.get('A') || 0),
@@ -81,13 +210,48 @@ $('#f').addEventListener('submit', async (e) => {
     ruido: Number(fd.get('ruido') || 0),
     delta: { c: String(fd.get('dc') || 'flat'), s: String(fd.get('ds') || 'flat') }
   };
+
   $('#out').textContent = 'Calculando…';
+  $('#status').textContent = '—';
+
   try{
-    const r = await fetch('/api/v1/vcalc', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    const r = await fetch('/api/v1/vcalc', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
     const j = await r.json();
     $('#out').textContent = JSON.stringify(j, null, 2);
+
+    // Decisión Lámina 𝒱: V_oper (con Δ y ruido) vs umbral + salvaguardas
+    const Vop   = Number(j?.V_oper ?? j?.V ?? 0);
+    const dc    = String(fd.get('dc')||'flat');
+    const noLie = $('#noMentira').checked;
+    const sigs  = Number($('#signals').value||0);
+
+    const dcOK     = (dc === 'up' || dc === 'flat');
+    const sigsOK   = (sigs >= 5);
+    const umbralOK = (Vop >= UM_BRAL);
+
+    let verdict = '';
+    if(umbralOK && dcOK && noLie && sigsOK){
+      verdict = `Cristalizable ✓  — V_final=${Vop.toFixed(2)} ≥ ${UM_BRAL} | ΔC≥0 | No-Mentira | señales ${sigs}/9`;
+      $('#status').className = 'ok';
+    }else{
+      const fail = [
+        umbralOK ? null : `V_final < ${UM_BRAL}`,
+        dcOK ? null : 'ΔC<0',
+        noLie ? null : 'No-Mentira apagada',
+        sigsOK ? null : 'Señales <5/9'
+      ].filter(Boolean).join(' · ');
+      verdict = `Mantener en líquido/germina — ${fail}`;
+      $('#status').className = umbralOK ? 'warn' : 'bad';
+    }
+    $('#status').textContent = verdict;
+
   }catch(err){
     $('#out').textContent = 'Error: ' + err;
+    $('#status').textContent = '—';
+    $('#status').className = 'muted';
   }
 });
 </script>

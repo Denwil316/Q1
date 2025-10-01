@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-09-30 00:04:47_
+_Generado: 2025-10-01 11:40:35_
 
 ```text
 .
@@ -15,6 +15,7 @@ _Generado: 2025-09-30 00:04:47_
 │   └── preh-nav-m1
 │       ├── public
 │       │   ├── docs
+│       │   ├── library.html
 │       │   ├── sot-manifest.json
 │       │   └── vcalc.html
 │       ├── scripts
@@ -284,5 +285,5 @@ _Generado: 2025-09-30 00:04:47_
 ├── package-lock.json
 └── package.json
 
-41 directories, 239 files
+41 directories, 240 files
 ```

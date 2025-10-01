@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PREH-NAV · Biblioteca</title>
+<style>
+  body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:2rem; max-width:1100px}
+  nav a{margin-right:1rem}
+  .wrap{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2rem}
+  @media (max-width: 800px){ .wrap{grid-template-columns:1fr} }
+  section{border:1px solid #e5e5e5; border-radius:10px; padding:1rem}
+  h2{margin:.2rem 0 1rem; font-size:1.1rem}
+  input[type="search"]{width:100%; padding:.5rem .7rem; border:1px solid #ccc; border-radius:8px; margin:0 0 1rem}
+  ul{list-style:none; padding:0; margin:0; max-height:45vh; overflow:auto}
+  li{margin:.3rem 0}
+  a.file{display:inline-block; padding:.25rem .4rem}
+  small{color:#666}
+</style>
+
+<nav>
+  <a href="/vcalc.html">VCALC</a>
+  <a href="/library.html"><b>Biblioteca</b></a>
+</nav>
+
+<h1>Biblioteca PREH-NAV</h1>
+<p>Consulta de documentos del repo montados en <code>/core</code>, <code>/ritual</code>, <code>/atlas</code>, <code>/memory</code>.</p>
+
+<div class="wrap">
+  <section id="sec-core"><h2>Core <small id="n-core"></small></h2><input id="q-core" type="search" placeholder="Filtrar core…" /><ul id="list-core"></ul></section>
+  <section id="sec-ritual"><h2>Ritual <small id="n-ritual"></small></h2><input id="q-ritual" type="search" placeholder="Filtrar ritual…" /><ul id="list-ritual"></ul></section>
+  <section id="sec-atlas"><h2>Atlas <small id="n-atlas"></small></h2><input id="q-atlas" type="search" placeholder="Filtrar atlas…" /><ul id="list-atlas"></ul></section>
+  <section id="sec-memory"><h2>Memory <small id="n-memory"></small></h2><input id="q-memory" type="search" placeholder="Filtrar memory…" /><ul id="list-memory"></ul></section>
+</div>
+
+<script>
+const el = s => document.querySelector(s);
+const renderList = (arr, ul) => {
+  ul.innerHTML = '';
+  arr.forEach(({name, url, rel}) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a class="file" href="${url}" target="_blank" rel="noopener">${rel}</a>`;
+    ul.appendChild(li);
+  });
+};
+
+fetch('/api/v1/library')
+  .then(r => r.json())
+  .then(data => {
+    const sections = [
+      ['core',   '#list-core',   '#q-core',   '#n-core'],
+      ['ritual', '#list-ritual', '#q-ritual', '#n-ritual'],
+      ['atlas',  '#list-atlas',  '#q-atlas',  '#n-atlas'],
+      ['memory', '#list-memory', '#q-memory', '#n-memory'],
+    ];
+    sections.forEach(([key, listSel, inputSel, countSel]) => {
+      const full = data[key] || [];
+      const ul = el(listSel), inp = el(inputSel), cnt = el(countSel);
+      renderList(full, ul);
+      cnt.textContent = `(${full.length})`;
+      inp.addEventListener('input', () => {
+        const q = inp.value.toLowerCase();
+        const filtered = full.filter(x => x.rel.toLowerCase().includes(q));
+        renderList(filtered, ul);
+        cnt.textContent = `(${filtered.length}/${full.length})`;
+      });
+    });
+  })
+  .catch(err => {
+    document.body.insertAdjacentHTML('beforeend', `<p style="color:#b00">Error cargando biblioteca: ${err}</p>`);
+  });
+</script>
+</html>
