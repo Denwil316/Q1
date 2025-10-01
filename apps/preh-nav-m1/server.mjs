@@ -74,6 +74,10 @@ app.get('/api/v1/library', (_req, res) => {
 app.get('/', (_req, res) =>
   res.sendFile(path.join(ROOT, 'apps/preh-nav-m1/public', 'vcalc.html'))
 );
+// Alias cómodo para la Biblioteca
+app.get('/library', (_req, res) =>
+  res.sendFile(path.join(ROOT, 'apps/preh-nav-m1/public', 'library.html'))
+);
 // ----- API: vcalc -----
 app.post('/api/v1/vcalc', (req, res) => {
   try {
