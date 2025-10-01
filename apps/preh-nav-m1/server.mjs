@@ -88,8 +88,11 @@ app.post('/api/v1/vcalc', (req, res) => {
     } = req.body || {};
 
     if (!obj || !String(obj).trim()) return res.status(400).json({ error: 'obj requerido' });
-    const R = String(rumbo).toUpperCase();
+    const Rraw = String(rumbo || 'C').toUpperCase();
+    const R = (Rraw === 'E') ? 'O' : Rraw;
+
     if (!okRumbo.has(R)) return res.status(400).json({ error: 'rumbo inválido' });
+
     if (!okClase.has(String(clase))) return res.status(400).json({ error: 'clase inválida' });
     if (!delta || !okDelta.has(delta.c) || !okDelta.has(delta.s)) return res.status(400).json({ error: 'delta inválido' });
 
@@ -97,6 +100,7 @@ app.post('/api/v1/vcalc', (req, res) => {
       .map(s => String(s || '').trim())
       .filter(Boolean)
       .join(',');
+  
 
     const args = [
       '--obj', obj,
@@ -111,6 +115,14 @@ app.post('/api/v1/vcalc', (req, res) => {
     ];
 
     const bin = SCRIPT('qel_vcalc.sh');
+        if (!fs.existsSync(bin)) {
+      return res.status(500).json({ error: 'script_missing', bin });
+    }
+    try {
+      fs.accessSync(bin, fs.constants.X_OK);
+    } catch {
+      return res.status(500).json({ error: 'script_not_executable', bin });
+    }
     const ps = spawn(bin, args, {
       shell: false,
       env: { ...process.env, LC_ALL: 'C', LC_NUMERIC: 'C' }
@@ -121,6 +133,10 @@ app.post('/api/v1/vcalc', (req, res) => {
     let out = '', err = '';
     ps.stdout.on('data', d => (out += d));
     ps.stderr.on('data', d => (err += d));
+       ps.on('error', spErr => {
+     clearTimeout(killTimer);
+     return res.status(500).json({ error: 'spawn_error', detail: String(spErr) });
+    });
     ps.on('close', code => {
       clearTimeout(killTimer);
       if (code !== 0) return res.status(400).json({ error: 'vcalc_failed', code, stderr: err });
@@ -133,7 +149,7 @@ app.post('/api/v1/vcalc', (req, res) => {
 });
 
 // ----- Arranque -----
-const PORT = 3030;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 3030;
 app.listen(PORT, () => console.log(`PREH-NAV API on http://localhost:${PORT}`));
 
 // (opcional) helper si vas a llamar desde front
