@@ -207,3 +207,13 @@ Resultados:
 HASH(10): 2084a04a2b
 
 
+
+## 2025-10-02 — PROMOCIÓN
+- Rubro: LL‑PE
+- Título: Poema‑Enigma (v1.3) — Apertura I
+- Archivo: docs/pe/PEe2c82e10e1.md
+- Copia: apps/preh-nav-m1/public/docs/PEe2c82e10e1.md
+- Rumbo: Centro
+- HASH(10): 534891a1d1
+
+_ECO (delta-only):_ Se cristaliza **Poema‑Enigma (v1.3) — Apertura I** con hash **534891a1d1**; se actualiza ListadoR y se publica espejo en preh-nav.
