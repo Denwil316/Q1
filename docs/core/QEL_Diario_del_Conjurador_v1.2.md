@@ -158,17 +158,17 @@ HASH(10): 05e91c86e8
 
 _ECO (delta-only):_ Se cristaliza **Lámina V — Unificada (v1.0)** con hash **1d2bfc41ea**; se actualiza ListadoR y se publica espejo en preh-nav.
 
-## 250902 · M1 · Tarjetas Atlas
+## 250902 · M1 · Lamina V Unificada
 cue: [QEL::ECO[96]::RECALL A96-251002-SEAL]
 SeedI: A96-251002
-SoT: TRATADO-METAHUMANO/v1.2
-Version: v1.2-log
+SoT: LAMINAV/v1.0
+Version: v1.0-log
 Updated: 2025-10-02
 
 FS:
   fecha: 251002
-  tema: "Tarjetas Atlas"
-  intencion: "actualizarlas con la información que tenemos"
+  tema: "Lamina V Unificada"
+  intencion: "unificar los documentos Lamina V Editada y MFH_v1.4.md"
   modo: M1
   rumbo: C,W
   tiempo: 45
@@ -181,6 +181,7 @@ FS:
     - "Tarjetas actualizadas"
     - "de uso para Conjurar"
     - ".md y plantilla de Canvas"
+    - "Lamina V Unificada"
   metricas:
     delta_c: "up"
     delta_s: "flat"
