@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-03T01:48:37.481Z",
+  "Updated": "2025-10-03T04:26:26.656Z",
   "manifest": [
     {
       "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
@@ -288,6 +288,18 @@
       "version": "v2.4",
       "updated": "2025-08-26",
       "hash10": "848633612d",
+      "kind": "core-doc"
+    },
+    {
+      "name": "VF_Apertura_EUM_Llavev1.0.json",
+      "path": "docs/core/cartas/VF_Apertura_EUM_Llavev1.0.json",
+      "title": "VF_Apertura_EUM_Llavev1.0",
+      "cue": "",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": null,
       "kind": "core-doc"
     }
   ]

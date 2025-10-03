@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-03T01:48:37.481Z",
+  "Updated": "2025-10-03T07:35:40.766Z",
   "manifest": [
     {
       "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
@@ -289,6 +289,37 @@
       "updated": "2025-08-26",
       "hash10": "848633612d",
       "kind": "core-doc"
+    },
+    {
+      "name": "VF_Apertura_EUM_Llavev1.0.json",
+      "path": "docs/core/cartas/VF_Apertura_EUM_Llavev1.0.json",
+      "title": "VF_Apertura_EUM_Llavev1.0",
+      "cue": "",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": null,
+      "kind": "core-doc"
+    },
+    {
+      "name": "PEe2c82e10e1.md",
+      "path": "docs/pe/PEe2c82e10e1.md",
+      "title": "PE — PE::e2c82e10e1",
+      "sot": "LL-PE/v1.4",
+      "version": "v1.0",
+      "updated": "2025-10-03",
+      "kind": "pe"
+    },
+    {
+      "name": "e2c82e10e1.md",
+      "path": "docs/habilidades/Ə-UM-A/Llave/C/singular/e2c82e10e1.md",
+      "title": "Habilidad — Llave de Matrices (Apertura I)",
+      "cue": "VF::A96-250824::apertura-eum",
+      "sot": "ATLAS-HAB/v1.0",
+      "version": "v1.0",
+      "updated": "2025-10-03",
+      "kind": "habilidad"
     }
   ]
 }

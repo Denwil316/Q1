@@ -149,3 +149,7 @@ hash(10): d84061f404
 - (2025-10-02) Manual/Lámina | A96-250824   | LAMINA-V/v1.4   | Lámina V — Unificada (v1.0) (CRISTAL @ Centro)
   refs: [docs/core/LaminaV_unificada_v1.0.md]
   hash(10): 1d2bfc41ea
+
+- (2025-10-02) LL‑PE | A96-251002 | PROMOCION/v1.0 | Poema‑Enigma (v1.3) — Apertura I (CRISTAL @ Centro)
+  refs: [docs/pe/PEe2c82e10e1.md]
+  hash(10): 534891a1d1
