@@ -153,3 +153,4 @@ hash(10): d84061f404
 - (2025-10-02) LL‑PE | A96-251002 | PROMOCION/v1.0 | Poema‑Enigma (v1.3) — Apertura I (CRISTAL @ Centro)
   refs: [docs/pe/PEe2c82e10e1.md]
   hash(10): 534891a1d1
+R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1.0|C — Llave de Matrices (Apertura I) [e2c82e10e1]
