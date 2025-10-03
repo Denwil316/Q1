@@ -13,7 +13,6 @@ Updated=2025-09-08
 - Bitácora: 9 señales de verificación (≥5/9 activa campo).
 
 
-
 [QEL::ECO[96]::RECALL A96-250824-QEL-LAMINA-V-DETALLADA-V1-0]
 SeedI=A96-250824
 SoT=LAMINA-V/v1.2
@@ -107,93 +106,12 @@ No pintes nada: mira a través de ese matiz.
 
 Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina **ataque / centro / vibrato / decay** y **énfasis somático**. Es QEL si el cuerpo lo confirma (≥5/9 señales).
 
-# **Matriz viva: 8 fonemas × 4 luces cardinales (I)**
-
-(una línea por cruce: *pregunta cardinal* \+ *modulación tonal* \+ *gesto somático*)
-
-**KAEL — compasión sin retorno (256→240 Hz, exhalación cálida)**
-
-* Oriente/rojo: *¿Puedo ofrecer sin prometer?* Mini-lift a 260 antes de exhalar. Esternón abre.
-
-* Norte/negro: *¿Puedo amar lo que fue sin aferrarme?* Baja a \~244 en el sustain. Pelvis pesada amable.
-
-* Occidente/blanco: *¿Puedo ver tu dolor sin arreglarte?* Mantén 256 con vibrato mínimo. Mandíbula suelta.
-
-* Sur/azul: *¿Puedo bendecirte y callar?* Decay más largo hacia 240\. Calor en manos.
-
-**VUN — conocer sin poseer (196 Hz \+ micro-ascenso a 204–208)**
-
-* Oriente/rojo: *¿Puedo comenzar por una pregunta humilde?* Arranque 198→204. Mirada curiosa.
-
-* Norte/negro: *¿Qué sabía mi cuerpo antes de saber?* Centra en 194–196. Nuca larga.
-
-* Occidente/blanco: *¿Qué hay aquí tal cual es?* 196 con oscilación ±1–2 Hz. Ojos amplios.
-
-* Sur/azul: *¿Qué puedo agradecer de esto que ignoro?* Decay que se estira tras la pregunta. Suspiro suave.
-
-**ORA — presencia pura (432 Hz sostenido)**
-
-* Oriente/rojo: *¿Puedo estar antes de actuar?* Ataque un poco más firme. Columna despierta.
-
-* Norte/negro: *¿Qué silencio sostiene mi estar?* Baja a 426–428. Peso amable en pies.
-
-* Occidente/blanco: *¿Qué se revela cuando no interfiero?* 432 exacto, arista limpia. Pupilas calmas.
-
-* Sur/azul: *¿Cómo dejo que la presencia bendiga?* Decay largo; respiración expandida. Palmas tibias.
-
-**ZEH — reflejo sin juicio (220 Hz estable, vibrato leve)**
-
-* Oriente/rojo: *¿Qué espejo necesito abrir?* 220 con micro-ataque, vibrato sutil. Pecho atento.
-
-* Norte/negro: *¿Qué reflejo guardo en raíz?* 216–218 sostenido. Pelvis tierra.
-
-* Occidente/blanco: *¿Puedo ver sin corregir?* 220 con vibrato fino; pausa entre palabras.
-
-* Sur/azul: *¿Qué reflejo agradezco y suelto?* Decay; cuello afloja.
-
-**LUN — apertura sin miedo (288 Hz con lift inicial)**
-
-* Oriente/rojo: *¿Qué puerta abro hoy?* Lift un poco mayor (288→292). Clavículas aire.
-
-* Norte/negro: *¿Qué no sé y está bien?* 284–286 llano. Vientre suave.
-
-* Occidente/blanco: *¿Qué veo cuando me ablando?* 288 con borde claro; mirada húmeda.
-
-* Sur/azul: *¿Puedo cerrar en vulnerabilidad serena?* Decay; hombros sueltos.
-
-**NAI — memoria anterior al tiempo (174 Hz drone)**
-
-* Oriente/rojo: *¿Qué hilo antiguo convoca este inicio?* 174 con arranque apenas audible. Planta enraiza.
-
-* Norte/negro: *¿Qué recuerdo puedo honrar sin vivir ahí?* 170–172 profundo. Párpado pesado leve.
-
-* Occidente/blanco: *¿Qué patrón aparece si no narro?* 174 plano; foco en escuchar. Lengua descansa.
-
-* Sur/azul: *¿A quién bendigo al soltar la nostalgia?* Decay prolongado. Exhalación larga.
-
-**SÜN — silencio fértil (128 Hz, ataque imperceptible)**
-
-* Oriente/rojo: *¿Puedo empezar callando?* 128 “desde dentro”. Esternón vuelve neutro.
-
-* Norte/negro: *¿Cuál es mi raíz de silencio hoy?* 124–126. Pies pesados, mente clara.
-
-* Occidente/blanco: *¿Qué aclara el silencio?* 128 fino; pausa luminosa. Mandíbula en reposo.
-
-* Sur/azul: *¿Cómo el silencio bendice?* Decay que abraza. Mirada blanda.
-
-**IDA — intención creadora (320 Hz, micro-impulso)**
-
-* Oriente/rojo: *¿Cuál es el vector mínimo suficiente?* Impulso 320→322 y suelta. Ojos fijan suave.
-
-* Norte/negro: *¿Qué intención queda cuando retiro el ego?* 316–318 estable. Cadera centrada.
-
-* Occidente/blanco: *¿Qué se vuelve claro si nombro poco?* 320 exacto; frase breve. Dedo índice se relaja.
-
-* Sur/azul: *¿Cómo cierro sin controlar?* Decay cálido; mano abierta.
 
 # **Tarjetas Atlas QEL v0.2.1 (II)**
 
 *Glyphas, modulación cardinal, preguntas por rumbo y color-luz (HEX).*
+
+Modulación cardinal: (una línea por cruce: *pregunta cardinal* \+ *modulación tonal* \+ *gesto somático*)
 
 ## **Kael — dar sin retener**
 
@@ -208,13 +126,13 @@ Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina 
 
 * **Preguntas cardinales:**
 
-  * **Oriente:** ¿Puedo ofrecer sin prometer?
+* Oriente/rojo: *¿Puedo ofrecer sin prometer?* Mini-lift a 260 antes de exhalar. Esternón abre.
 
-  * **Norte:** ¿Puedo amar lo que fue sin aferrarme?
+* Norte/negro: *¿Puedo amar lo que fue sin aferrarme?* Baja a \~244 en el sustain. Pelvis pesada amable.
 
-  * **Occidente:** ¿Puedo ver tu dolor sin arreglarte?
+* Occidente/blanco: *¿Puedo ver tu dolor sin arreglarte?* Mantén 256 con vibrato mínimo. Mandíbula suelta.
 
-  * **Sur:** ¿Puedo bendecirte y callar?
+* Sur/azul: *¿Puedo bendecirte y callar?* Decay más largo hacia 240\. Calor en manos.
 
 * **Aura (marcadores):** pecho se expande, lagrimeo leve, acercamiento sin exigencia
 
@@ -233,13 +151,13 @@ Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina 
 
 * **Preguntas cardinales:**
 
-  * **Oriente:** ¿Puedo comenzar por una pregunta humilde?
+* Oriente/rojo: *¿Puedo comenzar por una pregunta humilde?* Arranque 198→204. Mirada curiosa.
 
-  * **Norte:** ¿Qué sabía mi cuerpo antes de saber?
+* Norte/negro: *¿Qué sabía mi cuerpo antes de saber?* Centra en 194–196. Nuca larga.
 
-  * **Occidente:** ¿Qué hay aquí tal cual es?
+* Occidente/blanco: *¿Qué hay aquí tal cual es?* 196 con oscilación ±1–2 Hz. Ojos amplios.
 
-  * **Sur:** ¿Qué puedo agradecer de esto que ignoro?
+* Sur/azul: *¿Qué puedo agradecer de esto que ignoro?* Decay que se estira tras la pregunta. Suspiro suave.
 
 * **Aura (marcadores):** mirada amplia, mano que no aprieta, foco suave
 
@@ -258,13 +176,13 @@ Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina 
 
 * **Preguntas cardinales:**
 
-  * **Oriente:** ¿Puedo estar antes de actuar?
+* Oriente/rojo: *¿Puedo estar antes de actuar?* Ataque un poco más firme. Columna despierta.
 
-  * **Norte:** ¿Qué silencio sostiene mi estar?
+* Norte/negro: *¿Qué silencio sostiene mi estar?* Baja a 426–428. Peso amable en pies.
 
-  * **Occidente:** ¿Qué se revela cuando no interfiero?
+* Occidente/blanco: *¿Qué se revela cuando no interfiero?* 432 exacto, arista limpia. Pupilas calmas.
 
-  * **Sur:** ¿Cómo dejo que la presencia bendiga?
+* Sur/azul: *¿Cómo dejo que la presencia bendiga?* Decay largo; respiración expandida. Palmas tibias.
 
 * **Aura (marcadores):** plenitud tranquila, diafragma libre, silencio que no pesa
 
@@ -283,13 +201,13 @@ Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina 
 
 * **Preguntas cardinales:**
 
-  * **Oriente:** ¿Qué espejo necesito abrir?
+* Oriente/rojo: *¿Qué espejo necesito abrir?* 220 con micro-ataque, vibrato sutil. Pecho atento.
 
-  * **Norte:** ¿Qué reflejo guardo en raíz?
+* Norte/negro: *¿Qué reflejo guardo en raíz?* 216–218 sostenido. Pelvis tierra.
 
-  * **Occidente:** ¿Puedo ver sin corregir?
+* Occidente/blanco: *¿Puedo ver sin corregir?* 220 con vibrato fino; pausa entre palabras.
 
-  * **Sur:** ¿Qué reflejo agradezco y suelto?
+* Sur/azul: *¿Qué reflejo agradezco y suelto?* Decay; cuello afloja.
 
 * **Aura (marcadores):** mandíbula suelta, ojos que acogen, pensamiento des-reactivo
 
@@ -308,13 +226,13 @@ Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina 
 
 * **Preguntas cardinales:**
 
-  * **Oriente:** ¿Qué puerta abro hoy?
+* Oriente/rojo: *¿Qué puerta abro hoy?* Lift un poco mayor (288→292). Clavículas aire.
 
-  * **Norte:** ¿Qué no sé y está bien?
+* Norte/negro: *¿Qué no sé y está bien?* 284–286 llano. Vientre suave.
 
-  * **Occidente:** ¿Qué veo cuando me ablando?
+* Occidente/blanco: *¿Qué veo cuando me ablando?* 288 con borde claro; mirada húmeda.
 
-  * **Sur:** ¿Puedo cerrar en vulnerabilidad serena?
+* Sur/azul: *¿Puedo cerrar en vulnerabilidad serena?* Decay; hombros sueltos.
 
 * **Aura (marcadores):** vulnerabilidad serena, nuca larga, respiración en espalda alta
 
@@ -333,13 +251,13 @@ Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina 
 
 * **Preguntas cardinales:**
 
-  * **Oriente:** ¿Qué hilo antiguo convoca este inicio?
+* Oriente/rojo: *¿Qué hilo antiguo convoca este inicio?* 174 con arranque apenas audible. Planta enraiza.
 
-  * **Norte:** ¿Qué recuerdo puedo honrar sin quedarme ahí?
+* Norte/negro: *¿Qué recuerdo puedo honrar sin vivir ahí?* 170–172 profundo. Párpado pesado leve.
 
-  * **Occidente:** ¿Qué patrón aparece si no narro?
+* Occidente/blanco: *¿Qué patrón aparece si no narro?* 174 plano; foco en escuchar. Lengua descansa.
 
-  * **Sur:** ¿A quién bendigo al soltar la nostalgia?
+* Sur/azul: *¿A quién bendigo al soltar la nostalgia?* Decay prolongado. Exhalación larga.
 
 * **Aura (marcadores):** humedad en ojos, peso amable en pelvis, paso que alenta
 
@@ -358,13 +276,13 @@ Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina 
 
 * **Preguntas cardinales:**
 
-  * **Oriente:** ¿Puedo empezar callando?
+* Oriente/rojo: *¿Puedo empezar callando?* 128 “desde dentro”. Esternón vuelve neutro.
 
-  * **Norte:** ¿Cuál es mi raíz de silencio hoy?
+* Norte/negro: *¿Cuál es mi raíz de silencio hoy?* 124–126. Pies pesados, mente clara.
 
-  * **Occidente:** ¿Qué aclara el silencio?
+* Occidente/blanco: *¿Qué aclara el silencio?* 128 fino; pausa luminosa. Mandíbula en reposo.
 
-  * **Sur:** ¿Cómo el silencio bendice?
+* Sur/azul: *¿Cómo el silencio bendice?* Decay que abraza. Mirada blanda.
 
 * **Aura (marcadores):** quietud viva, lengua descansa, tiempo ensancha
 
@@ -383,13 +301,13 @@ Regla: el filtro cardinal **no cambia la identidad** del fonema; sólo re-afina 
 
 * **Preguntas cardinales:**
 
-  * **Oriente:** ¿Cuál es el vector mínimo suficiente?
+* Oriente/rojo: *¿Cuál es el vector mínimo suficiente?* Impulso 320→322 y suelta. Ojos fijan suave.
 
-  * **Norte:** ¿Qué intención queda cuando retiro el ego?
+* Norte/negro: *¿Qué intención queda cuando retiro el ego?* 316–318 estable. Cadera centrada.
 
-  * **Occidente:** ¿Qué se vuelve claro si nombro poco?
+* Occidente/blanco: *¿Qué se vuelve claro si nombro poco?* 320 exacto; frase breve. Dedo índice se relaja.
 
-  * **Sur:** ¿Cómo cierro sin controlar?
+* Sur/azul: *¿Cómo cierro sin controlar?* Decay cálido; mano abierta.
 
 * **Aura (marcadores):** dirección clara sin rigidez, tono postural asciende, mirada fija y suave
 
@@ -420,9 +338,8 @@ Nota: las modulaciones con “+?%” en algunas fichas se ajustan al imprimir/en
 * Sur: decay 10–25% más largo; deja que el silencio “resuene”.
 
 
-
 [QEL::ECO[96]::RECALL A96-250814-LAMINA-V]
-SOT=TRATADO-METAHUMANO/v1.0 TARGET=lamina|viabilidad|consulta
+SOT=LAMINA-V/v1.0 TARGET=lamina|viabilidad|consulta
 VERSION=v1.0 UPDATED=2025-08-14
 
 # Lámina 𝒱 — Consulta Detallada (v1.0)
@@ -493,7 +410,6 @@ chi_r: 1.10
 H_k: 1.00
 V_final: 0.92
 ```
-
 
 ---
 
