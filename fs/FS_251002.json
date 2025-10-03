@@ -1,0 +1,19 @@
+{
+"fecha": "250902",
+"tema": "Tarjetas Atlas",
+"intencion": "actualizarlas con la información que tenemos",
+"modo": "M1",
+"rumbo": ["C", "W"],
+"tiempo": "45",
+"referencias": ["QEL.md","Glosario","MFH","Lámina 𝒱"],
+"veredicto": "M1 asentado; cierres SIL→UM→Ə con Doble Testigo",
+"resultados": {
+"artefactos": [
+"docs/atlas/LaminaV_Unificada_v1.4.md",
+"docs/pe/PE_ABCDEF1234.md"
+],
+"micro_sellos": [
+"MS::PREH-NAV::K8-LL-APERT-123456"
+]
+}
+}

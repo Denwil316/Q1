@@ -6,6 +6,11 @@
       "path": "docs/GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md"
     },
     {
+      "name": "LaminaV_unificada_v1.0",
+      "role": "LaminaV_unificada_v1.0.md",
+      "path": "docs/LaminaV_unificada_v1.0.md"
+    },
+    {
       "name": "NAVEGADOR_M0_Manual_v0.2",
       "role": "NAVEGADOR_M0_Manual_v0.2.md",
       "path": "docs/NAVEGADOR_M0_Manual_v0.2.md"
@@ -44,11 +49,6 @@
       "name": "QEL_Guia_alineacion_V_v1.0",
       "role": "QEL_Guia_alineacion_V_v1.0.md",
       "path": "docs/QEL_Guia_alineacion_V_v1.0.md"
-    },
-    {
-      "name": "QEL_Lamina_V_Editada_v1.0",
-      "role": "QEL_Lamina_V_Editada_v1.0.md",
-      "path": "docs/QEL_Lamina_V_Editada_v1.0.md"
     },
     {
       "name": "QEL_ListadoR_cue_v1.1",
