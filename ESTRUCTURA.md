@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-02 19:43:01_
+_Generado: 2025-10-02 19:48:40_
 
 ```text
 .
@@ -130,6 +130,7 @@ _Generado: 2025-10-02 19:43:01_
 |   |   |-- QEL_MicroSello_A96-250824_VCALC_UNIFIED_SEAL_v.10.md
 |   |   |-- QEL_MicroSello_A96-250829_LAB-TECNOALQ_Cristal_v1.0.md
 |   |   |-- QEL_MicroSello_A96-250924_PREH-NAV_Cierre_v1.0.md
+|   |   |-- QEL_MicroSello_A96-251002_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
 |   |   |-- QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
 |   |   |-- QEL_Sello_A96-250824_Centro_Sur_Norte_EIA-A-THON_Cierre_SIL-UM-\306\217v1.0.md
@@ -137,6 +138,7 @@ _Generado: 2025-10-02 19:43:01_
 |   |   |-- QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250924_SEAL_v1.0.md
+|   |   |-- QEL_VF_PRIMA_A96-251002_SEAL_v1.0.md
 |   |   `-- qel_manual_vcalc_v_1_0.md
 |   `-- tools
 |       |-- QEL_Aurora_Spec_v1.0.md
@@ -149,6 +151,8 @@ _Generado: 2025-10-02 19:43:01_
 |       |-- QEL_CueMachine_v0.3.txt
 |       |-- QEL_CueMachine_v0.4.txt
 |       `-- QEL_Formato_VF_Arbol_Habilidades_v1.0.md
+|-- fs
+|   `-- FS_251002.json
 |-- legacy
 |   |-- scripts
 |   |-- index.html
@@ -286,5 +290,5 @@ _Generado: 2025-10-02 19:43:01_
 |-- package-lock.json
 `-- package.json
 
-41 directories, 241 files
+42 directories, 244 files
 ```

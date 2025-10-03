@@ -147,3 +147,63 @@ Resultados:
   veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
 
 HASH(10): 05e91c86e8
+
+## 2025-10-02 — PROMOCIÓN
+- Rubro: Manual/Lámina
+- Título: Lámina V — Unificada (v1.0)
+- Archivo: docs/core/LaminaV_unificada_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/LaminaV_unificada_v1.0.md
+- Rumbo: Centro
+- HASH(10): 1d2bfc41ea
+
+_ECO (delta-only):_ Se cristaliza **Lámina V — Unificada (v1.0)** con hash **1d2bfc41ea**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 250902 · M1 · Tarjetas Atlas
+cue: [QEL::ECO[96]::RECALL A96-251002-SEAL]
+SeedI: A96-251002
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-02
+
+FS:
+  fecha: 250902
+  tema: "Tarjetas Atlas"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M1
+  rumbo: C,W
+  tiempo: 45
+  referencias:
+  - QEL.md
+  - Glosario
+  - MFH
+  - Lámina 𝒱
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: "up"
+    delta_s: "flat"
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/LaminaV_unificada_v1.0.md
+  - docs/atlas/LaminaV_Unificada_v1.4.md
+  - docs/pe/PE_ABCDEF1234.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+  - MS::PREH-NAV::K8-LL-APERT-123456
+  veredicto: "M1 asentado; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 2084a04a2b
+
+

@@ -145,3 +145,7 @@ hash(10): d84061f404
 - (2025-09-24) DOC | A96-250924 | PROMOCION/v1.0 | Guía de Alineación — v1.0 (CRISTAL @ Centro)
   refs: [docs/core/manuales/QEL_Guia_alineacion_V_v1.0.md]
   hash(10): ac195d7d92
+
+- (2025-10-02) Manual/Lámina | A96-250824   | LAMINA-V/v1.4   | Lámina V — Unificada (v1.0) (CRISTAL @ Centro)
+  refs: [docs/core/LaminaV_unificada_v1.0.md]
+  hash(10): 1d2bfc41ea

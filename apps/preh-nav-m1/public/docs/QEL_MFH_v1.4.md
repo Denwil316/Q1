@@ -56,10 +56,10 @@ VERSION=v0.1 UPDATED=2025-08-12
 ## 2. Semántica de rumbos (doble mapeo)
 | Cardinal | Semántica | Factor \(\chi_r\) | Rumbo Idriell |
 |---|---|---:|---|
-| Norte | Ética/Límite | 0.9 (reduce disonancia) | Centro |
-| Oriente | Luz/Invocación | 1.1 (amplifica coherencia) | Luz |
-| Occidente | Sombra/Memoria | 1.0 (revela residuo) | Sombra |
-| Sur | Acción/Puente | 1.0 (transporta efecto) | Puente |
+| Norte | Ética/Límite | 1.05 (reduce disonancia) | Centro |
+| Oriente | Luz/Invocación | 1.10 (amplifica coherencia) | Luz |
+| Occidente | Sombra/Memoria | 0.95 (revela residuo) | Sombra |
+| Sur | Acción/Puente | 0.90 (transporta efecto) | Puente |
 
 ## 3. Firma elemental de 12 semillas (dialectos unificados)
 *Alias aceptados entre corchetes.*
