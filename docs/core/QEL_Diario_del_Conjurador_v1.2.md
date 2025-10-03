@@ -147,3 +147,13 @@ Resultados:
   veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
 
 HASH(10): 05e91c86e8
+
+## 2025-10-02 — PROMOCIÓN
+- Rubro: Manual/Lámina
+- Título: Lámina V — Unificada (v1.0)
+- Archivo: docs/core/LaminaV_unificada_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/LaminaV_unificada_v1.0.md
+- Rumbo: Centro
+- HASH(10): 1d2bfc41ea
+
+_ECO (delta-only):_ Se cristaliza **Lámina V — Unificada (v1.0)** con hash **1d2bfc41ea**; se actualiza ListadoR y se publica espejo en preh-nav.
