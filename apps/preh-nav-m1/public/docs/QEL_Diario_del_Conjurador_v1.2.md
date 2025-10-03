@@ -192,9 +192,9 @@ FS:
 
 Resultados:
   artefactos:
-  - docs/core/LaminaV_unificada_v1.0.md
   - docs/atlas/LaminaV_Unificada_v1.4.md
-  - docs/pe/PE_ABCDEF1234.md
+  - docs/atlas/LaminaV_Unificada_v1.4.md
+  - docs/pe/PE_<tu_id>.md
   objetos:
 
   - Kael/Prisma: 0.89
