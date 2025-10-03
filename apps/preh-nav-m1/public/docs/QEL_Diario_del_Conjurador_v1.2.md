@@ -166,7 +166,7 @@ Version: v1.2-log
 Updated: 2025-10-02
 
 FS:
-  fecha: 250902
+  fecha: 251002
   tema: "Tarjetas Atlas"
   intencion: "actualizarlas con la información que tenemos"
   modo: M1
@@ -192,9 +192,8 @@ FS:
 
 Resultados:
   artefactos:
-  - docs/atlas/LaminaV_Unificada_v1.4.md
-  - docs/atlas/LaminaV_Unificada_v1.4.md
-  - docs/pe/PE_<tu_id>.md
+  - docs/core/LaminaV_unificada_v1.0.md
+  - docs/pe/PE_ABCDEF1234.md
   objetos:
 
   - Kael/Prisma: 0.89
