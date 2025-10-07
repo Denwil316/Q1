@@ -5,7 +5,7 @@ set -euo pipefail
 # SeedI=A96-250820
 # SoT=HERRAMIENTAS/v0.2
 # Version=v0.2
-# Updated=2025-08-24
+# Updated=2025-10-02
 
 # [QEL::ECO[96]::A96-250820-VCALC-IO]
 # SeedI=A96-250820

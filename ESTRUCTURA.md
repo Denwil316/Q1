@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-03 01:39:07_
+_Generado: 2025-10-06 18:12:17_
 
 ```text
 .
@@ -38,7 +38,9 @@ _Generado: 2025-10-03 01:39:07_
 │   ├── attachments
 │   ├── core
 │   │   ├── atlas
-│   │   │   └── Tarjetas_Atlas_QEL_v2.4.md
+│   │   │   ├── Qel_Codice_Madre.md
+│   │   │   ├── Tarjetas_Atlas_QEL_v2.4.md
+│   │   │   └── codice_madre_atlas_qel_tarjetas_maestras_v_2.md
 │   │   ├── cartas
 │   │   │   ├── LLPE_Kosmos8_Primera_v1.3.yaml
 │   │   │   └── VF_Apertura_EUM_Llavev1.0.json
@@ -300,5 +302,5 @@ _Generado: 2025-10-03 01:39:07_
 ├── package-lock.json
 └── package.json
 
-45 directories, 251 files
+45 directories, 253 files
 ```

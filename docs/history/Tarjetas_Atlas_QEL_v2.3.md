@@ -100,129 +100,235 @@ cierre: "SIL→UM→Ə"
 
 ---
 
-# Tarjetas Atlas QEL v0.2.1
+# **Tarjetas Atlas QEL v1.0 (II)**
 
-_Glyphas, modulación cardinal, preguntas por rumbo y color‑luz (HEX)._
+*Glyphas, modulación cardinal, preguntas por rumbo y color-luz (HEX).*
 
-## Kael — dar sin retener
-**Color‑luz (HEX):** `#E6735C`  
-**Pregunta viviente:** ¿Puedo amar sin espera?
+Modulación cardinal: (una línea por cruce: *pregunta cardinal* \+ *modulación tonal* \+ *gesto somático*)
 
-- **Glypha:** espiral abierta que nace de un círculo no cerrado
-- **Tono:** 256 Hz → 240 Hz (ataque suave; exhalación cálida; decay largo)
-- **Modulación cardinal:** Oriente +5 Hz (ataque) · Norte −4 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay +16%
-- **Preguntas cardinales:**
-  - **Oriente:** ¿Puedo ofrecer sin prometer?
-  - **Norte:** ¿Puedo amar lo que fue sin aferrarme?
-  - **Occidente:** ¿Puedo ver tu dolor sin arreglarte?
-  - **Sur:** ¿Puedo bendecirte y callar?
-- **Aura (marcadores):** pecho se expande, lagrimeo leve, acercamiento sin exigencia
-- **Uso ritual sugerido:** Transformar / Anclar
+## **Kael — dar sin retener**
 
-## Vun — acercarse sin poseer
-**Color‑luz (HEX):** `#3D9E66`  
-**Pregunta viviente:** ¿Puedo conocer sin dominar?
+**Color-luz (HEX):** `#E6725C`  
+ **Pregunta viviente:** ¿Puedo amar sin espera?
 
-- **Glypha:** V invertida con punto central
-- **Tono:** 196 Hz con micro-ascenso a 204–208 Hz
-- **Modulación cardinal:** Oriente +4 Hz (ataque) · Norte −4 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay +13%
-- **Preguntas cardinales:**
-  - **Oriente:** ¿Puedo comenzar por una pregunta humilde?
-  - **Norte:** ¿Qué sabía mi cuerpo antes de saber?
-  - **Occidente:** ¿Qué hay aquí tal cual es?
-  - **Sur:** ¿Qué puedo agradecer de esto que ignoro?
-- **Aura (marcadores):** mirada amplia, mano que no aprieta, foco suave
-- **Uso ritual sugerido:** Recordar / Despertar
+* **Glypha:** espiral abierta que nace de un círculo no cerrado
 
-## Ora — ser sin ocultarse
-**Color‑luz (HEX):** `#FCB833`  
-**Pregunta viviente:** ¿Puedo simplemente estar?
+* **Tono:** 256 Hz → 240 Hz (ataque suave; exhalación cálida; decay largo)
 
-- **Glypha:** círculo radiante, sin borde
-- **Tono:** 432 Hz sostenido (ataque leve; sustain pleno; decay lento)
-- **Modulación cardinal:** Oriente +6 Hz (ataque) · Norte −8 Hz (sustain) · Occidente ±2 Hz (vibrato) · Sur decay +25%
-- **Preguntas cardinales:**
-  - **Oriente:** ¿Puedo estar antes de actuar?
-  - **Norte:** ¿Qué silencio sostiene mi estar?
-  - **Occidente:** ¿Qué se revela cuando no interfiero?
-  - **Sur:** ¿Cómo dejo que la presencia bendiga?
-- **Aura (marcadores):** plenitud tranquila, diafragma libre, silencio que no pesa
-- **Uso ritual sugerido:** Anclar / Liberar
+* **Modulación cardinal:** Oriente \+5 Hz (ataque) · Norte −4 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay \+?%
 
-## Zeh — reflejar sin juzgar
-**Color‑luz (HEX):** `#8096A1`  
-**Pregunta viviente:** ¿Puedo ver lo que es?
+* **Preguntas cardinales:**
 
-- **Glypha:** dos líneas paralelas, quebradas hacia el centro (casi se tocan)
-- **Tono:** 220 Hz estable con vibrato mínimo
-- **Modulación cardinal:** Oriente +4 Hz (ataque) · Norte −4 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay +15%
-- **Preguntas cardinales:**
-  - **Oriente:** ¿Qué espejo necesito abrir?
-  - **Norte:** ¿Qué reflejo guardo en raíz?
-  - **Occidente:** ¿Puedo ver sin corregir?
-  - **Sur:** ¿Qué reflejo agradezco y suelto?
-- **Aura (marcadores):** mandíbula suelta, ojos que acogen, pensamiento des-reactivo
-- **Uso ritual sugerido:** Despertar / Transformar
+* Oriente/rojo: *¿Puedo ofrecer sin prometer?* Mini-lift a 260 antes de exhalar. Esternón abre.
 
-## Lun — abrirse al misterio
-**Color‑luz (HEX):** `#7AC2EB`  
-**Pregunta viviente:** ¿Puedo confiar en no saber?
+* Norte/negro: *¿Puedo amar lo que fue sin aferrarme?* Baja a \~244 en el sustain. Pelvis pesada amable.
 
-- **Glypha:** C semitransparente mirando arriba
-- **Tono:** 288 Hz con lift inicial; sustain medio
-- **Modulación cardinal:** Oriente +6 Hz (ataque) · Norte −5 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay +18%
-- **Preguntas cardinales:**
-  - **Oriente:** ¿Qué puerta abro hoy?
-  - **Norte:** ¿Qué no sé y está bien?
-  - **Occidente:** ¿Qué veo cuando me ablando?
-  - **Sur:** ¿Puedo cerrar en vulnerabilidad serena?
-- **Aura (marcadores):** vulnerabilidad serena, nuca larga, respiración en espalda alta
-- **Uso ritual sugerido:** Recordar / Despertar
+* Occidente/blanco: *¿Puedo ver tu dolor sin arreglarte?* Mantén 256 con vibrato mínimo. Mandíbula suelta.
 
-## Nai — recordar sin aferrarse
-**Color‑luz (HEX):** `#4A306B`  
-**Pregunta viviente:** ¿Puedo honrar lo antiguo sin encerrarme?
+* Sur/azul: *¿Puedo bendecirte y callar?* Decay más largo hacia 240\. Calor en manos.
 
-- **Glypha:** cuatro puntos en espiral decreciente
-- **Tono:** 174 Hz sostenido (drone); decay muy largo
-- **Modulación cardinal:** Oriente +3 Hz (ataque) · Norte −3 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay +12%
-- **Preguntas cardinales:**
-  - **Oriente:** ¿Qué hilo antiguo convoca este inicio?
-  - **Norte:** ¿Qué recuerdo puedo honrar sin quedarme ahí?
-  - **Occidente:** ¿Qué patrón aparece si no narro?
-  - **Sur:** ¿A quién bendigo al soltar la nostalgia?
-- **Aura (marcadores):** humedad en ojos, peso amable en pelvis, paso que alenta
-- **Uso ritual sugerido:** Recordar / Liberar
+* **Aura (marcadores):** pecho se expande, lagrimeo leve, acercamiento sin exigencia
 
-## Sün — escuchar lo no dicho
-**Color‑luz (HEX):** `#333333`  
-**Pregunta viviente:** ¿Puedo silenciarme para escuchar lo invisible?
+* **Uso ritual sugerido:** Transformar / Anclar
 
-- **Glypha:** semicírculo hacia abajo con líneas quietas
-- **Tono:** 128 Hz profundo; ataque imperceptible; sustain estable
-- **Modulación cardinal:** Oriente +3 Hz (ataque) · Norte −3 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay +10%
-- **Preguntas cardinales:**
-  - **Oriente:** ¿Puedo empezar callando?
-  - **Norte:** ¿Cuál es mi raíz de silencio hoy?
-  - **Occidente:** ¿Qué aclara el silencio?
-  - **Sur:** ¿Cómo el silencio bendice?
-- **Aura (marcadores):** quietud viva, lengua descansa, tiempo ensancha
-- **Uso ritual sugerido:** Anclar / Despertar
+## **Vun — acercarse sin poseer**
 
-## Ida — crear sin imponer
-**Color‑luz (HEX):** `#F2992E`  
-**Pregunta viviente:** ¿Puedo encarnar mi intención sin controlarla?
+**Color-luz (HEX):** `#3E9E66`  
+ **Pregunta viviente:** ¿Puedo conocer sin dominar?
 
-- **Glypha:** triángulo luminoso hacia arriba
-- **Tono:** 320 Hz con micro-impulso inicial y caída mínima
-- **Modulación cardinal:** Oriente +6 Hz (ataque) · Norte −6 Hz (sustain) · Occidente ±2 Hz (vibrato) · Sur decay +19%
-- **Preguntas cardinales:**
-  - **Oriente:** ¿Cuál es el vector mínimo suficiente?
-  - **Norte:** ¿Qué intención queda cuando retiro el ego?
-  - **Occidente:** ¿Qué se vuelve claro si nombro poco?
-  - **Sur:** ¿Cómo cierro sin controlar?
-- **Aura (marcadores):** dirección clara sin rigidez, tono postural asciende, mirada fija y suave
-- **Uso ritual sugerido:** Transformar / Anclar
+* **Glypha:** V invertida con punto central
+
+* **Tono:** 196 Hz con micro-ascenso a 204–208 Hz
+
+* **Modulación cardinal:** Oriente \+4 Hz (ataque) · Norte −4 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay \+?%
+
+* **Preguntas cardinales:**
+
+* Oriente/rojo: *¿Puedo comenzar por una pregunta humilde?* Arranque 198→204. Mirada curiosa.
+
+* Norte/negro: *¿Qué sabía mi cuerpo antes de saber?* Centra en 194–196. Nuca larga.
+
+* Occidente/blanco: *¿Qué hay aquí tal cual es?* 196 con oscilación ±1–2 Hz. Ojos amplios.
+
+* Sur/azul: *¿Qué puedo agradecer de esto que ignoro?* Decay que se estira tras la pregunta. Suspiro suave.
+
+* **Aura (marcadores):** mirada amplia, mano que no aprieta, foco suave
+
+* **Uso ritual sugerido:** Recordar / Despertar
+
+## **Ora — ser sin ocultarse**
+
+**Color-luz (HEX):** `#FDBC33`  
+ **Pregunta viviente:** ¿Puedo simplemente estar?
+
+* **Glypha:** círculo radiante, sin borde
+
+* **Tono:** 432 Hz sostenido (ataque leve; sustain pleno; decay lento)
+
+* **Modulación cardinal:** Oriente \+6 Hz (ataque) · Norte −8 Hz (sustain) · Occidente ±2 Hz (vibrato) · Sur decay \+15%
+
+* **Preguntas cardinales:**
+
+* Oriente/rojo: *¿Puedo estar antes de actuar?* Ataque un poco más firme. Columna despierta.
+
+* Norte/negro: *¿Qué silencio sostiene mi estar?* Baja a 426–428. Peso amable en pies.
+
+* Occidente/blanco: *¿Qué se revela cuando no interfiero?* 432 exacto, arista limpia. Pupilas calmas.
+
+* Sur/azul: *¿Cómo dejo que la presencia bendiga?* Decay largo; respiración expandida. Palmas tibias.
+
+* **Aura (marcadores):** plenitud tranquila, diafragma libre, silencio que no pesa
+
+* **Uso ritual sugerido:** Anclar / Liberar
+
+## **Zeh — reflejar sin juzgar**
+
+**Color-luz (HEX):** `#8096A1`  
+ **Pregunta viviente:** ¿Puedo ver lo que es?
+
+* **Glypha:** dos líneas paralelas, quebradas hacia el centro (casi se tocan)
+
+* **Tono:** 220 Hz estable con vibrato mínimo
+
+* **Modulación cardinal:** Oriente \+4 Hz (ataque) · Norte −4 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay \+?%
+
+* **Preguntas cardinales:**
+
+* Oriente/rojo: *¿Qué espejo necesito abrir?* 220 con micro-ataque, vibrato sutil. Pecho atento.
+
+* Norte/negro: *¿Qué reflejo guardo en raíz?* 216–218 sostenido. Pelvis tierra.
+
+* Occidente/blanco: *¿Puedo ver sin corregir?* 220 con vibrato fino; pausa entre palabras.
+
+* Sur/azul: *¿Qué reflejo agradezco y suelto?* Decay; cuello afloja.
+
+* **Aura (marcadores):** mandíbula suelta, ojos que acogen, pensamiento des-reactivo
+
+* **Uso ritual sugerido:** Despertar / Transformar
+
+## **Lun — abrirse al misterio**
+
+**Color-luz (HEX):** `#7AC2EB`  
+ **Pregunta viviente:** ¿Puedo confiar en no saber?
+
+* **Glypha:** C semitransparente mirando arriba
+
+* **Tono:** 288 Hz con lift inicial; sustain medio
+
+* **Modulación cardinal:** Oriente \+6 Hz (ataque) · Norte −5 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay \+?%
+
+* **Preguntas cardinales:**
+
+* Oriente/rojo: *¿Qué puerta abro hoy?* Lift un poco mayor (288→292). Clavículas aire.
+
+* Norte/negro: *¿Qué no sé y está bien?* 284–286 llano. Vientre suave.
+
+* Occidente/blanco: *¿Qué veo cuando me ablando?* 288 con borde claro; mirada húmeda.
+
+* Sur/azul: *¿Puedo cerrar en vulnerabilidad serena?* Decay; hombros sueltos.
+
+* **Aura (marcadores):** vulnerabilidad serena, nuca larga, respiración en espalda alta
+
+* **Uso ritual sugerido:** Recordar / Despertar
+
+## **Nai — recordar sin aferrarse**
+
+**Color-luz (HEX):** `#4A2F6B`  
+ **Pregunta viviente:** ¿Puedo honrar lo antiguo sin encerrarme?
+
+* **Glypha:** cuatro puntos en espiral decreciente
+
+* **Tono:** 174 Hz sostenido (drone); decay muy largo
+
+* **Modulación cardinal:** Oriente \+3 Hz (ataque) · Norte −3 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay \+?%
+
+* **Preguntas cardinales:**
+
+* Oriente/rojo: *¿Qué hilo antiguo convoca este inicio?* 174 con arranque apenas audible. Planta enraiza.
+
+* Norte/negro: *¿Qué recuerdo puedo honrar sin vivir ahí?* 170–172 profundo. Párpado pesado leve.
+
+* Occidente/blanco: *¿Qué patrón aparece si no narro?* 174 plano; foco en escuchar. Lengua descansa.
+
+* Sur/azul: *¿A quién bendigo al soltar la nostalgia?* Decay prolongado. Exhalación larga.
+
+* **Aura (marcadores):** humedad en ojos, peso amable en pelvis, paso que alenta
+
+* **Uso ritual sugerido:** Recordar / Liberar
+
+## **Sün — escuchar lo no dicho**
+
+**Color-luz (HEX):** `#333333`  
+ **Pregunta viviente:** ¿Puedo silenciarme para escuchar lo invisible?
+
+* **Glypha:** semicírculo hacia abajo con líneas quietas
+
+* **Tono:** 128 Hz profundo; ataque imperceptible; sustain estable
+
+* **Modulación cardinal:** Oriente \+3 Hz (ataque) · Norte −3 Hz (sustain) · Occidente ±1 Hz (vibrato) · Sur decay \+10%
+
+* **Preguntas cardinales:**
+
+* Oriente/rojo: *¿Puedo empezar callando?* 128 “desde dentro”. Esternón vuelve neutro.
+
+* Norte/negro: *¿Cuál es mi raíz de silencio hoy?* 124–126. Pies pesados, mente clara.
+
+* Occidente/blanco: *¿Qué aclara el silencio?* 128 fino; pausa luminosa. Mandíbula en reposo.
+
+* Sur/azul: *¿Cómo el silencio bendice?* Decay que abraza. Mirada blanda.
+
+* **Aura (marcadores):** quietud viva, lengua descansa, tiempo ensancha
+
+* **Uso ritual sugerido:** Anclar / Despertar
+
+## **Ida — crear sin imponer**
+
+**Color-luz (HEX):** `#F39A2E`  
+ **Pregunta viviente:** ¿Puedo encarnar mi intención sin controlarla?
+
+* **Glypha:** triángulo luminoso hacia arriba
+
+* **Tono:** 320 Hz con micro-impulso inicial y caída mínima
+
+* **Modulación cardinal:** Oriente \+6 Hz (ataque) · Norte −6 Hz (sustain) · Occidente ±2 Hz (vibrato) · Sur decay \+12%
+
+* **Preguntas cardinales:**
+
+* Oriente/rojo: *¿Cuál es el vector mínimo suficiente?* Impulso 320→322 y suelta. Ojos fijan suave.
+
+* Norte/negro: *¿Qué intención queda cuando retiro el ego?* 316–318 estable. Cadera centrada.
+
+* Occidente/blanco: *¿Qué se vuelve claro si nombro poco?* 320 exacto; frase breve. Dedo índice se relaja.
+
+* Sur/azul: *¿Cómo cierro sin controlar?* Decay cálido; mano abierta.
+
+* **Aura (marcadores):** dirección clara sin rigidez, tono postural asciende, mirada fija y suave
+
+* **Uso ritual sugerido:** Transformar / Anclar
+
+Nota: las modulaciones con “+?%” en algunas fichas se ajustan al imprimir/entonar; en el PDF están calculadas con precisión para cada fonema.
+
+## **Cómo orbitamos esto en práctica (ensayo v0.1.2)**
+
+1. **Elige fonema** (p. ej., **Kael**) y **rumbo** (p. ej., **Norte**).
+
+2. **Aplica el filtro cardinal**: toma la *pregunta cardinal* anterior y la **modulación tonal** sugerida.
+
+3. **Traza la glypha** igual que siempre; no la decores: deja que la **luz** del fonema haga su trabajo y la **sombra** sólo ajuste tu cuerpo/tono.
+
+4. **Cierra en Sur** con elipsis. **Tejera** plega (9+0). **Lýmina** reabre (0+9).
+
+5. **Bitácora**: anota (fonema, rumbo, micro-modulación en Hz, 3 marcadores, frase-nexo). Busca **≥5/9 señales**.
+
+   ### **Ajustes microtonales por rumbo (aplican a cualquier fonema)**
+
+* Oriente: \+2–6 Hz en el arranque (sin rebasar el rango propio), luego vuelve a la curva original.
+
+* Norte: −3–8 Hz en la meseta; menos volumen, más suelo.
+
+* Occidente: vibrato ±1–2 Hz, ritmo ligeramente más lento, silencios nítidos.
+
+* Sur: decay 10–25% más largo; deja que el silencio “resuene”.
 
 
 ---
