@@ -217,3 +217,13 @@ HASH(10): 2084a04a2b
 - HASH(10): 534891a1d1
 
 _ECO (delta-only):_ Se cristaliza **Poema‑Enigma (v1.3) — Apertura I** con hash **534891a1d1**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 2025-10-06 — PROMOCIÓN
+- Rubro: ATLAS/CODICE
+- Título: Códice Madre
+- Archivo: docs/core/Qel_Codice_Madre.md
+- Copia: apps/preh-nav-m1/public/docs/Qel_Codice_Madre.md
+- Rumbo: Centro
+- HASH(10): 4fb56ea798
+
+_ECO (delta-only):_ Se cristaliza **Códice Madre** con hash **4fb56ea798**; se actualiza ListadoR y se publica espejo en preh-nav.
