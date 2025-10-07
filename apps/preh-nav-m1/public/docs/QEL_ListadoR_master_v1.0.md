@@ -154,3 +154,7 @@ hash(10): d84061f404
   refs: [docs/pe/PEe2c82e10e1.md]
   hash(10): 534891a1d1
 R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1.0|C — Llave de Matrices (Apertura I) [e2c82e10e1]
+
+- (2025-10-06) ATLAS/CODICE | "A96-250824" | "ATLAS-TARJETAS/v2.4 — Rol Árbitra (UNIFICADO con Códice Madre v0.1)" | Códice Madre (CRISTAL @ Centro)
+  refs: [docs/core/Qel_Codice_Madre.md]
+  hash(10): 4fb56ea798

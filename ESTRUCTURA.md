@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-06 18:38:21_
+_Generado: 2025-10-06 18:43:01_
 
 ```text
 .
@@ -159,7 +159,8 @@ _Generado: 2025-10-06 18:38:21_
 |       |-- QEL_CueMachine_v0.4.txt
 |       `-- QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 |-- fs
-|   `-- FS_251002.json
+|   |-- FS_251002.json
+|   `-- FS_251006.json
 |-- legacy
 |   |-- scripts
 |   |-- index.html
@@ -302,5 +303,5 @@ _Generado: 2025-10-06 18:38:21_
 |-- package-lock.json
 `-- package.json
 
-45 directories, 253 files
+45 directories, 254 files
 ```

@@ -1,7 +1,19 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-03T07:35:40.766Z",
+  "Updated": "2025-10-07T00:38:20.181Z",
   "manifest": [
+    {
+      "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
+      "path": "docs/core/atlas/codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
+      "title": "Códice Madre — Tarjetas Maestras v2.4 (Rol Árbitra) · **UNIFICADO**",
+      "cue": "",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": null,
+      "kind": "core-doc"
+    },
     {
       "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
       "path": "docs/core/manuales/GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
@@ -36,6 +48,18 @@
       "version": "v0.2 UPDATED=2025-08-15",
       "updated": "",
       "hash10": null,
+      "kind": "core-doc"
+    },
+    {
+      "name": "Qel_Codice_Madre.md",
+      "path": "docs/core/Qel_Codice_Madre.md",
+      "title": "Códice Madre — Tarjetas Maestras v2.4 (Rol Árbitra) · **UNIFICADO**",
+      "cue": "",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": "4fb56ea798",
       "kind": "core-doc"
     },
     {
@@ -301,25 +325,6 @@
       "updated": "",
       "hash10": null,
       "kind": "core-doc"
-    },
-    {
-      "name": "PEe2c82e10e1.md",
-      "path": "docs/pe/PEe2c82e10e1.md",
-      "title": "PE — PE::e2c82e10e1",
-      "sot": "LL-PE/v1.4",
-      "version": "v1.0",
-      "updated": "2025-10-03",
-      "kind": "pe"
-    },
-    {
-      "name": "e2c82e10e1.md",
-      "path": "docs/habilidades/Ə-UM-A/Llave/C/singular/e2c82e10e1.md",
-      "title": "Habilidad — Llave de Matrices (Apertura I)",
-      "cue": "VF::A96-250824::apertura-eum",
-      "sot": "ATLAS-HAB/v1.0",
-      "version": "v1.0",
-      "updated": "2025-10-03",
-      "kind": "habilidad"
     }
   ]
 }

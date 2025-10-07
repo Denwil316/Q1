@@ -217,3 +217,112 @@ HASH(10): 2084a04a2b
 - HASH(10): 534891a1d1
 
 _ECO (delta-only):_ Se cristaliza **Poema‑Enigma (v1.3) — Apertura I** con hash **534891a1d1**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 2025-10-06 — PROMOCIÓN
+- Rubro: ATLAS/CODICE
+- Título: Códice Madre
+- Archivo: docs/core/Qel_Codice_Madre.md
+- Copia: apps/preh-nav-m1/public/docs/Qel_Codice_Madre.md
+- Rumbo: Centro
+- HASH(10): 4fb56ea798
+
+_ECO (delta-only):_ Se cristaliza **Códice Madre** con hash **4fb56ea798**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 251006 · M0 · Tarjetas Atlas
+cue: [QEL::ECO[96]::RECALL A96-251006-ATLAS-MADRE-V2-4]
+SeedI: A96-250824
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-06
+
+FS:
+  fecha: 251006
+  tema: "Tarjetas Atlas"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - Glosario
+  - MFH
+  - Lámina 𝒱
+  - Manual Sombras
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): eefd5805ef
+
+
+
+## 251006 · M1 · Tarjetas Atlas
+cue: [QEL::ECO[96]::RECALL A96-251006-ATLAS-MADRE-V2-4]
+SeedI: A96-250824
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-06
+
+FS:
+  fecha: 251006
+  tema: "Tarjetas Atlas"
+  intencion: "Promover, registrar y sellar el Códice Madre v2.4-final"
+  modo: M1
+  rumbo: Centro
+  tiempo: 20
+  referencias:
+  - Lamina V unificada
+  - MFH v1.4
+  - SoT Atlas
+  - Glosario v1.4
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/atlas/Codice_Madre_Tarjetas_v2.4_final.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+  - PROMO: Códice v2.4-final
+  veredicto: "Cristalización v2.4-final; Doble Testigo; cierres SIL→UM→Ə"
+
+HASH(10): 65999a53fa
+
+
