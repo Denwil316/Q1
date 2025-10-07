@@ -1,6 +1,11 @@
 {
   "files": [
     {
+      "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2",
+      "role": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
+      "path": "docs/codice_madre_atlas_qel_tarjetas_maestras_v_2.md"
+    },
+    {
       "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2",
       "role": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
       "path": "docs/GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md"
@@ -19,6 +24,11 @@
       "name": "QEL",
       "role": "QEL.md",
       "path": "docs/QEL.md"
+    },
+    {
+      "name": "Qel_Codice_Madre",
+      "role": "Qel_Codice_Madre.md",
+      "path": "docs/Qel_Codice_Madre.md"
     },
     {
       "name": "QEL_Diario_del_Conjurador_v1.2",
