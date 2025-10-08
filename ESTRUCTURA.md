@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-06 18:58:08_
+_Generado: 2025-10-08 17:43:56_
 
 ```text
 .
@@ -161,10 +161,6 @@ _Generado: 2025-10-06 18:58:08_
 ├── fs
 │   ├── FS_251002.json
 │   └── FS_251006.json
-├── legacy
-│   ├── scripts
-│   ├── index.html
-│   └── qel_navegador.py
 ├── memory
 │   ├── archive
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
@@ -303,5 +299,5 @@ _Generado: 2025-10-06 18:58:08_
 ├── package-lock.json
 └── package.json
 
-45 directories, 254 files
+43 directories, 252 files
 ```
