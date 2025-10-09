@@ -53,6 +53,6 @@ fi
 security add-generic-password -a "$USER" -s "$SERVICE" -w "$SECRET" >/dev/null 2>&1
 
 # hash10 del secreto (para tu cuaderno; no revela el secreto)
-h10=$(printf "%s" "$SECRET" | openssl dgst -sha256 | awk '{print $2}' | cut -c1-10)
+h10=$(printf "%s" "$SECRET" | openssl dgst -sha256 -r | awk '{print $1}' | cut -c1-10)
 echo "[OK] secreto guardado en Keychain servicio \"$SERVICE\" | secret_hash10=$h10"
 [ $PREVIEW -eq 1 ] && echo "[PREVIEW] SAL_A=${SAL_A}"

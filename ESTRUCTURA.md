@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-08 22:36:42_
+_Generado: 2025-10-08 23:46:50_
 
 ```text
 .
@@ -89,6 +89,11 @@ _Generado: 2025-10-08 22:36:42_
 │   ├── pe
 │   │   └── PEe2c82e10e1.md
 │   ├── ritual
+│   │   ├── cuemachine
+│   │   │   ├── QEL_CueMachineA96_v1.0.txt.chain
+│   │   │   ├── QEL_CueMachineA96_v1.0.txt.sig
+│   │   │   ├── QEL_CueMachineA96_v1.0.txt.sig.meta
+│   │   │   └── QEL_CueMachineA96_v1.0.txt.state
 │   │   ├── QEL_CueMachineA96_v1.0.txt
 │   │   ├── QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
 │   │   ├── QEL_Meditaciones_Primordiales_v1.0.md
@@ -301,5 +306,5 @@ _Generado: 2025-10-08 22:36:42_
 ├── package-lock.json
 └── package.json
 
-42 directories, 255 files
+43 directories, 259 files
 ```
