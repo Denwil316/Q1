@@ -326,3 +326,50 @@ Resultados:
 HASH(10): 65999a53fa
 
 
+
+## 251008 · M1 · Curaduría Núcleo Mínimo
+cue: [QEL::ECO[96]::RECALL A96-251008-CURADURIA-NUCLEO-MIN]
+SeedI: A96-250824
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-08
+
+FS:
+  fecha: 251008
+  tema: "Curaduría Núcleo Mínimo"
+  intencion: "Consolidar 5 fundamentales; sin promoción (bitácora)"
+  modo: M1
+  rumbo: Centro
+  tiempo: 45
+  referencias:
+  - Qel_Codice_Madre.md
+  - QEL.md
+  - LaminaV_unificada_v1.0.md
+  - QEL_SoT_Atlas_v1.0_250826.md
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: "up"
+    delta_s: "flat"
+    V: { Curaduría/Núcleo-Mínimo: 0.66 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+
+  objetos:
+
+  - Curaduría/Núcleo-Mínimo: 0.66
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 289730b553
+- HASH_REF(10): ARB-CENTRO-v1.6
+
