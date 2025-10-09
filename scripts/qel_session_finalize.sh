@@ -9,6 +9,11 @@
 set -euo pipefail
 : "${LC_ALL:=C}"; export LC_ALL
 
+# Safe init (Bash 3.2)
+declare -a ARTEFACTOS MICROS
+: "${ARTEFACTOS[@]:-}" >/dev/null 2>&1 || ARTEFACTOS=()
+: "${MICROS[@]:-}"     >/dev/null 2>&1 || MICROS=()
+
 need(){ command -v "$1" >/dev/null 2>&1 || { echo "Falta '$1'"; exit 1; }; }
 need git; need awk; need shasum; need jq
 
@@ -229,12 +234,12 @@ $(yaml_list_from_csv "${REFS:-QEL.md,Glosario,MFH,Lámina 𝒱,Manual Sombras}")
 
 Resultados:
   artefactos:
-$(yaml_list_from_array "${ARTEFACTOS[@]}")
+$(yaml_list_from_array "${ARTEFACTOS[@]:-}")
   objetos:
 ${OBJ_YAML}
   cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
   micro_sellos:
-$(yaml_list_from_array "${MICROS[@]}")
+$(yaml_list_from_array "${MICROS[@]:-}")
   veredicto: "${VEREDICTO}"
 
 HASH(10): ${HASH10}
@@ -270,7 +275,7 @@ if ! grep -qF "$TAG" "$F_LR"; then
     echo "  - docs/ritual/$(basename "$F_MS")"
     echo "  - docs/ritual/$(basename "$F_VF")"
     echo "  - docs/core/$(basename "$F_DI")"
-    for a in "${ARTEFACTOS[@]}"; do [ -n "$a" ] && printf "  - %s\n" "$a"; done
+    for a in "${ARTEFACTOS[@]:-}"; do [ -n "$a" ] && printf "  - %s\n" "$a"; done
     cat <<EOF2
 Resultados:
   veredicto: "${VEREDICTO}"
@@ -285,7 +290,7 @@ fi
 
 # ---------- 5) Exponer a PREH-NAV y manifest ----------
 cp "$F_MS" "$F_VF" "$F_DI" "$F_LR" apps/preh-nav-m1/public/docs/ 2>/dev/null || true
-for a in "${ARTEFACTOS[@]}"; do
+for a in "${ARTEFACTOS[@]:-}"; do
   if [ -f "$a" ]; then
     cp -f "$a" "apps/preh-nav-m1/public/docs/$(basename "$a")" 2>/dev/null || true
   fi
@@ -305,7 +310,7 @@ fi
 
 # ---------- 6) Commit + push ----------
 git add "$F_MS" "$F_VF" "$F_DI" "$F_LR" apps/preh-nav-m1/public/docs 2>/dev/null || true
-for a in "${ARTEFACTOS[@]}"; do git add "$a" 2>/dev/null || true; done
+for a in "${ARTEFACTOS[@]:-}"; do git add "$a" 2>/dev/null || true; done
 git add docs/core/QEL_SoT_Manifest_v0.8.json 2>/dev/null || true
 
 git commit -m "QEL: cierre ${FECHA} — FS(${MODO}/${TEMA}); VF.PRIMA, MicroSello, Diario, ListadoR; HASH(10)=${HASH10}." || true

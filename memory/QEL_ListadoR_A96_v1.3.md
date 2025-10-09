@@ -78,7 +78,7 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): 05e91c86e8
 
-## 250902 · M1 · Tarjetas Atlas
+## 251002 · M1 · Tarjetas Atlas
 cue: [QEL::ECO[96]::RECALL A96-251002-SEAL]
 SeedI: A96-251002
 Refs:
@@ -124,3 +124,11 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): 65999a53fa
 
+
+## 251008 · M1 · Curaduría Núcleo Mínimo
+cue: [QEL::ECO[96]::RECALL A96-251008-CURADURIA-NUCLEO-MIN]
+SeedI: A96-250824
+Refs:
+  - docs/ritual/QEL_MicroSello_A96-250824_PREH-NAV_Cierre_v1.0.md
+  - docs/ritual/QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
+  - docs/core/QEL_Diario_del_Conjurador_v1.2.md

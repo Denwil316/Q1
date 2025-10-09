@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-08 18:22:03_
+_Generado: 2025-10-08 22:36:07_
 
 ```text
 .
@@ -59,6 +59,7 @@ _Generado: 2025-10-08 18:22:03_
 │   │   │   └── QEL_SoT_Study_Guide_v1.1.md
 │   │   ├── LaminaV_unificada_v1.0.md
 │   │   ├── QEL.md
+│   │   ├── QEL_Curacion_Nucleo_Minimo_v1.6.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   ├── QEL_Formato_VF_AH_v1.4.md
 │   │   ├── QEL_Glosario_v1.4.md
@@ -272,10 +273,13 @@ _Generado: 2025-10-08 18:22:03_
 │   ├── pre-commit-codex-structure.sh
 │   ├── qel
 │   ├── qel_atlas_microreg.sh
+│   ├── qel_cuemachine_add.sh
+│   ├── qel_cuemachine_check.sh
 │   ├── qel_pe_generate.mjs
 │   ├── qel_pe_generate.mjs.bak
 │   ├── qel_promote_mac.sh
 │   ├── qel_scripts_help.sh
+│   ├── qel_secret_init.sh
 │   ├── qel_session_finalize.sh
 │   ├── qel_vcalc.sh
 │   ├── qel_vcalc.sh.bak
@@ -297,5 +301,5 @@ _Generado: 2025-10-08 18:22:03_
 ├── package-lock.json
 └── package.json
 
-42 directories, 251 files
+42 directories, 255 files
 ```
