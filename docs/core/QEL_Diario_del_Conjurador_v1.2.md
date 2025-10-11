@@ -373,3 +373,13 @@ Resultados:
 HASH(10): 289730b553
 - HASH_REF(10): ARB-CENTRO-v1.6
 
+
+## 2025-10-11 — PROMOCIÓN
+- Rubro: OPS
+- Título: README — Arranque reproducible (implementación)
+- Archivo: README.md
+- Copia: apps/preh-nav-m1/public/docs/README.md
+- Rumbo: Centro
+- HASH(10): 591dfcbe8c
+
+_ECO (delta-only):_ Se cristaliza **README — Arranque reproducible (implementación)** con hash **591dfcbe8c**; se actualiza ListadoR y se publica espejo en preh-nav.
