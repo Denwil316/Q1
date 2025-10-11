@@ -10,6 +10,10 @@
     "gen:manifest": "node scripts/generate_manifest.mjs",
     "postinstall": "node scripts/generate_manifest.mjs"
   },
+   "overrides": {
+    "esbuild": "^0.25.0",
+    "vite": { "esbuild": "^0.25.0" }
+  }, 
   "dependencies": {
     "fuse.js": "^7.0.0",
     "react": "^18.3.1",
