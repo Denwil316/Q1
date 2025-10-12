@@ -592,3 +592,4 @@ Fecha: 2025-10-08
 - **v1.5 — Curadora (Oeste)**: Changelog consolidado; compatibilidad hacia atrás; pre‑flight de **Promoción** y wrapper **mock**.
 - **v1.6 — Árbitra (Centro)**: Sello de coherencia (apta); **No‑Promoción** por decisión custodial; se preserva como documento **fuera del repo**.
 
+HASH(10): 96b5d35d4b
