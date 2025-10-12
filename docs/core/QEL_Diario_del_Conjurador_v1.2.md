@@ -373,6 +373,15 @@ Resultados:
 HASH(10): 289730b553
 - HASH_REF(10): ARB-CENTRO-v1.6
 
+## 2025-10-11 — PROMOCIÓN
+- Rubro: NÚCLEO MÍNIMO
+- Título: Curación del Repositorio QEL — Núcleo Mínimo (v1.6)
+- Archivo: docs/core/QEL_Curacion_Nucleo_Minimo_v1.6.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Curacion_Nucleo_Minimo_v1.6.md
+- Rumbo: Centro
+- HASH(10): 96b5d35d4b
+
+_ECO (delta-only):_ Se cristaliza **Curación del Repositorio QEL — Núcleo Mínimo (v1.6)** con hash **96b5d35d4b**; se actualiza ListadoR y se publica espejo en preh-nav.
 
 ## 2025-10-11 — PROMOCIÓN
 - Rubro: OPS
@@ -383,13 +392,3 @@ HASH(10): 289730b553
 - HASH(10): 591dfcbe8c
 
 _ECO (delta-only):_ Se cristaliza **README — Arranque reproducible (implementación)** con hash **591dfcbe8c**; se actualiza ListadoR y se publica espejo en preh-nav.
-
-## 2025-10-11 — PROMOCIÓN
-- Rubro: NÚCLEO MÍNIMO
-- Título: Curación del Repositorio QEL — Núcleo Mínimo (v1.6)
-- Archivo: docs/core/QEL_Curacion_Nucleo_Minimo_v1.6.md
-- Copia: apps/preh-nav-m1/public/docs/QEL_Curacion_Nucleo_Minimo_v1.6.md
-- Rumbo: Centro
-- HASH(10): 96b5d35d4b
-
-_ECO (delta-only):_ Se cristaliza **Curación del Repositorio QEL — Núcleo Mínimo (v1.6)** con hash **96b5d35d4b**; se actualiza ListadoR y se publica espejo en preh-nav.
