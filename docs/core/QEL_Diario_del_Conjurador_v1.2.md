@@ -455,3 +455,53 @@ HASH(10): 117de105e9
 - SeedI: "A37-251015"
 
 _ECO (delta-only):_ Se cristaliza **Curación del Repositorio QEL — Núcleo Mínimo (≤20 docs)** con hash **374fbcea08**; se actualiza ListadoR y espejo.
+
+## 251015 · M0 · Tarjetas Atlas
+cue: [QEL::ECO[96]::RECALL A96-251015-CURADURIA-NUCLEO-MINIMO]
+SeedI: A37-251015
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-15
+
+FS:
+  fecha: 251015
+  tema: "Tarjetas Atlas"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - Glosario
+  - MFH
+  - Lámina 𝒱
+  - Manual Sombras
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 7228b17577
+
+
