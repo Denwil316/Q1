@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-15T15:58:13.805Z",
+  "Updated": "2025-10-15T20:06:51.465Z",
   "manifest": [
     {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
@@ -75,15 +75,15 @@
       "kind": "core-doc"
     },
     {
-      "name": "QEL_Curacion_Nucleo_Minimo_v1.6.md",
-      "path": "docs/core/QEL_Curacion_Nucleo_Minimo_v1.6.md",
-      "title": "Curación del Repositorio QEL — **Núcleo Mínimo** (≤20 docs)",
+      "name": "QEL_Curacion_Nucleo_Minimo.md",
+      "path": "docs/core/QEL_Curacion_Nucleo_Minimo.md",
+      "title": "Capa SUR — Curación del Repositorio QEL · Núcleo Mínimo (≤20 docs)",
       "cue": "",
       "seed": "",
       "sot": "",
       "version": "",
       "updated": "",
-      "hash10": "96b5d35d4b",
+      "hash10": "374fbcea08",
       "kind": "core-doc"
     },
     {
@@ -91,7 +91,7 @@
       "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md",
       "title": "Diario del Conjurador (v1.2)",
       "cue": "",
-      "seed": "A96-250824",
+      "seed": "\"A37-251015\"",
       "sot": "DIARIO/v1.2",
       "version": "v1.2",
       "updated": "2025-08-30",

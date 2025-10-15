@@ -3,40 +3,108 @@ set -euo pipefail
 
 export LC_ALL=C
 
-# define DEBUG antes de usarlo (evita "unbound variable" con set -u)
 DEBUG=false
-# traza si DEBUG=true
 [ "${DEBUG}" = true ] && set -x || true
 
-# anclar a raíz del repo (o cwd si no hay git)
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 cd "$ROOT"
-DIARIO="docs/core/QEL_Diario_del_Conjurador_v1.2.md"
 
-# imprime si --debug
+DIARIO="docs/core/QEL_Diario_del_Conjurador_v1.2.md"
+LISTADOR="docs/core/QEL_ListadoR_master_v1.0.md"
+PRENAV="apps/preh-nav-m1/public/docs"
+
 log(){ $DEBUG && echo "[DBG] $*" >&2 || true; }
 
-# asegura carpeta y archivo Diario (si no existe, lo crea con metadatos mínimos)
+# Normaliza a LF y elimina \r en un tmp
+normalize_tmp(){
+  local f="$1"; local t
+  t="$(mktemp)"; tr -d '\r' < "$f" > "$t" || { echo "No pude normalizar saltos de línea en $f" >&2; exit 2; }
+  echo "$t"
+}
+
+# Lee "Clave=Valor" o "Clave: Valor" (admite prefijo con # y BOM)
+get_kv(){
+  local key="$1" src="$2"
+  awk -v k="$key" '
+    BEGIN{ bom=sprintf("%c%c%c",239,187,191) }
+    { sub("^" bom,"",$0) }
+    $0 ~ "^[#[:space:]]*" k "[[:space:]]*=" { sub(/^.*=[[:space:]]*/,""); print; exit }
+    $0 ~ "^[#[:space:]]*" k "[[:space:]]*:" { sub(/^.*:[[:space:]]*/,""); print; exit }
+  ' "$src"
+}
+
+# Primera línea tipo [QEL::ECO...] (admite prefijo con #)
+get_cue(){
+  local src="$1"
+  awk '
+    BEGIN{ bom=sprintf("%c%c%c",239,187,191) }
+    { sub("^" bom,"",$0) }
+    /^[#[:space:]]*\[QEL::ECO/{
+      sub("^[#[:space:]]*","",$0); print; exit
+    }
+  ' "$src"
+}
+
+# Asegura/actualiza SeedI dentro del archivo (soporta "SeedI:" o "SeedI=" y con #)
+ensure_seed_in_file(){
+  local file="$1" seed="$2"
+
+  # 1) Actualiza si existe (formato ":" o "="; con o sin # al inicio)
+  if grep -Eq '^[#[:space:]]*SeedI[[:space:]]*:' "$file"; then
+    sed -i '' -E "s/^([#[:space:]]*SeedI[[:space:]]*:[[:space:]]*).*/\1\"$seed\"/" "$file"
+    return
+  fi
+  if grep -Eq '^[#[:space:]]*SeedI[[:space:]]*=' "$file"; then
+    sed -i '' -E "s/^([#[:space:]]*SeedI[[:space:]]*=[[:space:]]*).*/\1$seed/" "$file"
+    return
+  fi
+
+  # 2) Si no existe, inserta tras la línea de cue (o al final si no hay cue)
+  local tmp
+  tmp="$(mktemp)"
+  awk -v SEED="$seed" '
+    BEGIN{ inserted=0; }
+    {
+      if(!inserted && ($0 ~ /^[#[:space:]]*cue[[:space:]]*[:=]/ || $0 ~ /^[#[:space:]]*\[QEL::ECO/)){
+        print $0
+        # Elegimos formato con colon por defecto
+        print "SeedI: \"" SEED "\""
+        inserted=1
+      } else {
+        print $0
+      }
+    }
+    END{
+      if(!inserted){
+        print "SeedI: \"" SEED "\""
+      }
+    }
+  ' "$file" > "$tmp" && mv "$tmp" "$file"
+}
+
+# Crea/actualiza Diario con el SeedI correcto
 ensure_diario(){
+  local seed="$1"
   mkdir -p "$(dirname "$DIARIO")"
   if [ ! -f "$DIARIO" ]; then
-    local TODAY="$(date +%Y-%m-%d)"
+    local TODAY="$(date +%Y-%m-%d)"; local TODAY_COMPACT="$(date +%Y%m%d)"
     cat > "$DIARIO" <<EOF
-[QEL::ECO[96]::RECALL A96-${TODAY//-/}-DIARIO]
-SeedI=A96-250824
+[QEL::ECO[96]::RECALL A96-${TODAY_COMPACT}-DIARIO]
+SeedI=$seed
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=${TODAY}
 
 # Diario del Conjurador (v1.2)
 EOF
+  else
+    # Corrige SeedI= en el encabezado (primeras 50 líneas)
+    sed -i '' -E "1,50s/^([#[:space:]]*SeedI[[:space:]]*=[[:space:]]*).*/\1$seed/" "$DIARIO" || true
   fi
 }
 
-
-# Args mínimos
+# -------- Args --------
 RUBRO=""; FILE=""; TITULO=""; RUMBO="Centro"
-
 while [ $# -gt 0 ]; do
   case "$1" in
     --rubro)   RUBRO="$2"; shift 2;;
@@ -47,52 +115,35 @@ while [ $# -gt 0 ]; do
     *) echo "arg desconocido: $1" >&2; exit 2;;
   esac
 done
-# validaciones estrictas    
+
 [ -n "$RUBRO" ]  || { echo "--rubro requerido" >&2; exit 2; }
 [ -n "$TITULO" ] || { echo "--titulo requerido" >&2; exit 2; }
-log(){ $DEBUG && echo "[DBG] $*" >&2 || true; }
-[ -n "$FILE" ] || { echo "--file requerido" >&2; exit 2; }
-[ -f "$FILE" ] || { echo "No existe el archivo: $FILE" >&2; exit 2; }
+[ -n "$FILE" ]   || { echo "--file requerido" >&2; exit 2; }
+[ -f "$FILE" ]   || { echo "No existe el archivo: $FILE" >&2; exit 2; }
 
-# Normaliza a LF y elimina BOM en un tmp solo para lectura con awk/grep
-SRC="$FILE"
-TMP="$(mktemp)"
-tr -d '\r' < "$FILE" > "$TMP" || { echo "No pude normalizar saltos de línea en $FILE" >&2; exit 2; }
-SRC="$TMP"
+TMP="$(normalize_tmp "$FILE")"
 trap 'rm -f "$TMP"' EXIT
 
-# Lee cabecera (sin grep -P / flags GNU)
-# Lee "Clave=Valor" o "Clave: Valor" y purga BOM si existiera
-    get_kv () {
-      awk -v k="$1" '
-        BEGIN{ bom=sprintf("%c%c%c",239,187,191) }
-        { sub("^" bom,"",$0) }
-        $0 ~ "^" k "[[:space:]]*=" { sub(/^.*=[[:space:]]*/,""); print; exit }
-        $0 ~ "^" k "[[:space:]]*:" { sub(/^.*:[[:space:]]*/,""); print; exit }
-      ' "$SRC"
-    }
-    # Si no hay "cue=", toma la primera línea [QEL::ECO...]
-    get_cue () { awk 'BEGIN{ bom=sprintf("%c%c%c",239,187,191) } { sub("^" bom,"",$0) } /^\[QEL::ECO/{print; exit}' "$SRC"; }
-
-
-CUE=$(get_kv "cue"); [ -n "$CUE" ] || CUE=$(get_cue)
-SEED=$(get_kv "SeedI")
-SOT=$(get_kv "SoT")
-VERSION=$(get_kv "Version")
-UPDATED=$(get_kv "Updated")
+CUE=$(get_kv "cue" "$TMP"); [ -n "$CUE" ] || CUE=$(get_cue "$TMP")
+SEED=$(get_kv "SeedI" "$TMP")
+SOT=$(get_kv "SoT" "$TMP")
+VERSION=$(get_kv "Version" "$TMP")
+UPDATED=$(get_kv "Updated" "$TMP")
 log "CUE=$CUE"
 log "SeedI=$SEED SoT=$SOT Version=$VERSION Updated=$UPDATED"
 
-# Fallback si faltan claves
+# Fallbacks (mantén tu prefijo actual)
 [ -n "$CUE" ]     || CUE="[QEL::ECO[96]::RECALL]"
-[ -n "$SEED" ]    || SEED="A96-$(date +%y%m%d)"
+[ -n "$SEED" ]    || SEED="A37-$(date +%y%m%d)"
 [ -n "$SOT" ]     || SOT="PROMOCION/v1.0"
 [ -n "$VERSION" ] || VERSION="v1.0"
 [ -n "$UPDATED" ] || UPDATED="$(date +%Y-%m-%d)"
 
-# HASH(10) portable
-DATA=$(printf "cue=%s|SeedI=%s|SoT=%s|Version=%s|Updated=%s" \
-  "$CUE" "$SEED" "$SOT" "$VERSION" "$UPDATED")
+# 1) Garantiza que el archivo promovido tenga el SeedI correcto
+ensure_seed_in_file "$FILE" "$SEED"
+
+# 2) HASH(10) portable
+DATA=$(printf "cue=%s|SeedI=%s|SoT=%s|Version=%s|Updated=%s" "$CUE" "$SEED" "$SOT" "$VERSION" "$UPDATED")
 if command -v shasum >/dev/null 2>&1; then
   HASH=$(printf "%s" "$DATA" | shasum -a 1 | awk '{print $1}')
 else
@@ -100,11 +151,11 @@ else
 fi
 HASH10=${HASH:0:10}
 log "HASH10=$HASH10"
-# Garantiza HASH(10) en el doc
+
+# 3) Garantiza HASH(10) en el doc promovido
 if grep -q '^HASH(10):' "$FILE"; then
   sed -i '' "s/^HASH(10):.*/HASH(10): $HASH10/" "$FILE"
 else
-  # añade un newline sólo si el archivo no termina en \n
   if [ -s "$FILE" ]; then
     last_char="$(tail -c1 "$FILE" 2>/dev/null || printf '\n')"
     [ "$last_char" = "" ] || [ "$last_char" = $'\n' ] || printf '\n' >> "$FILE"
@@ -112,8 +163,7 @@ else
   printf "HASH(10): %s\n" "$HASH10" >> "$FILE"
 fi
 
-# ListadoR
-LISTADOR="docs/core/QEL_ListadoR_master_v1.0.md"
+# 4) ListadoR
 mkdir -p "$(dirname "$LISTADOR")"
 DATE_ISO=$(date +%Y-%m-%d)
 cat >> "$LISTADOR" <<EOF
@@ -124,8 +174,8 @@ cat >> "$LISTADOR" <<EOF
 EOF
 echo "[OK] ListadoR actualizado: $LISTADOR"
 
-# --- Actualizar Diario del Conjurador ---
-ensure_diario
+# 5) Diario (con SeedI correcto)
+ensure_diario "$SEED"
 TODAY_ISO="$(date +%Y-%m-%d)"
 FILE_BN="$(basename "$FILE")"
 cat >> "$DIARIO" <<EOF
@@ -134,25 +184,24 @@ cat >> "$DIARIO" <<EOF
 - Rubro: ${RUBRO}
 - Título: ${TITULO}
 - Archivo: ${FILE}
-- Copia: apps/preh-nav-m1/public/docs/${FILE_BN}
+- Copia: $PRENAV/${FILE_BN}
 - Rumbo: ${RUMBO}
 - HASH(10): ${HASH10}
+- SeedI: ${SEED}
 
-_ECO (delta-only):_ Se cristaliza **${TITULO}** con hash **${HASH10}**; se actualiza ListadoR y se publica espejo en preh-nav.
+_ECO (delta-only):_ Se cristaliza **${TITULO}** con hash **${HASH10}**; se actualiza ListadoR y espejo.
 EOF
-
 echo "[OK] Diario actualizado: $DIARIO"
 
-# Espejo + manifests
-PRENAV="apps/preh-nav-m1/public/docs"
+# 6) Espejo + manifests
 mkdir -p "$PRENAV"
 cp -f "$FILE" "$PRENAV/" || { echo "No pude copiar $FILE a $PRENAV/" >&2; exit 2; }
-# Si tienes generadores propios, úsalos; si no, ignorar silenciosamente
-[ -x scripts/gen_manifest.sh ]     && scripts/gen_manifest.sh     || true
-[ -x scripts/gen_core_manifest.sh ]&& scripts/gen_core_manifest.sh || true
+[ -x scripts/gen_manifest.sh ]      && scripts/gen_manifest.sh      || true
+[ -x scripts/gen_core_manifest.sh ] && scripts/gen_core_manifest.sh || true
 
-git add "$FILE" "$LISTADOR" "$DIARIO" "$PRENAV/$(basename "$FILE")" || true
+# 7) Git
+git add "$FILE" "$LISTADOR" "$DIARIO" "$PRENAV/$FILE_BN" || true
 git commit -m "QEL($SEED/${RUBRO}): cristaliza — $TITULO · hash=$HASH10" || true
 git push origin PreH || true
 
-echo "[OK] Promovido $FILE — HASH(10)=$HASH10"
+echo "[OK] Promovido $FILE — HASH(10)=$HASH10 — SeedI=$SEED"
