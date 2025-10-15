@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-07T00:43:00.133Z",
+  "Updated": "2025-10-15T15:58:13.805Z",
   "manifest": [
     {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
@@ -39,6 +39,18 @@
       "kind": "core-doc"
     },
     {
+      "name": "manual_cue_machine_qel_v.1.md",
+      "path": "docs/core/manuales/manual_cue_machine_qel_v.1.md",
+      "title": "Manual Operativo — CueMachine (QEL)",
+      "cue": "",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": null,
+      "kind": "core-doc"
+    },
+    {
       "name": "NAVEGADOR_M0_Manual_v0.2.md",
       "path": "docs/core/manuales/NAVEGADOR_M0_Manual_v0.2.md",
       "title": "NAVEGADOR_M0_Manual_v0.2",
@@ -60,6 +72,18 @@
       "version": "",
       "updated": "",
       "hash10": "4fb56ea798",
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_Curacion_Nucleo_Minimo_v1.6.md",
+      "path": "docs/core/QEL_Curacion_Nucleo_Minimo_v1.6.md",
+      "title": "Curación del Repositorio QEL — **Núcleo Mínimo** (≤20 docs)",
+      "cue": "",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": "96b5d35d4b",
       "kind": "core-doc"
     },
     {

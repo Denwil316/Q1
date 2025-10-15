@@ -16,6 +16,11 @@
       "path": "docs/LaminaV_unificada_v1.0.md"
     },
     {
+      "name": "manual_cue_machine_qel_v.1",
+      "role": "manual_cue_machine_qel_v.1.md",
+      "path": "docs/manual_cue_machine_qel_v.1.md"
+    },
+    {
       "name": "NAVEGADOR_M0_Manual_v0.2",
       "role": "NAVEGADOR_M0_Manual_v0.2.md",
       "path": "docs/NAVEGADOR_M0_Manual_v0.2.md"
