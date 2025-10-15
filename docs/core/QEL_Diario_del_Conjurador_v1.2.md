@@ -392,3 +392,55 @@ _ECO (delta-only):_ Se cristaliza **Curación del Repositorio QEL — Núcleo M�
 - HASH(10): 591dfcbe8c
 
 _ECO (delta-only):_ Se cristaliza **README — Arranque reproducible (implementación)** con hash **591dfcbe8c**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+## 251011 · M0 · OPS/ARRANQUE
+cue: [QEL::ECO[96]::RECALL A96-251011-ARRANQUE]
+SeedI: A96-251011
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-15
+
+FS:
+  fecha: 251011
+  tema: "OPS/ARRANQUE"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - Glosario
+  - MFH
+  - Lámina V
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - README.md
+  - scripts/qel_verify_env.sh
+  - scripts/qel_install_missing.sh
+  - scripts/qel_install_missing.ps1
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 117de105e9
+
+
