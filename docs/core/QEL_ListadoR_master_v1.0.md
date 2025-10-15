@@ -166,3 +166,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-11) NÚCLEO MÍNIMO | "A96-250824" | "CURADURIA/v1.0" | Curación del Repositorio QEL — Núcleo Mínimo (v1.6) (CRISTAL @ Centro)
   refs: [docs/core/QEL_Curacion_Nucleo_Minimo_v1.6.md]
   hash(10): 96b5d35d4b
+
+- (2025-10-15) Curaduría | "A37-251015" | "CURADURIA/CAPA-SUR/v1.0" | Curación del Repositorio QEL — Núcleo Mínimo (≤20 docs) (CRISTAL @ Centro)
+  refs: [docs/core/QEL_Curacion_Nucleo_Minimo.md]
+  hash(10): 374fbcea08

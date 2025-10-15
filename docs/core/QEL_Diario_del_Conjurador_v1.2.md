@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250824
+SeedI="A37-251015"
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -444,3 +444,14 @@ Resultados:
 HASH(10): 117de105e9
 
 
+
+## 2025-10-15 — PROMOCIÓN
+- Rubro: Curaduría
+- Título: Curación del Repositorio QEL — Núcleo Mínimo (≤20 docs)
+- Archivo: docs/core/QEL_Curacion_Nucleo_Minimo.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Curacion_Nucleo_Minimo.md
+- Rumbo: Centro
+- HASH(10): 374fbcea08
+- SeedI: "A37-251015"
+
+_ECO (delta-only):_ Se cristaliza **Curación del Repositorio QEL — Núcleo Mínimo (≤20 docs)** con hash **374fbcea08**; se actualiza ListadoR y espejo.
