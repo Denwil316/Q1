@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-15 14:41:36_
+_Generado: 2025-10-18 16:38:09_
 
 ```text
 .
@@ -312,7 +312,7 @@ _Generado: 2025-10-15 14:41:36_
 ├── .gitignore
 ├── .qelrc
 ├── ESTRUCTURA.md
-├── Índices creados; Wrapper activo; Compilados en v1.0 (integración).
+├── Índices creados · Wrapper activo · Compilados v1.0 (integración).md
 ├── LICENSE
 ├── Makefile
 ├── README.md
