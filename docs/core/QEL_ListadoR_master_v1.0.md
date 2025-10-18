@@ -170,3 +170,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-15) Curaduría | "A37-251015" | "CURADURIA/CAPA-SUR/v1.0" | Curación del Repositorio QEL — Núcleo Mínimo (≤20 docs) (CRISTAL @ Centro)
   refs: [docs/core/QEL_Curacion_Nucleo_Minimo.md]
   hash(10): 374fbcea08
+
+- (2025-10-18) SOT-ATLAS | A96-250824 | SOT-ATLAS/v1.1 | SoT Atlas v1.1 — Tutorial Operativo (CRISTAL @ Centro)
+  refs: [docs/core/QEL_SoT_Atlas_251018.md]
+  hash(10): a7132116d8

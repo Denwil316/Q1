@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI="A37-251015"
+SeedI=A96-250824
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -505,3 +505,14 @@ Resultados:
 HASH(10): 7228b17577
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: SOT-ATLAS
+- Título: SoT Atlas v1.1 — Tutorial Operativo
+- Archivo: docs/core/QEL_SoT_Atlas_251018.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_SoT_Atlas_251018.md
+- Rumbo: Centro
+- HASH(10): a7132116d8
+- SeedI: A96-250824
+
+_ECO (delta-only):_ Se cristaliza **SoT Atlas v1.1 — Tutorial Operativo** con hash **a7132116d8**; se actualiza ListadoR y espejo.
