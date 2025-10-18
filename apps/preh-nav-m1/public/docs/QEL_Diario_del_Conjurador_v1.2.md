@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI="A37-251015"
+SeedI=A96-250824
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -503,5 +503,66 @@ Resultados:
   veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
 
 HASH(10): 7228b17577
+
+
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: SOT-ATLAS
+- Título: SoT Atlas v1.1 — Tutorial Operativo
+- Archivo: docs/core/QEL_SoT_Atlas_251018.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_SoT_Atlas_251018.md
+- Rumbo: Centro
+- HASH(10): a7132116d8
+- SeedI: A96-250824
+
+_ECO (delta-only):_ Se cristaliza **SoT Atlas v1.1 — Tutorial Operativo** con hash **a7132116d8**; se actualiza ListadoR y espejo.
+
+## 251018 · M1 · Tarjetas Atlas
+cue: [QEL::ECO[96]::RECALL A96-251018-SOT-ATLAS-V1-1]
+SeedI: A96-250824
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "Tarjetas Atlas"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M1
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - Glosario
+  - MFH
+  - Lámina 𝒱
+  - Manual Sombras
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/QEL_SoT_Atlas_251018.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 0a3ff028d6
 
 
