@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250824
+SeedI="A37-251015"
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1279,3 +1279,14 @@ Resultados:
 HASH(10): 587ea97eeb
 
 
+
+## 2025-10-19 — PROMOCIÓN
+- Rubro: Índices/Core
+- Título: Índice de Semillas (v1.0)
+- Archivo: docs/core/indices/QEL_Index_Semillas_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Index_Semillas_v1.0.md
+- Rumbo: Centro
+- HASH(10): 5db5997ea7
+- SeedI: "A37-251015"
+
+_ECO (delta-only):_ Se cristaliza **Índice de Semillas (v1.0)** con hash **5db5997ea7**; se actualiza ListadoR y espejo.
