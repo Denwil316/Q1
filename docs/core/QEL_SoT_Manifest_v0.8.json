@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-19T03:16:20.698Z",
+  "Updated": "2025-10-19T03:42:20.459Z",
   "manifest": [
     {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
@@ -79,7 +79,7 @@
       "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md",
       "title": "Diario del Conjurador (v1.2)",
       "cue": "",
-      "seed": "A96-250901",
+      "seed": "A96-250813",
       "sot": "DIARIO/v1.2",
       "version": "v1.2",
       "updated": "2025-08-30",
@@ -144,6 +144,18 @@
       "version": "",
       "updated": "",
       "hash10": "ac195d7d92",
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_Libro_Sombras.md",
+      "path": "docs/core/QEL_Libro_Sombras.md",
+      "title": "Libro de Sombras — Compilado",
+      "cue": "[QEL::ECO[96]::RECALL A96-250824-TRATADO-METAHUMANO]",
+      "seed": "A96-250824",
+      "sot": "TRATADO-METAHUMANO/v1.6",
+      "version": "v1.6",
+      "updated": "2025-09-08",
+      "hash10": "844d7af0d3",
       "kind": "core-doc"
     },
     {

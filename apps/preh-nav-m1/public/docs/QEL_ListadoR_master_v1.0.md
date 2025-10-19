@@ -179,14 +179,11 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
   refs: [docs/core/QEL_Formato_VF_AH_v1.4.md]
   hash(10): 7407eea49a
 
-- (2025-10-18) FORMATO-VF | A96-250824 | VF-ARBOLES/v1.5 | Formato VF · Árbol de Habilidades v1.4 (CRISTAL @ Norte)
-  refs: [docs/core/QEL_Formato_VF_AH_v1.4.md]
-  hash(10): 7407eea49a
-
 - (2025-10-18) MANUALES | A96-250901 | "MANUAL-OPERATIVO/v1.0" | Manual Operativo (CRISTAL @ Centro)
   refs: [docs/core/QEL_Manual_Operativo.md]
   hash(10): 8d97890f2e
 
-- (2025-10-18) MANUALES | A96-250901 | "MANUAL-OPERATIVO/v1.0" | Manual Operativo (CRISTAL @ Centro)
-  refs: [docs/core/QEL_Manual_Operativo.md]
-  hash(10): 8d97890f2e
+
+- (2025-10-18) EXCEPTION | A96-250813 | PROMOCION/v1.0 | CUE EXCEPTION (CRISTAL @ Centro)
+  refs: [docs/tools/QEL_CUE_Exception_v1.0.md]
+  hash(10): 49b52a87d1

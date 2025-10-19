@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250901
+SeedI=A96-250813
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -576,6 +576,53 @@ HASH(10): 0a3ff028d6
 
 _ECO (delta-only):_ Se cristaliza **Formato VF · Árbol de Habilidades v1.4** con hash **7407eea49a**; se actualiza ListadoR y espejo.
 
+## 251018 · M0 · Formato VF AH
+cue: [QEL::ECO[96]::RECALL A96-251018-FORMATO-VF-AH]
+SeedI: A96-250812
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "Formato VF AH"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Norte
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - MFH
+  - Lámina 𝒱
+  - Atlas
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/QEL_Formato_VF_AH_v1.4.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): e2a0b7a053
+
 ## 2025-10-18 — PROMOCIÓN
 - Rubro: MANUALES
 - Título: Manual Operativo
@@ -636,8 +683,19 @@ HASH(10): ce23d02156
 
 
 
-## 251018 · M0 · Formato VF AH
-cue: [QEL::ECO[96]::RECALL A96-251018-FORMATO-VF-AH]
+## 2025-10-18 — PROMOCIÓN
+- Rubro: EXCEPTION
+- Título: CUE EXCEPTION
+- Archivo: docs/tools/QEL_CUE_Exception_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_CUE_Exception_v1.0.md
+- Rumbo: Centro
+- HASH(10): 49b52a87d1
+- SeedI: A96-250813
+
+_ECO (delta-only):_ Se cristaliza **CUE EXCEPTION** con hash **49b52a87d1**; se actualiza ListadoR y espejo.
+
+## 251018 · M0 · CUE-Exception
+cue: [QEL::ECO[96]::RECALL A96-250812-CUE-EXCEPTION]
 SeedI: A96-250812
 SoT: TRATADO-METAHUMANO/v1.2
 Version: v1.2-log
@@ -645,16 +703,17 @@ Updated: 2025-10-18
 
 FS:
   fecha: 251018
-  tema: "Formato VF AH"
+  tema: "CUE-Exception"
   intencion: "actualizarlas con la información que tenemos"
   modo: M0
-  rumbo: Norte
+  rumbo: Centro,Norte
   tiempo: 30
   referencias:
   - QEL.md
   - MFH
-  - Lámina 𝒱
-  - Atlas
+  - Glosario
+  - Manual Operativo
+  - CUE-EXCEPTION
   salidas_esperadas:
     - "Tarjetas actualizadas"
     - "de uso para Conjurar"
@@ -670,7 +729,7 @@ FS:
 
 Resultados:
   artefactos:
-  - docs/core/QEL_Formato_VF_AH_v1.4.md
+  - docs/core/QEL_CUE_Exception_v1.0.md
   objetos:
 
   - Kael/Prisma: 0.89
@@ -681,6 +740,6 @@ Resultados:
 
   veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
 
-HASH(10): e2a0b7a053
+HASH(10): f3cddeb723
 
 

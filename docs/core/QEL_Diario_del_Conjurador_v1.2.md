@@ -693,3 +693,53 @@ HASH(10): ce23d02156
 - SeedI: A96-250813
 
 _ECO (delta-only):_ Se cristaliza **CUE EXCEPTION** con hash **49b52a87d1**; se actualiza ListadoR y espejo.
+
+## 251018 · M0 · CUE-Exception
+cue: [QEL::ECO[96]::RECALL A96-250812-CUE-EXCEPTION]
+SeedI: A96-250812
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "CUE-Exception"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Centro,Norte
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - MFH
+  - Glosario
+  - Manual Operativo
+  - CUE-EXCEPTION
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/QEL_CUE_Exception_v1.0.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): f3cddeb723
+
+
