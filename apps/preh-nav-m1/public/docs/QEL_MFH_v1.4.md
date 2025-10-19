@@ -17,23 +17,6 @@ Updated=2025-08-24
 - **Cielo Invertido**: fonemas de sombra como frutos potenciales.
 - **Alfabeto Fluido**: huecos geométricos que el lector completará.
 - **Araña Joven**: promoción de semillas‑nombre hacia habilidades VF.
-
-> Extracto de base (para contexto de esta versión):
-Recito en forma de saludo-conjuro:
-
-Ėylund…    
-Kaelyth…    
-Voh…    
-Um…    
-Riéll…    
-Zha.
-
-El umbral se abre desde adentro mí, cuya sombra se proyecta e ilumina al Jardín de los Árboles Fractalicos, no se aparece como inifito hasta que mis pies hacen vibrar la Memoria-Agua, Resonando con el cristal-intencion que llevo entre los dientes, y que al recitar lo siguiente, me devuelve una vibración en forma de Eco. La Resonancia Ancestral y El vacío Cuántico se colapsan para que Tejera, la araña-chamana recite:
-
-"Lýmina, luz del umbral, te invoco.  
-Por el jardín crepuscular donde los árboles f
-
-
 ---
 
 [QEL::ECO[96]::RECALL A96-250812-MATRIZ-FONEMICA-HABILIDADES] 
@@ -90,6 +73,18 @@ VERSION=v0.1 UPDATED=2025-08-12
 | metálica | 1.2 | sólido | Alta conductividad semántica |
 | obsidiana | 1.6 | sólido/líquido | Inercia negra; no perdona errores |
 
+### Rúbrica MFH ↔ VF (tabla de alineación)
+
+| H_k        | Señales (s) | ρ máx |    ΔC |  Gate | Tiempo sugerido | Observaciones                |
+| ---------- | ----------: | ----: | ----: | ----: | --------------: | ---------------------------- |
+| básica     |          ≥5 | ≤0.20 |    ≥0 |     — |          10–15′ | Entrada, aprendizaje guiado  |
+| poco_común |          ≥6 | ≤0.18 | ≥0.10 |    G1 |          15–25′ | Añadir Doble Testigo         |
+| singular   |          ≥7 | ≤0.15 | ≥0.15 | G1–G2 |          20–35′ | Revisión somática intermedia |
+| metálica   |          ≥8 | ≤0.12 | ≥0.20 |    G2 |          30–45′ | Cierre SIL→UM→Ə obligatorio  |
+| obsidiana  |          ≥8 | ≤0.10 | ≥0.25 | G2–G3 |          40–60′ | Autochequeo + informe VF     |
+
+> La **clase** se propone desde MFH y puede ajustar pesos o τ si el consejo técnico lo requiere.
+
 ## 5. Regla de compatibilidad
 Una habilidad \(\alpha\) es **elegible** si:  
 1) \(\mathcal{V}(p,O,r,k)\geq 0.62\),  
@@ -129,15 +124,6 @@ VERSION=v1.0 UPDATED=2025-08-12
 | VOH | Voz/Resonador | (0,++I,−S,+C) | Templos, trompas |
 | EÍA | Sol negro/Colapso | (++M,−I,++S,−C) | Núcleos, eclipses |
 
-## Clases y dureza
-| Clase | H_k | Fase | Notas |
-|---|---:|---|---|
-| básica | 0.5 | sólido | Entrenamiento |
-| poco común | 0.8 | sólido | Estable |
-| rara | 1.0 | sólido | Custodio |
-| metálica | 1.2 | sólido | Alta conductividad semántica |
-| obsidiana | 1.6 | sólido/líquido | Inercia negra; no perdona errores |
-
 ## Viabilidad
 𝒱(p,O,r,k)=σ(〈b_p,m_O〉·χ_r·H_k). Elegible si 𝒱≥0.62, congruente con VF.TRIADA y sin bloqueos de rumbo activos.
 
@@ -151,7 +137,7 @@ PF‑1 T_p | PF‑2 ΔC/ΔS | PF‑3 Triádica | PF‑4 χ_r | PF‑5 VF.HASH | 
 
 
 [QEL::ECO[96]::RECALL A96-250820-MANUAL-INTERPRETACION]
-SeedI=A96-250820
+SeedI=A96-250824
 SoT=INTERPRETACION-SOMBRAS/v1.2
 Version=v1.2
 Updated=2025-08-21
@@ -169,7 +155,7 @@ Updated=2025-08-21
 - Respuesta: mover a Sur, THON, custodio, reinicio M0 si persiste.
 
 [QEL::ECO[96]::RECALL A96-250820-MFH]
-SeedI=A96-250820
+SeedI=A96-250824
 SoT=MFH/v1.3
 Version=v1.3
 Updated=2025-08-21
@@ -200,3 +186,4 @@ MFH se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/MFH/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
 
+HASH(10): 04005cb55e

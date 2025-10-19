@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=""A37-251015""
+SeedI=A96-250824
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1170,3 +1170,14 @@ Resultados:
 HASH(10): 5c0bea1d42
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: MFH
+- Título: MFH v1.5 — Tejera en Sur (Unificación Cuerpo/Ritmo)
+- Archivo: docs/core/QEL_MFH_v1.4.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_MFH_v1.4.md
+- Rumbo: Sur
+- HASH(10): 04005cb55e
+- SeedI: A96-250824
+
+_ECO (delta-only):_ Se cristaliza **MFH v1.5 — Tejera en Sur (Unificación Cuerpo/Ritmo)** con hash **04005cb55e**; se actualiza ListadoR y espejo.
