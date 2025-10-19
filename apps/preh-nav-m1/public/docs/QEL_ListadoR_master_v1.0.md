@@ -215,3 +215,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) LIBRO-DE-SOMBRAS | ""A37-251015"" | "LIBRO-DE-SOMBRAS/v1.0" | Libro de las Sombras v1.0 (incluye Apéndice B) (CRISTAL @ Centro)
   refs: [docs/core/QEL_Libro_Sombras.md]
   hash(10): d4b42f075b
+
+- (2025-10-18) MFH | A96-250824 | MFH/v1.5 | MFH v1.5 — Tejera en Sur (Unificación Cuerpo/Ritmo) (CRISTAL @ Sur)
+  refs: [docs/core/QEL_MFH_v1.4.md]
+  hash(10): 04005cb55e

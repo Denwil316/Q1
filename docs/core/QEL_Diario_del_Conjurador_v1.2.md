@@ -1181,3 +1181,53 @@ HASH(10): 5c0bea1d42
 - SeedI: A96-250824
 
 _ECO (delta-only):_ Se cristaliza **MFH v1.5 — Tejera en Sur (Unificación Cuerpo/Ritmo)** con hash **04005cb55e**; se actualiza ListadoR y espejo.
+
+## 251018 · M0 · MFH v1.5 — Tejera en Sur
+cue: [QEL::ECO[96]::RECALL A96-251018-MFH-V1-5-SEAL]
+SeedI: A96-250824
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "MFH v1.5 — Tejera en Sur"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Sur
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - Formato VF
+  - Árbol VF
+  - Lámina 𝒱
+  - Libro de Sombras
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/QEL_MFH_v1.4.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 8f989bd3d9
+
+

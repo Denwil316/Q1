@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 23:10:06_
+_Generado: 2025-10-18 23:11:06_
 
 ```text
 .
@@ -116,6 +116,7 @@ _Generado: 2025-10-18 23:10:06_
 |   |   |-- QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250812_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
+|   |   |-- QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250901_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250924_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-251002_SEAL_v1.0.md
@@ -331,5 +332,5 @@ _Generado: 2025-10-18 23:10:06_
 |-- yq.1
 `-- \303\215ndices\ creados\ \302\267\ Wrapper\ activo\ \302\267\ Compilados\ v1.0\ (integraci\303\263n).md
 
-43 directories, 284 files
+43 directories, 285 files
 ```
