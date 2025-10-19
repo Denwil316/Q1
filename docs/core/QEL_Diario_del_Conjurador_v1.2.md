@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250820
+SeedI=A96-250813
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -804,3 +804,14 @@ Resultados:
 HASH(10): ec71ee30d0
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: TRATADO-METAHUMANO
+- Título: Ronda de meditación — Poema-Enigma Lun–Nai v1.1
+- Archivo: docs/ritual/QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
+- Rumbo: Occidente
+- HASH(10): 23b99864de
+- SeedI: A96-250813
+
+_ECO (delta-only):_ Se cristaliza **Ronda de meditación — Poema-Enigma Lun–Nai v1.1** con hash **23b99864de**; se actualiza ListadoR y espejo.

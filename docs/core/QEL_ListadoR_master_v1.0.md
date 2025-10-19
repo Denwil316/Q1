@@ -191,3 +191,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) TRATADO-METAHUMANO | A96-250820 | TRATADO-METAHUMANO/v1.2 | Aurora Spec v1.2 — A.M.E. (CRISTAL @ Centro)
   refs: [docs/tools/QEL_Aurora_Spec_v1.2.md]
   hash(10): 60d5805ff8
+
+- (2025-10-18) TRATADO-METAHUMANO | A96-250813 | PROMOCION/v1.0 | Ronda de meditación — Poema-Enigma Lun–Nai v1.1 (CRISTAL @ Occidente)
+  refs: [docs/ritual/QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md]
+  hash(10): 23b99864de
