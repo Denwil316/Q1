@@ -192,3 +192,22 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): ce23d02156
 
+
+## 251018 · M0 · Formato VF AH
+cue: [QEL::ECO[96]::RECALL A96-251018-FORMATO-VF-AH]
+SeedI: A96-250812
+Refs:
+  - docs/ritual/QEL_MicroSello_A96-250812_PREH-NAV_Cierre_v1.0.md
+  - docs/ritual/QEL_VF_PRIMA_A96-250812_SEAL_v1.0.md
+  - docs/core/QEL_Diario_del_Conjurador_v1.2.md
+  - docs/core/QEL_Formato_VF_AH_v1.4.md
+Resultados:
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
+hash(10): e2a0b7a053
+
