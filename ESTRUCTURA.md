@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 21:42:22_
+_Generado: 2025-10-18 21:50:01_
 
 ```text
 .
@@ -121,16 +121,9 @@ _Generado: 2025-10-18 21:42:22_
 |   |   |-- QEL_VF_PRIMA_A96-251018_SEAL_v1.0.md
 |   |   `-- qel_manual_vcalc_v_1_0.md
 |   `-- tools
-|       |-- QEL_Aurora_Spec_v1.0.md
-|       |-- QEL_Aurora_Spec_v1.1.md
 |       |-- QEL_Aurora_Spec_v1.2.md
 |       |-- QEL_CUE_Exception_v1.0.md
-|       |-- QEL_CueMachineA96_v1.0.txt
-|       |-- QEL_CueMachine_81.txt
-|       |-- QEL_CueMachine_v0.2.txt
-|       |-- QEL_CueMachine_v0.3.txt
-|       |-- QEL_CueMachine_v0.4.txt
-|       `-- QEL_Formato_VF_Arbol_Habilidades_v1.0.md
+|       `-- QEL_CueMachine_v1.0.txt
 |-- fs
 |   |-- FS_250924.json
 |   |-- FS_251002.json
@@ -170,10 +163,13 @@ _Generado: 2025-10-18 21:42:22_
 |   |-- QEL_Altar_y_Llave_v1.0.md
 |   |-- QEL_Arbol_Habilidades_MP_v1.0.md
 |   |-- QEL_Aurora_Spec_v0.1.md
+|   |-- QEL_Aurora_Spec_v1.0.md
+|   |-- QEL_Aurora_Spec_v1.1.md
 |   |-- QEL_CUE_Exception_v0.1.md
 |   |-- QEL_CUE_Recovery_Primer_Pecado_v0.1.md
 |   |-- QEL_Chat_Index.md
 |   |-- QEL_Chat_Register_All.md
+|   |-- QEL_CueMachineA96_v1.0.txt
 |   |-- QEL_Curacion_Nucleo_Minimo_v1.6.md
 |   |-- QEL_Diario_del_Conjurador_v1.0.md
 |   |-- QEL_Diario_del_Conjurador_v1.1.md
@@ -329,5 +325,5 @@ _Generado: 2025-10-18 21:42:22_
 |-- yq.1
 `-- \303\215ndices\ creados\ \302\267\ Wrapper\ activo\ \302\267\ Compilados\ v1.0\ (integraci\303\263n).md
 
-43 directories, 282 files
+43 directories, 278 files
 ```

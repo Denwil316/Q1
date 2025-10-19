@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250813
+SeedI=A96-250820
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -743,3 +743,14 @@ Resultados:
 HASH(10): f3cddeb723
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: TRATADO-METAHUMANO
+- Título: Aurora Spec v1.2 — A.M.E.
+- Archivo: docs/tools/QEL_Aurora_Spec_v1.2.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Aurora_Spec_v1.2.md
+- Rumbo: Centro
+- HASH(10): 60d5805ff8
+- SeedI: A96-250820
+
+_ECO (delta-only):_ Se cristaliza **Aurora Spec v1.2 — A.M.E.** con hash **60d5805ff8**; se actualiza ListadoR y espejo.
