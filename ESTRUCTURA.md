@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 22:58:22_
+_Generado: 2025-10-18 22:59:24_
 
 ```text
 .
@@ -94,6 +94,7 @@ _Generado: 2025-10-18 22:58:22_
 |   |   |-- QEL_CueMachineA96_v1.0.txt
 |   |   |-- QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
 |   |   |-- QEL_Meditaciones_Primordiales_v1.0.md
+|   |   |-- QEL_MicroSello_"""A37-251015"""_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_MicroSello_"A96-250813"_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_MicroSello_A37-251015_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_MicroSello_A96-250812_PREH-NAV_Cierre_v1.0.md
@@ -110,6 +111,7 @@ _Generado: 2025-10-18 22:58:22_
 |   |   |-- QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
 |   |   |-- QEL_Sello_A96-250824_Centro_Sur_Norte_EIA-A-THON_Cierre_SIL-UM-\306\217v1.0.md
 |   |   |-- QEL_Sellos_y_Cues_Idriell_v1.0.md
+|   |   |-- QEL_VF_PRIMA_"""A37-251015"""_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_"A96-250813"_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250812_SEAL_v1.0.md
@@ -192,6 +194,7 @@ _Generado: 2025-10-18 22:58:22_
 |   |-- QEL_LLPE_Manual_v1.3.md
 |   |-- QEL_Lamina_V_Detallada_v1.1.md
 |   |-- QEL_Lamina_V_Editada_v1.0.md
+|   |-- QEL_ListadoR_"""A37_v1.3.md
 |   |-- QEL_ListadoR_"A96_v1.3.md
 |   |-- QEL_ListadoR_A37_v1.3.md
 |   |-- QEL_ListadoR_A96_v0.1.md
@@ -328,5 +331,5 @@ _Generado: 2025-10-18 22:58:22_
 |-- yq.1
 `-- \303\215ndices\ creados\ \302\267\ Wrapper\ activo\ \302\267\ Compilados\ v1.0\ (integraci\303\263n).md
 
-43 directories, 281 files
+43 directories, 284 files
 ```
