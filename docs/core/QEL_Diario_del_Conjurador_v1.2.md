@@ -1231,3 +1231,51 @@ Resultados:
 HASH(10): 8f989bd3d9
 
 
+
+## 251015 · M0 · Curación Núcleo — índices
+cue: [QEL::ECO[96]::RECALL A96-251015-CURADURIA-NUCLEO-M2-CENTRO]
+SeedI: A37-251015
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-19
+
+FS:
+  fecha: 251015
+  tema: "Curación Núcleo — índices"
+  intencion: "Registrar cierre y lint de anchors"
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - Manual Operativo
+  - Libro de Sombras
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/indices/QEL_Index_Semillas_v1.0.md
+  - docs/core/indices/QEL_Index_Rutas_v1.0.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M2 aplicado; índices poblados; anchors OK; sin cristalizar compilados"
+
+HASH(10): 587ea97eeb
+
+
