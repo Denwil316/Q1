@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 20:37:10_
+_Generado: 2025-10-18 21:10:48_
 
 ```text
 .
@@ -101,6 +101,7 @@ _Generado: 2025-10-18 20:37:10_
 |   |   |-- QEL_MicroSello_A96-250824_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_MicroSello_A96-250824_VCALC_UNIFIED_SEAL_v.10.md
 |   |   |-- QEL_MicroSello_A96-250829_LAB-TECNOALQ_Cristal_v1.0.md
+|   |   |-- QEL_MicroSello_A96-250901_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_MicroSello_A96-250924_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_MicroSello_A96-251002_PREH-NAV_Cierre_v1.0.md
 |   |   |-- QEL_MicroSello_A96-251011_PREH-NAV_Cierre_v1.0.md
@@ -110,6 +111,7 @@ _Generado: 2025-10-18 20:37:10_
 |   |   |-- QEL_Sellos_y_Cues_Idriell_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
+|   |   |-- QEL_VF_PRIMA_A96-250901_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250924_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-251002_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-251011_SEAL_v1.0.md
@@ -324,5 +326,5 @@ _Generado: 2025-10-18 20:37:10_
 |-- yq.1
 `-- \303\215ndices\ creados\ \302\267\ Wrapper\ activo\ \302\267\ Compilados\ v1.0\ (integraci\303\263n).md
 
-43 directories, 277 files
+43 directories, 279 files
 ```

@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250824
+SeedI=A96-250901
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -519,7 +519,7 @@ _ECO (delta-only):_ Se cristaliza **SoT Atlas v1.1 — Tutorial Operativo** con 
 
 ## 251018 · M1 · Tarjetas Atlas
 cue: [QEL::ECO[96]::RECALL A96-251018-SOT-ATLAS-V1-1]
-SeedI: A96-250824
+SeedI: A96-251018
 SoT: TRATADO-METAHUMANO/v1.2
 Version: v1.2-log
 Updated: 2025-10-18
@@ -564,5 +564,74 @@ Resultados:
   veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
 
 HASH(10): 0a3ff028d6
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: FORMATO-VF
+- Título: Formato VF · Árbol de Habilidades v1.4
+- Archivo: docs/core/QEL_Formato_VF_AH_v1.4.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Formato_VF_AH_v1.4.md
+- Rumbo: Norte
+- HASH(10): 7407eea49a
+- SeedI: A96-250824
+
+_ECO (delta-only):_ Se cristaliza **Formato VF · Árbol de Habilidades v1.4** con hash **7407eea49a**; se actualiza ListadoR y espejo.
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: MANUALES
+- Título: Manual Operativo
+- Archivo: docs/core/QEL_Manual_Operativo.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Manual_Operativo.md
+- Rumbo: Centro
+- HASH(10): 8d97890f2e
+- SeedI: A96-251018
+
+_ECO (delta-only):_ Se cristaliza **Manual Operativo** con hash **8d97890f2e**; se actualiza ListadoR y espejo.
+
+## 251018 · M0 · Manual Operativo
+cue: [QEL::ECO[96]::RECALL A96-251018-MANUAL-OPERATIVO]
+SeedI: A96-250901
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "Manual Operativo"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - Atlas
+  - MFH
+  - Glosario
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/QEL_Manual_Operativo.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): ce23d02156
 
 

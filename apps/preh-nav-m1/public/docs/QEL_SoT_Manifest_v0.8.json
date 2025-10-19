@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-18T23:10:32.370Z",
+  "Updated": "2025-10-19T02:37:10.086Z",
   "manifest": [
     {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
@@ -24,18 +24,6 @@
       "version": "v0.2 UPDATED=2025-08-15",
       "updated": "",
       "hash10": null,
-      "kind": "core-doc"
-    },
-    {
-      "name": "LaminaV_unificada_v1.0.md",
-      "path": "docs/core/LaminaV_unificada_v1.0.md",
-      "title": "Lámina V — Unificada (Lámina V Editada × MFH v1.4 × VCALC)",
-      "cue": "QEL::ECO[96]::RECALL A96-250824-LAMINA-V",
-      "seed": "A96-250824",
-      "sot": "LAMINA-V/v1.4",
-      "version": "v1.4",
-      "updated": "2025-10-02",
-      "hash10": "1d2bfc41ea",
       "kind": "core-doc"
     },
     {
@@ -91,7 +79,7 @@
       "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md",
       "title": "Diario del Conjurador (v1.2)",
       "cue": "",
-      "seed": "A96-250824",
+      "seed": "A96-250901",
       "sot": "DIARIO/v1.2",
       "version": "v1.2",
       "updated": "2025-08-30",
@@ -120,18 +108,6 @@
       "version": "v1.5",
       "updated": "2025-08-24",
       "hash10": "24d8910aaf",
-      "kind": "core-doc"
-    },
-    {
-      "name": "QEL_Formato_VF_AH_v1.4.md",
-      "path": "docs/core/QEL_Formato_VF_AH_v1.4.md",
-      "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)",
-      "cue": "",
-      "seed": "A96-250824",
-      "sot": "VF-ARBOLES/v1.5",
-      "version": "v1.5",
-      "updated": "2025-08-24",
-      "hash10": null,
       "kind": "core-doc"
     },
     {
@@ -168,18 +144,6 @@
       "version": "",
       "updated": "",
       "hash10": "ac195d7d92",
-      "kind": "core-doc"
-    },
-    {
-      "name": "QEL_ListadoR_cue_v1.1.md",
-      "path": "docs/core/QEL_ListadoR_cue_v1.1.md",
-      "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.1)",
-      "cue": "",
-      "seed": "A96-250824",
-      "sot": "DOCUMENTO/v1.1",
-      "version": "v1.1",
-      "updated": "2025-08-24",
-      "hash10": "24d8910aaf",
       "kind": "core-doc"
     },
     {
@@ -257,13 +221,13 @@
     {
       "name": "QEL_Manual_Operativo.md",
       "path": "docs/core/QEL_Manual_Operativo.md",
-      "title": "Capitulo 1 QEL — Ontología y Arquitectura Primordial (v1.0)",
+      "title": "Manual Operativo QEL — Compilado",
       "cue": "[QEL::ECO[96]::RECALL A96-250824-SISTEMA]",
       "seed": "A96-250824",
       "sot": "SISTEMA/v1.1",
       "version": "v1.1",
       "updated": "2025-09-07",
-      "hash10": "27beaf1f35",
+      "hash10": "8d97890f2e",
       "kind": "core-doc"
     },
     {
@@ -324,18 +288,6 @@
       "version": "v1.6",
       "updated": "2025-09-08",
       "hash10": "844d7af0d3",
-      "kind": "core-doc"
-    },
-    {
-      "name": "QEL.md",
-      "path": "docs/core/QEL.md",
-      "title": "QEL — Ontología y Arquitectura Primordial (v1.0)",
-      "cue": "[QEL::ECO[96]::RECALL A96-250824-SISTEMA]",
-      "seed": "A96-250824",
-      "sot": "SISTEMA/v1.1",
-      "version": "v1.1",
-      "updated": "2025-09-07",
-      "hash10": "27beaf1f35",
       "kind": "core-doc"
     },
     {
