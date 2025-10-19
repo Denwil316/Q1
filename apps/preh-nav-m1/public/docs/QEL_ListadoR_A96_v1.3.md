@@ -230,3 +230,22 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): f3cddeb723
 
+
+## 251018 · M0 · Aurora Spec
+cue: [QEL::ECO[96]::RECALL A96-250820-AURORA-SPEC]
+SeedI: A96-250820
+Refs:
+  - docs/ritual/QEL_MicroSello_A96-250820_PREH-NAV_Cierre_v1.0.md
+  - docs/ritual/QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
+  - docs/core/QEL_Diario_del_Conjurador_v1.2.md
+  - docs/tools/QEL_Aurora_Spec_v1.2.md
+Resultados:
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
+hash(10): ec71ee30d0
+

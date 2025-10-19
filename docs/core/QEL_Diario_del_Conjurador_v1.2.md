@@ -754,3 +754,53 @@ HASH(10): f3cddeb723
 - SeedI: A96-250820
 
 _ECO (delta-only):_ Se cristaliza **Aurora Spec v1.2 — A.M.E.** con hash **60d5805ff8**; se actualiza ListadoR y espejo.
+
+## 251018 · M0 · Aurora Spec
+cue: [QEL::ECO[96]::RECALL A96-250820-AURORA-SPEC]
+SeedI: A96-250820
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "Aurora Spec"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - MFH
+  - Glosario
+  - Manual Operativo
+  - Aurora Spec
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/tools/QEL_Aurora_Spec_v1.2.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): ec71ee30d0
+
+

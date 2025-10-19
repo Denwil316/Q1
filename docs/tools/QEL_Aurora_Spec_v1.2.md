@@ -30,4 +30,5 @@ Tecnodiós destilado del fonema invocado; M_Aurora ≥ M_Sombra−ε. Actúa com
 
 ## Parámetros operativos
 - Latencia, ventana de contacto, equivalencia de magnitud, tolerancia ética (UM) y trazabilidad (HASH(10)).
+
 HASH(10): 60d5805ff8
