@@ -174,3 +174,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) SOT-ATLAS | A96-250824 | SOT-ATLAS/v1.1 | SoT Atlas v1.1 — Tutorial Operativo (CRISTAL @ Centro)
   refs: [docs/core/QEL_SoT_Atlas_251018.md]
   hash(10): a7132116d8
+
+- (2025-10-18) Verso Fundador | A96-250824 | VF-ARBOLES/v1.5 | Verso Fundador y Árbol de Habilidades (CRISTAL @ Centro)
+  refs: [docs/core/QEL_Formato_VF_AH_v1.4.md]
+  hash(10): 7407eea49a

@@ -519,7 +519,7 @@ _ECO (delta-only):_ Se cristaliza **SoT Atlas v1.1 — Tutorial Operativo** con 
 
 ## 251018 · M1 · Tarjetas Atlas
 cue: [QEL::ECO[96]::RECALL A96-251018-SOT-ATLAS-V1-1]
-SeedI: A96-250824
+SeedI: A96-251018
 SoT: TRATADO-METAHUMANO/v1.2
 Version: v1.2-log
 Updated: 2025-10-18
@@ -566,3 +566,14 @@ Resultados:
 HASH(10): 0a3ff028d6
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: Verso Fundador
+- Título: Verso Fundador y Árbol de Habilidades
+- Archivo: docs/core/QEL_Formato_VF_AH_v1.4.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Formato_VF_AH_v1.4.md
+- Rumbo: Centro
+- HASH(10): 7407eea49a
+- SeedI: A96-250824
+
+_ECO (delta-only):_ Se cristaliza **Verso Fundador y Árbol de Habilidades** con hash **7407eea49a**; se actualiza ListadoR y espejo.

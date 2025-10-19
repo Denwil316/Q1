@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 17:11:50_
+_Generado: 2025-10-18 19:17:59_
 
 ```text
 .
@@ -114,10 +114,10 @@ _Generado: 2025-10-18 17:11:50_
 |   |   |-- QEL_Sellos_y_Cues_Idriell_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
-|   |   |-- QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-250924_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-251002_SEAL_v1.0.md
 |   |   |-- QEL_VF_PRIMA_A96-251011_SEAL_v1.0.md
+|   |   |-- QEL_VF_PRIMA_A96-251018_SEAL_v1.0.md
 |   |   `-- qel_manual_vcalc_v_1_0.md
 |   `-- tools
 |       |-- QEL_Aurora_Spec_v1.0.md
