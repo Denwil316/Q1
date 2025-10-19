@@ -865,3 +865,14 @@ Resultados:
 HASH(10): 2134032a3c
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: MEDITACIONES
+- Título: Meditaciones Primordiales — Cámara Uno v1.0
+- Archivo: docs/ritual/QEL_Meditaciones_Primordiales_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Meditaciones_Primordiales_v1.0.md
+- Rumbo: Centro
+- HASH(10): 69b1cc447a
+- SeedI: A96-250813
+
+_ECO (delta-only):_ Se cristaliza **Meditaciones Primordiales — Cámara Uno v1.0** con hash **69b1cc447a**; se actualiza ListadoR y espejo.
