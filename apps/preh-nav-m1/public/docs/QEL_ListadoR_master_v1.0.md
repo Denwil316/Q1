@@ -218,3 +218,11 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) MFH | A96-250824 | MFH/v1.5 | MFH v1.5 — Tejera en Sur (Unificación Cuerpo/Ritmo) (CRISTAL @ Sur)
   refs: [docs/core/QEL_MFH_v1.4.md]
   hash(10): 04005cb55e
+
+- (2025-10-19) Índices/Core | "A37-251015" | "INDICES/SEMILLAS/v1.0" | Índice de Semillas (v1.0) (CRISTAL @ Centro)
+  refs: [docs/core/indices/QEL_Index_Semillas_v1.0.md]
+  hash(10): 5db5997ea7
+
+- (2025-10-19) Índices/Core | "A37-251015" | "INDICES/RUTAS/v1.0" | Índice de Rutas Internas (v1.0) (CRISTAL @ Centro)
+  refs: [docs/core/indices/QEL_Index_Rutas_v1.0.md]
+  hash(10): 7f60aa09d5
