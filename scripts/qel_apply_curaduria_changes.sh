@@ -38,64 +38,44 @@ normalize_manual_heads() {
 # --- HOTFIX: split_historic_block seguro (ignora code fences y restringe target) ---
 split_historic_block() {
   local FILE="$1"
-
-  # 1) Solo split en la Curaduría, nunca en Manual/Sombras/etc.
   case "$FILE" in
-    *QEL_Curacion_Nucleo_Minimo.md) : ;;   # permitido
-    *) return 0 ;;                          # no tocar otros archivos
+    *QEL_Curacion_Nucleo_Minimo.md) : ;;
+    *) return 0 ;;
   esac
 
-  # 2) Buscar un SEGUNDO bloque de metadatos fuera de code fences ```...```
-  #    Patrón válido: línea que empieza con `cue:` o `[QEL::ECO` y que,
-  #    dentro de las siguientes 8 líneas, encuentre SeedI y SoT.
-  awk '
-    BEGIN{
-      in_code=0; fence="^```"; i=0; second_hdr_line=0;
-    }
-    function dequote(s){ gsub(/\r/,"",s); return s }
-    {
-      line=$0
-      if (line ~ fence) { in_code = !in_code }
-      lines[++i]=line
-      if (!in_code && (line ~ /^([[:space:]]*cue:|\[QEL::ECO\[)/)) {
-        # Mirar ventana corta para confirmar header real
-        hdr_ok=0
-        for (k=1;k<=8 && i+k<=NR+8;k++){
-          if (getline peek) {
-            if (peek ~ /^[[:space:]]*SeedI[[:space:]]*[:=]/) got_seed=1
-            if (peek ~ /^[[:space:]]*SoT[[:space:]]*[:=]/)   got_sot=1
-            window[++w]=peek
-          } else break
+  perl -0777 -e '
+    my $t = do { local $/; <> };
+    my $code = 0;
+    my $hdrs = 0;
+    my $cut  = 0;
+    my @lines = split /\n/, $t, -1;
+    for (my $i=0; $i<@lines; $i++) {
+      my $L = $lines[$i];
+      $code ^= 1 if $L =~ /^```/;
+      next if $code;
+
+      if ($L =~ /^\s*(?:cue:|\[QEL::ECO\[)/) {
+        my $seed=0; my $sot=0;
+        for (my $k=1; $k<=8 && $i+$k<@lines; $k++) {
+          $seed=1 if $lines[$i+$k] =~ /^\s*SeedI\s*[:=]/;
+          $sot =1 if $lines[$i+$k] =~ /^\s*SoT\s*[:=]/;
         }
-        if (got_seed && got_sot) {
-          found_headers++
-          if (found_headers==2 && second_hdr_line==0) {
-            second_hdr_line=i
-          }
+        if ($seed && $sot) {
+          $hdrs++;
+          if ($hdrs==2) { $cut = $i+1; last; } # cortar desde esta línea (2º header)
         }
-        # reset ventana
-        delete window; w=0; got_seed=0; got_sot=0
       }
     }
-    END{
-      if (second_hdr_line>0) {
-        print second_hdr_line
-      } else {
-        print 0
-      }
+    if ($cut>0) {
+      open my $A, ">", "memory/" . ( ($ARGV[0]=~m{([^/]+)\.md$})[0] ) . "_historico.md" or die $!;
+      print $A join("\n", @lines[$cut..$#lines]);
+      close $A;
+      print join("\n", @lines[0..$cut-2]); # mantener hasta la línea anterior
+    } else {
+      print $t;
     }
-  ' "$FILE" | {
-    read CUT
-    if [ "${CUT:-0}" -gt 0 ]; then
-      local OUT_HIST="memory/$(basename "${FILE%.*}")_historico.md"
-      mkdir -p memory
-      # Cortar desde CUT hasta el final (lo “histórico”)
-      tail -n +"$CUT" "$FILE" > "$OUT_HIST"
-      # Mantener en el archivo original solo lo anterior al CUT-1
-      head -n $((CUT-1)) "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE"
-      echo "[i] Bloque histórico seguro → ${OUT_HIST}"
-    fi
-  }
+  ' "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE" && echo "[i] Bloque histórico seguro → memory/$(basename "${FILE%.*}")_historico.md"
+}
 }
 # --- FIN HOTFIX ---
 
