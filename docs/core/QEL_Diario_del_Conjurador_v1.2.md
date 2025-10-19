@@ -577,3 +577,14 @@ HASH(10): 0a3ff028d6
 - SeedI: A96-250824
 
 _ECO (delta-only):_ Se cristaliza **Verso Fundador y Árbol de Habilidades** con hash **7407eea49a**; se actualiza ListadoR y espejo.
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: FORMATO-VF
+- Título: Formato VF · Árbol de Habilidades v1.4
+- Archivo: docs/core/QEL_Formato_VF_AH_v1.4.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Formato_VF_AH_v1.4.md
+- Rumbo: Norte
+- HASH(10): 7407eea49a
+- SeedI: A96-250824
+
+_ECO (delta-only):_ Se cristaliza **Formato VF · Árbol de Habilidades v1.4** con hash **7407eea49a**; se actualiza ListadoR y espejo.

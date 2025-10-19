@@ -181,6 +181,5 @@ VF-ARBOLES se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/VF-ARBOLES/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
 ---
-
-(falta hash)
+HASH(10)=7407eea49a
 HASH(10): 7407eea49a
