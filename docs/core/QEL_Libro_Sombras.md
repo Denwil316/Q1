@@ -253,7 +253,7 @@ UPDATED = 2025-08-12
 - CUE‑EXCEPTION v1.0: QEL_CUE_Exception_v1.0.md
 - Aurora v1.0: QEL_Aurora_Spec_v1.0.md
 - Manual Sombras v1.0: QEL_Manual_Interpretacion_Sombras_v1.0.md
-- Glosario v1.4: QEL_Glosario_v1.0.md
+- Glosario v1.4: QEL_Glosario_v1.4.md
 - Poema‑Enigma v1.0: QEL_Poema_Enigma_VF_v1.0.md
 
 ---
