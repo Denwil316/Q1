@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250813
+SeedI=""A37-251015""
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1109,3 +1109,14 @@ Resultados:
 HASH(10): 15d270def8
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: LIBRO-DE-SOMBRAS
+- Título: Libro de las Sombras v1.0 (incluye Apéndice B)
+- Archivo: docs/core/QEL_Libro_Sombras.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Libro_Sombras.md
+- Rumbo: Centro
+- HASH(10): d4b42f075b
+- SeedI: ""A37-251015""
+
+_ECO (delta-only):_ Se cristaliza **Libro de las Sombras v1.0 (incluye Apéndice B)** con hash **d4b42f075b**; se actualiza ListadoR y espejo.

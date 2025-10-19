@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 22:41:42_
+_Generado: 2025-10-18 22:58:22_
 
 ```text
 .
@@ -65,9 +65,7 @@ _Generado: 2025-10-18 22:41:42_
 |   |   |-- QEL_ListadoR_master_v1.0.md
 |   |   |-- QEL_MFH_v1.4.md
 |   |   |-- QEL_Manual_Operativo.md
-|   |   |-- QEL_SoT_Atlas_251018.md
 |   |   |-- QEL_SoT_Manifest_v0.8.json
-|   |   |-- QEL_Tratado_Metahumano_v1.5.md
 |   |   |-- Qel_Codice_Madre.md
 |   |   `-- atlas_microreg_v1.0.jsonl
 |   |-- habilidades
@@ -219,6 +217,7 @@ _Generado: 2025-10-18 22:41:42_
 |   |-- QEL_PR_TEMPLATE_v0.2.2.md
 |   |-- QEL_Sistema_Completo_v0.2_Consolidado.md
 |   |-- QEL_Sistema_Consolidado_v0.2_Confirmacion_v0.1.md
+|   |-- QEL_SoT_Atlas_251018.md
 |   |-- QEL_SoT_Atlas_v1.0_250826.md
 |   |-- QEL_SoT_Manifest_v0.3.json
 |   |-- QEL_SoT_Manifest_v0.4.json
@@ -239,6 +238,7 @@ _Generado: 2025-10-18 22:41:42_
 |   |-- QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.3.md
 |   |-- QEL_Tratado_Metahumano_RECALL_A96-250812_v1.0_Confirmacion_v0.1.md
 |   |-- QEL_Tratado_Metahumano_v1.4.md
+|   |-- QEL_Tratado_Metahumano_v1.5.md
 |   |-- QEL_VF_Carta_Lun-Nai_v1.0.md
 |   |-- README_Consolidado_v0.3.md
 |   |-- README_Consolidado_v0.4.md
