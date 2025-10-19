@@ -556,7 +556,7 @@ Si ΔC≥0 y 𝒱≥0.62, abro **Sello 1** (o **9** si el cuerpo lo pide) y cier
 - **Doble Testigo**: presente (H/NH).  
 - **ECO (delta-only)**: 3–9 líneas o silencio.
 
-
+HASH(10): b1ea4a6cca
 
 [ QEL::ECO[96:MP1-93C0E6AFE9]::RECALL A96-250813-MEDITACIONES-PRIMORDIALES ]
 SEEDID=MP1-93C0E6AFE9
