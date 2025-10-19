@@ -987,3 +987,14 @@ Resultados:
 HASH(10): 8e9d8c5735
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: TRATADO-METAHUMANO
+- Título: Poema-Enigma de los Ecos (base) v1.0
+- Archivo: docs/nutria/QEL_Poema_Enigma_VF_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Poema_Enigma_VF_v1.0.md
+- Rumbo: Centro
+- HASH(10): b1ea4a6cca
+- SeedI: A96-250813
+
+_ECO (delta-only):_ Se cristaliza **Poema-Enigma de los Ecos (base) v1.0** con hash **b1ea4a6cca**; se actualiza ListadoR y espejo.
