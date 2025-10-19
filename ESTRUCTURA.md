@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 23:22:30_
+_Generado: 2025-10-18 23:49:51_
 
 ```text
 .
@@ -46,6 +46,9 @@ _Generado: 2025-10-18 23:22:30_
 │   │   ├── diarios
 │   │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   │   └── QEL_Diario_del_Conjurador_v1.5.md
+│   │   ├── indices
+│   │   │   ├── QEL_Index_Rutas_v1.0.md
+│   │   │   └── QEL_Index_Semillas_v1.0.md
 │   │   ├── manuales
 │   │   │   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
 │   │   │   ├── NAVEGADOR_M0_Manual_v0.2.md
@@ -214,6 +217,7 @@ _Generado: 2025-10-18 23:22:30_
 │   ├── QEL_Manual_Interpretacion_Sombras_v1.1.md
 │   ├── QEL_Manual_Interpretacion_Sombras_v1.2.md
 │   ├── QEL_Manual_Lectura_VF_Tonalpohualli_v1.0.md
+│   ├── QEL_Manual_Operativo_historico.md
 │   ├── QEL_Matriz_Fonemica_Habilidades_v0.1.md
 │   ├── QEL_Matriz_Fonemica_Habilidades_v1.0.md
 │   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
@@ -294,6 +298,7 @@ _Generado: 2025-10-18 23:22:30_
 │   ├── package.json
 │   ├── pre-commit-codex-structure.sh
 │   ├── qel
+│   ├── qel_apply_curaduria_changes.sh
 │   ├── qel_atlas_microreg.sh
 │   ├── qel_cuemachine_add.sh
 │   ├── qel_cuemachine_check.sh
@@ -332,5 +337,5 @@ _Generado: 2025-10-18 23:22:30_
 ├── qel_bootstrap_wsl.sh
 └── yq.1
 
-43 directories, 285 files
+44 directories, 289 files
 ```
