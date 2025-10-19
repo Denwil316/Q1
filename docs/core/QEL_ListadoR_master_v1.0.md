@@ -186,3 +186,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) MANUALES | A96-250901 | "MANUAL-OPERATIVO/v1.0" | Manual Operativo (CRISTAL @ Centro)
   refs: [docs/core/QEL_Manual_Operativo.md]
   hash(10): 8d97890f2e
+
+- (2025-10-18) MANUALES | A96-250901 | "MANUAL-OPERATIVO/v1.0" | Manual Operativo (CRISTAL @ Centro)
+  refs: [docs/core/QEL_Manual_Operativo.md]
+  hash(10): 8d97890f2e

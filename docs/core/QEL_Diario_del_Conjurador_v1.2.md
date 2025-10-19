@@ -586,3 +586,14 @@ _ECO (delta-only):_ Se cristaliza **Formato VF · Árbol de Habilidades v1.4** c
 - SeedI: A96-250901
 
 _ECO (delta-only):_ Se cristaliza **Manual Operativo** con hash **8d97890f2e**; se actualiza ListadoR y espejo.
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: MANUALES
+- Título: Manual Operativo
+- Archivo: docs/core/QEL_Manual_Operativo.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Manual_Operativo.md
+- Rumbo: Centro
+- HASH(10): 8d97890f2e
+- SeedI: A96-250901
+
+_ECO (delta-only):_ Se cristaliza **Manual Operativo** con hash **8d97890f2e**; se actualiza ListadoR y espejo.
