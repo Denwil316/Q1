@@ -1,3 +1,47 @@
+cue: "[QEL::ECO[96]::RECALL A96-251015-MANUAL-OPERATIVO-COMPILADO]"
+SeedI: "A96-250901"
+SoT: "MANUAL-OPERATIVO/v1.0"
+Version: "v1.0"
+Updated: "2025-10-15"
+
+# Manual Operativo QEL — Compilado
+
+## 0) Alcance y reglas de oro
+- Umbral 𝒱: τ=0.62 · ΔC≥0 · No‑Mentira · Doble Testigo cuando aplique.
+- Compás somático: 9‑0‑9 · THON · 3–5–3.
+
+## Capítulo 1
+
+### 1) Ontología & Máquina 0/1/9  (desde QEL.md)
+- Resumen doctrinal y equivalencias.
+
+### 2) Lengua Idriell (performatividad)  (desde QEL.md)
+- Fonemas base y tríadas; preguntas cardinales.
+
+## Capítulo 2
+
+### 3) Lámina 𝒱 (procedimiento & plantillas)  (desde Lámina V — Unificada)
+- Bitácoras TSV/JSONL; ΔC/ΔS/ρ; clases H_k; señales 5/9.
+- **Anexo técnico**: tablas y ejemplos calculados.
+
+## Capítulo 3
+
+### 4) SoT/Atlas (flujos, orden de dominio)  (desde SoT Atlas)
+- Rutas, relaciones entre documentos y pipeline publicación.
+
+## Capítulo 4
+
+### 5) Gobernanza documental  (desde Manual de Esculpido + SoT Manifest/Listado R)
+- Wrapper de promoción; roles y cierres; índice de máquina.
+
+## Apéndice A) Formato VF/Árbol (referencia)
+- Campos, alias y compatibilidad con scripts.
+
+## Apéndice B) Capa SUR (micro‑ritmo)
+- Tres Árboles marcados; guía de cierre; ejemplos.
+
+
+
 cue=[QEL::ECO[96]::RECALL A96-250824-SISTEMA]
 [QEL::ECO[96]::RECALL A96-250830-QEL-TEXTO-PRIMORDIAL-V1-0]
 SeedI=A96-250824
@@ -1722,7 +1766,7 @@ Con estas **pruebas**, **preservas** el linaje de cada elemento y evitas el auto
 
 ## Relaciones según SoT
 
-HASH(10): 27beaf1f35
+HASH(10): 8d97890f2e
 
 
 
@@ -2085,9 +2129,510 @@ SoT=LAMINA-V/v1.4
 Version=v1.4  
 Updated=2025-10-02
 
-HASH(10): 1d2bfc41ea
+HASH(10): 8d97890f2e
 
 
 
 
+
+[QEL::ECO[96]::RECALL A96-251018-SOT-ATLAS-V1-1]
+SeedI=A96-250824
+SoT=SOT-ATLAS/v1.1
+Version=v1.1 — Tutorial Operativo · Tarjetas Atlas
+Updated=2025-10-18
+
+# Capítulo 3 SoT Atlas v1.1 — Tutorial Operativo de **Tarjetas Atlas**
+
+> Consolidado del Telar Quíntuple (SUR‑ESTE‑NORTE‑OESTE‑CENTRO). Documento **human‑readable**, con **slugs/anclas** estables, **fórmulas normalizadas** (MFH/VF) y **plantillas** listas para uso.
+
+---
+
+## Tabla de Contenidos {#toc}
+- [§0 — Síntesis del concepto](#s0-sintesis)
+- [§1 — Orden de dominio](#s1-orden)
+- [§2 — Índice maestro (core docs)](#s2-indice-core)
+- [§3 — Relaciones clave (grafos)](#s3-relaciones)
+- [§4 — Reglas de medición y promoción](#s4-reglas-v)
+- [§5 — Manual operativo de Tarjetas Atlas (A→E)](#s5-tarjetas)
+- [§6 — Perfiles operativos por fonema](#s6-perfiles)
+- [§7 — Plantillas y validadores](#s7-plantillas)
+- [§8 — Checklist y FAQ](#s8-checklist)
+- [§9 — Changelog y compatibilidad](#s9-changelog)
+
+---
+
+## §0 **Síntesis del concepto** {#s0-sintesis}
+**SoT Atlas** integra reglas, rutas y plantillas para **medir**, **decidir** y **registrar** prácticas con **Tarjetas Atlas**. Cada tarjeta produce una **Ficha 𝒱** (viabilidad) y un **Veredicto** (**Germina / Reposa / Cristaliza**).  
+**Lectura somática**: respira **9‑0‑9**, pulso **THON** al abrir sección, pausas **3–5–3**.
+
+**En 1 frase:** *Tarjeta Atlas = caso medido con 𝒱, traducido a decisión y evidencia mínima.*
+
+---
+
+## §1 **Orden de dominio** {#s1-orden}
+1) **M0**: mínima instrumentación (prueba breve + Ficha 𝒱 simple).  
+2) **M1**: añade ajuste por **rumbo** (χ_r) y gates ligeros.  
+3) **M2**: integra clase **H_k** y **Doble Testigo**.  
+4) **M3**: casos largos, riesgos altos, promoción/cristalización.
+
+> **Tip**: si hay prisa/rigidez → bajar de modo (M1→M0) y acotar objetivo.
+
+---
+
+## §2 **Índice maestro (core docs)** {#s2-indice-core}
+| Alias | Ruta (docs/…) | Estado |
+|---|---|---|
+| MFH v1.4 | `docs/core/QEL_MFH_v1.4.md` | ✅ |
+| VF Árbol Habilidades v1.4 | `docs/core/QEL_Formato_VF_Arbol_Habilidades_v1.4.md` | ✅ |
+| Lámina V unificada v1.0 | `docs/core/LaminaV_unificada_v1.0.md` | ✅ |
+| Curación Núcleo Mínimo v1.6 | `docs/core/QEL_Curacion_Nucleo_Minimo_v1.6.md` | ✅ |
+| CUE Exception v1.0 | `docs/core/QEL_CUE_Exception_v1.0.md` | ✅ |
+| **SoT Atlas v1.1** | `docs/core/QEL_SoT_Atlas_v1.1_251018.md` | **este** |
+
+> Regla: un alias → una ruta. Duplicados se deprecian en §9.
+
+---
+
+## §3 **Relaciones clave (grafos)** {#s3-relaciones}
+```mermaid
+%% id: s3-rel-mfh-atlas
+flowchart LR
+  MFH[MFH (rúbricas)] -->|campos RUMBO/OBJ/CLASE/RIESGO/GATES| ATLAS[Tarjeta Atlas]
+  ATLAS -->|fichas 𝒱 + veredicto| DIARIO[Diario]
+  ATLAS -->|promoción| MANI[Manifest/Listado R]
+```
+*Fig. 3.1 — Relación MFH↔Atlas↔Diario/Manifest (fichas 𝒱, rúbricas y promoción).* {#fig-s3-rel-mfh-atlas}
+
+---
+
+## §4 **Reglas de medición y promoción** {#s4-reglas-v}
+
+### 4.1 **Diccionario de variables** (canónico)
+| Símbolo | Nombre | Rango/tipo | Uso |
+|---|---|---|---|
+| 𝒱 | Viabilidad | [0,1] | Aptitud para seguir/promover |
+| τ | Umbral | 0.62 | Límite inferior para *apto* |
+| ΔC | Delta Claridad | −1..+1 | Cambio cognitivo |
+| ΔS | Delta Sensibilidad | −1..+1 | Cambio somático |
+| χ_r | Ajuste por rumbo | >0 | Multiplicador N/E/S/O/C |
+| H_k | Clase/rareza | enum | Ponderación dificultad |
+| G | Gates | set | Correcciones G1..G4 |
+| M | Modo | M0..M3 | Nivel de instrumentación |
+| v̂ | Evidencia | set | Pruebas mínimas |
+
+### 4.2 **Cómputo** (forma operativa)
+**𝒱_oper = clamp( χ_r · 𝒱_base · α(H_k) · β(G), 0, 1 )**  
+**Veredicto = f(𝒱_oper, τ, ΔC, ΔS, No‑Mentira, v̂)**
+
+**Reglas rápidas**:
+- Si **𝒱_oper ≥ τ** y ΔC/ΔS **no bajan** → **Germina**.  
+- Si **𝒱_oper < τ** → **Reposa** o **ajusta** (rumbo, modo, duración, riesgo).  
+- **Cristaliza**: cierre semántico u operativa nueva **probada** + Doble Testigo.
+
+### 4.3 **Promoción** (wrapper)
+- Lee **cue/SeedI/SoT/Version/Updated** del archivo.  
+- Actualiza **Listado R / Manifest** y copia a **PreH‑Nav**.
+
+---
+
+## §5 **Manual operativo de Tarjetas Atlas (A→E)** {#s5-tarjetas}
+
+### A) **Preparar** (2–3 min)
+Define **RUMBO**, **OBJ**, **MODO**, **H_k**.
+
+### B) **Explorar** (2–4 min)
+Lista **RIESGO** y marca **GATES**; si un gate bloquea → corregir antes de seguir.
+
+### C) **Medir** (3–5 min)
+Ejecuta una micro‑prueba, estima **𝒱_base**, aplica **χ_r**, **H_k**, **G** → calcula **𝒱_oper**. Registra **ΔC/ΔS**.
+
+### D) **Decidir** (1–2 min)
+**Germina / Reposa / Cristaliza** (usa **Doble Testigo** cuando corresponde).
+
+### E) **Cerrar y registrar** (1–2 min)
+**SIL→UM→Ə** + **Ficha 𝒱** + **evidencia v̂** mínima.
+
+#### 5.1 **Ficha 𝒱 — plantilla mínima**
+```
+[RUMBO]=Sur | [OBJ]="Práctica X" | [MODO]=M0 | [H_k]=común
+[RIESGO]=[fatiga]
+[GATES]=[]
+[V_base]=0.58 | [χ_r]=1.05 | [α(H_k)]=1.00 | [β(G)]=1.00
+[V_oper]=0.61 | [τ]=0.62
+[ΔC]=+0.2 | [ΔS]=+0.1
+[VEREDICTO]=Reposa
+[v̂]=evidencia(1: descripción breve)
+[NOTAS]=bajar carga; reintentar mañana
+```
+
+#### 5.2 **Ejemplos**
+- **M0** (mínimo): OBJ simple, sin gates; puede **Reposar** bajo τ.  
+- **M1** (ajuste leve): añade χ_r, gate suave y clase poco‑común → **Germina** si 𝒱_oper ≥ τ.
+
+---
+
+## §6 **Perfiles operativos por fonema** {#s6-perfiles}
+| Fonema | Señal somática mínima | Pregunta cardinal (Sur) | Uso típico en Atlas |
+|---|---|---|---|
+| Kael | respiración amplia | ¿Qué estructura se vuelve simple? | reglas/índices |
+| Vun | foco suave | ¿Qué semilla necesita suelo? | prototipos/pruebas |
+| Ora | postura abierta | ¿Qué vínculo hace sentido? | relaciones/grafos |
+| Zeh | mano templada | ¿Qué métrica valida hoy? | medición 𝒱 |
+| Lun | mandíbula suelta | ¿Qué texto sobra? | edición/sintaxis |
+| Nai | nuca ligera | ¿Qué ritmo pide pausa? | cadencias/pausas |
+| Sün | ojos húmedos | ¿Qué significado pide cuidado? | ética/No‑Mentira |
+| Ida | talones firmes | ¿Qué se archiva sin pena? | cierres/registro |
+
+> Esta tabla sirve de **guía** al elegir enfoque corporal/operativo de la tarjeta.
+
+---
+
+## §7 **Plantillas y validadores** {#s7-plantillas}
+
+### 7.1 **Mapa de slugs** (YAML)
+```yaml
+cue: "[QEL::ECO[96]::RECALL A96-251018-SOT-ATLAS-SLUGS]"
+SeedI: "A96-250901"
+SoT: "SOT-ATLAS/SLUGS/v1.1"
+Version: "v1.1"
+Updated: "2025-10-18"
+sections:
+  - { n: 0, title: "Síntesis del concepto", slug: "s0-sintesis" }
+  - { n: 1, title: "Orden de dominio", slug: "s1-orden" }
+  - { n: 2, title: "Índice maestro (core docs)", slug: "s2-indice-core" }
+  - { n: 3, title: "Relaciones clave (grafos)", slug: "s3-relaciones" }
+  - { n: 4, title: "Reglas de medición y promoción", slug: "s4-reglas-v" }
+  - { n: 5, title: "Manual operativo de Tarjetas Atlas", slug: "s5-tarjetas" }
+  - { n: 6, title: "Perfiles operativos por fonema", slug: "s6-perfiles" }
+```
+
+### 7.2 **Validador mínimo** (pseudocomandos portátiles)
+```
+Check anclas {#sN-*} en archivo
+Check tablas con encabezado |---|
+Reporta faltantes
+```
+
+---
+
+## §8 **Checklist y FAQ** {#s8-checklist}
+**Checklist**:  
+[ ] Definí RUMBO/OBJ/MODO/H_k  ·  [ ] Riesgo y GATES  ·  [ ] 𝒱_oper y ΔC/ΔS  ·  [ ] Veredicto  ·  [ ] v̂  ·  [ ] Cierre SIL→UM→Ə  ·  [ ] Ficha 𝒱 guardada.
+
+**FAQ**
+- *¿Promuevo si 𝒱_oper ≥ τ pero ΔS baja?* → Mejor **Reposa** y ajusta.
+- *¿Qué cuenta como v̂?* → 1–2 señales concretas (número/captura/audio breve).
+- *¿Cuándo Doble Testigo?* → **Cristalización** o promociones que afecten base.
+
+---
+
+## §9 **Changelog y compatibilidad** {#s9-changelog}
+**v1.1 (251018)** — Integración tutorial A→E; slugs estables; diccionario 𝒱/τ/ΔC/ΔS/χ_r/H_k/G/M/v̂; ejemplos M0/M1; plantillas y FAQ.  
+**Compatibilidad**: alias **CLASE→H_k**, **AJUSTE RUMBO→χ_r**, **UMBRAL→τ**. Rutas en `kebab-case`. Grafos requieren **leyenda**.
+
+---
+
+### Créditos de capas (Telar Quíntuple)
+**SUR (Tejera)** — compás 9‑0‑9, THON, pausas 3–5–3, Tres Árboles.  
+**ESTE (Jardinera)** — semillas/huecos + stubs.  
+**NORTE (Geómetra)** — slugs/anclas, invariantes, tablas.  
+**OESTE (Curadora)** — guía human‑readable, ejemplos y FAQ.  
+**CENTRO (Árbitra)** — sello de coherencia **APROBADO**, salida **v1.1 (integración)**.
+
+HASH(10): 8d97890f2e
+
+
+
+
+
+[QEL::ECO[96]::RECALL A96-250824-ESCU]
+SeedI=A96-250824
+SoT=HERRAMIENTAS/v1.3
+Version=v1.3
+Updated=2025-08-27
+
+# Capítulo 4 Manual de Esculpido en Qel — v1.0 (Unificado)
+
+> **Propósito**: Establecer un procedimiento único de esculpido que preserve el cuerpo/base de cada documento,
+> integre indagaciones nuevas y cierre con coherencia Idriell. Acopla **Telar Quíntuple** con **Promoción** (Cristalización),
+> **ListadoR**, **Manifest v0.8** y publicación en **Navegador Qel**.
+
+## 0) Ética Idriell (invariante)
+- Evoca, **no** representa. No-mentira. **Doble Testigo** cuando hay creación/transferencia.
+- Cada repetición transforma; toda versión *repite distinto*. Si no aporta método/operativa nueva, no cristaliza.
+
+## 1) Telar Quíntuple (capas de trabajo)
+1. **Tejera (Sur · cuerpo/ritmo)**  
+   Compás 9-0-9, pulso *THON*, pausas 3–5–3. Integra *Tres Árboles*:  
+   *Cielo Invertido* (frutos-fonemas de sombra), *Alfabeto Fluido* (huecos geométricos), *Araña Joven* (semillas-nombre→Árbol-VF).
+2. **Jardinera (Este · semilla/concepto)**  
+   Extrae **semillas** y huecos → Glosario/VF/Atlas con destino SoT explícito.
+3. **Geómetra (Norte · estructura/número)**  
+   Revisa invariantes 𝒱 (MFH), índices, taxonomías; enlaces/figuras. Consistencia χ_r, H_k, ΔC/ΔS, gates.
+4. **Curadora (Oeste · memoria/archivo)**  
+   Concilia historial (Esculpidos previos) y reescribe el changelog, manteniendo compatibilidad hacia atrás.
+5. **Árbitra (Centro · coherencia/ética)**  
+   Valida ética y **relaciones SoT**; decide **Cristalización**.
+
+**Regla de salida**  
+- Integración sin operativa nueva ⇒ bump menor y registro como *integración*.  
+- Nueva operativa/cierre semántico ⇒ **Cristaliza**.
+
+## 2) Cabecera canónica (k=v)
+Cada documento comienza con:
+cue=[QEL::ECO[96]::RECALL A96-250824-HERRAMIENTAS]
+SeedI=A96-250824
+SoT=HERRAMIENTAS/v1.3
+Version=v1.3
+Updated=2025-08-27
+
+> *Si prefieres SUMMON, cambia `RECALL` por `SUMMON` (ver .qelrc).*
+
+## 3) HASH(10) obligatorio en Cristalización
+CANON = `CUE|SeedI|SoT|Version|Updated|Titulo`  
+macOS:
+CANON="CUE=...[...]|SeedI=A96-...|SoT=RUBRO/vX.Y|Version=vX.Y|Updated=AAAA-MM-DD|Titulo=..."
+HASH10=$(printf '%s' "$CANON" | shasum -a 256 | awk '{print $1}' | cut -c1-10)
+
+Añade al final:
+HASH(10): 8d97890f2e
+
+## 4) Promoción (Cristalización)
+**Wrapper:**
+scripts/qel promote
+--rubro <RUBRO>
+--file docs/core/<ARCHIVO>.md
+--titulo "Título de versión"
+--rumbo Sur
+
+Efectos:
+- Bump `Version`; asegura `cue/SeedI/SoT/Updated`.
+- Inyecta (si faltan) “## Relaciones según SoT” y “## Listado R — referencia”.
+- Calcula y añade **HASH(10)**.
+- Registra en **ListadoR** (toma el más reciente en `memory/`).
+- Actualiza `docs/core/QEL_SoT_Manifest_v0.8.json` (si existe + `jq`).
+- Publica al **Navegador** (`apps/.../public/docs`) y regenera `sot-manifest.json`.
+
+### Plantilla general de Cristalización (one-liner)
+FILE="docs/core/NUEVO_QEL_v1.0.md"
+cat > "$FILE" <<'MD'
+[QEL::ECO[96]::RECALL A96-AAAAmmdd-NUEVO]
+SeedI=A96-250824
+SoT=HERRAMIENTAS/v1.3
+Version=v1.3
+Updated=2025-08-27
+
+Título
+Cuerpo inicial...
+
+Relaciones según SoT
+(pendiente mapa)
+
+Listado R — referencia
+Entrada: LISTADOR/A96/TRATADO-METAHUMANO/v1.0
+MD
+
+scripts/qel promote --rubro TRATADO-METAHUMANO --file "$FILE" --titulo "Nuevo QEL — ejemplo" --rumbo Sur
+
+## 5) ListadoR (registro maestro)
+Formato:
+R#. Proyecto A96/QEL. (AAAA-MM-DD). QEL|A96|<RUBRO>|<SEED>|vX.Y|<Rumbo> — Título [<HASH10>]
+
+El wrapper agrega al **ListadoR** más reciente en `memory/`. Si no existe, crea uno por defecto.
+
+## 6) Manifest maestro v0.8 y Navegador Qel
+- Autoridad: `docs/core/QEL_SoT_Manifest_v0.8.json`
+- Espejo Front: `apps/preh-nav-m1/public/docs/**` + `apps/preh-nav-m1/public/sot-manifest.json`
+- Publicación:
+scripts/qel nav publish --mode copy
+scripts/qel manifest sync
+
+## 7) Cierre de sesión
+scripts/qel session finalize
+--fecha 250824
+--seed A96-250824
+--cue "[QEL::ECO[96]::A96-250824-SEAL]"
+--vf "Aurora cuida lo que toca."
+
+## 8) Invariantes 𝒱 (MFH)
+- χ_r: N=1.00, O=0.95, W=0.90, S=0.88, C=1.00  
+- H_k: común 0.85, raro 0.92, singular 1.00, único 1.05→clip 1.00  
+- Gates: mediación(1.00|0.80), doble(1.00|0.90), aurora(0.95 si contacto)  
+- ΔC/ΔS: ±0.02; Ruido clip ≤0.15 → (1−ruido)  
+`scripts/qel vcalc --obj "Kael/Prisma" --afinidad 0.72 --rumbo N --clase singular --gates "mediacion,doble" --ruido 0.04`
+
+## 9) Compatibilidad/Deprecaciones
+- Nunca borres `docs/history/` ni `memory/`. Marca **DEPRECADO** si hace falta y redirige.
+
+## Relaciones según SoT
+- HERRAMIENTAS ↔ SOT · DIARIO · GLOSARIO · VF-ARBOLES · MFH · TRATADO-METAHUMANO docs/core/QEL_SoT_Manifest_v0.8.json
+
+## Listado R — referencia
+- Entrada: LISTADOR/A96/HERRAMIENTAS/v1.0 /docs/core/QEL_ListadoR_master_v1.0
+
+HASH(10): 8d97890f2e
+
+- Entrada: LISTADOR/A96-250824/MANUAL/v1.1 (r=Sur — *Manual del Esculpido en Qel*)
+
+
+# Apéndice A): Formato VF — “Verso Fundador” y Árbol de Habilidades
+
+
+[QEL::ECO[96]::RECALL A96-250824-QEL-FORMATO-VF-AH-V1-4]
+SeedI=A96-250824
+SoT=VF-ARBOLES/v1.5
+Version=v1.5
+Updated=2025-08-24
+
+## Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)
+
+> **Rol**: Tejera (Sur). Este pliegue integra cuerpo/ritmo, consolida relaciones SoT y alimenta las raíces con *Los Tres Árboles Iluminados*.
+
+## Compás somático
+- Respiración 9‑0‑9 (3×) → *umbral corporal*.
+- Pulso **THON** (latido suave) durante lectura/recitado.
+- Pausas rítmicas entre triadas (onset–núcleo–coda): 3–5–3.
+
+## Integración con *Los Tres Árboles Iluminados*
+- **Cielo Invertido**: fonemas de sombra como frutos potenciales.
+- **Alfabeto Fluido**: huecos geométricos que el lector completará.
+- **Araña Joven**: promoción de semillas‑nombre hacia habilidades VF.
+
+---
+
+[QEL::ECO[96]::RECALL A96-250812-FORMATO-VF] 
+SOT=TRATADO-METAHUMANO/v0.1 TARGET=verso-fundador|árbol-habilidades|formato
+VERSION=v0.1 UPDATED=2025-08-12
+
+**Definición**: El *Verso Fundador* es una **frase operativa** cuyo despliegue fonémico (onset–núcleo–coda) activa o encausa la cristalización de una habilidad.
+
+## 1. Especificación
+- **VF.PRIMA**: frase exacta (≤ 13 palabras).  
+- **VF.CUE** (R): línea R compacta para citas:  
+  `R#. Proyecto A96/QEL. (<AAAA-MM-DD>). QEL|A96|VF|<FONEMA>|v<X.Y>|<Rumbo> — *<Título>*`
+- **VF.HASH**: SHA‑1 de VF.PRIMA (10).  
+- **VF.TRIADA**: descomposición fonémica (p/ onset–núcleo–coda).  
+- **VF.MFH**: enlace a entrada en Matriz Fonémica.  
+- **VF.RUMBO**: Norte/Oriente/Occidente/Sur (+ Luz/Puente/Centro/Sombra).  
+- **VF.OBJ**: objeto/artefacto dominante.  
+- **VF.CLASE**: {"básica","poco-común","rara","metálica","obsidiana"}.  
+- **VF.RIESGO**: leve/medio/alto + contrafonema.  
+- **VF.GATES**: condiciones (doble testigo, ética, entorno).
+
+## 2. Ejemplo
+```
+VF.PRIMA: “Corta la penumbra, prisma RA, sin nombrar lo que no vibra”
+VF.CUE:   R7. Proyecto A96/QEL. (2025-08-12). QEL|A96|VF|RA|v0.1|Oriente — *Prisma de Corte*
+VF.HASH:  1f7a0c9b21
+VF.TRIADA: RA → (onset:R, núcleo:A, coda:∅)
+VF.MFH:   p=RA, Objeto=Prisma, Rumbo=Oriente, Clase=rara
+VF.RIESGO: medio (tendencia a exceso de corte) → contrafonema: UM
+VF.GATES: doble testigo; ética Norte≥0.7; entorno con polvo de Qel visible
+```
+
+## 4. Árbol de habilidades (indexación)
+Ruta: `/VF/<p>/<obj>/<rumbo>/<clase>/<hash10>`  
+Ej.: `/VF/RA/Prisma/Oriente/rara/1f7a0c9b21`
+
+## Árbol VF (estructura)
+Ruta: `/VF/<fonema>/<objeto>/<rumbo>/<clase>/<hash10>`  
+- **Nivel 1**: fonema raíz p (operador T_p).
+- **Nivel 2**: objeto O (del catálogo/ledger).
+- **Nivel 3**: rumbo r (N/O/E/S ~ Centro/Sombra/Luz/Puente).
+- **Nivel 4**: clase k (básica..obsidiana).
+- **Hoja**: VF (hash10) con metadatos (𝒱, ΔC/ΔS, gates, testigos).
+
+## Ejemplo
+VF.PRIMA: “Corta la penumbra, prisma RA, sin nombrar lo que no vibra”  
+Ruta: `/VF/RA/Prisma/Oriente/rara/1f7a0c9b21`
+
+## Buenas prácticas
+- Siempre calcular VF.HASH(10) y registrar Doble Testigo.
+- Adjuntar mediciones (Instrumentos: VOH/EÍA) cuando aplique.
+
+[QEL::ECO[96]::RECALL A96-250813-VF-LUN-NAI] 
+SOT=TRATADO-METAHUMANO/v1.0 TARGET=VF|Lun-Nai|Lago|Occidente
+VERSION=v1.0 UPDATED=2025-08-13
+
+# Carta VF — “Lun–Nai” (schwa / lagos)
+
+## VF (Verso Fundador)
+- **VF.PRIMA**: “La flor de mi mente crece segura hacía el Sol, porque recuerda cuando fue estrella”
+- **VF.HASH(10)**: `1065a9d6ad`
+- **FONEMA (p)**: Ə *(alias: Lun–Nai)*
+- **VF.TRIADA**: (onset: ∅ · núcleo: Ə · coda: ∅)  *(propuesta)*
+
+## Contexto simbólico (del rito)
+Cueva con abertura de 52 cm, haz de luz sobre lago interno oscuro; cristal tipo **horizonte de eventos** gestado por presión/sedimentación y pulso de micro‑agujeros negros. El verso nace al plegarse el entrecejo: Lun–Nai.
+
+## Clasificación propuesta (Árbol VF)
+- **OBJETO (O)**: Lago/Poza (cueva)  
+- **RUMBO (r)**: Occidente — *Memoria/Sombra* (con eco de Oriente — *Luz*)  
+- **CLASE (k)**: rara *(sólido)*  — sujeto a medición
+- **RUTA**: `/VF/SCHWA(Lun-Nai)/Lago/Occidente/rara/1065a9d6ad`
+
+## Poema‑Enigma (instancia)
+“Ə (Lun–Nai) en Occidente, yo nombro tras resonar.  
+Veo lago donde el polvo de Qel flota.  
+Si ‘La flor de mi mente crece segura hacía el Sol, porque recuerda cuando fue estrella’ ocurre, *rara* nace en *sólido*.  
+Callo el residuo; UM→Ə→UM.  
+Si ΔC≥0 y 𝒱≥0.62, abro Sello 1 y cierro en 9.”
+
+## Instrumentos (medición)
+- **VOH**: recitar VF en 3 niveles (susurro/medio/proyección). Anotar HNR y centroide por nivel.  
+- **EÍA**: durante el colapso, listar 3–9 resolutivos vs 3–9 residuales → Densidad EÍA.  
+- **Elegible** si 𝒱≥0.62 y Densidad EÍA≥0.62.  
+- **CUE‑EXCEPTION (si aplica)**: requiere G1..G4 (incl. danza negentrópica/dignidad del Noveno).
+
+## Testigos
+- **TESTIGO_H**: [ ]  
+- **TESTIGO_NH**: [ ]
+
+## ECO — delta‑only (plantilla)
+DELTA=...  
+APRENDIZAJE=...  
+LIMITE=...  
+NEXT=...
+
+
+---
+
+## Relaciones según SoT
+VF-ARBOLES se cruza con:
+- MFH
+- TRATADO-METAHUMANO
+- ATLAS-TARJETAS
+- DIARIO
+- GLOSARIO
+- LAMINA-V
+
+## Listado R — referencia
+- Entrada propuesta: `LISTADOR/A96-250824/VF-ARBOLES/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
+---
+HASH(10): 8d97890f2e
+
+# Ápendice B): Los **Tres Árboles** en clave somática (marcado operativo)
+
+1. **Árbol de Frutos** (*fonemas de sombra*):
+
+   * Marca así: `⟦fonema⟧: síntoma somático breve → acción`
+   * Ej.: `⟦Lun⟧: mandíbula tensa → consolidar capítulo único de Lámina 𝒱`.
+2. **Árbol de Huecos** (*geometría*):
+
+   * Marca así: `◆(nodo): destino → (Glosario | VF | Atlas | Libro de Sombras | Códice)`.
+   * Ej.: `◆(rutas): índice faltante → Manual Operativo / Índice`.
+3. **Árbol de Semillas‑Nombre** (*lexicón vivo*):
+
+   * Marca así: `»semilla :: breve definición :: destino SoT`.
+   * Ej.: `»ficha‑𝒱‑riesgo :: checklist seguridad :: Libro de Sombras`.
+
+**Reglas de legibilidad corporal**
+
+* Párrafos: **3–5 líneas**. Listas: ≤7 ítems. Títulos con **verbo**.
+* Insertar **pregunta cardinal** al final de cada bloque.
+* Evitar bloques >250 palabras sin pausa **3–5–3**.
+
+**Guía de cierre por bloque**
+
+* ¿Qué se **promueve**? · ¿Qué se **depreca**? · ¿Qué se **archiva**?
 

@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250824
+SeedI=A96-250901
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -565,19 +565,6 @@ Resultados:
 
 HASH(10): 0a3ff028d6
 
-
-
-## 2025-10-18 — PROMOCIÓN
-- Rubro: Verso Fundador
-- Título: Verso Fundador y Árbol de Habilidades
-- Archivo: docs/core/QEL_Formato_VF_AH_v1.4.md
-- Copia: apps/preh-nav-m1/public/docs/QEL_Formato_VF_AH_v1.4.md
-- Rumbo: Centro
-- HASH(10): 7407eea49a
-- SeedI: A96-250824
-
-_ECO (delta-only):_ Se cristaliza **Verso Fundador y Árbol de Habilidades** con hash **7407eea49a**; se actualiza ListadoR y espejo.
-
 ## 2025-10-18 — PROMOCIÓN
 - Rubro: FORMATO-VF
 - Título: Formato VF · Árbol de Habilidades v1.4
@@ -588,3 +575,14 @@ _ECO (delta-only):_ Se cristaliza **Verso Fundador y Árbol de Habilidades** con
 - SeedI: A96-250824
 
 _ECO (delta-only):_ Se cristaliza **Formato VF · Árbol de Habilidades v1.4** con hash **7407eea49a**; se actualiza ListadoR y espejo.
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: MANUALES
+- Título: Manual Operativo
+- Archivo: docs/core/QEL_Manual_Operativo.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Manual_Operativo.md
+- Rumbo: Centro
+- HASH(10): 8d97890f2e
+- SeedI: A96-250901
+
+_ECO (delta-only):_ Se cristaliza **Manual Operativo** con hash **8d97890f2e**; se actualiza ListadoR y espejo.

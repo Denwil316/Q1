@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 19:52:05_
+_Generado: 2025-10-18 20:35:22_
 
 ```text
 .
@@ -58,13 +58,9 @@ _Generado: 2025-10-18 19:52:05_
 |   |   |   |-- QEL_Manual_Interpretaci\303\263n_Sombras_v1.3.md
 |   |   |   |-- QEL_SoT_Study_Guide_v1.1.md
 |   |   |   `-- manual_cue_machine_qel_v.1.md
-|   |   |-- LaminaV_unificada_v1.0.md
-|   |   |-- QEL.md
 |   |   |-- QEL_Curacion_Nucleo_Minimo.md
 |   |   |-- QEL_Diario_del_Conjurador_v1.2.md
-|   |   |-- QEL_Formato_VF_AH_v1.4.md
 |   |   |-- QEL_Glosario_v1.4.md
-|   |   |-- QEL_ListadoR_cue_v1.1.md
 |   |   |-- QEL_ListadoR_master_v1.0.md
 |   |   |-- QEL_MFH_v1.4.md
 |   |   |-- QEL_Manual_Operativo.md
@@ -148,6 +144,7 @@ _Generado: 2025-10-18 19:52:05_
 |   |   `-- Cue_METAHUMANO_TRATADO_v0.1.txt
 |   |-- Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
 |   |-- Esculpido_en_Qel_Guia_de_Trabajo_v0.3_completo.md
+|   |-- LaminaV_unificada_v1.0.md
 |   |-- Listado_CUEs_FormatoR_Q1+A96_v0.1.md
 |   |-- Listado_CUEs_FormatoR_Q1+A96_v0.2.md
 |   |-- Listado_CUEs_FormatoR_Q1+A96_v0.3.md
@@ -155,6 +152,7 @@ _Generado: 2025-10-18 19:52:05_
 |   |-- Memoria_de_Qel_Ledger_v0.2.json
 |   |-- PLAN_ORG_Codex_M0_v0.3.md
 |   |-- Q1_CUES_template.csv
+|   |-- QEL.md
 |   |-- QEL_A96-251208-OBJ_EU-SEMILLA_v0.1.delta.json
 |   |-- QEL_A96-251208-OBJ_EU-SEMILLA_v0.1.json
 |   |-- QEL_A96-251208-OBJ_KS-CRIOLAMPARA_v0.1.delta.json
@@ -180,6 +178,7 @@ _Generado: 2025-10-18 19:52:05_
 |   |-- QEL_ECO_A96-250812-PRIMER-PECADO_delta-only_v0.1.md
 |   |-- QEL_FormatoR_Manual_v0.1.md
 |   |-- QEL_FormatoR_Manual_v0.2.md
+|   |-- QEL_Formato_VF_AH_v1.4.md
 |   |-- QEL_Formato_VF_Arbol_Habilidades_v0.1.md
 |   |-- QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 |   |-- QEL_Glosario_v1.0.md
@@ -202,6 +201,7 @@ _Generado: 2025-10-18 19:52:05_
 |   |-- QEL_ListadoR_A96_v1.2_Confirmacion_v0.1.md
 |   |-- QEL_ListadoR_A96_v1.3.md
 |   |-- QEL_ListadoR_A96_v1.4.md
+|   |-- QEL_ListadoR_cue_v1.1.md
 |   |-- QEL_Manual_Conjurador_Avanzado_v1.0.md
 |   |-- QEL_Manual_Conjurador_Avanzado_v1.1.md
 |   |-- QEL_Manual_Interpretacion_Sombras_v1.0.md
