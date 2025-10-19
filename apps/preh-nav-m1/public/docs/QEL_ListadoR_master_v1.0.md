@@ -203,3 +203,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) TRATADO-METAHUMANO | A96-250813 | PROMOCION/v1.0 | Carta VF — Lun–Nai (schwa / lagos) v1.0 (CRISTAL @ Occidente)
   refs: [memory/QEL_VF_Carta_Lun-Nai_v1.0.md]
   hash(10): 15dae7924a
+
+- (2025-10-18) TRATADO-METAHUMANO | A96-250813 | PROMOCION/v1.0 | Poema-Enigma de los Ecos (base) v1.0 (CRISTAL @ Centro)
+  refs: [docs/nutria/QEL_Poema_Enigma_VF_v1.0.md]
+  hash(10): b1ea4a6cca

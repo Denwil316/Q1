@@ -998,3 +998,54 @@ HASH(10): 8e9d8c5735
 - SeedI: A96-250813
 
 _ECO (delta-only):_ Se cristaliza **Poema-Enigma de los Ecos (base) v1.0** con hash **b1ea4a6cca**; se actualiza ListadoR y espejo.
+
+## 251018 · M0 · Poema-Enigma (base)
+cue: [QEL::ECO[96]::RECALL A96-250812-POEMA-ENIGMA]
+SeedI: "A96-250813"
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "Poema-Enigma (base)"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - MFH
+  - Glosario
+  - Manual Operativo
+  - Carta VF Lun–Nai
+  - Poema-Enigma Lun–Nai
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/nutria/QEL_Poema_Enigma_VF_v1.0.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 87df352c04
+
+
