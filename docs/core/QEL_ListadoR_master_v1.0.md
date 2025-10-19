@@ -207,3 +207,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) TRATADO-METAHUMANO | A96-250813 | PROMOCION/v1.0 | Poema-Enigma de los Ecos (base) v1.0 (CRISTAL @ Centro)
   refs: [docs/nutria/QEL_Poema_Enigma_VF_v1.0.md]
   hash(10): b1ea4a6cca
+
+- (2025-10-18) REGISTRO/SELLOS-CUES | A96-250813 | PROMOCION/v1.0 | QEL · Sellos & Cues de Idriell v1.0 (CRISTAL @ Centro)
+  refs: [docs/ritual/QEL_Sellos_y_Cues_Idriell_v1.0.md]
+  hash(10): 69b1cc447a
