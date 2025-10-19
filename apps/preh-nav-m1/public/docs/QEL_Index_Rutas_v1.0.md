@@ -1,5 +1,5 @@
 cue: "[QEL::ECO[96]::RECALL A96-251015-INDEX-RUTAS]"
-SeedI: "A37-251015"
+SeedI: ""A37-251015""
 SoT: "INDICES/RUTAS/v1.0"
 Version: "v1.0"
 Updated: "2025-10-15"
@@ -27,3 +27,4 @@ Updated: "2025-10-15"
   - [/docs/core/QEL_Libro_Sombras.md#sec-3-casuistica]
   - [/docs/core/QEL_Libro_Sombras.md#sec-2-cue-aurora]
   - [/docs/core/QEL_Libro_Sombras.md#sec-4-plantillas-de-riesgo]
+HASH(10): 7f60aa09d5
