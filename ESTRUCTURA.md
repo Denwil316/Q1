@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-19 00:25:23_
+_Generado: 2025-10-19 00:41:37_
 
 ```text
 .
@@ -65,9 +65,11 @@ _Generado: 2025-10-19 00:25:23_
 │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   ├── QEL_Glosario_v1.4.md
 │   │   ├── QEL_Libro_Sombras.md
+│   │   ├── QEL_Libro_Sombras.md.bak
 │   │   ├── QEL_ListadoR_master_v1.0.md
 │   │   ├── QEL_MFH_v1.4.md
 │   │   ├── QEL_Manual_Operativo.md
+│   │   ├── QEL_Manual_Operativo.md.bak
 │   │   ├── QEL_Manual_Operativo.trunc.md
 │   │   ├── QEL_SoT_Manifest_v0.8.json
 │   │   ├── Qel_Codice_Madre.md
@@ -306,6 +308,7 @@ _Generado: 2025-10-19 00:25:23_
 │   ├── qel_inject_anchors.py
 │   ├── qel_install_missing.ps1
 │   ├── qel_install_missing.sh
+│   ├── qel_patch_anchors.sh
 │   ├── qel_pe_generate.mjs
 │   ├── qel_pe_generate.mjs.bak
 │   ├── qel_promote_mac.sh
@@ -339,5 +342,5 @@ _Generado: 2025-10-19 00:25:23_
 ├── qel_bootstrap_wsl.sh
 └── yq.1
 
-44 directories, 291 files
+44 directories, 294 files
 ```

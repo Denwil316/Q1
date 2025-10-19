@@ -37,6 +37,7 @@ normalize_manual_heads() {
 
 # --- HOTFIX: split_historic_block seguro (ignora code fences y restringe target) ---
 split_historic_block() {
+  {
   local FILE="$1"
   case "$FILE" in
     *QEL_Curacion_Nucleo_Minimo.md) : ;;
@@ -75,8 +76,9 @@ split_historic_block() {
       print $t;
     }
   ' "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE" && echo "[i] Bloque histórico seguro → memory/$(basename "${FILE%.*}")_historico.md"
-}
-}
+  }
+  }
+  
 # --- FIN HOTFIX ---
 
 

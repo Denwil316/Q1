@@ -106,6 +106,11 @@
       "path": "docs/QEL_Manual_Operativo.md"
     },
     {
+      "name": "QEL_Manual_Operativo.trunc",
+      "role": "QEL_Manual_Operativo.trunc.md",
+      "path": "docs/QEL_Manual_Operativo.trunc.md"
+    },
+    {
       "name": "QEL_MFH_v1.4",
       "role": "QEL_MFH_v1.4.md",
       "path": "docs/QEL_MFH_v1.4.md"
