@@ -527,7 +527,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "Tarjetas Atlas"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "Promocionar, sellar y registrar documento"
   modo: M1
   rumbo: Centro
   tiempo: 30
@@ -586,7 +586,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "Formato VF AH"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "Promocionar, sellar y registrar documento"
   modo: M0
   rumbo: Norte
   tiempo: 30
@@ -596,9 +596,7 @@ FS:
   - Lámina 𝒱
   - Atlas
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+   - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -653,10 +651,7 @@ FS:
   - Atlas
   - MFH
   - Glosario
-  salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+  - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -704,7 +699,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "CUE-Exception"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "Promocionar, sellar y registrar documento"
   modo: M0
   rumbo: Centro,Norte
   tiempo: 30
@@ -715,9 +710,7 @@ FS:
   - Manual Operativo
   - CUE-EXCEPTION
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+  - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -776,9 +769,7 @@ FS:
   - Manual Operativo
   - Aurora Spec
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+  - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -826,7 +817,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "Ronda Lun–Nai"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "Promocionar, sellar y registrar documento"
   modo: M0
   rumbo: Occidente
   tiempo: 30
@@ -837,9 +828,7 @@ FS:
   - Meditaciones
   - Poema-Enigma
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+  - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -887,7 +876,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "Meditaciones Primordiales — Cámara Uno"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "Promocionar, sellar y registrar documento"
   modo: M0
   rumbo: Centro
   tiempo: 30
@@ -898,9 +887,7 @@ FS:
   - Manual Operativo
   - Meditaciones Primordiales
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+  - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -948,7 +935,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "Carta VF — Lun–Nai"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "Promocionar, sellar y registrar documento"
   modo: M0
   rumbo: Occidente
   tiempo: 30
@@ -959,9 +946,7 @@ FS:
   - Poema-Enigma Lun–Nai
   - Meditaciones Primordiales
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+  - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -1009,7 +994,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "Poema-Enigma (base)"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "Promocionar, sellar y registrar el documento"
   modo: M0
   rumbo: Centro
   tiempo: 30
@@ -1021,9 +1006,7 @@ FS:
   - Carta VF Lun–Nai
   - Poema-Enigma Lun–Nai
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+  - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -1071,7 +1054,7 @@ Updated: 2025-10-18
 FS:
   fecha: 250813
   tema: "Sellos & Cues de Idriell"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "Promocionar, sellar y registrar el documento"
   modo: M0
   rumbo: Centro
   tiempo: 30
@@ -1081,9 +1064,7 @@ FS:
   - Glosario
   - Manual Operativo
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+  - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -1123,7 +1104,7 @@ _ECO (delta-only):_ Se cristaliza **Libro de las Sombras v1.0 (incluye Apéndice
 
 ## 251018 · M0 · Libro de las Sombras
 cue: [QEL::ECO[96]::RECALL A96-251018-LIBRO-DE-SOMBRAS]
-SeedI: """A37-251015"""
+SeedI: "A37-251015"
 SoT: TRATADO-METAHUMANO/v1.2
 Version: v1.2-log
 Updated: 2025-10-18
@@ -1131,7 +1112,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "Libro de las Sombras"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "crear el documento núcleo"
   modo: M0
   rumbo: Centro
   tiempo: 30
@@ -1142,9 +1123,8 @@ FS:
   - Manual Operativo
   - Apéndice B
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+    - "Documento sellado, promocionado y registrado"
+    - "Fusionar y producir la edición del Libro de las Sombras"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -1192,7 +1172,7 @@ Updated: 2025-10-18
 FS:
   fecha: 251018
   tema: "MFH v1.5 — Tejera en Sur"
-  intencion: "actualizarlas con la información que tenemos"
+  intencion: "sellar la Matriz Fonemica de Habilidades"
   modo: M0
   rumbo: Sur
   tiempo: 30
@@ -1203,9 +1183,7 @@ FS:
   - Lámina 𝒱
   - Libro de Sombras
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+    - "Documento sellado, promocionado y registrado"
   metricas:
     delta_c: ""
     delta_s: ""
@@ -1270,9 +1248,9 @@ FS:
   - Manual Operativo
   - Libro de Sombras
   salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+    - "Colocar enlaces en los anchors"
+    - "Trazabilidad de contenido"
+    - ".md con índices en carpeta /indices"
   metricas:
     delta_c: ""
     delta_s: ""
