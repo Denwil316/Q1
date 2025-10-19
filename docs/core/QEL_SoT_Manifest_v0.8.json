@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-19T03:52:04.033Z",
+  "Updated": "2025-10-19T04:09:06.421Z",
   "manifest": [
     {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
@@ -79,7 +79,7 @@
       "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md",
       "title": "Diario del Conjurador (v1.2)",
       "cue": "",
-      "seed": "A96-250820",
+      "seed": "A96-250813",
       "sot": "DIARIO/v1.2",
       "version": "v1.2",
       "updated": "2025-08-30",

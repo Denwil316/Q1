@@ -815,3 +815,53 @@ HASH(10): ec71ee30d0
 - SeedI: A96-250813
 
 _ECO (delta-only):_ Se cristaliza **Ronda de meditación — Poema-Enigma Lun–Nai v1.1** con hash **23b99864de**; se actualiza ListadoR y espejo.
+
+## 251018 · M0 · Ronda Lun–Nai
+cue: [QEL::ECO[96]::RECALL A96-250813-RONDA-LUN-NAI]
+SeedI: "A96-250813"
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "Ronda Lun–Nai"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Occidente
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - MFH
+  - Glosario
+  - Meditaciones
+  - Poema-Enigma
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/ritual/QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 2134032a3c
+
+
