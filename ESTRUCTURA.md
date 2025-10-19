@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-19 01:08:46_
+_Generado: 2025-10-19 01:15:43_
 
 ```text
 .
@@ -114,9 +114,9 @@ _Generado: 2025-10-19 01:08:46_
 │   │   ├── QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
 │   │   ├── QEL_Sello_A96-250824_Centro_Sur_Norte_EIA-A-THON_Cierre_SIL-UM-Əv1.0.md
 │   │   ├── QEL_Sellos_y_Cues_Idriell_v1.0.md
-│   │   ├── QEL_VF_PRIMA_"""A37-251015"""_SEAL_v1.0.md
+│   │   ├── QEL_VF_PRIMA_"A37-251015"_SEAL_v1.0.md
 │   │   ├── QEL_VF_PRIMA_"A96-250813"_SEAL_v1.0.md
-│   │   ├── QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md
+│   │   ├── QEL_VF_PRIMA_A37-251019_SEAL_v1.0.md
 │   │   ├── QEL_VF_PRIMA_A96-250812_SEAL_v1.0.md
 │   │   ├── QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
 │   │   ├── QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
