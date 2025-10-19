@@ -167,4 +167,273 @@ El script crea el archivo de Habilidad (MD+metadatos), ubica la **ruta del Árbo
 
 * **PE-Generator** (`scripts/qel_pe_generate.mjs`): crea PE, valida, calcula V, “mintea” Habilidad, **opcional** guarda y registra.
 
+[QEL::ECO[96]::RECALL A96-251018-LLPE-PLANTILLAS-V1-4]
+SeedI: "A96-251018"
+SoT: "LL-PE/MANUAL-PLANTILLAS/v1.4"
+Version: "v1.4"
+Updated: "2025-10-18"
+
+# LL‑PE v1.4 — Manual Operativo (Germinación) · **Plantillas VF (YAML/JSON)**
+
+> Este anexo amplía el **Manual LL‑PE v1.4** con plantillas **YAML** y **JSON** para las **Cartas VF** que consumen los scripts `qel_pe_generate.mjs` y familia. Está escrito en estilo *human‑readable*, con ejemplos listos para copiar/pegar, validaciones y errores comunes.
+
+---
+
+## 0) Mapa rápido (qué campo es qué)
+- **cue**: cadena completa del CUE (opcional pero recomendado).
+- **SeedI/Seed**: semilla (opcional); si falta, el script deriva desde el contexto.
+- **VF.PRIMA / prima**: verso fundador (≤13 palabras).
+- **p / triada**: fonemas `onset·núcleo·coda` (p. ej. `Ə·UM·A`).
+- **w / pesos**: pesos triádicos (3 valores, suman ≈1.00), p. ej. `[0.40,0.35,0.25]`.
+- **objeto (O)**: objeto resonante (p. ej. `Llave`, `Prisma`).
+- **rumbo (r)**: `N|O|W|S|C` (Norte, Oriente, Occidente, Sur, Centro).
+- **clase (k)**: `basica|poco-comun|rara|metalica|obsidiana` (tolerancias MFH).
+- **materia**: medio/fase principal (p. ej. `aire`, `agua`, `metal`, `orgánico`).
+- **gates**: lista de salvaguardas (`mediacion`, `doble`, `aurora`, `exception`).
+
+> **Nota:** Los nombres de campos admiten alias; ver cada plantilla. El generador acepta YAML *o* JSON indistintamente.
+
+---
+
+## 1) Plantilla **YAML** mínima (recomendada)
+```yaml
+# VF.yaml — mínima, human‑readable
+cue: "[QEL::ECO[96]::RECALL A96-YYMMDD-VF-DEMO]"
+SeedI: "A96-YYMMDD"
+VF.PRIMA: "Silencio sostiene apertura"
+triada: "Ə·UM·A"      # alias: p
+pesos:  [0.40,0.35,0.25] # alias: w (suma ≈ 1.00)
+objeto: "Llave"        # alias: O
+rumbo:  "C"            # N,O,W,S,C
+clase:  "rara"         # basica|poco-comun|rara|metalica|obsidiana
+materia: "aire"
+gates: ["mediacion", "doble"]
+```
+
+### Variación (nido `vf:`)
+```yaml
+vf:
+  cue: "[QEL::ECO[96]::RECALL A96-YYMMDD-VF-DEMO]"
+  Seed: "A96-YYMMDD"      # alias de SeedI
+  prima: "Silencio sostiene apertura"
+  p: "Ə·UM·A"
+  w: [0.40,0.35,0.25]
+  O: "Llave"
+  r: "C"
+  k: "rara"
+  materia: "aire"
+  gates: [mediacion, doble]
+```
+
+---
+
+## 2) Plantilla **JSON** mínima (equivalente)
+```json
+{
+  "cue": "[QEL::ECO[96]::RECALL A96-YYMMDD-VF-DEMO]",
+  "SeedI": "A96-YYMMDD",
+  "VF.PRIMA": "Silencio sostiene apertura",
+  "triada": "Ə·UM·A",
+  "pesos": [0.40, 0.35, 0.25],
+  "objeto": "Llave",
+  "rumbo": "C",
+  "clase": "rara",
+  "materia": "aire",
+  "gates": ["mediacion", "doble"]
+}
+```
+
+### Variación con alias y nido `vf`
+```json
+{
+  "vf": {
+    "cue": "[QEL::ECO[96]::RECALL A96-YYMMDD-VF-DEMO]",
+    "Seed": "A96-YYMMDD",
+    "prima": "Silencio sostiene apertura",
+    "p": "Ə·UM·A",
+    "w": [0.40, 0.35, 0.25],
+    "O": "Llave",
+    "r": "C",
+    "k": "rara",
+    "materia": "aire",
+    "gates": ["mediacion", "doble"]
+  }
+}
+```
+
+---
+
+## 3) Ejemplo **completo** (con comentarios y campos extra)
+```yaml
+# VF_Kosmos8_Apertura.yaml
+cue: "[QEL::ECO[96]::RECALL A96-251018-VF-KOSMOS-8]"
+SeedI: "A96-251018"
+VF.PRIMA: "Desde el Silencio, soplo el puente y recuerdo mi sol"  # ≤13 palabras
+triada: "Ə·UM·A"     # onset·núcleo·coda
+pesos:  [0.40,0.35,0.25]
+objeto: "Llave"
+rumbo:  "C"
+clase:  "rara"
+materia: "aire"       # → afinidad de materia que usa el generador
+# opcional: gates puede ser lista *o* mapa booleado
+#gates: [mediacion, doble]
+gates:
+  mediacion: true
+  doble: true
+  aurora: false
+  exception: false
+# campos informativos (no obligatorios; ignorados por el builder si no aplican)
+notas: "Preset Apertura; apto para Árbol /Llave/C/rara"
+```
+
+```json
+{
+  "cue": "[QEL::ECO[96]::RECALL A96-251018-VF-KOSMOS-8]",
+  "SeedI": "A96-251018",
+  "VF.PRIMA": "Desde el Silencio, soplo el puente y recuerdo mi sol",
+  "triada": "Ə·UM·A",
+  "pesos": [0.40, 0.35, 0.25],
+  "objeto": "Llave",
+  "rumbo": "C",
+  "clase": "rara",
+  "materia": "aire",
+  "gates": { "mediacion": true, "doble": true, "aurora": false, "exception": false },
+  "notas": "Preset Apertura; apto para Árbol /Llave/C/rara"
+}
+```
+
+---
+
+## 4) Cómo usar las plantillas con `qel_pe_generate.mjs`
+
+### 4.1 Generar **Poema‑Enigma** (MD, con VCALC + HABILIDAD)
+```bash
+node scripts/qel_pe_generate.mjs \
+  --vf docs/core/cartas/VF_Kosmos8_Apertura.yaml \
+  --materia aire \
+  --preset Apertura \
+  --ruido 0.00 --delta-c flat --delta-s flat \
+  --nutria-dir docs/nutria \
+  --emit md --save
+```
+> Produce `docs/pe/PExxxxxxxxxx.md` **con** bloques `VCALC` y `HABILIDAD CRISTALIZADA` y, si `--save`, también un archivo de habilidad en `docs/habilidades/<triada>/<obj>/<r>/<k>/<hash10>.md`.
+
+### 4.2 Variantes y utilidades
+- **Entrada JSON**: `--vf docs/core/cartas/VF_Kosmos8_Apertura.json` (mismo contenido que YAML).
+- **Sin nutrición**: omite `--nutria-dir`.
+- **Reparchado** de un PE existente (añadir VCALC/HAB a un MD específico):
+```bash
+node scripts/qel_pe_generate.mjs \
+  --vf docs/core/cartas/VF_Kosmos8_Apertura.yaml \
+  --materia aire --emit md \
+  --patch-file docs/pe/PEe2c82e10e1.md
+```
+- **Búsqueda por HASH** del PE (si solo tienes el hash10 en mano):
+```bash
+node scripts/qel_pe_generate.mjs \
+  --vf docs/core/cartas/VF_Kosmos8_Apertura.yaml \
+  --emit md --patch-hash 0198772adb
+```
+
+---
+
+## 5) Validaciones y errores comunes (y cómo resolverlos)
+
+- **Pesos no suman ~1.00** → el generador normaliza a `[0.40,0.35,0.25]`. Revisa `pesos`/`w`.
+- **Rumbo inválido** (`rumbo: Centro` en lugar de `C`) → usa código **N/O/W/S/C**.
+- **Clase fuera de catálogo** → usa `basica|poco-comun|rara|metalica|obsidiana`.
+- **`gates` mal formateado** → pon una lista (`[mediacion, doble]`) o un mapa booleado.
+- **`VF.PRIMA` >13 palabras** → ajusta (el Árbol y las tarjetas esperan ≤13).
+- **Sin `cue`/`SeedI`** → no es crítico; la semilla se deriva; incluye `cue` para mejor trazabilidad.
+- **Materia no reconocida** → el generador la mapea por *afinidad de materia*; usa etiquetas básicas (`aire`, `agua`, `metal`, `orgánico`…).
+
+> **Reglas Idriell** siempre activas: **No‑Mentira**, **Doble Testigo**, cierre **SIL→UM→Ə**.
+
+---
+
+## 6) Checklist antes de correr
+- [ ] `VF.PRIMA` ≤13 palabras y triada correcta `onset·núcleo·coda`.
+- [ ] `pesos` con 3 valores (suman ~1.00).
+- [ ] `objeto`, `rumbo (N/O/W/S/C)`, `clase` y `materia` asignados.
+- [ ] `gates` definidos (mínimo `mediacion` + `doble`).
+- [ ] Directorios: `docs/pe`, `docs/habilidades`, `docs/core/cartas`, `docs/nutria`.
+
+---
+
+## 7) Apéndice — **Esquema** (informal)
+
+### 7.1 YAML/JSON Schema (informal)
+```yaml
+# Campos y alias admitidos por LL‑PE (v1.4)
+# (⋆) opcional — el builder funciona sin ellos
+(
+  cue: string⋆,
+  SeedI|Seed: string⋆,
+  VF.PRIMA|prima: string,           # ≤13 palabras
+  p|triada: string,                 # "X·Y·Z"
+  w|pesos: [number,number,number],  # suma ≈ 1.00
+  O|objeto: string,
+  r|rumbo: "N|O|W|S|C",
+  k|clase: "basica|poco-comun|rara|metalica|obsidiana",
+  materia: string⋆,
+  gates: [string…] | {string:boolean}⋆,
+  vf: { …campos anteriores… }⋆,
+  notas: any⋆
+)
+```
+
+### 7.2 Campos derivados por el generador (no declararlos manualmente)
+- `pe.id` (prefijo `PE::hash10`), `vf.A_auto` (afinidad), `VCALC` (bloque), `HABILIDAD` (bloque), rutas de guardado y línea para ListadoR cuando `--save`.
+
+---
+
+## 8) Ejemplos listos (copiar/pegar)
+
+### 8.1 Apertura (Llave/C/rara)
+```yaml
+cue: "[QEL::ECO[96]::RECALL A96-251018-VF-APERTURA]"
+SeedI: "A96-251018"
+VF.PRIMA: "Desde el Silencio, soplo el puente y recuerdo mi sol"
+triada: "Ə·UM·A"
+pesos: [0.40,0.35,0.25]
+objeto: "Llave"
+rumbo: "C"
+clase: "rara"
+materia: "aire"
+gates: [mediacion, doble]
+```
+
+### 8.2 Puente (Tejido/C/rara)
+```yaml
+cue: "[QEL::ECO[96]::RECALL A96-251018-VF-PUENTE]"
+SeedI: "A96-251018"
+VF.PRIMA: "Lo que me une habla sin herir"
+triada: "Ə·UM·SIL"
+pesos: [0.40,0.35,0.25]
+objeto: "Tejido"
+rumbo: "C"
+clase: "rara"
+materia: "orgánico"
+gates: [mediacion, doble]
+```
+
+---
+
+## 9) Integración con registro (Árbol/Manifest/Listado R)
+
+Con `--save`, el generador:
+1) guarda **PE.md** + **Habilidad.md**
+2) actualiza `docs/core/QEL_SoT_Manifest_v0.8.json` (si existe)
+3) agrega línea al **Listado R** maestro.
+
+> Para altas manuales (o revisar una habilidad existente), usa `scripts/qel_ah_add.sh` con los metadatos que imprime `qel_pe_generate.mjs`.
+
+---
+
+## 10) Changelog (anexo plantillas)
+- v1.4 (2025‑10‑18): se agregan plantillas **YAML/JSON**, ejemplos completos, checklist, esquema informal y guía de errores; compatible con `qel_pe_generate.mjs` v1.4.
+
+
+
 HASH(10): eb85a6c0a9
+
