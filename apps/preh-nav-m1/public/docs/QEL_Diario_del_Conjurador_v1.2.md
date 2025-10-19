@@ -865,3 +865,64 @@ Resultados:
 HASH(10): 2134032a3c
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: MEDITACIONES
+- Título: Meditaciones Primordiales — Cámara Uno v1.0
+- Archivo: docs/ritual/QEL_Meditaciones_Primordiales_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Meditaciones_Primordiales_v1.0.md
+- Rumbo: Centro
+- HASH(10): 69b1cc447a
+- SeedI: A96-250813
+
+_ECO (delta-only):_ Se cristaliza **Meditaciones Primordiales — Cámara Uno v1.0** con hash **69b1cc447a**; se actualiza ListadoR y espejo.
+
+## 251018 · M0 · Meditaciones Primordiales — Cámara Uno
+cue: [QEL::ECO[96]::RECALL A96-250813-MEDITACIONES-PRIMORDIALES]
+SeedI: "A96-250813"
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-18
+
+FS:
+  fecha: 251018
+  tema: "Meditaciones Primordiales — Cámara Uno"
+  intencion: "actualizarlas con la información que tenemos"
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - QEL.md
+  - MFH
+  - Glosario
+  - Manual Operativo
+  - Meditaciones Primordiales
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/ritual/QEL_Meditaciones_Primordiales_v1.0.md
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 78deadeefe
+
+

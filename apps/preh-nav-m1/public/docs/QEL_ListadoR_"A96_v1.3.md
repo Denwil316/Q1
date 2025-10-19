@@ -25,3 +25,22 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): 2134032a3c
 
+
+## 251018 · M0 · Meditaciones Primordiales — Cámara Uno
+cue: [QEL::ECO[96]::RECALL A96-250813-MEDITACIONES-PRIMORDIALES]
+SeedI: "A96-250813"
+Refs:
+  - docs/ritual/QEL_MicroSello_"A96-250813"_PREH-NAV_Cierre_v1.0.md
+  - docs/ritual/QEL_VF_PRIMA_"A96-250813"_SEAL_v1.0.md
+  - docs/core/QEL_Diario_del_Conjurador_v1.2.md
+  - docs/ritual/QEL_Meditaciones_Primordiales_v1.0.md
+Resultados:
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
+hash(10): 78deadeefe
+

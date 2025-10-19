@@ -195,3 +195,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) TRATADO-METAHUMANO | A96-250813 | PROMOCION/v1.0 | Ronda de meditación — Poema-Enigma Lun–Nai v1.1 (CRISTAL @ Occidente)
   refs: [docs/ritual/QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md]
   hash(10): 23b99864de
+
+- (2025-10-18) MEDITACIONES | A96-250813 | PROMOCION/v1.0 | Meditaciones Primordiales — Cámara Uno v1.0 (CRISTAL @ Centro)
+  refs: [docs/ritual/QEL_Meditaciones_Primordiales_v1.0.md]
+  hash(10): 69b1cc447a
