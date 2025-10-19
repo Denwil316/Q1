@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-250901
+SeedI=A96-250813
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -682,3 +682,14 @@ Resultados:
 HASH(10): ce23d02156
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: EXCEPTION
+- Título: CUE EXCEPTION
+- Archivo: docs/tools/QEL_CUE_Exception_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_CUE_Exception_v1.0.md
+- Rumbo: Centro
+- HASH(10): 49b52a87d1
+- SeedI: A96-250813
+
+_ECO (delta-only):_ Se cristaliza **CUE EXCEPTION** con hash **49b52a87d1**; se actualiza ListadoR y espejo.
