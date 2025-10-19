@@ -56,6 +56,11 @@
       "path": "docs/QEL_Guia_alineacion_V_v1.0.md"
     },
     {
+      "name": "QEL_Libro_Sombras",
+      "role": "QEL_Libro_Sombras.md",
+      "path": "docs/QEL_Libro_Sombras.md"
+    },
+    {
       "name": "QEL_ListadoR_master_v1.0",
       "role": "QEL_ListadoR_master_v1.0.md",
       "path": "docs/QEL_ListadoR_master_v1.0.md"
@@ -96,19 +101,9 @@
       "path": "docs/QEL_MFH_v1.4.md"
     },
     {
-      "name": "QEL_SoT_Atlas_251018",
-      "role": "QEL_SoT_Atlas_251018.md",
-      "path": "docs/QEL_SoT_Atlas_251018.md"
-    },
-    {
       "name": "QEL_SoT_Study_Guide_v1.1",
       "role": "QEL_SoT_Study_Guide_v1.1.md",
       "path": "docs/QEL_SoT_Study_Guide_v1.1.md"
-    },
-    {
-      "name": "QEL_Tratado_Metahumano_v1.5",
-      "role": "QEL_Tratado_Metahumano_v1.5.md",
-      "path": "docs/QEL_Tratado_Metahumano_v1.5.md"
     },
     {
       "name": "Tarjetas_Atlas_QEL_v2.4",

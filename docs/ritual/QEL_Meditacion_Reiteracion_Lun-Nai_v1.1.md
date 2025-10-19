@@ -16,4 +16,5 @@ VERSION=v1.1 UPDATED=2025-08-13
 6) **ECO** — delta‑only (3–9 líneas) *o* silencio.
 
 **CUE‑susurro (cierre)**: “Nada nombra; todo resuena.”
+
 HASH(10): 23b99864de

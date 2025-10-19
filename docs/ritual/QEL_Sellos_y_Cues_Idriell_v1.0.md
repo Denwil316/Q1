@@ -91,4 +91,5 @@ Cada sello se anota con **triada propuesta**, **objeto**, **rumbo** y **clase**,
 - Este registro es **vivo**: admite nuevos sellos cuando nazcan.  
 - Todo cálculo de 𝒱 es **orientativo**; el Diario decide la memoria.
 SeedI: "A96-250813"
+
 HASH(10): 69b1cc447a
