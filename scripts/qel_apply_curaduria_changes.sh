@@ -35,23 +35,70 @@ normalize_manual_heads() {
   perl -0777 -i -pe 's/^(###+)\s+([0-9]+)\)\s+/$1 $2. /mg' "$f"
 }
 
-# ---- 3) Extraer bloque histórico duplicado del Manual (si existe) ----
-#   Corta desde la 2ª cabecera "cue:" o "[QEL::ECO" hasta el final, lo guarda en memory/ y lo quita del Manual
+# --- HOTFIX: split_historic_block seguro (ignora code fences y restringe target) ---
 split_historic_block() {
-  local src="$1" out="$2"
-  # Detecta índice de la 2ª coincidencia
-  local idx
-  idx="$(awk '
-    BEGIN{c=0}
-    /^[[:space:]]*cue:[[:space:]]*\"?\[QEL::ECO/ || /^\[QEL::ECO/ {c++; if(c==2){print NR; exit}}
-  ' "$src" || true)"
-  [ -n "${idx:-}" ] || { echo "[i] No se detectó segundo bloque histórico en $src"; return 0; }
+  local FILE="$1"
 
-  echo "[i] Bloque histórico detectado a partir de línea $idx en $src"
-  # Parte histórica -> out ; documento principal -> queda sin la parte histórica
-  awk -v start="$idx" 'NR>=start{print > "'"$out"'"; next} {print > "'"$src"'.tmp"}' "$src"
-  mv "$src.tmp" "$src"
+  # 1) Solo split en la Curaduría, nunca en Manual/Sombras/etc.
+  case "$FILE" in
+    *QEL_Curacion_Nucleo_Minimo.md) : ;;   # permitido
+    *) return 0 ;;                          # no tocar otros archivos
+  esac
+
+  # 2) Buscar un SEGUNDO bloque de metadatos fuera de code fences ```...```
+  #    Patrón válido: línea que empieza con `cue:` o `[QEL::ECO` y que,
+  #    dentro de las siguientes 8 líneas, encuentre SeedI y SoT.
+  awk '
+    BEGIN{
+      in_code=0; fence="^```"; i=0; second_hdr_line=0;
+    }
+    function dequote(s){ gsub(/\r/,"",s); return s }
+    {
+      line=$0
+      if (line ~ fence) { in_code = !in_code }
+      lines[++i]=line
+      if (!in_code && (line ~ /^([[:space:]]*cue:|\[QEL::ECO\[)/)) {
+        # Mirar ventana corta para confirmar header real
+        hdr_ok=0
+        for (k=1;k<=8 && i+k<=NR+8;k++){
+          if (getline peek) {
+            if (peek ~ /^[[:space:]]*SeedI[[:space:]]*[:=]/) got_seed=1
+            if (peek ~ /^[[:space:]]*SoT[[:space:]]*[:=]/)   got_sot=1
+            window[++w]=peek
+          } else break
+        }
+        if (got_seed && got_sot) {
+          found_headers++
+          if (found_headers==2 && second_hdr_line==0) {
+            second_hdr_line=i
+          }
+        }
+        # reset ventana
+        delete window; w=0; got_seed=0; got_sot=0
+      }
+    }
+    END{
+      if (second_hdr_line>0) {
+        print second_hdr_line
+      } else {
+        print 0
+      }
+    }
+  ' "$FILE" | {
+    read CUT
+    if [ "${CUT:-0}" -gt 0 ]; then
+      local OUT_HIST="memory/$(basename "${FILE%.*}")_historico.md"
+      mkdir -p memory
+      # Cortar desde CUT hasta el final (lo “histórico”)
+      tail -n +"$CUT" "$FILE" > "$OUT_HIST"
+      # Mantener en el archivo original solo lo anterior al CUT-1
+      head -n $((CUT-1)) "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE"
+      echo "[i] Bloque histórico seguro → ${OUT_HIST}"
+    fi
+  }
 }
+# --- FIN HOTFIX ---
+
 
 # ---- 4) Actualizar referencias de versiones en Libro de Sombras ----
 patch_refs_libro() {

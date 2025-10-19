@@ -56,6 +56,16 @@
       "path": "docs/QEL_Guia_alineacion_V_v1.0.md"
     },
     {
+      "name": "QEL_Index_Rutas_v1.0",
+      "role": "QEL_Index_Rutas_v1.0.md",
+      "path": "docs/QEL_Index_Rutas_v1.0.md"
+    },
+    {
+      "name": "QEL_Index_Semillas_v1.0",
+      "role": "QEL_Index_Semillas_v1.0.md",
+      "path": "docs/QEL_Index_Semillas_v1.0.md"
+    },
+    {
       "name": "QEL_Libro_Sombras",
       "role": "QEL_Libro_Sombras.md",
       "path": "docs/QEL_Libro_Sombras.md"

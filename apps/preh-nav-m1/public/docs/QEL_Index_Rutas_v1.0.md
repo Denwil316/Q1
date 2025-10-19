@@ -1,0 +1,29 @@
+cue: "[QEL::ECO[96]::RECALL A96-251015-INDEX-RUTAS]"
+SeedI: "A37-251015"
+SoT: "INDICES/RUTAS/v1.0"
+Version: "v1.0"
+Updated: "2025-10-15"
+
+# Índice de Rutas Internas
+
+- R1: 0→3→5 (Reglas→Lámina 𝒱→Gobernanza)
+  - [/docs/core/QEL_Manual_Operativo.md#sec-0-alcance-y-reglas-de-oro]
+  - [/docs/core/QEL_Manual_Operativo.md#sec-3-lamina-v]
+  - [/docs/core/QEL_Manual_Operativo.md#sec-5-gobernanza]
+- R2: 2→4→5 (Idriell→SoT/Atlas→Gobernanza)
+  - [/docs/core/QEL_Manual_Operativo.md#sec-2-lengua-idriell]
+  - [/docs/core/QEL_Manual_Operativo.md#sec-4-sot-atlas]
+  - [/docs/core/QEL_Manual_Operativo.md#sec-5-gobernanza]
+- R3: 3→ApdxA→ApdxB (Lámina 𝒱→VF→Capa SUR)
+  - [/docs/core/QEL_Manual_Operativo.md#sec-3-lamina-v]
+  - [/docs/core/QEL_Manual_Operativo.md#apdx-a-formato-vf-arbol]
+  - [/docs/core/QEL_Manual_Operativo.md#apdx-b-capa-sur-micro-ritmo]
+
+- S1: 1→2→4 (Tratado→CUE/Aurora→Plantillas)
+  - [/docs/core/QEL_Libro_Sombras.md#sec-1-tratado-metahumano]
+  - [/docs/core/QEL_Libro_Sombras.md#sec-2-cue-aurora]
+  - [/docs/core/QEL_Libro_Sombras.md#sec-4-plantillas-de-riesgo]
+- S2: 3→2→cierre (Casuística→CUE/Aurora→SIL→UM→Ə)
+  - [/docs/core/QEL_Libro_Sombras.md#sec-3-casuistica]
+  - [/docs/core/QEL_Libro_Sombras.md#sec-2-cue-aurora]
+  - [/docs/core/QEL_Libro_Sombras.md#sec-4-plantillas-de-riesgo]

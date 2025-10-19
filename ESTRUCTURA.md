@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-18 23:49:51_
+_Generado: 2025-10-19 00:13:13_
 
 ```text
 .
@@ -304,6 +304,7 @@ _Generado: 2025-10-18 23:49:51_
 │   ├── qel_cuemachine_check.sh
 │   ├── qel_install_missing.ps1
 │   ├── qel_install_missing.sh
+│   ├── qel_inyect_anchors.py
 │   ├── qel_pe_generate.mjs
 │   ├── qel_pe_generate.mjs.bak
 │   ├── qel_promote_mac.sh
@@ -337,5 +338,5 @@ _Generado: 2025-10-18 23:49:51_
 ├── qel_bootstrap_wsl.sh
 └── yq.1
 
-44 directories, 289 files
+44 directories, 290 files
 ```

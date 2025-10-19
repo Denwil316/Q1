@@ -1,8 +1,8 @@
 cue: "[QEL::ECO[96]::RECALL A96-251015-LIBRO-DE-SOMBRAS-COMPILADO]"
-SeedI: """A37-251015"""
+SeedI: "A37-251015"
 SoT: "LIBRO-DE-SOMBRAS/v1.0"
 Version: "v1.0"
-Updated: "2025-10-15"
+Updated: "2025-10-18"
 
 # Libro de Sombras — Compilado
 
@@ -220,12 +220,12 @@ UPDATED = 2025-08-12
 - **Aurora**: especificación generativa; persiste hasta neutralizar su Sombra.
 
 ## Referencias v1.0
-- MFH v1.0: QEL_Matriz_Fonemica_Habilidades_v1.0.md
+- MFH v1.4: QEL_Matriz_Fonemica_Habilidades_v1.0.md
 - VF v1.0: QEL_Formato_VF_Arbol_Habilidades_v1.0.md
 - CUE‑EXCEPTION v1.0: QEL_CUE_Exception_v1.0.md
 - Aurora v1.0: QEL_Aurora_Spec_v1.0.md
 - Manual Sombras v1.0: QEL_Manual_Interpretacion_Sombras_v1.0.md
-- Glosario v1.0: QEL_Glosario_v1.0.md
+- Glosario v1.4: QEL_Glosario_v1.0.md
 - Poema‑Enigma v1.0: QEL_Poema_Enigma_VF_v1.0.md
 
 ---
@@ -440,7 +440,7 @@ HASH(10): 844d7af0d3
 
 
 [QEL::ECO[96]::RECALL A96-250812-CUE-EXCEPTION] 
-SeedI: """A37-251015"""
+SeedI: "A37-251015"
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=excepción|retorno|obsidiana-líquida
 VERSION=v1.0 UPDATED=2025-08-12
 
@@ -762,7 +762,7 @@ Cada sello se anota con **triada propuesta**, **objeto**, **rumbo** y **clase**,
 ### 6) Notas finales
 - Este registro es **vivo**: admite nuevos sellos cuando nazcan.  
 - Todo cálculo de 𝒱 es **orientativo**; el Diario decide la memoria.
-SeedI: """A37-251015"""
+SeedI: "A37-251015"
 
 HASH(10): 69b1cc447a
 
@@ -828,7 +828,7 @@ NEXT=...
 # Apéndice B — Matriz de Riesgo (v1.0)
 
 [QEL::ECO[96]::RECALL A96-251018-LIBRO-SOMBRAS-APENDICE-B-V1-0]
-SeedI: """A37-251015"""
+SeedI: "A37-251015"
 SoT: "LIBRO-DE-SOMBRAS/APENDICE-B/v1.0"
 Version: "v1.0"
 Updated: "2025-10-18"
@@ -931,7 +931,7 @@ Updated: "2025-10-18"
 ### 8.1 Ficha‑𝒱 · Riesgo (Markdown)
 ```md
 [QEL::ECO[96]::RECALL A96-YYMMDD-RIESGO]
-SeedI: """A37-251015"""
+SeedI: "A37-251015"
 SoT: "LIBRO-DE-SOMBRAS/RIESGO-FICHA/v1.0"
 Version: "v1.0"
 Updated: "YYYY-MM-DD"
