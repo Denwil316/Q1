@@ -199,3 +199,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-18) MEDITACIONES | A96-250813 | PROMOCION/v1.0 | Meditaciones Primordiales — Cámara Uno v1.0 (CRISTAL @ Centro)
   refs: [docs/ritual/QEL_Meditaciones_Primordiales_v1.0.md]
   hash(10): 69b1cc447a
+
+- (2025-10-18) TRATADO-METAHUMANO | A96-250813 | PROMOCION/v1.0 | Carta VF — Lun–Nai (schwa / lagos) v1.0 (CRISTAL @ Occidente)
+  refs: [memory/QEL_VF_Carta_Lun-Nai_v1.0.md]
+  hash(10): 15dae7924a
