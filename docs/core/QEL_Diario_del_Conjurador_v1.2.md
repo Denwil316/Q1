@@ -926,3 +926,14 @@ Resultados:
 HASH(10): 78deadeefe
 
 
+
+## 2025-10-18 — PROMOCIÓN
+- Rubro: TRATADO-METAHUMANO
+- Título: Carta VF — Lun–Nai (schwa / lagos) v1.0
+- Archivo: memory/QEL_VF_Carta_Lun-Nai_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_VF_Carta_Lun-Nai_v1.0.md
+- Rumbo: Occidente
+- HASH(10): 15dae7924a
+- SeedI: A96-250813
+
+_ECO (delta-only):_ Se cristaliza **Carta VF — Lun–Nai (schwa / lagos) v1.0** con hash **15dae7924a**; se actualiza ListadoR y espejo.
