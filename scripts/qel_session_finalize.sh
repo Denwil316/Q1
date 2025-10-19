@@ -8,6 +8,7 @@
 
 set -euo pipefail
 : "${LC_ALL:=C}"; export LC_ALL
+: "${QEL_SEED_POLICY:=auto}"   # auto|keep|strict
 
 # Safe init (Bash 3.2)
 declare -a ARTEFACTOS MICROS
@@ -33,7 +34,6 @@ TIEMPO="30"
 REFS=""            # coma-separada
 DELTA_C=""; DELTA_S=""
 NO_MENTIRA="true"
-declare -a ARTEFACTOS=() MICROS=()
 FS_JSON=""
 
 while [ $# -gt 0 ]; do
@@ -66,10 +66,92 @@ while [ $# -gt 0 ]; do
   esac
 done
 
+# --- Seed derivation helpers (portable) ---------------------------------
+get_eco_from_cue() { # -> "A96" (default A96 si no encuentra)
+  local cue="${1-}" n
+  n="$(printf "%s" "$cue" | sed -nE 's/.*ECO\[([0-9]+)\].*/\1/p' | head -1)"
+  [ -n "$n" ] && printf "A%s\n" "$n" || printf "A96\n"
+}
+
+git_first_date_ymd() { # -> YYMMDD del primer commit que añadió el archivo
+  local f="$1" d
+  d="$(git log --follow --diff-filter=A --format=%cs -- "$f" 2>/dev/null | tail -1)"
+  [ -n "$d" ] || return 1                               # %cs = YYYY-MM-DD
+  printf "%s%s%s\n" "${d:2:2}" "${d:5:2}" "${d:8:2}"    # -> YYMMDD
+}
+
+fs_birth_ymd() { # -> YYMMDD por nacimiento FS (fallback)
+  local f="$1" epoch=""
+  if stat -f '%B' "$f" >/dev/null 2>&1; then            # macOS (epoch)
+    epoch="$(stat -f '%B' "$f")"
+  elif stat -c '%W' "$f" >/dev/null 2>&1; then          # GNU (epoch o 0)
+    epoch="$(stat -c '%W' "$f")"; [ "$epoch" = "0" ] && epoch=""
+  fi
+  if [ -n "$epoch" ] && [ "$epoch" -gt 0 ] 2>/dev/null; then
+    date -u -d "@$epoch" +%y%m%d 2>/dev/null || date -r "$epoch" +%y%m%d
+  else
+    return 1
+  fi
+}
+
+fs_mtime_ymd() { # -> YYMMDD por mtime (último recurso)
+  local f="$1"
+  date -u -d "@$(stat -c '%Y' "$f" 2>/dev/null)" +%y%m%d 2>/dev/null || \
+  date -r "$(stat -f '%m' "$f" 2>/dev/null)" +%y%m%d 2>/dev/null || date +%y%m%d
+}
+
+derive_seed_auto() { # args: <file> <cue>  -> "A96-YYMMDD"
+  local f="$1" cue="${2-}" eco ymd
+  eco="$(get_eco_from_cue "$cue")"
+  if ! ymd="$(git_first_date_ymd "$f")"; then
+    if ! ymd="$(fs_birth_ymd "$f")"; then
+      ymd="$(fs_mtime_ymd "$f")"
+    fi
+  fi
+  printf "%s-%s\n" "$eco" "$ymd"
+}
+
+# -----------------------------------------------------------------------
+
+# --- Fallback SEED desde artefacto (o derivado) -------------------------
+# Usa el primer artefacto si existe; si no, deriva desde FILE/cwd
+if [ -z "${SEED:-}" ]; then
+  if [ "${#ARTEFACTOS[@]}" -gt 0 ] && [ -f "${ARTEFACTOS[0]}" ]; then
+    ARTE="${ARTEFACTOS[0]}"
+    TMP="$(mktemp)"; trap 'rm -f "$TMP"' EXIT
+    tr -d '\r' < "$ARTE" > "$TMP"
+
+    # Intenta leer cue/SeedI del artefacto
+    SEED_IN="$(awk '/^[#[:space:]]*SeedI[[:space:]]*[:=]/{sub(/^.*[:=][[:space:]]*/,"");print;exit}' "$TMP")"
+    CUE_IN="$(awk '/^\[QEL::ECO/{print;exit}' "$TMP")"
+    [ -n "$CUE" ] || CUE="$CUE_IN"
+
+    if [ -n "$SEED_IN" ]; then
+      case "${QEL_SEED_POLICY:-auto}" in
+        strict) SEED="$(derive_seed_auto "$ARTE" "$CUE")" ;;
+        keep)   SEED="$SEED_IN" ;;
+        auto|*) ECO_PREFIX="$(get_eco_from_cue "$CUE")-"
+                case "$SEED_IN" in
+                  "$ECO_PREFIX"*) SEED="$SEED_IN" ;;
+                  *)              SEED="$(derive_seed_auto "$ARTE" "$CUE")" ;;
+                esac
+                ;;
+      esac
+    else
+      SEED="$(derive_seed_auto "$ARTE" "$CUE")"
+    fi
+  else
+    BASE_FILE="${FILE:-.}"
+    SEED="$(derive_seed_auto "$BASE_FILE" "$CUE")"
+  fi
+fi
+# -----------------------------------------------------------------------
+
+
 # ---------- Validaciones mínimas ----------
 [ -n "$FECHA" ] || { echo "Falta --fecha (ej. 250826)"; exit 1; }
-[ -n "$SEED" ]  || { echo "Falta --seed (ej. A96-250826)"; exit 1; }
-[ -n "$CUE" ]   || { echo "Falta --cue (ej. [QEL::ECO[96]::A96-250826-SEAL])"; exit 1; }
+[ -n "$CUE" ]   || { echo "No encontré CUE (pasa --cue o incluye [QEL::ECO...] en el artefacto)"; exit 1; }
+[ -n "$SEED" ]  || { echo "No pude derivar SeedI; pasa --seed o --artefacto <archivo>"; exit 1; }
 [ -n "$VF" ]    || { echo "Falta --vf (texto VF.PRIMA)"; exit 1; }
 
 # ---------- Rutas ----------

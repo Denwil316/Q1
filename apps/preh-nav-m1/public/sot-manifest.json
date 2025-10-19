@@ -11,11 +11,6 @@
       "path": "docs/GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md"
     },
     {
-      "name": "LaminaV_unificada_v1.0",
-      "role": "LaminaV_unificada_v1.0.md",
-      "path": "docs/LaminaV_unificada_v1.0.md"
-    },
-    {
       "name": "manual_cue_machine_qel_v.1",
       "role": "manual_cue_machine_qel_v.1.md",
       "path": "docs/manual_cue_machine_qel_v.1.md"
@@ -24,11 +19,6 @@
       "name": "NAVEGADOR_M0_Manual_v0.2",
       "role": "NAVEGADOR_M0_Manual_v0.2.md",
       "path": "docs/NAVEGADOR_M0_Manual_v0.2.md"
-    },
-    {
-      "name": "QEL",
-      "role": "QEL.md",
-      "path": "docs/QEL.md"
     },
     {
       "name": "Qel_Codice_Madre",
@@ -51,11 +41,6 @@
       "path": "docs/QEL_Diario_del_Conjurador_v1.5.md"
     },
     {
-      "name": "QEL_Formato_VF_AH_v1.4",
-      "role": "QEL_Formato_VF_AH_v1.4.md",
-      "path": "docs/QEL_Formato_VF_AH_v1.4.md"
-    },
-    {
       "name": "QEL_FormatoR_Manual_v1.1",
       "role": "QEL_FormatoR_Manual_v1.1.md",
       "path": "docs/QEL_FormatoR_Manual_v1.1.md"
@@ -69,11 +54,6 @@
       "name": "QEL_Guia_alineacion_V_v1.0",
       "role": "QEL_Guia_alineacion_V_v1.0.md",
       "path": "docs/QEL_Guia_alineacion_V_v1.0.md"
-    },
-    {
-      "name": "QEL_ListadoR_cue_v1.1",
-      "role": "QEL_ListadoR_cue_v1.1.md",
-      "path": "docs/QEL_ListadoR_cue_v1.1.md"
     },
     {
       "name": "QEL_ListadoR_master_v1.0",
@@ -106,14 +86,19 @@
       "path": "docs/QEL_Manual_Interpretación_Sombras_v1.3.md"
     },
     {
+      "name": "QEL_Manual_Operativo",
+      "role": "QEL_Manual_Operativo.md",
+      "path": "docs/QEL_Manual_Operativo.md"
+    },
+    {
       "name": "QEL_MFH_v1.4",
       "role": "QEL_MFH_v1.4.md",
       "path": "docs/QEL_MFH_v1.4.md"
     },
     {
-      "name": "QEL_SoT_Atlas_v1.0_250826",
-      "role": "QEL_SoT_Atlas_v1.0_250826.md",
-      "path": "docs/QEL_SoT_Atlas_v1.0_250826.md"
+      "name": "QEL_SoT_Atlas_251018",
+      "role": "QEL_SoT_Atlas_251018.md",
+      "path": "docs/QEL_SoT_Atlas_251018.md"
     },
     {
       "name": "QEL_SoT_Study_Guide_v1.1",
