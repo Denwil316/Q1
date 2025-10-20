@@ -1288,3 +1288,52 @@ HASH(10): 587ea97eeb
 - SeedI: A37-251020
 
 _ECO (delta-only):_ Se cristaliza **Micro-Sello · CURADURÍA (v1.0)** con hash **8bfc157771**; se actualiza ListadoR y espejo.
+
+## 251020 · M1 · Curaduría
+cue: [QEL::ECO[37]::RECALL A37-251020-CURADURIA-MICROSELLO-PROMO]
+SeedI: A37-251020
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-20
+
+FS:
+  fecha: 251020
+  tema: "Curaduría"
+  intencion: "Probar flujo de promoción + registro Atlas con rutas alineadas"
+  modo: M1
+  rumbo: Centro
+  tiempo: 20
+  referencias:
+  - CURADURIA/v1.0
+  salidas_esperadas:
+    - "Tarjetas actualizadas"
+    - "de uso para Conjurar"
+    - ".md y plantilla de Canvas"
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    V: { Kael/Prisma: 0.89, Vun/Trompa: 0.85, Nai→Prisma(Excepción): 0.70 }
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/ritual/microseelo/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md
+  - scripts/qel_promote_mac.sh
+  - scripts/qel_atlas_microreg.sh
+  - scripts/qel_session_finalize.sh
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+  - docs/ritual/QEL_MicroSello_A37-251020_PREH-NAV_Cierre_v1.0.md
+  veredicto: "Cristaliza — registros consistentes; manifiestos actualizados"
+
+HASH(10): da8a402937
+
+

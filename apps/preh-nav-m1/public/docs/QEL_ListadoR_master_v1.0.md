@@ -226,3 +226,29 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-19) Índices/Core | "A37-251015" | "INDICES/RUTAS/v1.0" | Índice de Rutas Internas (v1.0) (CRISTAL @ Centro)
   refs: [docs/core/indices/QEL_Index_Rutas_v1.0.md]
   hash(10): 7f60aa09d5
+
+- (2025-10-20) CURADURIA | A37-251020 | SELLOS/v1.0 | Micro-Sello · CURADURÍA (v1.0) (CRISTAL @ Centro)
+  refs: [docs/ritual/microsellos/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md]
+  hash(10): 8bfc157771
+
+## 251020 · M1 · Curaduría
+cue: [QEL::ECO[37]::RECALL A37-251020-CURADURIA-MICROSELLO-PROMO]
+SeedI: A37-251020
+Refs:
+  - docs/ritual/QEL_MicroSello_A37-251020_PREH-NAV_Cierre_v1.0.md
+  - docs/ritual/QEL_VF_PRIMA_A37-251020_SEAL_v1.0.md
+  - docs/core/QEL_Diario_del_Conjurador_v1.2.md
+  - docs/ritual/microseelo/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md
+  - scripts/qel_promote_mac.sh
+  - scripts/qel_atlas_microreg.sh
+  - scripts/qel_session_finalize.sh
+Resultados:
+  veredicto: "Cristaliza — registros consistentes; manifiestos actualizados"
+  objetos:
+
+  - Kael/Prisma: 0.89
+  - Vun/Trompa: 0.85
+  - Nai→Prisma(Excepción): 0.70
+  notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
+hash(10): da8a402937
+

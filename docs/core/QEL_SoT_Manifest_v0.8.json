@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-10-19T07:07:16.899Z",
+  "Updated": "2025-10-20T20:08:40.458Z",
   "manifest": [
     {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
@@ -79,7 +79,7 @@
       "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md",
       "title": "Diario del Conjurador (v1.2)",
       "cue": "",
-      "seed": "\"A37-251015\"",
+      "seed": "A37-251020",
       "sot": "DIARIO/v1.2",
       "version": "v1.2",
       "updated": "2025-08-30",
@@ -258,7 +258,7 @@
       "name": "QEL_Manual_Operativo.md",
       "path": "docs/core/QEL_Manual_Operativo.md",
       "title": "Manual Operativo QEL — Compilado",
-      "cue": "[QEL::ECO[96]::RECALL A96-250824-SISTEMA]",
+      "cue": "QEL::ECO[96]::RECALL A96-250824-LAMINA-V",
       "seed": "A96-250824",
       "sot": "SISTEMA/v1.1",
       "version": "v1.1",
