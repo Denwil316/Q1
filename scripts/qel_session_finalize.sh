@@ -25,7 +25,7 @@ SOT_SELLO="SELLOS/v1.0"
 SOT_DIARIO="TRATADO-METAHUMANO/v1.2"
 VEREDICTO="M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
 DIARIO_FILE="" ; LISTADOR_FILE="" HASH_REF10=""
-declare -a OBJ_LIST=()
+declare -a OBJ_LIST=() SALIDAS=()
 
 # NUEVOS: FS y contexto operacional
 MODO="M0"; TEMA=""; INTENCION=""
@@ -62,6 +62,7 @@ while [ $# -gt 0 ]; do
     --micro) MICROS+=("$2"); shift 2;;
     --fs-json) FS_JSON="$2"; shift 2;;
     --hash-ref) HASH_REF10="$2"; shift 2;;
+    --salida) SALIDAS+=("$2"); shift 2;;
     *) echo "Flag desconocida: $1" >&2; exit 2;;
   esac
 done
@@ -178,6 +179,7 @@ if [ -n "$FS_JSON" ] && [ -f "$FS_JSON" ]; then
   # arrays → bash (sin mapfile, compatible con bash 3.2)
   while IFS= read -r a; do [ -n "$a" ] && ARTEFACTOS+=("$a"); done < <(jq -r '.resultados.artefactos[]? // empty' "$FS_JSON")
   while IFS= read -r m; do [ -n "$m" ] && MICROS+=("$m"); done < <(jq -r '.resultados.micro_sellos[]? // empty' "$FS_JSON")
+  while IFS= read -r s; do [ -n "$s" ] && SALIDAS+=("$s"); done < <(jq -r '.salidas_esperadas[]? // empty' "$FS_JSON")
 elif [ -n "$FS_JSON" ] && [ ! -f "$FS_JSON" ]; then
   echo "[WARN] FS JSON no encontrado, ignoro: $FS_JSON" >&2
 fi
@@ -187,19 +189,20 @@ CANON="CUE=${CUE}|VF.PRIMA=${VF}|SeedI=${SEED}|SoT=${SOT_SELLO}|Version=v1.0|Upd
 HASH10="$(printf '%s' "$CANON" | shasum -a 256 | awk '{print $1}' | cut -c1-10)"
 
 # ---------- Métricas de objetos (V) ----------
-if [ "${#OBJ_LIST[@]}" -eq 0 ]; then
-  OBJ_LIST=("Kael/Prisma=0.89" "Vun/Trompa=0.85" "Nai→Prisma(Excepción)=0.70")
-fi
 
-V_DICT="" ; OBJ_YAML=""
-for entry in "${OBJ_LIST[@]}"; do
-  key="$(printf "%s" "${entry%%=*}" | xargs)"
-  val="$(printf "%s" "${entry#*=}"   | xargs)"
-  val="${val%\"}"; val="${val#\"}"
-  [ -n "$V_DICT" ] && V_DICT="${V_DICT}, "
-  V_DICT="${V_DICT}${key}: ${val}"
-  printf -v OBJ_YAML '%s\n  - %s: %s' "$OBJ_YAML" "$key" "$val"
-done
+V_DICT="" ; 
+# --- construir OBJ_YAML de forma segura (sin defaults) ---
+OBJ_YAML=""
+# Si OBJ_LIST NO está definida, no la usamos (evita unbound var con set -u)
+if [ -n "${OBJ_LIST+x}" ] && [ "${#OBJ_LIST[@]}" -gt 0 ]; then
+  for pair in "${OBJ_LIST[@]}"; do
+    k="${pair%%=*}"
+    v="${pair#*=}"
+    # Ajusta el formato de salida a tu estilo actual:
+    # ejemplo: 2 espacios de indent, una línea por objeto
+    printf -v OBJ_YAML '%s  - "%s: %s"\n' "$OBJ_YAML" "$k" "$v"
+  done
+fi
 
 # ---------- Helpers YAML ----------
 yaml_list_from_csv(){
@@ -285,7 +288,7 @@ fi
 
 cat >> "$F_DI" <<EOF
 
-## ${FECHA} · ${MODO} · ${TEMA:-Tarjetas Atlas}
+## ${FECHA} · ${MODO} · ${TEMA}
 cue: ${CUE}
 SeedI: ${SEED}
 SoT: ${SOT_DIARIO}
@@ -294,21 +297,18 @@ Updated: ${UPDATED}
 
 FS:
   fecha: ${FECHA}
-  tema: "${TEMA:-Tarjetas Atlas}"
-  intencion: "${INTENCION:-actualizarlas con la información que tenemos}"
+  tema: "${TEMA}"
+  intencion: "${INTENCION}"
   modo: ${MODO}
   rumbo: ${RUMBO}
   tiempo: ${TIEMPO}
   referencias:
-$(yaml_list_from_csv "${REFS:-QEL.md,Glosario,MFH,Lámina 𝒱,Manual Sombras}")
-  salidas_esperadas:
-    - "Tarjetas actualizadas"
-    - "de uso para Conjurar"
-    - ".md y plantilla de Canvas"
+$( [ -n "${REFS}" ] && { printf "  referencias:\n"; yaml_list_from_csv "${REFS}"; } )
+$( [ ${#SALIDAS[@]} -gt 0 ] && { printf "  salidas_esperadas:\n"; yaml_list_from_array "${SALIDAS[@]}"; } )
   metricas:
     delta_c: "${DELTA_C}"
     delta_s: "${DELTA_S}"
-    V: { ${V_DICT} }
+$( [ -n "${V_DICT}" ] && printf "    V: { %s }\n" "${V_DICT}" )
     no_mentira: ${NO_MENTIRA}
   testigos: { t1: A86, t2: A96 }
   triada: "KA-THON-SIL"
@@ -318,7 +318,7 @@ Resultados:
   artefactos:
 $(yaml_list_from_array "${ARTEFACTOS[@]:-}")
   objetos:
-${OBJ_YAML}
+$( [ -n "${OBJ_YAML}" ] && printf "  objetos:\n%s\n" "${OBJ_YAML}" )
   cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
   micro_sellos:
 $(yaml_list_from_array "${MICROS[@]:-}")
@@ -346,7 +346,7 @@ else
   (sed -i '' "s/^Updated=.*/Updated=${UPDATED}/" "$F_LR" 2>/dev/null) || sed -i "s/^Updated=.*/Updated=${UPDATED}/" "$F_LR" || true
 fi
 
-TAG="## ${FECHA} · ${MODO} · ${TEMA:-PREH-NAV}"
+TAG="## ${FECHA} · ${MODO} · ${TEMA}"
 if ! grep -qF "$TAG" "$F_LR"; then
   {
     echo

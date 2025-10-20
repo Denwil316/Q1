@@ -217,7 +217,7 @@ esac
 ensure_seed_in_file "$FILE" "$SEED"
 
 # 2) HASH(10) portable
-DATA=$(printf "cue=%s|SeedI=%s|SoT=%s|Version=%s|Updated=%s" "$CUE" "$SEED" "$SOT" "$VERSION" "$UPDATED")
+DATA=$(printf "cue=%s|SeedI=%s|SoT=%s|Version=%s" "$CUE" "$SEED" "$SOT" "$VERSION")
 if command -v shasum >/dev/null 2>&1; then
   HASH=$(printf "%s" "$DATA" | shasum -a 1 | awk '{print $1}')
 else
