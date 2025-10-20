@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-20 14:08:42_
+_Generado: 2025-10-20 15:42:43_
 
 ```text
 .
@@ -71,6 +71,11 @@ _Generado: 2025-10-20 14:08:42_
 |   |   |-- QEL_SoT_Manifest_v0.8.json
 |   |   |-- Qel_Codice_Madre.md
 |   |   `-- atlas_microreg_v1.0.jsonl
+|   |-- fs
+|   |   |-- FS_250924.json
+|   |   |-- FS_251002.json
+|   |   |-- FS_251006.json
+|   |   `-- session_251020.json
 |   |-- habilidades
 |   |   `-- \306\217-UM-A
 |   |       `-- Llave
@@ -135,10 +140,6 @@ _Generado: 2025-10-20 14:08:42_
 |       |-- QEL_Aurora_Spec_v1.2.md
 |       |-- QEL_CUE_Exception_v1.0.md
 |       `-- QEL_CueMachine_v1.0.txt
-|-- fs
-|   |-- FS_250924.json
-|   |-- FS_251002.json
-|   `-- FS_251006.json
 |-- memory
 |   |-- archive
 |   |   |-- Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
@@ -315,6 +316,7 @@ _Generado: 2025-10-20 14:08:42_
 |   |-- qel_scripts_help.sh
 |   |-- qel_secret_init.sh
 |   |-- qel_session_finalize.sh
+|   |-- qel_session_new.sh
 |   |-- qel_vcalc.sh
 |   |-- qel_vcalc.sh.bak
 |   |-- qel_vcalc_io.sh
@@ -342,5 +344,5 @@ _Generado: 2025-10-20 14:08:42_
 |-- yq.1
 `-- \303\215ndices\ creados\ \302\267\ Wrapper\ activo\ \302\267\ Compilados\ v1.0\ (integraci\303\263n).md
 
-47 directories, 291 files
+47 directories, 293 files
 ```

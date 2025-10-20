@@ -252,3 +252,18 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): da8a402937
 
+
+## 251020 · M2 · Curaduría
+cue: [QEL::ECO[37]::RECALL A37-251020-CURADURIA-MICROSELLO-PROMO]
+SeedI: A37-251020
+Refs:
+  - docs/ritual/QEL_MicroSello_A37-251020_PREH-NAV_Cierre_v1.0.md
+  - docs/ritual/QEL_VF_PRIMA_A37-251020_SEAL_v1.0.md
+  - docs/core/QEL_Diario_del_Conjurador_v1.2.md
+Resultados:
+  veredicto: ""
+  objetos:
+
+  notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
+hash(10): faf5423017
+

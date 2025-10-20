@@ -1337,3 +1337,43 @@ Resultados:
 HASH(10): da8a402937
 
 
+
+## 251020 · M2 · Curaduría
+cue: [QEL::ECO[37]::RECALL A37-251020-CURADURIA-MICROSELLO-PROMO]
+SeedI: A37-251020
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-20
+
+FS:
+  fecha: 251020
+  tema: "Curaduría"
+  intencion: "Flujo limpio"
+  modo: M2
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+
+
+  metricas:
+    delta_c: ""
+    delta_s: ""
+
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+
+  objetos:
+
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: ""
+
+HASH(10): faf5423017
+
+
