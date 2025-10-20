@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI="A37-251015"
+SeedI=A37-251020
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1277,3 +1277,14 @@ Resultados:
 HASH(10): 587ea97eeb
 
 
+
+## 2025-10-20 — PROMOCIÓN
+- Rubro: CURADURIA
+- Título: Micro-Sello · CURADURÍA (v1.0)
+- Archivo: docs/ritual/microsellos/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md
+- Rumbo: Centro
+- HASH(10): 8bfc157771
+- SeedI: A37-251020
+
+_ECO (delta-only):_ Se cristaliza **Micro-Sello · CURADURÍA (v1.0)** con hash **8bfc157771**; se actualiza ListadoR y espejo.

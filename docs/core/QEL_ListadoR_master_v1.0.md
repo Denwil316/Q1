@@ -226,3 +226,7 @@ R#. Proyecto A96/QEL. (2025-10-03). QEL|A96|HABILIDAD|HAB::K8-LL-APERT-E2C82E|v1
 - (2025-10-19) Índices/Core | "A37-251015" | "INDICES/RUTAS/v1.0" | Índice de Rutas Internas (v1.0) (CRISTAL @ Centro)
   refs: [docs/core/indices/QEL_Index_Rutas_v1.0.md]
   hash(10): 7f60aa09d5
+
+- (2025-10-20) CURADURIA | A37-251020 | SELLOS/v1.0 | Micro-Sello · CURADURÍA (v1.0) (CRISTAL @ Centro)
+  refs: [docs/ritual/microsellos/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md]
+  hash(10): 8bfc157771
