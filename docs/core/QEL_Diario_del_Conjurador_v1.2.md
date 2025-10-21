@@ -1439,3 +1439,49 @@ _ECO (delta-only):_ Se cristaliza **Micro-Sello · CURADURÍA (v1.0)** con hash 
 - SeedI: A96-251020
 
 _ECO (delta-only):_ Se cristaliza **Actualización del Navegador: Altar** con hash **bbcb83664c**; se actualiza ListadoR y espejo.
+
+## 251020 · M1 · Navegador → Altar (actualización UI + flujo ritual)
+cue: [QEL::ECO[37]::RECALL A37-251020-NAV-ALTAR]
+SeedI: A37-251020
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-10-20
+
+FS:
+  fecha: 251020
+  tema: "Navegador → Altar (actualización UI + flujo ritual)"
+  intencion: "Promocionar actualización y registrar en Diario/Listado."
+  modo: M1
+  rumbo: Centro
+  tiempo: 45
+  referencias:
+  referencias:
+  - QEL_Manual_Operativo.md
+  - Qel_Codice_Madre.md
+  - QEL_Libro_Sombras.md
+  salidas_esperadas:
+  - Microsello actualizado
+  - Registro en Diario
+  - Entrada en ListadoR sesiones
+  metricas:
+    delta_c: ""
+    delta_s: ""
+
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+
+  objetos:
+
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: ""
+
+HASH(10): 72e4dde861
+
+

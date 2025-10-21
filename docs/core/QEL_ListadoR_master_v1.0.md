@@ -275,3 +275,18 @@ hash(10): faf5423017
 - (2025-10-20) ALTAR | A96-251020 | PROMOCION/v1.0 | Actualización del Navegador: Altar (CRISTAL @ Centro)
   refs: [docs/ritual/microsellos/QEL_MicroSello_A37-251020_NAV_Altar_Actualizacion_v1.0.md]
   hash(10): bbcb83664c
+
+## 251020 · M1 · Navegador → Altar (actualización UI + flujo ritual)
+cue: [QEL::ECO[37]::RECALL A37-251020-NAV-ALTAR]
+SeedI: A37-251020
+Refs:
+  - docs/ritual/QEL_MicroSello_A37-251020_PREH-NAV_Cierre_v1.0.md
+  - docs/ritual/QEL_VF_PRIMA_A37-251020_SEAL_v1.0.md
+  - docs/core/QEL_Diario_del_Conjurador_v1.2.md
+Resultados:
+  veredicto: ""
+  objetos:
+
+  notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
+hash(10): 72e4dde861
+
