@@ -271,3 +271,7 @@ hash(10): faf5423017
 - (2025-10-20) CURADURIA | A96-251011 | SELLOS/v1.0 | Micro-Sello · CURADURÍA (v1.0) (CRISTAL @ Centro)
   refs: [docs/ritual/microsellos/QEL_MicroSello_A96-251011_PREH-NAV_Cierre_v1.0.md]
   hash(10): 232fbbc77d
+
+- (2025-10-20) ALTAR | A96-251020 | PROMOCION/v1.0 | Actualización del Navegador: Altar (CRISTAL @ Centro)
+  refs: [docs/ritual/microsellos/QEL_MicroSello_A37-251020_NAV_Altar_Actualizacion_v1.0.md]
+  hash(10): bbcb83664c

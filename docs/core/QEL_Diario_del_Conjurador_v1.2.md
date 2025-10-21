@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-251011
+SeedI=A96-251020
 SoT=DIARIO/v1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1428,3 +1428,14 @@ HASH(10): faf5423017
 - SeedI: A96-251011
 
 _ECO (delta-only):_ Se cristaliza **Micro-Sello · CURADURÍA (v1.0)** con hash **232fbbc77d**; se actualiza ListadoR y espejo.
+
+## 2025-10-20 — PROMOCIÓN
+- Rubro: ALTAR
+- Título: Actualización del Navegador: Altar
+- Archivo: docs/ritual/microsellos/QEL_MicroSello_A37-251020_NAV_Altar_Actualizacion_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_MicroSello_A37-251020_NAV_Altar_Actualizacion_v1.0.md
+- Rumbo: Centro
+- HASH(10): bbcb83664c
+- SeedI: A96-251020
+
+_ECO (delta-only):_ Se cristaliza **Actualización del Navegador: Altar** con hash **bbcb83664c**; se actualiza ListadoR y espejo.
