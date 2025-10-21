@@ -267,3 +267,7 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): faf5423017
 
+
+- (2025-10-20) CURADURIA | A96-251011 | SELLOS/v1.0 | Micro-Sello · CURADURÍA (v1.0) (CRISTAL @ Centro)
+  refs: [docs/ritual/microsellos/QEL_MicroSello_A96-251011_PREH-NAV_Cierre_v1.0.md]
+  hash(10): 232fbbc77d

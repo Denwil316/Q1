@@ -24,6 +24,7 @@ app.use(cors({ origin: true }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
+
 // server.mjs → apps/preh-nav-m1 → sube dos niveles al root del repo
 const ROOT = path.resolve(__dirname, '..', '..');
 const joinRoot = (...p) => path.join(ROOT, ...p);
@@ -36,6 +37,9 @@ const DOCS_RIT  = joinRoot('docs', 'ritual');
 const PREH_PUBLIC  = path.join(__dirname, 'public');
 const MANIFEST     = path.join(PREH_PUBLIC, 'sot-manifest.json');
 const GEN_MANIFEST = path.join(__dirname, 'scripts', 'generate_manifest.mjs');
+const DIST = path.join(__dirname, 'dist');
+
+
 
 const SCRIPT_PROMOTE  = path.join(SCRIPTS, 'qel_promote_mac.sh');
 const SCRIPT_MICROREG = path.join(SCRIPTS, 'qel_atlas_microreg.sh');
@@ -171,9 +175,44 @@ app.get('/api/v1/library', (_req, res) => {
   res.json(data);
 });
 
-// Raíces de conveniencia
-app.get('/', (_req, res) => res.sendFile(path.join(PREH_PUBLIC, 'vcalc.html')));
+// --- Auto-build: asegúrate de construir antes de decidir rutas SPA ---
+async function ensureBuiltOnce() {
+  const distIndex = path.join(DIST, 'index.html');
+  if (fs.existsSync(distIndex)) return;
+  console.log('[build] dist/ no encontrado, construyendo frontend...');
+  await new Promise((resolve, reject) => {
+    const p = spawn('npm', ['run', 'build'], { cwd: __dirname, shell: true, stdio: 'inherit' });
+    p.on('close', (code) => (code === 0 ? resolve() : reject(new Error('build_failed'))));
+  });
+  console.log('[build] listo.');
+}
+await ensureBuiltOnce();
+
+
+// Páginas estáticas clásicas (se mantienen)
+app.get('/vcalc',   (_req, res) => res.sendFile(path.join(PREH_PUBLIC, 'vcalc.html')));
 app.get('/library', (_req, res) => res.sendFile(path.join(PREH_PUBLIC, 'library.html')));
+
+// Servir la app React (build de Vite) si existe; si no, fallback a /vcalc
+if (fs.existsSync(path.join(DIST, 'index.html'))) {
+  // Archivos estáticos del build
+  app.use(express.static(DIST));
+
+const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/doc'];
+SPA_ROUTES.forEach(r =>
+  app.get(r, (_req, res) => res.sendFile(path.join(DIST, 'index.html')))
+);
+
+// Subrutas del SPA (sin comodín '*', compatible con Express 5)
+app.get(/^\/(altar|via|laboratorio|doc)\/.+$/, (_req, res) =>
+  res.sendFile(path.join(DIST, 'index.html'))
+);
+
+  // Nota: mantenemos '/ritual' para servir archivos reales (docs/ritual)
+} else {
+  // si aún no hay build, mandamos a la estática clásica
+  app.get('/', (_req, res) => res.sendFile(path.join(PREH_PUBLIC, 'vcalc.html')));
+}
 
 // -------------------------------------------------------------
 // VCALC
