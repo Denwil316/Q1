@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-20 16:07:36_
+_Generado: 2025-10-20 20:19:13_
 
 ```text
 .
@@ -24,6 +24,7 @@ _Generado: 2025-10-20 16:07:36_
 │       ├── src
 │       │   ├── components
 │       │   ├── lib
+│       │   ├── pages
 │       │   ├── App.tsx
 │       │   ├── main.tsx
 │       │   └── styles.css
@@ -344,5 +345,5 @@ _Generado: 2025-10-20 16:07:36_
 ├── qel_bootstrap_wsl.sh
 └── yq.1
 
-47 directories, 293 files
+48 directories, 293 files
 ```
