@@ -1464,8 +1464,8 @@ FS:
   - Registro en Diario
   - Entrada en ListadoR sesiones
   metricas:
-    delta_c: ""
-    delta_s: ""
+    delta_c: "up"
+    delta_s: "up"
 
     no_mentira: true
   testigos: { t1: A86, t2: A96 }
@@ -1473,14 +1473,15 @@ FS:
   mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
 
 Resultados:
-  artefactos:
-
+  artefactos: 
+  "Altar"
+  
   objetos:
 
   cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
   micro_sellos:
 
-  veredicto: ""
+  veredicto: "Cristaliza"
 
 HASH(10): 72e4dde861
 
