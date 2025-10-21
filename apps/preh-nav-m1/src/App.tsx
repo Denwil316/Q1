@@ -3,6 +3,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import { useManifest } from './components/ManifestContext'
+import VcalcPage from './pages/VcalcPage'
 import RitualStudio from './pages/RitualStudio'
 import QelWizard from './pages/QelWizard'
 import QelWorkspace from './pages/QelWorkspace'
@@ -36,6 +37,12 @@ function Shell() {
             <Link to="/via" style={{fontSize:12}}>Vía</Link>
             <Link to="/laboratorio" style={{fontSize:12}}>Laboratorio</Link>
           </nav>
+          <nav className="topnav">
+            <Link to="/altar">Altar</Link>
+            <Link to="/via">Vía</Link>
+            <Link to="/laboratorio">Laboratorio</Link>
+            <Link to="/vcalc">VCALC</Link>   {/* ← nuevo */}
+          </nav>
         </header>
         <section className="content">
           <Outlet />
@@ -65,6 +72,7 @@ export default function App() {
           <Route path="via" element={<QelWizard />} />
           <Route path="laboratorio" element={<QelWorkspace />} />
           <Route path="doc/:slug" element={<DocViewer />} />
+          <Route path="/vcalc" element={<VcalcPage />} />   {/* ← nuevo */}
         </Route>
       </Routes>
     </BrowserRouter>

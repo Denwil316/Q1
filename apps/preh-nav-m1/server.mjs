@@ -178,8 +178,9 @@ app.get('/api/v1/library', (_req, res) => {
 // --- Auto-build: asegúrate de construir antes de decidir rutas SPA ---
 async function ensureBuiltOnce() {
   const distIndex = path.join(DIST, 'index.html');
-  if (fs.existsSync(distIndex)) return;
-  console.log('[build] dist/ no encontrado, construyendo frontend...');
+  if (!process.env.FORCE_BUILD && fs.existsSync(distIndex)) return;
+
+  console.log('[build] dist/ desactualizado o FORCE_BUILD=1 — construyendo frontend...');
   await new Promise((resolve, reject) => {
     const p = spawn('npm', ['run', 'build'], { cwd: __dirname, shell: true, stdio: 'inherit' });
     p.on('close', (code) => (code === 0 ? resolve() : reject(new Error('build_failed'))));
@@ -188,9 +189,26 @@ async function ensureBuiltOnce() {
 }
 await ensureBuiltOnce();
 
+// Archivos estáticos del SPA (sin caché para index.html)
+app.use(express.static(DIST, {
+  setHeaders: (res, p) => {
+    if (p.endsWith('index.html')) res.setHeader('Cache-Control', 'no-store');
+  }
+}));
+
+// Rutas SPA conocidas
+const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/vcalc', '/doc'];
+SPA_ROUTES.forEach(r =>
+  app.get(r, (_req, res) => res.sendFile(path.join(DIST, 'index.html')))
+);
+
+// Subrutas SPA (sin comodín '*')
+app.get(/^\/(altar|via|laboratorio|vcalc|doc)\/.+$/, (_req, res) =>
+  res.sendFile(path.join(DIST, 'index.html'))
+);
+
 
 // Páginas estáticas clásicas (se mantienen)
-app.get('/vcalc',   (_req, res) => res.sendFile(path.join(PREH_PUBLIC, 'vcalc.html')));
 app.get('/library', (_req, res) => res.sendFile(path.join(PREH_PUBLIC, 'library.html')));
 
 // Servir la app React (build de Vite) si existe; si no, fallback a /vcalc
@@ -211,7 +229,6 @@ app.get(/^\/(altar|via|laboratorio|doc)\/.+$/, (_req, res) =>
   // Nota: mantenemos '/ritual' para servir archivos reales (docs/ritual)
 } else {
   // si aún no hay build, mandamos a la estática clásica
-  app.get('/', (_req, res) => res.sendFile(path.join(PREH_PUBLIC, 'vcalc.html')));
 }
 
 // -------------------------------------------------------------

@@ -1,203 +1,249 @@
-// apps/preh-nav-m1/src/pages/QelWorkspace.tsx
-import React, { useEffect, useRef, useState } from 'react'
-import {
-  getLibrary, sessionNew, startLLPE, connectLogs,
-  fsHash, diarioSistemaAppend, listadorSesionesAppend,
-} from '../lib/api'
+import React, { useEffect, useRef, useState } from 'react';
+import TagInput from '../components/TagInput';
+import Stepper from '../components/Stepper';
+
+type Delta = 'up'|'flat'|'down';
 
 export default function QelWorkspace() {
-  // Norte: explorar core
-  const [core, setCore] = useState<{name:string; url:string}[]>([])
-  useEffect(()=>{ getLibrary().then(lib=>{
-    setCore((lib.core||[]).map((x:any)=>({ name:x.name, url:x.url })))
-  }) },[])
+  // ---------- Vcalc ----------
+  const [obj, setObj] = useState<string>('Kael/Prisma');
+  const [A, setA] = useState<number>(0.62);
+  const [rumbo, setRumbo] = useState<string>('C');
+  const [clase, setClase] = useState<string>('singular');
+  const [gates, setGates] = useState<string[]>(['no_mentira','doble_testigo']);
+  const [ruido, setRuido] = useState<number>(0.12);
+  const [deltaC, setDeltaC] = useState<Delta>('flat');
+  const [deltaS, setDeltaS] = useState<Delta>('flat');
+  const [vcalcOut, setVcalcOut] = useState<any>(null);
+  const runVcalc = async () => {
+    setVcalcOut(null);
+    const payload = {
+      obj, A, rumbo, clase,
+      gates: gates.join(','),
+      ruido,
+      delta: { c: deltaC, s: deltaS }
+    };
+    const r = await fetch('/api/v1/vcalc', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)}).then(r=>r.json());
+    setVcalcOut(r);
+  };
 
-  // Centro: estado de sesión
-  const [fecha, setFecha] = useState<string>('')
-  const [seed, setSeed] = useState<string>('')
-  const [cue, setCue] = useState<string>('')
-  const [tema, setTema] = useState<string>('Práctica Qel')
-  const [intencion, setIntencion] = useState<string>('')
+  // ---------- LL_PE ----------
+  const [vfPath, setVfPath] = useState<string>('docs/core/cartas/LLPE_Kosmos8_Primera_v1.3.yaml');
+  const [seed, setSeed] = useState<string>('');
+  const [cue,  setCue]  = useState<string>('');
+  const [materia, setMateria] = useState<string>('');
+  const [nutriaDir, setNutriaDir] = useState<string>('');
+  const [llpeLogs, setLlpeLogs] = useState<string[]>([]);
+  const llpeSseRef = useRef<EventSource|null>(null);
+  const llpeAppend = (s:string)=> setLlpeLogs(prev=>[...prev, s.replace(/\n+$/,'')]);
 
-  // Oriente: LL_PE
-  const [vfPath, setVfPath] = useState<string>('docs/atlas/Tarjetas_Atlas_QEL_v2.4.md')
-  const [llpeLogs, setLlpeLogs] = useState<string[]>([])
-  const stopLLPE = useRef<null | (()=>void)>(null)
+  const runLLPE = async () => {
+    setLlpeLogs([]);
+    const payload = { vf: vfPath, seed, cue, materia, nutriaDir };
+    const r = await fetch('/api/v1/llpe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)}).then(r=>r.json());
+    if (r.ok && r.jobId) {
+      const es = new EventSource(`/api/v1/logs/${r.jobId}`);
+      llpeSseRef.current?.close(); llpeSseRef.current = es;
+      es.onmessage = (ev) => {
+        try {
+          const data = JSON.parse(ev.data);
+          if (data.line) llpeAppend(data.line);
+          if (data.done) { llpeAppend(`[done code=${data.code}]`); es.close(); }
+        } catch {}
+      };
+      es.onerror = () => es.close();
+    } else {
+      llpeAppend(`[llpe][error] ${r.error||'falló'}`);
+    }
+  };
+  useEffect(()=> () => llpeSseRef.current?.close(), []);
 
-  // Vcalc (simple)
-  const [vObj, setVObj] = useState('Prisma')
-  const [vA, setVA] = useState(0.85)
-  const [vRumbo, setVRumbo] = useState('C')
-  const [vClase, setVClase] = useState('basica')
-  const [vGates, setVGates] = useState('no_mentira,doble_testigo')
-  const [vRuido, setVRuido] = useState(0.12)
-  const [vDeltaC, setVDeltaC] = useState<'up'|'down'|'flat'>('up')
-  const [vDeltaS, setVDeltaS] = useState<'up'|'down'|'flat'>('flat')
-  const [vOut, setVOut] = useState<any>(null)
+  // ---------- Diario del Sistema ----------
+  const [dsFecha, setDsFecha] = useState<string>(new Date().toISOString().slice(2,10).replace(/-/g,'').slice(2));
+  const [dsModo,  setDsModo]  = useState<string>('M2');
+  const [dsTema,  setDsTema]  = useState<string>('Laboratorio');
+  const [dsInt,   setDsInt]   = useState<string>('Exploración guiada por VCALC/LL_PE');
+  const [dsCue,   setDsCue]   = useState<string>('');
+  const [dsSeed,  setDsSeed]  = useState<string>('');
+  const [dsVF,    setDsVF]    = useState<string>('');
+  const [dsFS,    setDsFS]    = useState<string>('');
+  const [dsHash,  setDsHash]  = useState<string>('');
+  const [dsNotas, setDsNotas] = useState<string>('');
+  const [dsResp,  setDsResp]  = useState<any>(null);
 
-  // Sur: Diario Sistema
-  const [hashFS, setHashFS] = useState<string>('')
-  const [fsFile, setFsFile] = useState<string>('') // si guardaste FS via sessionNew
-  const [notas, setNotas] = useState<string>('')
+  const appendDiarioSistema = async () => {
+    const payload = {
+      fecha: dsFecha, modo: dsModo, tema: dsTema, intencion: dsInt,
+      cue: dsCue, seed: dsSeed, vf: dsVF, fsFile: dsFS, hash_fs10: dsHash,
+      notas: dsNotas
+    };
+    const r = await fetch('/api/v1/diario/sistema/append', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)}).then(r=>r.json());
+    setDsResp(r);
+  };
 
-  // Altar (captura somática)
-  const [altar, setAltar] = useState<any>({
-    estado_corporal:'', respiracion:0, tension:0, calor:0, latido:0,
-    emocion_principal:'', intensidad_emocion:0,
-    marcas_atencionales:[], observaciones:''
-  })
+  // ---------- Hash de FS ----------
+  const [fsFile, setFsFile] = useState<string>('docs/fs/FS_251020.json');
+  const [fsJson, setFsJson] = useState<string>('');
+  const [hashOut, setHashOut] = useState<any>(null);
+  const [saveSidecar, setSaveSidecar] = useState<boolean>(false);
+  const hashFS = async () => {
+    let payload: any = {};
+    if (fsJson.trim()) {
+      try { payload.fs = JSON.parse(fsJson); }
+      catch { return setHashOut({ ok:false, error:'JSON inválido' }); }
+    }
+    if (fsFile.trim()) payload.file = fsFile;
+    if (saveSidecar) payload.save = true;
 
-  const runLLPE = async ()=>{
-    const { jobId } = await startLLPE({ vf: vfPath, seed, cue })
-    stopLLPE.current?.()
-    stopLLPE.current = connectLogs(jobId, (l)=> setLlpeLogs(L=>[...L, l]), ()=>{})
-  }
-
-  const doHashFS = async ()=>{
-    if (!fsFile) return alert('Primero guarda un FS (M0/M1) o selecciona uno')
-    const r = await fsHash({ file: fsFile, save: true })
-    setHashFS(r.hash10)
-  }
-
-  const doAppendSistema = async ()=>{
-    // Diario del Sistema
-    const ds = await diarioSistemaAppend({
-      fecha, modo:'M2', tema, intencion, cue, seed, vf:'Cierre', fsFile, hash_fs10: hashFS,
-      notas, altar
-    })
-    // ListadoR sesiones
-    await listadorSesionesAppend({ fecha, seed, tema, result:'OK', hash_fs10: hashFS })
-    alert('Registrado en Diario del Sistema y ListadoR de sesiones.')
-  }
+    const r = await fetch('/api/v1/fs/hash', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)}).then(r=>r.json());
+    setHashOut(r);
+  };
 
   return (
-    <div className="p-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      {/* Norte */}
-      <section className="border rounded p-3">
-        <h2 className="font-semibold">Norte · Códice Madre (docs/core)</h2>
-        <div className="text-xs mt-2 h-64 overflow-auto">
-          {core.map((d)=>(
-            <div key={d.url} className="truncate"><a href={d.url} target="_blank" rel="noreferrer">{d.name}</a></div>
-          ))}
+    <div className="ritual">
+      <div className="ritual-header">
+        <h1>Laboratorio · M2/M3</h1>
+        <div className="toolbar">
+          <a className="btn" href="/library">Abrir Biblioteca</a>
         </div>
-      </section>
+      </div>
 
-      {/* Este */}
-      <section className="border rounded p-3">
-        <h2 className="font-semibold">Este · Manual Operativo</h2>
-        <p className="text-xs text-gray-600">Validador canónico y ayudas (placeholder).</p>
-        <div className="grid grid-cols-2 gap-2 mt-2 text-sm">
-          <label className="flex flex-col"><span>Fecha</span>
-            <input className="border rounded px-2 py-1" value={fecha} onChange={e=>setFecha(e.target.value)} />
-          </label>
-          <label className="flex flex-col"><span>Tema</span>
-            <input className="border rounded px-2 py-1" value={tema} onChange={e=>setTema(e.target.value)} />
-          </label>
-          <label className="flex flex-col"><span>Seed</span>
-            <input className="border rounded px-2 py-1" value={seed} onChange={e=>setSeed(e.target.value)} />
-          </label>
-          <label className="flex flex-col"><span>Cue</span>
-            <input className="border rounded px-2 py-1" value={cue} onChange={e=>setCue(e.target.value)} />
-          </label>
-          <label className="flex flex-col col-span-2"><span>Intención</span>
-            <input className="border rounded px-2 py-1" value={intencion} onChange={e=>setIntencion(e.target.value)} />
-          </label>
-        </div>
-      </section>
+      <Stepper steps={[
+        { key:'vcalc', title:'Vcalc', state: 'current' },
+        { key:'llpe',  title:'LL_PE', state: 'todo' },
+        { key:'ds',    title:'Diario Sistema', state: 'todo' },
+        { key:'hash',  title:'HASH_FS', state: 'todo' },
+      ]} />
 
-      {/* Oriente */}
-      <section className="border rounded p-3">
-        <h2 className="font-semibold">Oriente · Libro de las Sombras (LL_PE)</h2>
-        <div className="text-sm grid gap-2">
-          <label className="flex flex-col"><span>VF (ruta)</span>
-            <input className="border rounded px-2 py-1" value={vfPath} onChange={e=>setVfPath(e.target.value)} />
-          </label>
-          <button className="px-3 py-2 rounded border" onClick={runLLPE}>Generar LL_PE</button>
-          <pre className="bg-gray-100 p-2 rounded h-40 overflow-auto text-xs">{llpeLogs.join('\n')}</pre>
-        </div>
-      </section>
+      <div className="grid">
+        <div className="col">
+          {/* VCALC */}
+          <section className="card">
+            <h2>Vcalc</h2>
+            <div className="field">
+              <label className="label">Objeto</label>
+              <input className="input" value={obj} onChange={e=>setObj(e.target.value)}/>
+            </div>
+            <div className="field-row">
+              <div className="field"><label className="label">Afinidad (A)</label><input className="input" type="number" step="0.0001" value={A} onChange={e=>setA(Number(e.target.value))}/></div>
+              <div className="field"><label className="label">Rumbo</label>
+                <select className="input" value={rumbo} onChange={e=>setRumbo(e.target.value)}>
+                  <option>C</option><option>N</option><option>S</option><option>E</option><option>W</option><option>O</option>
+                </select>
+              </div>
+              <div className="field"><label className="label">Clase</label>
+                <select className="input" value={clase} onChange={e=>setClase(e.target.value)}>
+                  <option>basica</option><option>singular</option><option>rara</option><option>único</option><option>metálica</option><option>obsidiana</option>
+                </select>
+              </div>
+              <div className="field"><label className="label">Ruido</label><input className="input" type="number" min="0" max="1" step="0.01" value={ruido} onChange={e=>setRuido(Number(e.target.value))}/></div>
+            </div>
+            <TagInput label="Gates" value={gates} onChange={setGates} help="Ej: no_mentira, doble_testigo, ..." />
+            <div className="field-row">
+              <div className="field"><label className="label">Δc</label>
+                <select className="input" value={deltaC} onChange={e=>setDeltaC(e.target.value as Delta)}>
+                  <option value="down">down</option><option value="flat">flat</option><option value="up">up</option>
+                </select>
+              </div>
+              <div className="field"><label className="label">Δs</label>
+                <select className="input" value={deltaS} onChange={e=>setDeltaS(e.target.value as Delta)}>
+                  <option value="down">down</option><option value="flat">flat</option><option value="up">up</option>
+                </select>
+              </div>
+            </div>
+            <div className="actions">
+              <button className="btn" onClick={runVcalc}>Calcular</button>
+            </div>
+            <div className="jsonbox">
+              <pre className="json">{vcalcOut ? JSON.stringify(vcalcOut, null, 2) : '// sin cálculo'}</pre>
+            </div>
+          </section>
 
-      {/* Centro */}
-      <section className="border rounded p-3">
-        <h2 className="font-semibold">Centro · Conjurador (Vcalc)</h2>
-        <div className="grid grid-cols-2 gap-2 text-sm">
-          <label className="flex flex-col"><span>Objeto</span>
-            <input className="border rounded px-2 py-1" value={vObj} onChange={e=>setVObj(e.target.value)} />
-          </label>
-          <label className="flex flex-col"><span>Afinidad (0–1)</span>
-            <input className="border rounded px-2 py-1" type="number" step="0.01" value={vA} onChange={e=>setVA(parseFloat(e.target.value)||0)} />
-          </label>
-          <label className="flex flex-col"><span>Rumbo</span>
-            <input className="border rounded px-2 py-1" value={vRumbo} onChange={e=>setVRumbo(e.target.value)} />
-          </label>
-          <label className="flex flex-col"><span>Clase</span>
-            <input className="border rounded px-2 py-1" value={vClase} onChange={e=>setVClase(e.target.value)} />
-          </label>
-          <label className="flex flex-col"><span>Gates</span>
-            <input className="border rounded px-2 py-1" value={vGates} onChange={e=>setVGates(e.target.value)} />
-          </label>
-          <label className="flex flex-col"><span>Ruido</span>
-            <input className="border rounded px-2 py-1" type="number" step="0.01" value={vRuido} onChange={e=>setVRuido(parseFloat(e.target.value)||0)} />
-          </label>
-          <label className="flex flex-col"><span>ΔC</span>
-            <select className="border rounded px-2 py-1" value={vDeltaC} onChange={e=>setVDeltaC(e.target.value as any)}>
-              <option>up</option><option>flat</option><option>down</option>
-            </select>
-          </label>
-          <label className="flex flex-col"><span>ΔS</span>
-            <select className="border rounded px-2 py-1" value={vDeltaS} onChange={e=>setVDeltaS(e.target.value as any)}>
-              <option>up</option><option>flat</option><option>down</option>
-            </select>
-          </label>
+          {/* Diario del Sistema */}
+          <section className="card">
+            <h2>Diario del Sistema</h2>
+            <div className="field-row">
+              <div className="field"><label className="label">Fecha</label><input className="input" value={dsFecha} onChange={e=>setDsFecha(e.target.value)}/></div>
+              <div className="field"><label className="label">Modo</label>
+                <select className="input" value={dsModo} onChange={e=>setDsModo(e.target.value)}>
+                  <option>M2</option><option>M3</option><option>M1</option><option>M0</option>
+                </select>
+              </div>
+              <div className="field"><label className="label">Tema</label><input className="input" value={dsTema} onChange={e=>setDsTema(e.target.value)}/></div>
+              <div className="field"><label className="label">Intención</label><input className="input" value={dsInt} onChange={e=>setDsInt(e.target.value)}/></div>
+            </div>
+            <div className="field-row">
+              <div className="field"><label className="label">CUE</label><input className="input" value={dsCue} onChange={e=>setDsCue(e.target.value)}/></div>
+              <div className="field"><label className="label">SeedI</label><input className="input" value={dsSeed} onChange={e=>setDsSeed(e.target.value)}/></div>
+              <div className="field"><label className="label">Veredicto</label><input className="input" value={dsVF} onChange={e=>setDsVF(e.target.value)}/></div>
+              <div className="field"><label className="label">FS (archivo)</label><input className="input" value={dsFS} onChange={e=>setDsFS(e.target.value)}/></div>
+            </div>
+            <div className="field-row">
+              <div className="field"><label className="label">HASH_FS(10)</label><input className="input" value={dsHash} onChange={e=>setDsHash(e.target.value)}/></div>
+            </div>
+            <div className="field">
+              <label className="label">Notas</label>
+              <textarea className="input" rows={4} value={dsNotas} onChange={e=>setDsNotas(e.target.value)} />
+            </div>
+            <div className="actions">
+              <button className="btn" onClick={appendDiarioSistema}>Append Diario</button>
+            </div>
+            <div className="jsonbox">
+              <pre className="json">{dsResp ? JSON.stringify(dsResp, null, 2) : '// sin respuesta'}</pre>
+            </div>
+          </section>
         </div>
-        <button className="mt-2 px-3 py-2 rounded border" onClick={async ()=>{
-          const r = await fetch('/api/v1/vcalc',{ method:'POST', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ obj:vObj, A:vA, rumbo:vRumbo, clase:vClase, gates:vGates, ruido:vRuido, delta:{c:vDeltaC,s:vDeltaS} })
-          }).then(r=>r.json())
-          setVOut(r)
-        }}>Calcular V</button>
-        <pre className="bg-gray-100 p-2 rounded h-32 overflow-auto text-xs mt-2">{JSON.stringify(vOut,null,2)}</pre>
-      </section>
 
-      {/* Sur */}
-      <section className="border rounded p-3">
-        <h2 className="font-semibold">Sur · Diario del Sistema</h2>
-        <div className="grid gap-2 text-sm">
-          <label className="flex flex-col"><span>FS (ruta) para HASH</span>
-            <input className="border rounded px-2 py-1" value={fsFile} onChange={e=>setFsFile(e.target.value)} />
-          </label>
-          <div className="flex gap-2">
-            <button className="px-3 py-2 rounded border" onClick={doHashFS}>Calcular HASH_FS(10)</button>
-            {hashFS && <span className="self-center text-xs">HASH_FS(10): {hashFS}</span>}
-          </div>
-          <label className="flex flex-col"><span>Notas espontáneas</span>
-            <textarea className="border rounded px-2 py-1 h-24" value={notas} onChange={e=>setNotas(e.target.value)} />
-          </label>
-          <button className="px-3 py-2 rounded bg-indigo-600 text-white" onClick={doAppendSistema}>Append Diario + ListadoR</button>
-        </div>
-      </section>
+        <div className="col">
+          {/* LL_PE */}
+          <section className="card">
+            <h2>LL_PE</h2>
+            <div className="field">
+              <label className="label">VF (carta .yaml/.json)</label>
+              <input className="input" value={vfPath} onChange={e=>setVfPath(e.target.value)}/>
+            </div>
+            <div className="field-row">
+              <div className="field"><label className="label">SeedI</label><input className="input" value={seed} onChange={e=>setSeed(e.target.value)}/></div>
+              <div className="field"><label className="label">CUE</label><input className="input" value={cue} onChange={e=>setCue(e.target.value)}/></div>
+            </div>
+            <div className="field-row">
+              <div className="field"><label className="label">Materia</label><input className="input" value={materia} onChange={e=>setMateria(e.target.value)}/></div>
+              <div className="field"><label className="label">Nutria dir (opcional)</label><input className="input" value={nutriaDir} onChange={e=>setNutriaDir(e.target.value)}/></div>
+            </div>
+            <div className="actions">
+              <button className="btn" onClick={runLLPE}>Generar LL_PE</button>
+            </div>
+            <div className="logbox" aria-live="polite">
+              {llpeLogs.length ? <pre className="log">{llpeLogs.join('\n')}</pre> : <p className="help">Sin salida aún.</p>}
+            </div>
+          </section>
 
-      {/* Altar */}
-      <section className="border rounded p-3">
-        <h2 className="font-semibold">Altar · Sensación/Experiencia</h2>
-        <div className="grid grid-cols-2 gap-2 text-sm">
-          <label className="flex flex-col"><span>Estado corporal</span>
-            <input className="border rounded px-2 py-1" value={altar.estado_corporal} onChange={e=>setAltar({...altar, estado_corporal:e.target.value})} />
-          </label>
-          <label className="flex flex-col"><span>Emoción principal</span>
-            <input className="border rounded px-2 py-1" value={altar.emocion_principal} onChange={e=>setAltar({...altar, emocion_principal:e.target.value})} />
-          </label>
-          {['respiracion','tension','calor','latido','intensidad_emocion'].map((k)=>(
-            <label className="flex flex-col" key={k}><span>{k}</span>
-              <input className="border rounded px-2 py-1" type="number" min={0} max={5}
-                value={altar[k]} onChange={e=>setAltar({...altar, [k]: Number(e.target.value)||0})} />
-            </label>
-          ))}
-          <label className="flex flex-col col-span-2"><span>Observaciones</span>
-            <textarea className="border rounded px-2 py-1 h-24" value={altar.observaciones} onChange={e=>setAltar({...altar, observaciones:e.target.value})} />
-          </label>
+          {/* HASH FS */}
+          <section className="card">
+            <h2>HASH de FS</h2>
+            <div className="field">
+              <label className="label">Archivo FS (.json)</label>
+              <input className="input" value={fsFile} onChange={e=>setFsFile(e.target.value)}/>
+            </div>
+            <div className="field">
+              <label className="label">o pega FS JSON</label>
+              <textarea className="input" rows={6} value={fsJson} onChange={e=>setFsJson(e.target.value)} />
+            </div>
+            <div className="field">
+              <label style={{display:'flex', gap:8, alignItems:'center'}}>
+                <input type="checkbox" checked={saveSidecar} onChange={e=>setSaveSidecar(e.target.checked)} />
+                Guardar sidecar .hash.json junto al FS
+              </label>
+            </div>
+            <div className="actions">
+              <button className="btn" onClick={hashFS}>Calcular HASH</button>
+            </div>
+            <div className="jsonbox">
+              <pre className="json">{hashOut ? JSON.stringify(hashOut, null, 2) : '// sin cálculo'}</pre>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </div>
-  )
+  );
 }

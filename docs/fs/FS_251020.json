@@ -1,0 +1,29 @@
+{
+  "fecha": "251020",
+  "tema": "Navegador → Altar (actualización UI + flujo ritual)",
+  "intencion": "Promocionar actualización y registrar en Diario/Listado.",
+  "modo": "M1",
+  "rumbo": "Centro",
+  "tiempo": 45,
+  "referencias": [
+    "QEL_Manual_Operativo.md",
+    "Qel_Codice_Madre.md",
+    "QEL_Libro_Sombras.md"
+  ],
+  "salidas_esperadas": [
+    "Microsello actualizado",
+    "Registro en Diario",
+    "Entrada en ListadoR sesiones"
+  ],
+  "resultados": {
+    "artefactos": [],
+    "micro_sellos": []
+  },
+  "metricas": {
+    "delta_c": "flat",
+    "delta_s": "up"
+  },
+  "testigos": { "t1": "A86", "t2": "A96" },
+  "triada": "KA-THON-SIL",
+  "mantra": "Los fonemas tienen sombras que se perciben por todos los sentidos"
+}

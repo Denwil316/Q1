@@ -1,170 +1,245 @@
-// apps/preh-nav-m1/src/pages/QelWizard.tsx
-import React, { useEffect, useRef, useState } from 'react'
-import { getLibrary, sessionNew, startRitualCanonM0M1, connectLogs } from '../lib/api'
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Stepper, { Step } from '../components/Stepper';
+import TagInput from '../components/TagInput';
 
-type FS = {
-  fecha: string; tema: string; intencion: string; modo: string; rumbo: string;
-  tiempo: number | string; referencias: string[]; veredicto?: string;
-  resultados: { artefactos: string[]; micro_sellos: string[] }
-}
+type Modo = 'M0'|'M1'|'M2'|'M3';
 
-const todayYYMMDD = () => {
-  const d = new Date(); return `${String(d.getFullYear()).slice(2)}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`
+interface FS {
+  fecha: string;          // YYMMDD
+  tema: string;
+  intencion: string;
+  modo: Modo;
+  rumbo: string;
+  tiempo: number;
+  referencias?: string[];
+  salidas_esperadas?: string[];
+  resultados?: { artefactos?: string[]; micro_sellos?: string[]; };
+  meta?: Record<string, any>;
 }
 
 export default function QelWizard() {
-  const [step, setStep] = useState(1)
-  const [micros, setMicros] = useState<string[]>([])
-  const [file, setFile] = useState('')
-  const [logs, setLogs] = useState<string[]>([])
-  const stopRef = useRef<null | (()=>void)>(null)
+  const todayYYMMDD = new Date().toISOString().slice(2,10).replace(/-/g,'').slice(2);
 
-  const [fecha, setFecha] = useState(todayYYMMDD())
-  const [seed, setSeed] = useState('A37-251020')
-  const [cue, setCue] = useState('[QEL::ECO[37]::RECALL A37-251020-CURADURIA-MICROSELLO-PROMO]')
-  const [vf, setVf] = useState('Cristaliza: cierre SIL→UM→Ə.')
+  // Paso actual: 0 FS, 1 Promote, 2 Microreg, 3 Finalize
+  const [step, setStep] = useState<number>(0);
 
+  // Log & SSE
+  const [logs, setLogs] = useState<string[]>([]);
+  const [jobId, setJobId] = useState<string>('');
+  const sseRef = useRef<EventSource|null>(null);
+  const appendLog = (line: string) => setLogs(prev => [...prev, line.replace(/\n+$/,'')]);
+
+  const openSSE = (id: string) => {
+    sseRef.current?.close();
+    const es = new EventSource(`/api/v1/logs/${id}`);
+    sseRef.current = es;
+    es.onmessage = (ev) => {
+      try {
+        const data = JSON.parse(ev.data);
+        if (data.line) appendLog(data.line);
+        if (data.done) {
+          appendLog(`[done code=${data.code}]`);
+          es.close();
+        }
+      } catch {/* ignore */}
+    };
+    es.onerror = () => { es.close(); };
+  };
+  useEffect(()=> () => sseRef.current?.close(), []);
+
+  // FS
   const [fs, setFs] = useState<FS>({
-    fecha, tema: 'Curaduría', intencion: 'Práctica Qel M0/M1', modo: 'M1', rumbo: 'Centro',
-    tiempo: 30, referencias: [], veredicto: 'Listo', resultados: { artefactos: [], micro_sellos: [] }
-  })
+    fecha: todayYYMMDD,
+    tema: 'Curaduría',
+    intencion: 'Promoción + registro',
+    modo: 'M1',
+    rumbo: 'Centro',
+    tiempo: 30,
+    referencias: [],
+    salidas_esperadas: [],
+    resultados: { artefactos: [], micro_sellos: [] },
+    meta: {}
+  });
 
-  useEffect(()=> setFs(s=>({...s, fecha})), [fecha])
+  // Promote / Microreg / Finalize
+  const [file, setFile] = useState<string>('docs/ritual/microsellos/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md');
+  const [rubro, setRubro] = useState<string>('CURADURIA');
+  const [titulo, setTitulo] = useState<string>('');
+  const [rumboUI, setRumboUI] = useState<string>('Centro');
+  const [seed, setSeed] = useState<string>('');
+  const [cue,  setCue]  = useState<string>('');
+  const [vf,   setVf]   = useState<string>('Listo');
 
-  useEffect(()=>{
-    getLibrary().then(lib=>{
-      const list = (lib.ritual||[]).map(x=>x.url||'').filter(u=>/\/ritual\/microsellos\/.+\.md$/i.test(u))
-      setMicros(list)
-      if (!file && list.length) setFile(list[list.length-1].replace(/^\/ritual\//,'docs/ritual/'))
-    })
-  },[])
+  // Stepper
+  const steps: Step[] = useMemo(()=>[
+    { key:'fs',        title:'Formato Situacional', state: step>0?'done':step===0?'current':'todo' },
+    { key:'promote',   title:'Promote',             state: step>1?'done':step===1?'current':'todo' },
+    { key:'microreg',  title:'Microregistro',       state: step>2?'done':step===2?'current':'todo' },
+    { key:'finalize',  title:'Finalize',            state: step>3?'done':step===3?'current':'todo' },
+  ],[step]);
 
-  useEffect(()=> setFs(s=>({...s, resultados:{...s.resultados, artefactos: file? [file] : []}})), [file])
+  // Actions
+  const saveFS = async () => {
+    setLogs([]);
+    const r = await fetch('/api/v1/session/new', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(fs)
+    }).then(r=>r.json());
+    if (r.ok) { appendLog(`[fs] guardado ${r.file}`); setStep(1); }
+    else appendLog(`[fs][error] ${r.error||'falló'}`);
+  };
 
-  const push = (s:string)=> setLogs(L=>[...L, s.replace(/\n+$/,'')])
-  const attach = (jobId:string)=>{
-    stopRef.current?.()
-    stopRef.current = connectLogs(jobId, (l)=>push(l), (ok)=>push(`[done code=${ok?0:1}]`))
-  }
+  const runPromote = async () => {
+    setLogs([]);
+    const payload = { file, rubro, titulo, rumbo: rumboUI };
+    const r = await fetch('/api/v1/promote', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
+    if (r.ok && r.jobId) { setJobId(r.jobId); openSSE(r.jobId); setStep(2); }
+    else appendLog(`[promote][error] ${r.error||'falló'}`);
+  };
 
-  const next = ()=> setStep(s=>Math.min(4, s+1))
-  const prev = ()=> setStep(s=>Math.max(1, s-1))
+  const runMicroreg = async () => {
+    setLogs([]);
+    const payload = { kind:'PROMO', file, title: titulo || undefined, rumbo: rumboUI, triada:'SIL·UM·Ə', gates:'no_mentira,doble_testigo', clase:'basica' };
+    const r = await fetch('/api/v1/microreg', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
+    if (r.ok && r.jobId) { setJobId(r.jobId); openSSE(r.jobId); setStep(3); }
+    else appendLog(`[microreg][error] ${r.error||'falló'}`);
+  };
 
-  const doCreateFS = async ()=>{
-    if (!fs.fecha) return alert('Falta fecha YYMMDD')
-    const r = await sessionNew(fs); push(`[fs] escrito ${r.file}`); next()
-  }
+  const runFinalize = async () => {
+    setLogs([]);
+    const payload = {
+      fecha: fs.fecha, seed, cue, vf,
+      fsJson: `docs/fs/FS_${fs.fecha.slice(2)}.json`,
+      diarioFile: 'docs/core/QEL_Diario_del_Conjurador_v1.2.md',
+      listadorFile: 'docs/core/QEL_ListadoR_master_v1.0.md'
+    };
+    const r = await fetch('/api/v1/finalize', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
+    if (r.ok && r.jobId) { setJobId(r.jobId); openSSE(r.jobId); }
+    else appendLog(`[finalize][error] ${r.error||'falló'}`);
+  };
 
-  const doRunCanon = async ()=>{
-    if (!file) return alert('Elige un Micro-Sello')
-    const { jobId } = await startRitualCanonM0M1({
-      file, rubro:'CURADURIA', titulo:'Promoción', rumbo:'Centro',
-      kind:'PROMO', title:'Promoción',
-      fecha, seed, cue, vf, fs
-    })
-    attach(jobId)
-  }
+  // Modo “todo en uno” canónico M0/M1
+  const runCanon = async () => {
+    setLogs([]);
+    const payload = {
+      file,
+      fecha: fs.fecha, seed, cue, vf,
+      fs,
+      rubro, titulo, rumbo: rumboUI, kind:'PROMO', title: titulo || undefined
+    };
+    const r = await fetch('/api/v1/ritual/canon/m0m1', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)}).then(r=>r.json());
+    if (r.ok && r.jobId) { setJobId(r.jobId); openSSE(r.jobId); }
+    else appendLog(`[canon][error] ${r.error||'falló'}`);
+  };
 
-  const refSel = useRef<HTMLSelectElement>(null)
-
+  // UI
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-semibold">Qel Wizard (M0/M1)</h1>
+    <div className="ritual">
+      <div className="ritual-header">
+        <h1>Vía · Wizard (M0/M1)</h1>
+        <div className="toolbar">
+          <button className="btn" onClick={runCanon}>Ejecutar todo (canónico)</button>
+          <a className="btn" href="/vcalc">Abrir VCALC</a>
+        </div>
+      </div>
 
-      <ol className="flex gap-3 text-sm">
-        <li className={step>=1?'font-semibold':''}>1. FS</li>
-        <li>→</li>
-        <li className={step>=2?'font-semibold':''}>2. Elegir Micro-Sello</li>
-        <li>→</li>
-        <li className={step>=3?'font-semibold':''}>3. Revisar datos</li>
-        <li>→</li>
-        <li className={step>=4?'font-semibold':''}>4. Ritual canónico</li>
-      </ol>
+      <Stepper steps={steps} />
 
-      {step===1 && (
-        <section className="space-y-2">
-          <h2 className="font-medium">Formato Situacional</h2>
-          <div className="grid md:grid-cols-3 gap-3">
-            <label className="flex flex-col text-sm"><span>Fecha YYMMDD</span>
-              <input className="border rounded px-2 py-1" value={fecha} onChange={e=>setFecha(e.target.value)} />
-            </label>
-            <label className="flex flex-col text-sm"><span>Tema</span>
-              <input className="border rounded px-2 py-1" value={fs.tema} onChange={e=>setFs(s=>({...s, tema:e.target.value}))} />
-            </label>
-            <label className="flex flex-col text-sm"><span>Intención</span>
-              <input className="border rounded px-2 py-1" value={fs.intencion} onChange={e=>setFs(s=>({...s, intencion:e.target.value}))} />
-            </label>
-          </div>
-          <div className="flex gap-2">
-            <button className="px-3 py-2 rounded bg-black text-white" onClick={doCreateFS}>Guardar FS</button>
-            <button className="px-3 py-2 rounded border" onClick={next}>Siguiente</button>
-          </div>
-        </section>
-      )}
+      <div className="grid">
+        <div className="col">
+          {/* FS */}
+          <section className="card">
+            <h2>1. Formato Situacional</h2>
+            <div className="field-row">
+              <div className="field">
+                <label className="label">Fecha (YYMMDD)</label>
+                <input className="input" value={fs.fecha} onChange={e=>setFs({...fs, fecha:e.target.value.trim()})}/>
+              </div>
+              <div className="field">
+                <label className="label">Modo</label>
+                <select className="input" value={fs.modo} onChange={e=>setFs({...fs, modo:e.target.value as Modo})}>
+                  <option value="M0">M0</option>
+                  <option value="M1">M1</option>
+                  <option value="M2">M2</option>
+                  <option value="M3">M3</option>
+                </select>
+              </div>
+              <div className="field">
+                <label className="label">Rumbo</label>
+                <select className="input" value={fs.rumbo} onChange={e=>setFs({...fs, rumbo:e.target.value})}>
+                  <option>Centro</option><option>N</option><option>S</option><option>E</option><option>W</option><option>O</option><option>C</option>
+                </select>
+              </div>
+              <div className="field">
+                <label className="label">Tiempo</label>
+                <input type="number" min={0} className="input" value={fs.tiempo} onChange={e=>setFs({...fs, tiempo:Number(e.target.value)})}/>
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Tema</label>
+              <input className="input" value={fs.tema} onChange={e=>setFs({...fs, tema:e.target.value})}/>
+            </div>
+            <div className="field">
+              <label className="label">Intención</label>
+              <input className="input" value={fs.intencion} onChange={e=>setFs({...fs, intencion:e.target.value})}/>
+            </div>
+            <TagInput label="Referencias" value={fs.referencias||[]} onChange={arr=>setFs({...fs, referencias:arr})}/>
+            <TagInput label="Salidas esperadas" value={fs.salidas_esperadas||[]} onChange={arr=>setFs({...fs, salidas_esperadas:arr})}/>
+            <div className="actions">
+              <button className="btn" onClick={saveFS} disabled={step>0}>Guardar FS</button>
+            </div>
+          </section>
 
-      {step===2 && (
-        <section className="space-y-2">
-          <h2 className="font-medium">Elegir Micro-Sello</h2>
-          <div className="flex gap-2 items-center">
-            <select ref={refSel} className="border rounded px-2 py-1 min-w-[420px]"
-              value={file} onChange={e=>setFile(e.target.value)}>
-              {micros.map(u=>{
-                const p = u.replace(/^\/ritual\//, 'docs/ritual/')
-                return <option key={u} value={p}>{p}</option>
-              })}
-            </select>
-            <button className="border rounded px-3 py-1" onClick={()=>setFile(refSel.current?.value||'')}>Usar</button>
-          </div>
-          <div className="flex gap-2">
-            <button className="px-3 py-2 rounded border" onClick={prev}>Atrás</button>
-            <button className="px-3 py-2 rounded bg-indigo-600 text-white" onClick={next}>Siguiente</button>
-          </div>
-        </section>
-      )}
+          {/* Promote */}
+          <section className="card">
+            <h2>2. Promote</h2>
+            <div className="field">
+              <label className="label">Microsello (.md)</label>
+              <input className="input" value={file} onChange={e=>setFile(e.target.value)}/>
+              <p className="help">Ej: docs/ritual/microsellos/QEL_MicroSello_....md</p>
+            </div>
+            <div className="field-row">
+              <div className="field"><label className="label">Rubro</label><input className="input" value={rubro} onChange={e=>setRubro(e.target.value)}/></div>
+              <div className="field"><label className="label">Título</label><input className="input" value={titulo} onChange={e=>setTitulo(e.target.value)}/></div>
+              <div className="field"><label className="label">Rumbo</label><input className="input" value={rumboUI} onChange={e=>setRumboUI(e.target.value)}/></div>
+            </div>
+            <div className="actions">
+              <button className="btn" onClick={runPromote} disabled={step<1}>Promote</button>
+            </div>
+          </section>
 
-      {step===3 && (
-        <section className="space-y-2">
-          <h2 className="font-medium">Revisión</h2>
-          <div className="text-sm">
-            <div><b>Seed</b>: {seed}</div>
-            <div><b>Cue</b>: {cue}</div>
-            <div><b>VF</b>: {vf}</div>
-            <div><b>Archivo</b>: {file || '(elige)'}</div>
-          </div>
-          <div className="flex gap-2">
-            <button className="px-3 py-2 rounded border" onClick={prev}>Atrás</button>
-            <button className="px-3 py-2 rounded bg-green-600 text-white" onClick={()=>setStep(4)}>Listo</button>
-          </div>
-        </section>
-      )}
+          {/* Microreg */}
+          <section className="card">
+            <h2>3. Microregistro</h2>
+            <div className="actions">
+              <button className="btn" onClick={runMicroreg} disabled={step<2}>Microreg</button>
+            </div>
+          </section>
 
-      {step===4 && (
-        <section className="space-y-2">
-          <h2 className="font-medium">Ritual (Promote → Microreg → Finalize)</h2>
-          <div className="grid md:grid-cols-3 gap-3">
-            <label className="flex flex-col text-sm"><span>Seed</span>
-              <input className="border rounded px-2 py-1" value={seed} onChange={e=>setSeed(e.target.value)} />
-            </label>
-            <label className="flex flex-col text-sm"><span>Cue</span>
-              <input className="border rounded px-2 py-1" value={cue} onChange={e=>setCue(e.target.value)} />
-            </label>
-            <label className="flex flex-col text-sm"><span>VF / Veredicto</span>
-              <input className="border rounded px-2 py-1" value={vf} onChange={e=>setVf(e.target.value)} />
-            </label>
-          </div>
-          <div className="flex gap-2">
-            <button className="px-3 py-2 rounded border" onClick={prev}>Atrás</button>
-            <button className="px-3 py-2 rounded bg-indigo-600 text-white" onClick={doRunCanon}>Ejecutar</button>
-          </div>
+          {/* Finalize */}
+          <section className="card">
+            <h2>4. Finalize</h2>
+            <div className="field-row">
+              <div className="field"><label className="label">SeedI</label><input className="input" value={seed} onChange={e=>setSeed(e.target.value)}/></div>
+              <div className="field"><label className="label">CUE</label><input className="input" value={cue} onChange={e=>setCue(e.target.value)}/></div>
+              <div className="field"><label className="label">Veredicto</label><input className="input" value={vf} onChange={e=>setVf(e.target.value)}/></div>
+            </div>
+            <div className="actions">
+              <button className="btn" onClick={runFinalize} disabled={step<3}>Finalize</button>
+            </div>
+          </section>
+        </div>
 
-          <div className="mt-3">
-            <h3 className="text-sm font-medium">Logs</h3>
-            <pre className="bg-gray-100 p-3 rounded whitespace-pre-wrap text-sm h-72 overflow-auto">
-{logs.join('\n')}
-            </pre>
-          </div>
-        </section>
-      )}
+        {/* Logs */}
+        <div className="col">
+          <section className="card">
+            <h2>Log en vivo</h2>
+            <div className="logbox" aria-live="polite">
+              {logs.length ? <pre className="log">{logs.join('\n')}</pre> : <p className="help">Sin salida aún.</p>}
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
