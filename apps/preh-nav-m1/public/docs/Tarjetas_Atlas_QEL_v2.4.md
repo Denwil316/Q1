@@ -1,7 +1,7 @@
 [QEL::ECO[96]::RECALL A96-250826-ATLAS-TARJETAS-V2-4]
 cue=[QEL::ECO[96]::RECALL A96-250826-ATLAS-TARJETAS-V2-4]
 SeedI=A96-250824
-SoT=ATLAS-TARJETAS/v2.4
+SoT=ATLAS-TARJETAS/V2.4
 Version=v2.4
 Updated=2025-08-26
 
@@ -154,3 +154,5 @@ G4: 0.80   # riesgo evidente → bajar intensidad/cambiar rumbo
 - Sesiones 15–30′; una tarjeta por sesión.  
 - Cierre **SIL→UM→Ə**, Doble Testigo si se decide promoción.  
 - Documentar en Diario; *promocionar* solo con evidencia reproducible.
+
+af7f9e2387

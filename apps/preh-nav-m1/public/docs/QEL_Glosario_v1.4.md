@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-GLOSARIO-V1-4]
 SeedI=A96-250824
-SoT=GLOSARIO/v1.5
+SoT=GLOSARIO/V1.5
 Version=v1.5
 Updated=2025-08-24
 
@@ -110,3 +110,5 @@ GLOSARIO se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/GLOSARIO/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
 
+
+c88a08c7d8

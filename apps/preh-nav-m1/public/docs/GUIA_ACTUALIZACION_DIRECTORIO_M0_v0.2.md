@@ -9,3 +9,8 @@ VERSION=v0.2 UPDATED=2025-08-15
 - Actualizar estructura: `./scripts/update_estructura.sh` (o con el hook).
 - Commit sugerido:
   docs(nav): ESTRUCTURA.md + mover piezas a core/history (O: claridad, ΔC+, V≈0.7)
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+fce51fa3cb

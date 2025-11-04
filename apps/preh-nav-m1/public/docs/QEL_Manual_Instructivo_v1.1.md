@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250826-MANUAL-INSTRUCTIVO]
 SeedI=A96-250824
-SoT=HERRAMIENTAS/v1.6
+SoT=HERRAMIENTAS/V1.6
 Version=v1.6
 Updated=2025-08-27
 
@@ -220,3 +220,5 @@ HASH(10): 7ca6494f4b
 ## Listado R — referencia
 
 - Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.4 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
+
+3a591c304f
