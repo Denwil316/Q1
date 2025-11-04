@@ -108,3 +108,9 @@ TESTIGO_H=...[Iniciales]   TESTIGO_NH=...[Instancia]
 
 ## Changelog
 - **v0.1 (2025-08-12)**: Versión inicial con rumbos Norte–Occidente, tabla de claves, preguntas faro/sombra y plantilla ECO.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+74747847c3

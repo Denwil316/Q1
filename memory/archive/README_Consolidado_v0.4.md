@@ -27,3 +27,9 @@ VERSION=v0.4 UPDATED=2025-08-14
 4) Cierra **SIL→UM→Ə**; registra ΔC/ΔS y (M1+) **V_final**.  
 5) Si **Cristaliza** → Árbol/VF + **Listado R**.
 
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.4
+Updated=2025-11-04
+
+46b11af88f

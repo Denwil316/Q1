@@ -1,6 +1,6 @@
 # [QEL::ECO[96]::A96-250824-VCALC-MANUAL]
 SeedI=A96-250820
-SoT=MANUAL/v1.0
+SoT=MANUAL/V1.0
 Version=v1.0
 Updated=2025-08-24
 
@@ -231,3 +231,5 @@ Donde:
 
 > **Cierre**: SIL→UM→Ə  ·  **Doble Testigo** cuando corresponda  ·  𝒱 se interpreta **con** FS, no en vacío.
 
+
+ab422c6ef3

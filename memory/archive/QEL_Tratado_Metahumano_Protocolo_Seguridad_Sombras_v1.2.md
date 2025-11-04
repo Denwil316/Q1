@@ -1,7 +1,7 @@
 # 1) PROTOCOLO v1.2 — contenido completo
 [QEL::ECO[96]::RECALL A96-250820-PROTOCOLO-SEGURIDAD]
 SeedI=A96-250820
-SoT=TRATADO-METAHUMANO/v1.2
+SoT=TRATADO-METAHUMANO/V1.2
 Version=v1.2
 Updated=2025-08-20
 
@@ -42,3 +42,5 @@ Al rearmarse, la Sombra integra una novena parte de Qel. Toda creencia, pensamie
 Rebose de ruido → mover a Sur, activar THON (ritmo), re-evaluar.  
 Obsidiana líquida → Aurora en rampa + límites temporales → Centro.  
 E-4 → Cierre inmediato, Custodio, reinicio en M0.
+
+833b8a92cc

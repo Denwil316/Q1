@@ -54,3 +54,9 @@ No-Mentira comprometida: bloquear sesión.
 ## Referencias cruzadas
 - **MFH v1.2**: matrices completas (afinidades, χ_r, H_k, gates) y ejemplos.
 - **Diario v1.2**: Ficha 𝒱 paso a paso, Plantillas y Ejemplos.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.2
+Updated=2025-11-04
+
+8d88726d43

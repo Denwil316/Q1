@@ -18,3 +18,9 @@ VERSION=v1.1 UPDATED=2025-08-13
 **CUE‑susurro (cierre)**: “Nada nombra; todo resuena.”
 
 HASH(10): 23b99864de
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.1
+Updated=2025-11-04
+
+9df641f19e

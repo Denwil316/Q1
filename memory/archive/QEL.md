@@ -1,7 +1,7 @@
 cue=[QEL::ECO[96]::RECALL A96-250824-SISTEMA]
 [QEL::ECO[96]::RECALL A96-250830-QEL-TEXTO-PRIMORDIAL-V1-0]
 SeedI=A96-250824
-SoT=SISTEMA/v1.1
+SoT=SISTEMA/V1.1
 Version=v1.1
 Updated=2025-09-07
 
@@ -1723,3 +1723,5 @@ Con estas **pruebas**, **preservas** el linaje de cada elemento y evitas el auto
 ## Relaciones según SoT
 
 HASH(10): 27beaf1f35
+
+0cc7bf0d02

@@ -40,3 +40,9 @@ PF‑1 T_p | PF‑2 ΔC/ΔS | PF‑3 Triádica | PF‑4 χ_r | PF‑5 VF.HASH | 
 - 250812–01: *KA–Sün* (criolámpara) en Oriente: 𝒱 positiva, clase “rara” viable.
 - 250812–02: *EÍA* como colapso: anti‑coherencia controlada; doble testigo.
 - 250812–03: *YAR* amplifica acción; riesgo de cacería en Occidente.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+4978c91d00

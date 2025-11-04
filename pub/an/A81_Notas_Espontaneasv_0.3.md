@@ -17,3 +17,9 @@ _Última actualización: 2025-08-12 22:14 UTC_
 - Protocolo de Seguridad Hipersticional v0.1 (MD+PDF+Checklist).  
 - Manifest con hashes de activos.  
 - Plantilla Canva para ATLAS.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+bbe9945282

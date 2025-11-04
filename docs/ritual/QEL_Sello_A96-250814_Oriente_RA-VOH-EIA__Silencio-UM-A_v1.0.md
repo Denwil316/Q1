@@ -12,3 +12,9 @@ VERSION=v1.0 UPDATED=2025-08-14
 > 5. Velo aprende a ser puerta.  
 > 6. Centro dice: basta, respira.  
 > 7. Cierro: **SIL → UM → Ə**.
+SeedI=A96-250814
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+535f53a3f3

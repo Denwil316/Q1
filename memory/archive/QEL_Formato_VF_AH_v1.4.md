@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-FORMATO-VF-AH-V1-4]
 SeedI=A96-250824
-SoT=VF-ARBOLES/v1.5
+SoT=VF-ARBOLES/V1.5
 Version=v1.5
 Updated=2025-08-24
 
@@ -166,3 +166,5 @@ VF-ARBOLES se cruza con:
 - Entrada propuesta: `LISTADOR/A96-250824/VF-ARBOLES/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
 ---
 HASH(10): 7407eea49a
+
+99a7a611a1

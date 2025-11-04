@@ -1,6 +1,6 @@
 [QEL::ECO[96]::SUMMON A96-250824-SEAL]
 SeedI=A96-250824
-SoT=SELLOS/v1.0
+SoT=SELLOS/V1.0
 Version=v1.0
 Updated=2025-08-24
 # Micro-Sello · PREH-NAV · Cierre de sesión
@@ -17,3 +17,5 @@ Notas:
 - Mantener cauce de archivo: core → publish → manifest(core/front).
 
 HASH(10): ec8c161fcb
+
+131e64d0bb

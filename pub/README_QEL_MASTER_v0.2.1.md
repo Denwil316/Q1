@@ -155,3 +155,9 @@ bash codex_preh_sync.sh /ruta/a/tu/repo /ruta/a/tu/qel_assets
 - **Ética Idriell:** Evocar, no manipular; veracidad performativa; vacíos diseñados; cinco fines rituales.
 - **Chequeos QEL (≥5/9):** calma post‑frase, menos juicio, imagen nueva, compartir sin explicar, respiración más larga, micro‑risa, foco claro, hueco funcional visible, sensación de “octava arriba”.
 - **Puertas:** Tejera (9+0) pliega; Lýmina (0+9) reabre.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+dd90a7c66a

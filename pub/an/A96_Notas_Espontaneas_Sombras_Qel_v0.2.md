@@ -10,3 +10,9 @@ Micro-ritual (3 ciclos):
 • Inhala 4 • sostén 2 • exhala 6.  
 • Deja la lengua al valle; el ceño se desenhebra.  
 • Nombra en interior: EÍA — UM — SIL.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+43b357a256

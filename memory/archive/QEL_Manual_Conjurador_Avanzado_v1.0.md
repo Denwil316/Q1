@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250820-MANUAL-CONJURADOR-AVANZADO]
 SeedI=A96-250820
-SoT=TRATADO-METAHUMANO/v1.0
+SoT=TRATADO-METAHUMANO/V1.0
 Version=v1.0
 Updated=2025-08-20
 
@@ -23,3 +23,5 @@ Mediación luminosa/ética; Doble Testigo; límites de intensidad/tiempo; Contac
 
 ## 5) Cierre
 SIL→UM→Ə; registrar ΔC/ΔS, V_final, testigos y próximo paso.
+
+04c54dc618

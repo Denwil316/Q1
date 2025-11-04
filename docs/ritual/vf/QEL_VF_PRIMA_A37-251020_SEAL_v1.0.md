@@ -1,6 +1,6 @@
 [QEL::ECO[37]::RECALL A37-251020-NAV-ALTAR]
 SeedI=A37-251020
-SoT=SELLOS/v1.0
+SoT=SELLOS/V1.0
 Version=v1.0
 Updated=2025-10-20
 
@@ -14,3 +14,5 @@ Gates: ["No-Mentira", "Doble Testigo", "Mediación luminosa", "Cierre SIL→UM�
 
 HASH(10): 72e4dde861
 
+
+7b7f13e5e7

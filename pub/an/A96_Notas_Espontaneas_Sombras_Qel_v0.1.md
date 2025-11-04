@@ -72,3 +72,9 @@ SOT=TRATADO-METAHUMANO/v0.1 TARGET=octava|cierre|bifurcación
 - El *verso fundador* debe codificarse con Formato R (ver referencias) para trazabilidad.  
 - Mantener **Principios Invariantes** en pausa (materia en condensación).
 
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+0dbdc9882d

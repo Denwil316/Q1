@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250820-MFH]
 SeedI=A96-250820
-SoT=MFH/v1.3
+SoT=MFH/V1.3
 Version=v1.3
 Updated=2025-08-21
 
@@ -16,3 +16,5 @@ Updated=2025-08-21
 | Nai | Semilla/Vida | Líquido | Germinación, puente L→S | Semilla, Prisma puente | Metal (Zeh) / Custodia |
 | Sün | Sol/Aurora | Sólido | Claridad, latencia, ventana | Prisma solar, Faro | Sombra (Ida) / Velos éticos |
 | Ida | Sombra/Velo | Líquido | Ocultamiento, hilos, metron | Velo, Hilos, Metrónomo | Sol (Sün) / Tutor |
+
+a87279be79

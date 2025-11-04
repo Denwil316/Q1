@@ -32,3 +32,9 @@ VF.GATES: doble testigo; ética Norte≥0.7; entorno con polvo de Qel visible
 ## 3. Árbol de habilidades (indexación)
 Ruta: `/VF/<p>/<obj>/<rumbo>/<clase>/<hash10>`  
 Ej.: `/VF/RA/Prisma/Oriente/rara/1f7a0c9b21`
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+241712c9e7

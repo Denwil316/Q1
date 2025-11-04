@@ -14,3 +14,9 @@
 
 ### Notas
 - Todos los cambios fueron **cristalizados** a partir del trabajo de hoy; mantener Doble Testigo en próximas réplicas antes de elevar a clases superiores.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.1
+Updated=2025-11-04
+
+acc957593d

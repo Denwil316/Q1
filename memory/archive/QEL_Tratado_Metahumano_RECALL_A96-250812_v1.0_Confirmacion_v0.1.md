@@ -9,3 +9,9 @@ VERSION=v0.1 UPDATED=2025-08-14
 - Documentos acoplados: MFH v1.2, Lámina 𝒱 v1.0, Manual Sombras v1.1, Árbol/VF v1.0.
 
 **Bitácora**: 2025-08-14 17:45:00 CST
+SeedI=A96-250812
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+6cc6c0ac8c

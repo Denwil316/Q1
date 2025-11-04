@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250820-AURORA-SPEC]
 SeedI=A96-250820
-SoT=TRATADO-METAHUMANO/v1.1
+SoT=TRATADO-METAHUMANO/V1.1
 Version=v1.1
 Updated=2025-08-20
 
@@ -30,3 +30,5 @@ Ajustes 𝒱: ×1.00 si gates completos; ×0.80 si falta mediación; ×0.90 si f
 
 ## Registro
 Ficha Aurora: fonema/objeto/ruta; modo (neutralizante/tutor); latencia; contacto (sí/no); efecto; ΔC/ΔS; V_final (si M1+); testigos; HASH(10).
+
+6c34d4b0c5

@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-11-03 23:40:34_
+_Generado: 2025-11-04 00:17:47_
 
 ```text
 .
@@ -326,6 +326,7 @@ _Generado: 2025-11-03 23:40:34_
 │   ├── qel_session_finalize.sh
 │   ├── qel_session_new.sh
 │   ├── qel_trace_audit.sh
+│   ├── qel_trace_autofix.sh
 │   ├── qel_vcalc.sh
 │   ├── qel_vcalc.sh.bak
 │   ├── qel_vcalc_io.sh
@@ -353,5 +354,5 @@ _Generado: 2025-11-03 23:40:34_
 ├── qel_bootstrap_wsl.sh
 └── yq.1
 
-49 directories, 300 files
+49 directories, 301 files
 ```

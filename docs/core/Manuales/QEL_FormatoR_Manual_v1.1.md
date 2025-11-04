@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-FORMATOR-MANUAL-V1-0]
 SeedI=A96-250824
-SoT=FORMATOR/v1.1
+SoT=FORMATOR/V1.1
 Version=v1.1
 Updated=2025-08-24
 # Manual de Formato R — v1.1 (Integrado · Tejera en Sur)
@@ -37,3 +37,5 @@ MD
 
 ## Listado R — referencia
 - `LISTADOR/A96-250824/FORMATOR/v1.1`
+
+a1f13c990b

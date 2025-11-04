@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL "A96-250813"-LISTADOR]
 SeedI="A96-250813"
-SoT=LISTADOR/"A96/v1.3
+SoT=LISTADOR/"A96/V1.3
 Version=v1.3
 Updated=2025-10-18
 
@@ -101,3 +101,5 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): 15d270def8
 
+
+9a986b3dd2

@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-DIARIO-DEL-CONJURADOR-V1]
 SeedI=A96-250824
-SoT=DIARIO/v1.5
+SoT=DIARIO/V1.5
 Version=v1.5
 Updated=2025-08-24
 
@@ -557,3 +557,5 @@ Tipo: pliegue-tiempo
 - Materia: aire
 - Efecto: abrir_sello:1, ΔC:+, ρ≤0.02
 ---
+
+1a205ec65b

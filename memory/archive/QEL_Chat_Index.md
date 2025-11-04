@@ -30,3 +30,9 @@ Sugerencia de uso: agrega nuevas filas **al inicio** con el código `MMDDT(hh:mm
 | 23 | 2025-07-01 | 00:00 | `0701T00:00` | Análisis rúnico y exudación — sello primera cámara del Intersticio |
 
 > Plantilla de fila: `| N | AAAA-MM-DD | hh:mm | MMDDT(hh:mm) | Título |`
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+d635087249

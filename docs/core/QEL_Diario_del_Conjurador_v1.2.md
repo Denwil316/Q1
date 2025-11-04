@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
 SeedI=A96-251020
-SoT=DIARIO/v1.2
+SoT=DIARIO/V1.2
 Version=v1.2
 Updated=2025-08-30
 
@@ -1486,3 +1486,5 @@ Resultados:
 HASH(10): 72e4dde861
 
 
+
+be01d31246

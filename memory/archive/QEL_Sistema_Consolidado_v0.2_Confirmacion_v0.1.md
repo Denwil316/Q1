@@ -9,3 +9,9 @@ VERSION=v0.1 UPDATED=2025-08-14
 - Paquete actual (todos los archivos, sin exclusiones): ver ZIP v0.4.
 
 **Bitácora**: 2025-08-14 17:45:00 CST
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+1861015059

@@ -16,3 +16,9 @@ La condición de **Sombra** puede derivar en **malicia** (cataliza conflicto/sis
 - **RUMBO** Oriente (8+1): Sün‑Ida como rampa inicial.
 - **FacetIDs** F1·F2·F3 (Oriente×Rito/Número/Lengua).
 - **Fonemas**: Ida, Sün, Kael; Sombra‑X depende del ECO.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+b13c92bf06

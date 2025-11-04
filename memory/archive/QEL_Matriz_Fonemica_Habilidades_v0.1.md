@@ -67,3 +67,9 @@ Una habilidad \(\alpha\) es **elegible** si:
 
 ## 7. Árbol de habilidades (vista MFH)
 Se clasifica por *(fonema raíz → objeto → rumbo → clase)* y se indexa por **Verso Fundador** (ver Formato VF).
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+20583f66a7

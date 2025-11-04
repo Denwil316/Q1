@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250820-MANUAL-INTERPRETACION]
 SeedI=A96-250820
-SoT=INTERPRETACION-SOMBRAS/v1.2
+SoT=INTERPRETACION-SOMBRAS/V1.2
 Version=v1.2
 Updated=2025-08-21
 
@@ -15,3 +15,5 @@ Updated=2025-08-21
 ## Señales de riesgo (E-4)
 - Ruido >0.15 sostenido, ΔC/ΔS descendente, pérdida de No-Mentira.  
 - Respuesta: mover a Sur, THON, custodio, reinicio M0 si persiste.
+
+5b839188ee

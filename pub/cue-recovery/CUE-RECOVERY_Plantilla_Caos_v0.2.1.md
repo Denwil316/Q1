@@ -29,3 +29,9 @@ CONFIDENCE≈<1..5>
 ## Facetas (dodecaedro)
 Rumbos × Planos (Rito/Número/Lengua) → F1..F12.  
 Si indicas `RUMBO≈` y `PLANO≈`, la faceta se infiere.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+80d115a49f

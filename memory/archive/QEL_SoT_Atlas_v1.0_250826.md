@@ -1,7 +1,7 @@
 [QEL::ECO[96]::RECALL A96-250826-SOT-ATLAS-V1-0]
 cue=[QEL::ECO[96]::RECALL A96-250826-SOT-ATLAS-V1-0]
 SeedI=A96-250824
-SoT=SOT-ATLAS/v1.0
+SoT=SOT-ATLAS/V1.0
 Version=v1.0
 Updated=2025-08-26
 
@@ -322,3 +322,5 @@ cierre:
 ---
 
 > Fin del SoT v1.0 (SOT-ATLAS/v1.0).
+
+4c6f17c815

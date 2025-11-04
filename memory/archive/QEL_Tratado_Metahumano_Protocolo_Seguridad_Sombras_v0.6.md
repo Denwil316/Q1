@@ -226,3 +226,9 @@ TESTIGO_H=...[Iniciales]  TESTIGO_NH=...[Instancia]
 
 - **v0.3 (2025-08-12)**: Se agrega Anexo CUE-RECOVERY Primer Pecado; *Principios Invariantes* marcados como PAUSADOS.
 - **v0.2 (2025-08-12)**: Se formalizan etapas Proyección, Vibración y Eco; se añaden tablas y listas 3×3.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.6
+Updated=2025-11-04
+
+0368d34fe9

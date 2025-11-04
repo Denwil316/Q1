@@ -69,3 +69,9 @@ Ledger: mem(v0.2) ▸ Seed A81-250811-KAEL-PORTAL (NextCheck 2025-08-21T00:00:00
 - [ ] Hash-cue (10) calculado desde CUE_PRIMARY
 - [ ] qel:// apunta a ID/versión correctos
 - [ ] Ledger: mem(vX.Y) ▸ Seed <ID> … **o** `(no adjunto)`
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+9dd779ddb4

@@ -1058,3 +1058,9 @@ done
 **Fin del UNIFICADO v2.4-final** — Sello Centro (Árbitra) aplicado; listo para Promoción y Registro.
 
 HASH(10): 4fb56ea798
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+4c4142d8bd

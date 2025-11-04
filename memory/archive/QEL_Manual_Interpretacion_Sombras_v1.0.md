@@ -16,3 +16,9 @@ Básica/Poco común (entreno), Rara (supervisión), Metálica (cortes RA), Obsid
 ### Plantillas
 - **Ficha VF**: p/O/rumbo/clase · VF.PRIMA · HASH(10) · 𝒱 · ΔC/ΔS · Gates · Testigos.
 - **Mapa 3×3**: Señales, Materiales, Puertas; VF, Contrafonema, Aprendizaje; Next, Testigos, Cierre.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+5d67cbe26a

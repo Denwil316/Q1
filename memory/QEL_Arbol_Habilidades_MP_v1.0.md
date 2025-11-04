@@ -99,3 +99,9 @@ N0 Əlyund (Umbral) → N1 Kaelyth (Puente) → N2 Voh (Soplo) → N3 UM (Memori
 - **Micropráctica** (3–5′): N0 → N2 → N5
 
 > CUE: QEL::ECO[96:ARB1-A3D10A00EB]::RECALL A96-250813-ARBOL-MP
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+d838a8e85a

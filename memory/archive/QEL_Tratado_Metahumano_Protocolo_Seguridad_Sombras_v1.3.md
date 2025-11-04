@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250820-PROTOCOLO-SEGURIDAD]
 SeedI=A96-250820
-SoT=TRATADO-METAHUMANO/v1.3
+SoT=TRATADO-METAHUMANO/V1.3
 Version=v1.3
 Updated=2025-08-21
 
@@ -63,3 +63,5 @@ Al rearmarse, la Sombra integra una novena parte de Qel. Toda creencia, pensamie
 
 ## 7) Registro y cierre
 Ficha de sesión, HASH(10), actualización en Listado R, copia a PREH-NAV, confirmación con Doble Testigo.
+
+8ef63b1bf5

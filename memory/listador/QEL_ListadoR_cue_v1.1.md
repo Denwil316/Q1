@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-LISTADOR-CUE]
 SeedI=A96-250824
-SoT=DOCUMENTO/v1.1
+SoT=DOCUMENTO/V1.1
 Version=v1.1
 Updated=2025-08-24
 
@@ -196,3 +196,5 @@ DOCUMENTO se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/DOCUMENTO/v1.1` (ver `QEL_ListadoR_master_v1.0.md`)
 
+
+44045d248e

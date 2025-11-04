@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250830-QEL-TEXTO-PRIMORDIAL-V1-0]
 SeedI=A96-250824
-SoT=SISTEMA/v1.1
+SoT=SISTEMA/V1.1
 Version=v1.1
 Updated=2025-09-07
 
@@ -2592,3 +2592,5 @@ HASH(10): 8d97890f2e
 * ¿Qué se **promueve**? · ¿Qué se **depreca**? · ¿Qué se **archiva**?
 
 - HASH(10): 8d97890f2e
+
+2a615a5acb

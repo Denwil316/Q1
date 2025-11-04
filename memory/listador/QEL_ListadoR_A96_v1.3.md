@@ -268,3 +268,9 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): 8f989bd3d9
 
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.3
+Updated=2025-11-04
+
+37d7a578eb

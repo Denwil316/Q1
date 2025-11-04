@@ -316,3 +316,8 @@ Resultados:
   registro: "Actualizar Árbol VF y Listado R si aplica"
 
 HASH(10): 24d8910aaf
+SoT=UNSET
+Version=v1.2
+Updated=2025-11-04
+
+0ae4a874bc

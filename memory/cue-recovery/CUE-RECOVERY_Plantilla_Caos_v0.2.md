@@ -124,3 +124,9 @@ Cue:
 - `ETIQUETA` en `SeedID` usa **guiones** y **MAYÚSCULAS** sin acentos.
 - Si hay más de un candidato en el mismo día, añadir sufijo `-A`, `-B`...
 - ECO asignado cuando es `??`: estable por caso; se anota en Ledger para coherencia futura.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+8df26858ca

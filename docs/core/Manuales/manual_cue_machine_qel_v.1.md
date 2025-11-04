@@ -225,3 +225,9 @@ scripts/qel_cuemachine_check.sh \
 - **Doble Testigo**: (1) registro humano; (2) testimonio criptográfico.
 - **No‑Mentira**: si la verificación falla, se documenta la ruptura y se atiende antes de continuar.
 
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+a7c70fd5ab

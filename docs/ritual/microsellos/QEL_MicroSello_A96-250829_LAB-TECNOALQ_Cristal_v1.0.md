@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250829-MICRO-SELLO-LAB-TECNOALQ]
 SeedI=A96-250824
-SoT=MICRO-SELLO/v1.0
+SoT=MICRO-SELLO/V1.0
 Version=v1.0
 Updated=2025-08-29
 
@@ -69,3 +69,5 @@ Estado: CRISTALIZADO · Modo: Centro · Cierre: SIL→UM→Ə
 - Germinación del **Lab Tecnoalquímico** asentada (plan Fase-1/2).
 
 HASH(10): 5d341d185c
+
+c79be9722d

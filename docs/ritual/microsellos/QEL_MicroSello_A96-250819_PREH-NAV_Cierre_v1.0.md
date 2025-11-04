@@ -14,3 +14,8 @@ fs:
   triada: "EÍA(.70)-UM(.15)-SIL(.15)"
 mantra: "El orden de la Biblioteca subyace en lo Sagrado"
 veredicto: CRISTALIZA
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+cb5f0435fb

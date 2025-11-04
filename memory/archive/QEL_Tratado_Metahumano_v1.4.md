@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-TRATADO-METAHUMANO-V1-4]
 SeedI=A96-250824
-SoT=TRATADO-METAHUMANO/v1.5
+SoT=TRATADO-METAHUMANO/V1.5
 Version=v1.5
 Updated=2025-08-24
 
@@ -1469,3 +1469,5 @@ TRATADO-METAHUMANO se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/TRATADO-METAHUMANO/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
 
+
+3e34aa3daf

@@ -7,3 +7,9 @@ R4. Proyecto A96/QEL. (2025-08-12). QEL|A96|OBJ|LN-ESPEJO|v0.1|S — *Lun-Nai/Na
 
 — Ingesta CSV:
   · Q1_CUES_template.csv
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+4c5d268c59

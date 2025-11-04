@@ -8,3 +8,9 @@ R4. Proyecto A96/QEL. (2025-08-12). QEL|A96|OBJ|LN-ESPEJO|v0.1|S — *Lun-Nai/Na
 ---
 #### Sección Q1 (pendiente de ingesta)
 Coloca un CSV en `ingesta/Q1_CUES_template.csv` o sube un `.json/.md` con las CUEs de Q1 para agregarlas automáticamente.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+54503dc9c0

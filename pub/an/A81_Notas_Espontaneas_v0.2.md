@@ -8,3 +8,9 @@
   - Fonemas: Kael, Ora · Ops: 0+9, 9+0
   - Próxima revisión: 2025-08-21T00:00:00Z
   - Notas: Probar modulación ECO(81): Oriente +8 Hz; Norte −1 Hz; Occidente ±1 Hz; Sur decay +19%.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+9b95cf9379

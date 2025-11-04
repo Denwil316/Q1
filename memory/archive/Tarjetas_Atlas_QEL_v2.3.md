@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-TARJETAS-ATLAS-QEL-V2-2]
 SeedI=A96-250824
-SoT=ATLAS-TARJETAS/v2.3
+SoT=ATLAS-TARJETAS/V2.3
 Version=v2.3
 Updated=2025-08-24
 
@@ -344,3 +344,5 @@ ATLAS-TARJETAS se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/ATLAS-TARJETAS/v2.3` (ver `QEL_ListadoR_master_v1.0.md`)
 
+
+af905ae372

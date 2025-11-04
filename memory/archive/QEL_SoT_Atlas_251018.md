@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-251018-SOT-ATLAS-V1-1]
 SeedI=A96-250824
-SoT=SOT-ATLAS/v1.1
+SoT=SOT-ATLAS/V1.1
 Version=v1.1 — Tutorial Operativo · Tarjetas Atlas
 Updated=2025-10-18
 
@@ -203,3 +203,5 @@ Reporta faltantes
 **CENTRO (Árbitra)** — sello de coherencia **APROBADO**, salida **v1.1 (integración)**.
 
 HASH(10): a7132116d8
+
+ee511bdb9e

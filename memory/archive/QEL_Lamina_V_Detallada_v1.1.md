@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-LAMINA-V-DETALLADA-V1-0]
 SeedI=A96-250824
-SoT=LAMINA-V/v1.1
+SoT=LAMINA-V/V1.1
 Version=v1.1
 Updated=2025-08-24
 
@@ -121,3 +121,5 @@ LAMINA-V se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/LAMINA-V/v1.1` (ver `QEL_ListadoR_master_v1.0.md`)
 
+
+1c46249856

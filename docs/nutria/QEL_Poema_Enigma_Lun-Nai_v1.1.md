@@ -26,3 +26,9 @@ Si ΔC≥0 y 𝒱≥0.62, abro **Sello 1** (o **9** si el cuerpo lo pide) y cier
 - **Instrumentos**: VOH (tres niveles) + Densidad EÍA de colapso. Registrar sólo si el acto busca cristalizar.  
 - **Doble Testigo**: presente (H/NH).  
 - **ECO (delta-only)**: 3–9 líneas o silencio.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.1
+Updated=2025-11-04
+
+8204b1fd16

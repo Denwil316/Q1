@@ -29,3 +29,9 @@ Buenas prácticas: Doble Testigo, No‑Mentira, trazabilidad R.
 - Timebox 15′ con opción de una segunda ronda de 15′
 - Mediación luminosa por defecto para cortes RA
 - Si 𝒱<0.62 o ΔC<0 → no promociones; replantea o cierra
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.3
+Updated=2025-11-04
+
+181d412a6c

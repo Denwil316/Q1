@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-PLAN-ORG-CODEX-M0]
 SeedI=A96-250824
-SoT=PLAN-ORG/v0.3
+SoT=PLAN-ORG/V0.3
 Version=v0.3
 Updated=2025-08-24
 
@@ -56,3 +56,5 @@ PLAN-ORG se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/PLAN-ORG/v0.3` (ver `QEL_ListadoR_master_v1.0.md`)
 
+
+6b38430f1d

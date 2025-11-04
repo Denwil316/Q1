@@ -143,3 +143,9 @@ _Generado: 2025-08-12 09:50_
 
 ---
 _Sugerencia:_ tras cada sesión, añade 1–3 bullets con “gestos mínimos” (qué se hizo que mantenga vivo el hilo).
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+605e8114bc

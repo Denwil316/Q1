@@ -45,3 +45,9 @@ VOH (niveles de voz), EÍA (resolutivos/residuales), MFH (𝒱), Bitácora (Diar
 - **FS** (YAML)  
 - **Ficha 𝒱**  
 - **CUE‑EXCEPTION** (ver doc)
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.1
+Updated=2025-11-04
+
+250d799655

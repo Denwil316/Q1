@@ -76,3 +76,9 @@ Trabaja con **20 arquetipos** como *familias de entorno* (no dogma). Úsalos en 
 - “Si el cuerpo no asiente, el nombre aún no es.”  
 - “El 9 no empuja; invita.”  
 - “La familia de entorno no prescribe; describe.”
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+9c5499e68c

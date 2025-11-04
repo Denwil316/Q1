@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-DIARIO]
 SeedI=A96-250824
-SoT=TRATADO-METAHUMANO/v1.2
+SoT=TRATADO-METAHUMANO/V1.2
 Version=v1.2
 Updated=2025-08-24
 
@@ -144,3 +144,5 @@ _ECO (delta-only):_ Se cristaliza **LL-PE — Manual Operativo v1.4 (Germinació
 - HASH(10): 5d341d185c
 
 _ECO (delta-only):_ Se cristaliza **Micro-Sello · LAB Tecnoalquímico — Cristal 2025-08-29** con hash **5d341d185c**; se actualiza ListadoR y se publica espejo en preh-nav.
+
+cd7e8415b1

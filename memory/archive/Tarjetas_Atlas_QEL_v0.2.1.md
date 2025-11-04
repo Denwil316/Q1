@@ -121,3 +121,9 @@ _Glyphas, modulación cardinal, preguntas por rumbo y color‑luz (HEX)._
   - **Sur:** ¿Cómo cierro sin controlar?
 - **Aura (marcadores):** dirección clara sin rigidez, tono postural asciende, mirada fija y suave
 - **Uso ritual sugerido:** Transformar / Anclar
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+f07e8f7c5a

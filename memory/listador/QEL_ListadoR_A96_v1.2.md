@@ -7,3 +7,9 @@
 
 ## Historial previo
 - Ver **v1.1**: Diario v1.2, Glosario v1.2, MFH v1.2, SoT Study Guide v1.0.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.2
+Updated=2025-11-04
+
+d13db5625a

@@ -805,3 +805,9 @@ Updated: "2025-10-15"
 * **Curadora (Oeste)**: Pasé un paño por la memoria: nada se borra, todo se acomoda; donde hubo prisa, ahora hay cuenco y ficha. Si te pierdes, vuelve por migas.
 * **Árbitra (Centro)**: Hice espacio; dejé que la ética respire; sellé con agua quieta: **evoca, no representes**.
 HASH(10): 374fbcea08
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+b66d208df6

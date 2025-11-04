@@ -168,3 +168,9 @@ fs:
 - **M1 Practicante:** hasta 2 conceptos, ΔC+ΔS y 𝒱.  
 - **M2 Artesano:** 3 conceptos, 𝒱 + No-Mentira + microprueba Poema-Enigma.  
 - **M3 Operador:** igual M2 + criterios de réplica (otro día/otra persona).
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.1
+Updated=2025-11-04
+
+5ab8ed7ea6

@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-ESCU]
 SeedI=A96-250824
-SoT=HERRAMIENTAS/v1.3
+SoT=HERRAMIENTAS/V1.3
 Version=v1.3
 Updated=2025-08-27
 
@@ -127,3 +127,5 @@ HASH(10): aca9473aac
 
 - Entrada: LISTADOR/A96-250824/MANUAL/v1.1 (r=Sur — *Manual del Esculpido en Qel*)
 
+
+9a0e169f08

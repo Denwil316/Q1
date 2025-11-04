@@ -58,3 +58,9 @@ Hash-cue: <sha1-10>. qel://A96/A96-251208-OBJ/v0.1
 R#. Proyecto <X>/QEL. (<AAAA-MM-DD>). <CUE_PRIMARY> — *<Objeto>* [Rumbo: <R>; v=<V>].
 SOT: <SOT>. ID: <ID>. Centro: <ALIAS>. Fonemas: <...>. Hash-cue: <sha1-10>. qel://<...>
 ```
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+715eea322f

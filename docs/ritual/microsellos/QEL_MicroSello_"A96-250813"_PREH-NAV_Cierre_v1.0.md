@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250813-RONDA-LUN-NAI]
 SeedI="A96-250813"
-SoT=SELLOS/v1.0
+SoT=SELLOS/V1.0
 Version=v1.0
 Updated=2025-10-18
 
@@ -11,3 +11,5 @@ Testigos: { t1: A86, t2: A96 }
 Notas: "Cierre con SIL→UM→Ə. Mantener No-Mentira."
 HASH(10): 2134032a3c
 
+
+69cd117458

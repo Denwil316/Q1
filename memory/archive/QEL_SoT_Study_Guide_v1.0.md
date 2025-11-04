@@ -34,3 +34,9 @@ Orientar a una persona (o a ti en futuro) para estudiar y comprender el **SoT** 
 - [ ] Comprendo los **Rumbos** y cuándo cambiar de lente.
 - [ ] Conozco el criterio de **promoción** (Cristaliza) sin crear archivos de más.
 - [ ] Puedo leer el **Listado R** para saber qué cambió y por qué.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+5a3c70e2fa

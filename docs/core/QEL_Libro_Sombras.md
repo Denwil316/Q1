@@ -33,7 +33,7 @@ Updated: "2025-10-18"
 
 [QEL::ECO[96]::RECALL A96-250824-QEL-TRATADO-METAHUMANO-V1-5]
 SeedI=A96-250824
-SoT=TRATADO-METAHUMANO/v1.6
+SoT=TRATADO-METAHUMANO/V1.6
 Version=v1.6
 Updated=2025-09-08
 
@@ -1091,3 +1091,5 @@ YYMMDD	A96-YYMMDD	0.7400	1.10	1.00	1.05	0.852	0.12	0.72	0.4	0.1	cristaliza
 - **v1.0 (2025-10-18)**: Se sustituye el borrador por Matriz operativa completa (escalas, tabla 𝒱×Riesgo, plantillas y ejemplos).
 
 HASH(10): d4b42f075b
+
+309181bf26

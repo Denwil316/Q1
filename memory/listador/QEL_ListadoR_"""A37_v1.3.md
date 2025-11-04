@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL """A37-251015"""-LISTADOR]
 SeedI="""A37-251015"""
-SoT=LISTADOR/"""A37/v1.3
+SoT=LISTADOR/"""A37/V1.3
 Version=v1.3
 Updated=2025-10-18
 
@@ -25,3 +25,5 @@ Resultados:
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): 5c0bea1d42
 
+
+3ed07b431b

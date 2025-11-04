@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-SOT-STUDY-GUIDE-V1-0]
 SeedI=A96-250824
-SoT=SOT-STUDY-GUIDE/v1.1
+SoT=SOT-STUDY-GUIDE/V1.1
 Version=v1.1
 Updated=2025-08-24
 
@@ -86,3 +86,5 @@ SOT-STUDY-GUIDE se cruza con:
 ## Listado R — referencia
 - Entrada propuesta: `LISTADOR/A96-250824/SOT-STUDY-GUIDE/v1.1` (ver `QEL_ListadoR_master_v1.0.md`)
 
+
+1e04177959

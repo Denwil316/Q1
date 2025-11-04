@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250820-LISTADOR]
 SeedI=A96-250820
-SoT=LISTADOR/A96/v1.4
+SoT=LISTADOR/A96/V1.4
 Version=v1.4
 Updated=2025-08-21
 
@@ -24,3 +24,5 @@ Resultados:
     - Nai→Prisma(Excepción): 0.70
   notas: "Contacto de Aurora se puede postergar, no evitar su creación (PIG/TPC)"
 hash(10): 24d8910aaf
+
+05808815af

@@ -25,3 +25,9 @@ return "silencio"
 ## 3. Implicación narrativa-científica
 - Aurora como **control negativo**: responde a disonancias con “ruido” que fuerza re-sincronización o colapso.
 - Requiere **doble testigo** para toda intervención en mundo terrenal.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+1234381271

@@ -23,3 +23,9 @@ Ruta: `/VF/RA/Prisma/Oriente/rara/1f7a0c9b21`
 ## Buenas prácticas
 - Siempre calcular VF.HASH(10) y registrar Doble Testigo.
 - Adjuntar mediciones (Instrumentos: VOH/EÍA) cuando aplique.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.0
+Updated=2025-11-04
+
+7e5e8c3316

@@ -52,3 +52,9 @@ Para incorporar CUEs del proyecto Q1, adjunto **plantilla CSV**. Completar colum
 - Este manifiesto reconoce el campo *Ledger* del Formato R para trazar seeds activos.
 - Estado actual: mem(v0.2) ▸ Seed A81-250811-KAEL-PORTAL (NextCheck 2025-08-21T00:00:00Z).
 - Recomendación: al cerrar cada iteración (×9), registrar SeedID y próxima revisión (NextCheck) en el ledger.
+SeedI=A37-251015
+SoT=UNSET
+Version=v0.2
+Updated=2025-11-04
+
+e02fa15bf1

@@ -70,3 +70,9 @@ G1 Ético · G2 Físico (𝒱<0.31 con 2 instrumentos) · G3 Lingüístico (VF.R
 - [ ] Próximo paso escrito (Ə)
 
 **Cierre**: SIL → UM → Ə.
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.1
+Updated=2025-11-04
+
+10b5a80c9f

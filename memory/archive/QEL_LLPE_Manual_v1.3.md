@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250828-LLPE-v1-3]
 SeedI=A96-250824
-SoT=LL-PE/v1.3
+SoT=LL-PE/V1.3
 Version=v1.3
 Updated=2025-08-28
 
@@ -173,3 +173,5 @@ La **materia** te ayuda a elegir **aᵢ** con coherencia física; el cálculo �
 
 * **Aurora presente:** puedes **postergar contacto** (no negar); si hay contacto, gates×0.95 y cierre suave.
 
+
+7faf6ee9fb

@@ -593,3 +593,9 @@ Fecha: 2025-10-08
 - **v1.6 — Árbitra (Centro)**: Sello de coherencia (apta); **No‑Promoción** por decisión custodial; se preserva como documento **fuera del repo**.
 
 HASH(10): 96b5d35d4b
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.6
+Updated=2025-11-04
+
+7208fd0bfd

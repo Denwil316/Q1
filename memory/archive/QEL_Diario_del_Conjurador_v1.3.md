@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250820-DIARIO]
 SeedI=A96-250820
-SoT=TRATADO-METAHUMANO/v1.3
+SoT=TRATADO-METAHUMANO/V1.3
 Version=v1.3
 Updated=2025-08-21
 
@@ -36,3 +36,5 @@ Resultados:
   registro: "Actualizar Árbol VF y Listado R si aplica"
 
 HASH(10): 24d8910aaf
+
+15d5d82cfd

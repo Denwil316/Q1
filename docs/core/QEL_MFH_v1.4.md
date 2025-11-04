@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-250824-QEL-MFH-V1-4]
 SeedI=A96-250824
-SoT=MFH/v1.5
+SoT=MFH/V1.5
 Version=v1.5
 Updated=2025-08-24
 
@@ -187,3 +187,5 @@ MFH se cruza con:
 - Entrada propuesta: `LISTADOR/A96-250824/MFH/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
 
 HASH(10): 04005cb55e
+
+e7a03ab4b4

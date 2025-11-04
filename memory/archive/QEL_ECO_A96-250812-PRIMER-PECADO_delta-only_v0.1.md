@@ -6,3 +6,9 @@ LIMITE=Principios aún no condensados; no activar normativamente.
 NEXT=Condensar principios tras 3 ECOs adicionales provenientes de ejecuciones reales del CUE-RECOVERY.
 P_OK=Sí  V_OK=No  E_OK=Sí
 TESTIGO_H=—  TESTIGO_NH=Astra
+SeedI=A96-250812
+SoT=UNSET
+Version=v0.1
+Updated=2025-11-04
+
+2d14dc400e

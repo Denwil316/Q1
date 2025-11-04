@@ -10,7 +10,14 @@ export LC_ALL=C
 # CONFIG (ajustables por env)
 # =========================
 ROOT="${ROOT:-.}"
-DOCS_DIRS="${DOCS_DIRS:-docs}"                  # Raíz de documentos a auditar
+# Raíces a auditar (multi-ruta: separador ":" o espacios)
+DOCS_DIRS="${DOCS_DIRS:-docs:memory:README:pub}"
+
+# Directorios a excluir (separador ":" o espacios; se hace prune)
+EXCLUDE_DIRS="${EXCLUDE_DIRS:-.git:node_modules:scripts:tools:out:apps/*/src:apps/*/scripts:apps/*/dist:apps/*/build}"
+
+# Extensiones a incluir (separadas por coma). Ej: "md,MD,txt"
+INCLUDE_EXT="${INCLUDE_EXT:-md,MD}"
 
 # Ruta real de tu ListadoR
 LISTADOR="${LISTADOR:-docs/core/QEL_ListadoR_master_v1.0.md}"
@@ -99,6 +106,34 @@ get_field() {
 has_cue() {
   local file="$1"
   grep -qm1 -E '^\[QEL::ECO\[[0-9]+\]::RECALL .+\]' "$file"
+}
+# Construye un find que:
+#  - recorre múltiples raíces
+#  - hace prune de EXCLUDE_DIRS
+#  - incluye archivos con extensiones de INCLUDE_EXT
+#  - excluye apps/.../public/docs (duplicados)
+find_target_files() {
+  IFS=': ' read -r -a ROOTS <<< "$DOCS_DIRS"
+  IFS=': ' read -r -a EXCS  <<< "$EXCLUDE_DIRS"
+
+  # prepara patrón de extensiones: -name "*.md" -o -name "*.MD" ...
+  IFS=',' read -r -a EXTS <<< "$INCLUDE_EXT"
+  local name_expr=()
+  for ext in "${EXTS[@]}"; do
+    name_expr+=( -name "*.${ext}" -o )
+  done
+  # quita el último -o
+  [[ ${#name_expr[@]} -gt 0 ]] && unset 'name_expr[${#name_expr[@]}-1]'
+
+  for root in "${ROOTS[@]}"; do
+    [[ -d "$root" ]] || continue
+    find "$root" \
+      \( -type d \( \
+        -path "*/apps/*/public/docs" -o \
+        $(printf ' -path "%s" -o' "${EXCS[@]}") -false \
+      \) -prune \) -o \
+      \( -type f \( "${name_expr[@]}" \) -print0 \)
+  done
 }
 
 # Obtiene HASH(10) de la última línea (si cumple regex)
@@ -322,7 +357,7 @@ while IFS= read -r -d '' f; do
   printf '"%s","%s","%s","%s","%s","%s","%s"\n' \
     "$f" "$SeedI" "$SoT" "$Version" "$Updated" "$HASH10" "$joined" >> "$OUT_CSV"
 
-done < <(find "$DOCS_DIRS" "${FIND_GLOBS[@]}" -print0)
+done < <(find_target_files)
 
 # Cierra la línea de progreso y salta de línea
 if (( total_files > 0 )); then
@@ -401,9 +436,16 @@ fi
 echo "CSV detallado: $OUT_CSV"
 
 # ==========================
-# Informe Markdown
+# Informe Markdown (APPEND con fecha)
 # ==========================
+REPORT_TS="$(date '+%Y-%m-%d %H:%M:%S %Z')"
+
 {
+  echo ""
+  echo "---"
+  echo ""
+  echo "### Informe generado: ${REPORT_TS}"
+  echo ""
   echo "# QEL · Informe de Trazabilidad"
   echo
   echo "- **Archivos auditados:** $N"
@@ -451,7 +493,7 @@ echo "CSV detallado: $OUT_CSV"
   echo
   echo "| # errores | archivo | errores |"
   echo "|----------:|---------|---------|"
-} > "$OUT_MD"
+} >> "$OUT_MD"
 
 # Construir tabla de top archivos a partir del CSV (comando separado del AWK previo)
 awk -F',' '

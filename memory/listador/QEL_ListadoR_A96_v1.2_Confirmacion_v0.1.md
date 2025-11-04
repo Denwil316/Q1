@@ -9,3 +9,9 @@ VERSION=v0.1 UPDATED=2025-08-14
 - Archivos en uso: v1.2 (histórico consolidado) y v1.3 (vigente).
 
 **Bitácora**: 2025-08-14 17:45:00 CST
+SeedI=A37-251015
+SoT=UNSET
+Version=v1.2
+Updated=2025-11-04
+
+d73ec704d6

@@ -1,6 +1,6 @@
 [QEL::ECO[96]::RECALL A96-251018-SOT-ATLAS-V1-1]
 SeedI=A96-250824
-SoT=SELLOS/v1.0
+SoT=SELLOS/V1.0
 Version=v1.0
 Updated=2025-10-18
 
@@ -14,3 +14,5 @@ Gates: ["No-Mentira", "Doble Testigo", "Mediación luminosa", "Cierre SIL→UM�
 
 HASH(10): 0a3ff028d6
 
+
+918f4611ce
