@@ -282,3 +282,13 @@ git commit -m "QEL($SEED/${RUBRO}): cristaliza — $TITULO · hash=$HASH10" || t
 git push origin PreH || true
 
 echo "[OK] Promovido $FILE — HASH(10)=$HASH10 — SeedI=$SEED"
+
+# ... después de calcular HASH10 y asegurar metadatos del archivo $FILE ...
+# Actualizar índices (no fatal si falla)
+python3 scripts/qel_indexer.py \
+  --file "$FILE" \
+  --update seeds,routes \
+  --indices-dir docs/core/indices \
+  --seedI "$SEED" \
+  || echo "[indexer] aviso: no se pudo actualizar (no fatal)" >&2
+

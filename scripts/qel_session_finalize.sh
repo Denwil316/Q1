@@ -394,6 +394,20 @@ fi
 git add "$F_MS" "$F_VF" "$F_DI" "$F_LR" apps/preh-nav-m1/public/docs 2>/dev/null || true
 for a in "${ARTEFACTOS[@]:-}"; do git add "$a" 2>/dev/null || true; done
 git add docs/core/QEL_SoT_Manifest_v0.8.json 2>/dev/null || true
+# Indexa los documentos relevantes de la sesión (fusionados + artefacto si es core)
+# Variables esperadas aquí: SEED, ARTEFACTO (si se pasó), y rutas de core existentes.
+DOCS_CANDIDATOS=()
+[ -f docs/core/QEL_Manual_Operativo.md ] && DOCS_CANDIDATOS+=("docs/core/QEL_Manual_Operativo.md")
+[ -f docs/core/QEL_Libro_Sombras.md ] && DOCS_CANDIDATOS+=("docs/core/QEL_Libro_Sombras.md")
+# artefacto final si apunta a docs/core/*
+case "${ARTEFACTO:-}" in
+  docs/core/*) DOCS_CANDIDATOS+=("$ARTEFACTO");;
+esac
+
+for D in "${DOCS_CANDIDATOS[@]}"; do
+  T="$(basename "${D%.*}" | tr '_' ' ')"   # título legible desde el nombre
+  update_indexes_from_doc "$D" "$T" "${SEED:-A37-251015}"
+done
 
 git commit -m "QEL: cierre ${FECHA} — FS(${MODO}/${TEMA}); VF.PRIMA, MicroSello, Diario, ListadoR; HASH(10)=${HASH10}." || true
 git push origin PreH || true

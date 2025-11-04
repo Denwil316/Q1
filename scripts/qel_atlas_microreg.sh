@@ -1,5 +1,51 @@
 #!/usr/bin/env bash
 set -euo pipefail
+# --- QEL Indexer (config + helpers) -----------------------------------------
+INDEXER="${INDEXER:-scripts/qel_indexer.py}"
+INDEX_SEEDS="docs/core/indices/QEL_Index_Semillas_v1.0.md"
+INDEX_ROUTES="docs/core/indices/QEL_Index_Rutas_v1.0.md"
+
+ensure_indices() {
+  mkdir -p "docs/core/indices"
+  [ -f "$INDEX_SEEDS" ] || cat >"$INDEX_SEEDS" <<'MD'
+cue: "[QEL::ECO[96]::RECALL A96-INDEX-SEEDS]"
+SeedI: "A37-251015"
+SoT: "INDICES/SEMILLAS/v1.0"
+Version: "v1.0"
+Updated: "$(date +%Y-%m-%d)"
+
+# Índice de Semillas (auto)
+MD
+  [ -f "$INDEX_ROUTES" ] || cat >"$INDEX_ROUTES" <<'MD'
+cue: "[QEL::ECO[96]::RECALL A96-INDEX-ROUTES]"
+SeedI: "A37-251015"
+SoT: "INDICES/RUTAS/v1.0"
+Version: "v1.0"
+Updated: "$(date +%Y-%m-%d)"
+
+# Índice de Rutas Internas (auto)
+MD
+}
+
+update_indexes_from_doc() {
+  # uso: update_indexes_from_doc <doc> <title> <seed>
+  local doc="$1" title="$2" seed="$3"
+  ensure_indices
+  if [ -f "$INDEXER" ]; then
+    python3 "$INDEXER" \
+      --mode add \
+      --doc "$doc" \
+      --title "$title" \
+      --seed "$seed" \
+      --update-seeds "$INDEX_SEEDS" \
+      --update-routes "$INDEX_ROUTES" \
+      || echo "[indexer] (warn) no se pudo actualizar índices, continuando…" >&2
+  else
+    echo "[indexer] (skip) $INDEXER no existe" >&2
+  fi
+}
+# ---------------------------------------------------------------------------
+
 export LC_ALL=C
 command -v python3 >/dev/null 2>&1 && export QEL_PY=python3 || export QEL_PY=python
 
@@ -13,6 +59,10 @@ KIND=""; FILE=""; TITLE=""; HASH10=""
 RUMBO="${RUMBO:-}"; TRIADA="${TRIADA:-}"; OBJ="${OBJ:-}"; CLASE="${CLASE:-}"; MATERIA="${MATERIA:-}"
 V="${V:-}"; TAU="${TAU:-}"; GATES="${GATES:-}" # gates coma: no_mentira,doble_testigo
 MICROREG="${MICROREG:-docs/core/atlas_microreg_v1.0.jsonl}"
+# Actualiza índices a partir del documento microregistrado
+# Asume que ya tienes variables: FILE (ruta), TITLE/TITULO (título), SEED (SeedI)
+update_indexes_from_doc "$FILE" "${TITLE:-$TITULO}" "${SEED:-A37-251015}"
+
 
 while [ $# -gt 0 ]; do
   case "$1" in

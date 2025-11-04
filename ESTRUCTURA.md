@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-10-20 23:59:43_
+_Generado: 2025-11-03 23:40:34_
 
 ```text
 .
@@ -276,6 +276,9 @@ _Generado: 2025-10-20 23:59:43_
 │   └── test
 │       ├── QEL_MotorQEL_Indice_DRAFT.md
 │       └── QEL_MotorQEL_Orbita_DRAFT.md
+├── out
+│   ├── qel_trace_report.csv
+│   └── qel_trace_report.md
 ├── pub
 │   ├── an
 │   │   ├── A81_Notas_Espontaneas_v0.1.md
@@ -310,6 +313,7 @@ _Generado: 2025-10-20 23:59:43_
 │   ├── qel_atlas_microreg.sh
 │   ├── qel_cuemachine_add.sh
 │   ├── qel_cuemachine_check.sh
+│   ├── qel_indexer.py
 │   ├── qel_inject_anchors.py
 │   ├── qel_install_missing.ps1
 │   ├── qel_install_missing.sh
@@ -321,6 +325,7 @@ _Generado: 2025-10-20 23:59:43_
 │   ├── qel_secret_init.sh
 │   ├── qel_session_finalize.sh
 │   ├── qel_session_new.sh
+│   ├── qel_trace_audit.sh
 │   ├── qel_vcalc.sh
 │   ├── qel_vcalc.sh.bak
 │   ├── qel_vcalc_io.sh
@@ -348,5 +353,5 @@ _Generado: 2025-10-20 23:59:43_
 ├── qel_bootstrap_wsl.sh
 └── yq.1
 
-48 directories, 296 files
+49 directories, 300 files
 ```

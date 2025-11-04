@@ -288,5 +288,6 @@ Resultados:
   objetos:
 
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
+
 hash(10): 72e4dde861
 
