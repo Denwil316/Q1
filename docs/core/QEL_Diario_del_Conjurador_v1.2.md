@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-251020
+SeedI=A96-251104
 SoT=DIARIO/V1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1488,3 +1488,14 @@ HASH(10): 72e4dde861
 
 
 0ae4a874bc
+
+## 2025-11-04 — PROMOCIÓN
+- Rubro: Centro
+- Título: Manual de Auditoría
+- Archivo: docs/core/manuales/QEL_Manual_auditoria_v1.2.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Manual_auditoria_v1.2.md
+- Rumbo: Centro
+- HASH(10): 3cefde1c94
+- SeedI: A96-251104
+
+_ECO (delta-only):_ Se cristaliza **Manual de Auditoría** con hash **3cefde1c94**; se actualiza ListadoR y espejo.
