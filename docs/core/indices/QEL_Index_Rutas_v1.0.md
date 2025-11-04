@@ -1,3 +1,4 @@
+SoT=CORE/INDICE
 cue: "[QEL::ECO[96]::RECALL A96-251015-INDEX-RUTAS]"
 SeedI: ""A37-251015""
 SoT: "INDICES/RUTAS/v1.0"
@@ -34,8 +35,8 @@ HASH(10): 7f60aa09d5
 _(sin rutas automáticas; usa bloque <!-- ROUTES: ... --> en tus docs)_
 <!-- END:AUTO-ROUTES -->
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-a75432965d
+8bfc157771

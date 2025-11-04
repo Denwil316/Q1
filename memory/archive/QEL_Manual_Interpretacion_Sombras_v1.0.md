@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Manual de Interpretación de Sombras · v1.0
 UPDATED: 2025-08-12
 
@@ -17,7 +18,7 @@ Básica/Poco común (entreno), Rara (supervisión), Metálica (cortes RA), Obsid
 - **Ficha VF**: p/O/rumbo/clase · VF.PRIMA · HASH(10) · 𝒱 · ΔC/ΔS · Gates · Testigos.
 - **Mapa 3×3**: Señales, Materiales, Puertas; VF, Contrafonema, Aprendizaje; Next, Testigos, Cierre.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

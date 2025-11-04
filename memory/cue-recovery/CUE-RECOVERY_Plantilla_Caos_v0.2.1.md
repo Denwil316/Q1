@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # CUE-RECOVERY · Plantilla del Caos · v0.2.1
 
 Usa esto cuando NO recuerdas el SeedID. Completa lo que sepas.
@@ -30,7 +31,7 @@ CONFIDENCE≈<1..5>
 Rumbos × Planos (Rito/Número/Lengua) → F1..F12.  
 Si indicas `RUMBO≈` y `PLANO≈`, la faceta se infiere.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

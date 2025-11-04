@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250812-MATRIZ-FONEMICA-HABILIDADES] 
 SOT=TRATADO-METAHUMANO/v0.1 TARGET=matriz|fonemas|habilidades|rumbos
 VERSION=v0.1 UPDATED=2025-08-12
@@ -68,7 +69,7 @@ Una habilidad \(\alpha\) es **elegible** si:
 ## 7. Árbol de habilidades (vista MFH)
 Se clasifica por *(fonema raíz → objeto → rumbo → clase)* y se indexa por **Verso Fundador** (ver Formato VF).
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.1
 Updated=2025-11-04
 

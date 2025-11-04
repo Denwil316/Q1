@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250812-AURORA-SPEC] 
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=aurora|generativo|disonancia
 VERSION=v1.0 UPDATED=2025-08-12
@@ -14,7 +15,7 @@ while not sombra.neutralizada():
         replegar_hasta(condiciones_minimas())
 return "silencio"
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

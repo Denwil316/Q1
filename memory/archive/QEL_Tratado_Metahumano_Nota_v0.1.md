@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Tratado del Metahumano · Nota v0.1
 **Chat**: Matematicas Resonantes y Fisica · **Fecha**: 2025-08-12 · **SeedID**: A96-250812-METAHUMANO-TRATADO · **Eco**: 96
 
@@ -17,7 +18,7 @@ La condición de **Sombra** puede derivar en **malicia** (cataliza conflicto/sis
 - **FacetIDs** F1·F2·F3 (Oriente×Rito/Número/Lengua).
 - **Fonemas**: Ida, Sün, Kael; Sombra‑X depende del ECO.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.1
 Updated=2025-11-04
 

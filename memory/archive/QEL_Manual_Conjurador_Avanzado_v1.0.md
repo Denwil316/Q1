@@ -25,3 +25,5 @@ Mediación luminosa/ética; Doble Testigo; límites de intensidad/tiempo; Contac
 SIL→UM→Ə; registrar ΔC/ΔS, V_final, testigos y próximo paso.
 
 04c54dc618
+
+da39a3ee5e

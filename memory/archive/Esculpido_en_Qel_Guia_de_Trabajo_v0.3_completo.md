@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250814-ESCULPIDO-V03]
 SOT=ESCULPIDO/v0.3 TARGET=guia|trabajo|completo
 VERSION=v0.3 UPDATED=2025-08-14
@@ -30,7 +31,7 @@ Buenas prácticas: Doble Testigo, No‑Mentira, trazabilidad R.
 - Mediación luminosa por defecto para cortes RA
 - Si 𝒱<0.62 o ΔC<0 → no promociones; replantea o cierra
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.3
 Updated=2025-11-04
 

@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250812-INSTRUMENTOS] 
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=instrumentos|VOH|EIA|medición
 VERSION=v1.0 UPDATED=2025-08-12
@@ -31,7 +32,7 @@ VERSION=v1.0 UPDATED=2025-08-12
 - EÍA se asocia a fonemas de colapso (**EÍA**, RA/KA en coda).  
 - Ambas alimentan 𝒱 y sustentan G2 en **CUE‑EXCEPTION**.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

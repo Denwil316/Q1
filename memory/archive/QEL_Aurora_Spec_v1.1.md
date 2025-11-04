@@ -32,3 +32,5 @@ Ajustes 𝒱: ×1.00 si gates completos; ×0.80 si falta mediación; ×0.90 si f
 Ficha Aurora: fonema/objeto/ruta; modo (neutralizante/tutor); latencia; contacto (sí/no); efecto; ΔC/ΔS; V_final (si M1+); testigos; HASH(10).
 
 6c34d4b0c5
+
+da39a3ee5e

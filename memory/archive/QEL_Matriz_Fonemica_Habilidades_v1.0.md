@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250812-MATRIZ-FONEMICA-HABILIDADES] 
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=matriz|fonemas|habilidades|rumbos
 VERSION=v1.0 UPDATED=2025-08-12
@@ -41,7 +42,7 @@ PF‑1 T_p | PF‑2 ΔC/ΔS | PF‑3 Triádica | PF‑4 χ_r | PF‑5 VF.HASH | 
 - 250812–02: *EÍA* como colapso: anti‑coherencia controlada; doble testigo.
 - 250812–03: *YAR* amplifica acción; riesgo de cacería en Occidente.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250815-GUIA-OP-QEL]
 SEEDID=A96-GUIA-OP-250815
 SOT=GUIA-OPERACION/v1.0
@@ -280,7 +281,7 @@ def test_unique_titles():
 
 — Fin de v1.0
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

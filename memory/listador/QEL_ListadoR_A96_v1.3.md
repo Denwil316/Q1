@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # QEL · Listado R (Registro de Cambios) · A96 · v1.3
 > Fecha: 2025-08-14 17:25:00 CST · Zona: America/Mexico_City
 
@@ -269,7 +270,7 @@ Resultados:
 hash(10): 8f989bd3d9
 
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.3
 Updated=2025-11-04
 

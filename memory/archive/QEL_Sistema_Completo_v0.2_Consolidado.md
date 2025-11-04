@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # QEL · Sistema Consolidado v0.2
 _Actualizado: 2025-08-12 06:48 UTC_
 
@@ -313,7 +314,7 @@ y devolveré la **CUE RECALL** lista para usar.
 - QEL es el **compás**: si el cuerpo asiente y el texto deja espacio, ocurrió. Si no, plega con Tejera, reabre con Lýmina, y vuelve a Oriente.
 - Este documento es **materia prima**: puedes copiar/editar secciones para otros SoT (música, código, juego, investigación) conservando 0/1/9, rumbos y ética.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 ### Listado de CUEs — Formato R (Q1 + A96) v0.3
 
 R1. Proyecto A96/QEL. (2025-08-12). QEL|A96|OBJ|KS-CRIO|v0.1|L — *Kael-Sün :: la criolámpara de la meditación lingüistica* [Rumbo: Luz; v=v0.1]. SOT: INTERACCIONALES/v0.1. ID: A96-251208-OBJ. Centro: QEL|A96|CUE|CENTRO|SILENCIO-LECTOR. Fonemas: KAEL, SÜN. Hash-cue: placeholde. qel://A96/A96-251208-OBJ/v0.1. Ledger: mem(v0.2) ▸ Seed A81-250811-KAEL-PORTAL (NextCheck 2025-08-21T00:00:00Z)
@@ -5,7 +6,7 @@ R2. Proyecto A96/QEL. (2025-08-12). QEL|A96|OBJ|ZO-PRISMA|v0.1|P — *Zeh-Ora ::
 R3. Proyecto A96/QEL. (2025-08-12). QEL|A96|OBJ|EU-SEMILLA|v0.1|C — *Ə-Um :: la semilla de las iteraciones infinitas* [Rumbo: Centro; v=v0.1]. SOT: INTERACCIONALES/v0.1. ID: A96-251208-OBJ. Centro: QEL|A96|CUE|CENTRO|SILENCIO-LECTOR. Fonemas: Ə, UM. Hash-cue: placeholde. qel://A96/A96-251208-OBJ/v0.1. Ledger: mem(v0.2) ▸ Seed A81-250811-KAEL-PORTAL (NextCheck 2025-08-21T00:00:00Z)
 R4. Proyecto A96/QEL. (2025-08-12). QEL|A96|OBJ|LN-ESPEJO|v0.1|S — *Lun-Nai/Nai-Lun :: objeto imposible* [Rumbo: Sombra; v=v0.1]. SOT: INTERACCIONALES/v0.1. ID: A96-251208-OBJ. Centro: QEL|A96|CUE|CENTRO|SILENCIO-LECTOR. Fonemas: LUN, NAI. Hash-cue: placeholde. qel://A96/A96-251208-OBJ/v0.1. Ledger: mem(v0.2) ▸ Seed A81-250811-KAEL-PORTAL (NextCheck 2025-08-21T00:00:00Z)
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.3
 Updated=2025-11-04
 

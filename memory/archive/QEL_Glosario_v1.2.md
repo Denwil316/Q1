@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 
 # QEL · Glosario v1.2
 > Compilación: 2025-08-13 16:44:51 CST
@@ -55,7 +56,7 @@ No-Mentira comprometida: bloquear sesión.
 - **MFH v1.2**: matrices completas (afinidades, χ_r, H_k, gates) y ejemplos.
 - **Diario v1.2**: Ficha 𝒱 paso a paso, Plantillas y Ejemplos.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.2
 Updated=2025-11-04
 

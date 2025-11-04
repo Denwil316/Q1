@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [ QEL::ECO[96:DJ1-7169CD2729]::RECALL A96-250813-DIARIO-CONJURADOR ]
 SEEDID=DJ1-7169CD2729
 SOT=TRATADO-METAHUMANO/v1.0
@@ -169,7 +170,7 @@ fs:
 - **M2 Artesano:** 3 conceptos, 𝒱 + No-Mentira + microprueba Poema-Enigma.  
 - **M3 Operador:** igual M2 + criterios de réplica (otro día/otra persona).
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.1
 Updated=2025-11-04
 

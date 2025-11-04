@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 
 # QEL · Listado R (Registro de Cambios) · A96 · v1.1
 > Fecha: 2025-08-13 16:44:51 CST · Zona: America/Mexico_City
@@ -15,7 +16,7 @@
 ### Notas
 - Todos los cambios fueron **cristalizados** a partir del trabajo de hoy; mantener Doble Testigo en próximas réplicas antes de elevar a clases superiores.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.1
 Updated=2025-11-04
 

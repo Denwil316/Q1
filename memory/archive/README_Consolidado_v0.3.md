@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250814-SISTEMA-COMPLETO]
 SEEDID=SC0-A96-250814
 SOT=SoT-CONJUNTO/v0.3
@@ -59,7 +60,7 @@ QEL_Sistema_Completo_v0.3_Consolidado/
 ## Changelog del consolidado
 - v0.3 (2025-08-14): Paquete inicial consolidado con manifest v0.6 y requisición de faltantes.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.3
 Updated=2025-11-04
 

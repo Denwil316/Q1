@@ -99,7 +99,7 @@ cue: [QEL::ECO[96]::A96-250824-SEAL]
 SeedI: A96-250824
 Refs:
   - memory/archive/QEL_Aurora_Spec_v1.1.md
-  - docs/ritual/QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
+  - memory/archive/QEL_Manual_Conjurador_Avanzado_v1.0.md
   - memory/archive/QEL_Aurora_Spec_v1.1.md
   - memory/archive/QEL_Manual_Conjurador_Avanzado_v1.0.md
   - docs/tools/QEL_Aurora_Spec_v1.1.md
@@ -293,7 +293,6 @@ hash(10): 72e4dde861
 
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/pe/PEe2c82e10e1.md]
@@ -309,7 +308,6 @@ hash(10): 1a205ec65b
 06621bbd9f
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/core/QEL_ListadoR_master_v1.0.md]
@@ -323,7 +321,6 @@ refs: [docs/core/manuales/QEL_Manual_Interpretación_Sombras_v1.3.md]
 hash(10): a09e6ca800
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/core/manuales/manual_cue_machine_qel_v.1.md]
@@ -351,14 +348,12 @@ refs: [docs/core/manuales/QEL_Manual_Esculpido_en_Qel_v1.0.md]
 hash(10): 9a0e169f08
 
 SeedI=PREH-NAV::M0
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [docs/core/manuales/NAVEGADOR_M0_Manual_v0.2.md]
 hash(10): 46eaf6adaf
 
 SeedI=PREH-NAV::M0
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [docs/core/manuales/GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md]
@@ -372,63 +367,54 @@ refs: [docs/core/atlas/Tarjetas_Atlas_QEL_v2.4.md]
 hash(10): af7f9e2387
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/core/atlas/codice_madre_atlas_qel_tarjetas_maestras_v_2.md]
 hash(10): f3b2539514
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/nutria/Lýmina.md]
 hash(10): c48483d4c1
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/nutria/Astra.md]
 hash(10): 77fbdf66e0
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/nutria/Matematicas Resonantes (DS).md]
 hash(10): 9000b0c1ac
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.1
 Updated=2025-11-04
 refs: [docs/nutria/QEL_Poema_Enigma_Lun-Nai_v1.1.md]
 hash(10): 8204b1fd16
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/nutria/Kósmos 8.md]
 hash(10): a81647ceaf
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/nutria/ACL-QEL.md]
 hash(10): 8c4dfd3eb2
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/nutria/PCdI.md]
 hash(10): 75dc002c2b
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/nutria/SQ.md]
@@ -512,14 +498,12 @@ refs: [docs/ritual/vf/QEL_VF_PRIMA_A37-251019_SEAL_v1.0.md]
 hash(10): b40a148369
 
 SeedI=A96-250814
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/ritual/QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md]
 hash(10): 535f53a3f3
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/ritual/QEL_Altar_y_Llave_v1.0.md]
@@ -547,7 +531,6 @@ refs: [docs/ritual/microsellos/QEL_MicroSello_A96-250824_VCALC_UNIFIED_SEAL_v.10
 hash(10): 45c695aa35
 
 SeedI=PREH-NAV::M1
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [docs/ritual/microsellos/QEL_MicroSello_A96-250819_PREH-NAV_Cierre_v1.0.md]
@@ -610,7 +593,6 @@ refs: [docs/ritual/microsellos/QEL_MicroSello_A96-250901_PREH-NAV_Cierre_v1.0.md
 hash(10): 21eec34405
 
 SeedI=A96-250817
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [docs/ritual/QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md]
@@ -631,7 +613,6 @@ refs: [docs/ritual/qel_manual_vcalc_v_1_0.md]
 hash(10): ab422c6ef3
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_Sistema_Completo_v0.2_Consolidado.md]
@@ -645,7 +626,6 @@ refs: [memory/archive/QEL_Manual_Interpretacion_Sombras_v1.2.md]
 hash(10): 5b839188ee
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_PR_TEMPLATE_v0.2.2.md]
@@ -666,7 +646,6 @@ refs: [memory/archive/QEL_Diario_del_Conjurador_v1.3.md]
 hash(10): 15d5d82cfd
 
 SeedI=A96-250812
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_ECO_A96-250812-PRIMER-PECADO_delta-only_v0.1.md]
@@ -680,49 +659,42 @@ refs: [memory/archive/QEL_LLPE_Manual_v1.3.md]
 hash(10): 7faf6ee9fb
 
 SeedI=PREH-NAV::M0
-SoT=UNSET
 Version=v1.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_Diario_del_Conjurador_v1.2.md]
 hash(10): 0ae4a874bc
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_Sistema_Consolidado_v0.2_Confirmacion_v0.1.md]
 hash(10): 1861015059
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Chat_Register_All.md]
 hash(10): 605e8114bc
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.3
 Updated=2025-11-04
 refs: [memory/archive/Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md]
 hash(10): 07a534d2c1
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_CUE_Exception_v0.1.md]
 hash(10): de4a91904c
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_Matriz_Fonemica_Habilidades_v0.1.md]
 hash(10): 20583f66a7
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Matriz_Fonemica_Habilidades_v1.0.md]
@@ -736,56 +708,48 @@ refs: [memory/archive/QEL_Lamina_V_Detallada_v1.1.md]
 hash(10): 1c46249856
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_Glosario_v1.2.md]
 hash(10): 8d88726d43
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Chat_Index.md]
 hash(10): d635087249
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_FormatoR_Manual_v0.2.md]
 hash(10): 9dd779ddb4
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Instrumentos_Medicion_v1.0.md]
 hash(10): 2764934b12
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_Index_v1.1.md]
 hash(10): 1764330524
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.3
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.3.md]
 hash(10): 64ef616abf
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_Nota_v0.1.md]
 hash(10): b13c92bf06
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/archive/Tarjetas_Atlas_QEL_v0.2.1.md]
@@ -799,7 +763,6 @@ refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.2.md
 hash(10): 833b8a92cc
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.2.md]
@@ -813,7 +776,6 @@ refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.3.md
 hash(10): 8ef63b1bf5
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.6
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.6.md]
@@ -827,105 +789,90 @@ refs: [memory/archive/QEL_Glosario_v1.3.md]
 hash(10): b1db70b967
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.3
 Updated=2025-11-04
 refs: [memory/archive/README_Consolidado_v0.3.md]
 hash(10): 4d35ffb136
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_CUE_Recovery_Primer_Pecado_v0.1.md]
 hash(10): 74747847c3
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Index_v1.0.md]
 hash(10): 256638bac3
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.4
 Updated=2025-11-04
 refs: [memory/archive/README_Consolidado_v0.4.md]
 hash(10): 46b11af88f
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.0.md]
 hash(10): e167411bad
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.5
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.5.md]
 hash(10): ea9d265caf
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Glosario_v1.0.md]
 hash(10): a220cf1d4f
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Aurora_Spec_v1.0.md]
 hash(10): 74f4eda772
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_Formato_VF_Arbol_Habilidades_v0.1.md]
 hash(10): 241712c9e7
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Formato_VF_Arbol_Habilidades_v1.0.md]
 hash(10): 7e5e8c3316
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_Aurora_Spec_v0.1.md]
 hash(10): 1234381271
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.3
 Updated=2025-11-04
 refs: [memory/archive/Esculpido_en_Qel_Guia_de_Trabajo_v0.3_completo.md]
 hash(10): 181d412a6c
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.4
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v0.4.md]
 hash(10): b20dd5f682
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Manual_Lectura_VF_Tonalpohualli_v1.0.md]
 hash(10): 9c5499e68c
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_FormatoR_Manual_v0.1.md]
@@ -946,28 +893,24 @@ refs: [memory/archive/PLAN_ORG_Codex_M0_v0.3.md]
 hash(10): 6b38430f1d
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.1.md]
 hash(10): 250d799655
 
 SeedI=A96-250812
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Tratado_Metahumano_RECALL_A96-250812_v1.0_Confirmacion_v0.1.md]
 hash(10): 6cc6c0ac8c
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_Diario_del_Conjurador_v1.1.md]
 hash(10): 5ab8ed7ea6
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Manual_Interpretacion_Sombras_v1.0.md]
@@ -995,63 +938,54 @@ refs: [memory/archive/Tarjetas_Atlas_QEL_v2.3.md]
 hash(10): af905ae372
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.1
 Updated=2025-11-04
 refs: [memory/archive/QEL_Manual_Interpretacion_Sombras_v1.1.md]
 hash(10): 10b5a80c9f
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_Matriz_Fonemica_Habilidades_v1.2.md]
 hash(10): 4ea279b7c6
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Guia_Operacion_QEL_Consolidada_v1.0.md]
 hash(10): 7e67558f42
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/archive/QEL_Diario_del_Conjurador_v1.0.md]
 hash(10): a69d5f58aa
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.2
 Updated=2025-11-04
 refs: [memory/archive/QEL_Diario_del_Conjurador_v1.2_Confirmacion_v0.1.md]
 hash(10): ba3ca1eabc
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/listador/QEL_ListadoR_A96_v0.2.md]
 hash(10): cec10550c7
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.3
 Updated=2025-11-04
 refs: [memory/listador/QEL_ListadoR_A96_v1.3.md]
 hash(10): 37d7a578eb
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.3
 Updated=2025-11-04
 refs: [memory/listador/QEL_ListadoR_A96_v0.3.md]
 hash(10): e3cbbf2148
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.2
 Updated=2025-11-04
 refs: [memory/listador/QEL_ListadoR_A96_v1.2.md]
@@ -1079,7 +1013,6 @@ refs: [memory/listador/QEL_ListadoR_cue_v1.1.md]
 hash(10): 44045d248e
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/listador/Listado_CUEs_FormatoR_Q1+A96_v0.1.md]
@@ -1093,28 +1026,24 @@ refs: [memory/listador/QEL_ListadoR_"""A37_v1.3.md]
 hash(10): 3ed07b431b
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.3
 Updated=2025-11-04
 refs: [memory/listador/Listado_CUEs_FormatoR_Q1+A96_v0.3.md]
 hash(10): ec4512f116
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.2
 Updated=2025-11-04
 refs: [memory/listador/QEL_ListadoR_A96_v1.2_Confirmacion_v0.1.md]
 hash(10): d73ec704d6
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/listador/Listado_CUEs_FormatoR_Q1+A96_v0.2.md]
 hash(10): 4c5d268c59
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.1
 Updated=2025-11-04
 refs: [memory/listador/QEL_ListadoR_A96_v1.1.md]
@@ -1128,113 +1057,109 @@ refs: [memory/listador/QEL_ListadoR_A96_v1.4.md]
 hash(10): 05808815af
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [memory/listador/QEL_ListadoR_A96_v0.1.md]
 hash(10): 1a0bef71ae
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/listador/QEL_ListadoR_A96_v1.0.md]
 hash(10): 8256985b6b
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/cue-recovery/CUE-RECOVERY_Plantilla_Caos_v0.2.1.md]
 hash(10): 80d115a49f
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/cue-recovery/CUE-RECOVERY_Plantilla_Caos_v0.2.md]
 hash(10): 8df26858ca
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [memory/QEL_A96_MANIFIESTO_TRIADA_ESPEJO_v0.2.md]
 hash(10): e02fa15bf1
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [memory/QEL_Arbol_Habilidades_MP_v1.0.md]
 hash(10): d838a8e85a
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [README/PREH-NAV_README_v0.2.md]
 hash(10): 9b2420b77d
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [README/README_Q1 (1).md]
 hash(10): 96b85b841e
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [README/README_Q1.md]
 hash(10): de1ffa7fb4
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [README/README_QEL_MASTER_v0.2.1.md]
 hash(10): dd90a7c66a
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [pub/manuales/INSTALL_NOTES_PREH.md]
 hash(10): 991a696d87
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [pub/an/A96_Notas_Espontaneas_Sombras_Qel_v0.1.md]
 hash(10): 0dbdc9882d
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [pub/an/A81_Notas_Espontaneas_v0.2.md]
 hash(10): 9b95cf9379
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v1.0
 Updated=2025-11-04
 refs: [pub/an/A81_Notas_Espontaneasv_0.3.md]
 hash(10): bbe9945282
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.2
 Updated=2025-11-04
 refs: [pub/an/A96_Notas_Espontaneas_Sombras_Qel_v0.2.md]
 hash(10): 43b357a256
 
 SeedI=A37-251015
-SoT=UNSET
 Version=v0.1
 Updated=2025-11-04
 refs: [pub/an/A81_Notas_Espontaneas_v0.1.md]
 hash(10): 7c47219c7d
+
+5b4b6c67c2
+
+da39a3ee5e
+
+SeedI=A96-250824
+SoT=SELLOS/V1.0
+Version=v1.0
+Updated=2025-10-18
+refs: [docs/ritual/vf/QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md]
+hash(10): da39a3ee5e
+06621bbd9f

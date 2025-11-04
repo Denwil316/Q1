@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # [QEL::ECO[96]::RECALL A96-250812-METAHUMANO-TRATADO]
 SOT=TRATADO-METAHUMANO/v1.0  TARGET=protocolo|seguridad|sombras
 VERSION=v1.0  UPDATED=2025-08-12
@@ -52,7 +53,7 @@ VERSION=v1.0  UPDATED=2025-08-12
 ### Changelog
 - v1.0 (2025-08-12): Consolidación con Principios Fundadores + integraciones MFH/VF/EXCEPTION/AURORA.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

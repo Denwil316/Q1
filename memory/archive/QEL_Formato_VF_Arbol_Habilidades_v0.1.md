@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250812-FORMATO-VF] 
 SOT=TRATADO-METAHUMANO/v0.1 TARGET=verso-fundador|árbol-habilidades|formato
 VERSION=v0.1 UPDATED=2025-08-12
@@ -33,7 +34,7 @@ VF.GATES: doble testigo; ética Norte≥0.7; entorno con polvo de Qel visible
 Ruta: `/VF/<p>/<obj>/<rumbo>/<clase>/<hash10>`  
 Ej.: `/VF/RA/Prisma/Oriente/rara/1f7a0c9b21`
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.1
 Updated=2025-11-04
 

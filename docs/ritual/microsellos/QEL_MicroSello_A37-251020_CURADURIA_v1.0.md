@@ -11,4 +11,4 @@ Testigos: { t1: A37, t2: A96 }
 Notas: "Cierre con SIL→UM→Ə. Mantener No-Mentira. Doble Testigo si cristaliza."
 HASH(10): 8bfc157771
 
-b238b96b1e
+8bfc157771

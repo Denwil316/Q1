@@ -1,3 +1,4 @@
+SoT=NUTRIA/TEXTO
 a+b=c (Fórmula de apertura-equivalencia)
 
 a) La comunicación es el reconocimiento de consciencia mínima para abrirse ante un semejante.
@@ -4075,7 +4076,7 @@ fuera del tiempo.
 Siempre vibrando.
 
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # CUE‑RECOVERY (CAOS) · v0.2
 _Actualizado: 2025-08-12 06:59 UTC_
 
@@ -125,7 +126,7 @@ Cue:
 - Si hay más de un candidato en el mismo día, añadir sufijo `-A`, `-B`...
 - ECO asignado cuando es `??`: estable por caso; se anota en Ledger para coherencia futura.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

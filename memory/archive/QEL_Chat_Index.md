@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Índice de chats QEL (actualizable)
 _Generado: 2025-08-12 09:50_
 
@@ -31,7 +32,7 @@ Sugerencia de uso: agrega nuevas filas **al inicio** con el código `MMDDT(hh:mm
 
 > Plantilla de fila: `| N | AAAA-MM-DD | hh:mm | MMDDT(hh:mm) | Título |`
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

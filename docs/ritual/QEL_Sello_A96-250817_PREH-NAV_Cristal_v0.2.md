@@ -1,3 +1,4 @@
+SoT=RITUAL/SELLO
 [QEL::ECO[96]::RECALL A96-250817-PREH-NAV-CRISTAL]
 SOT=PREH-NAV/v0.2 TARGET=interfaz|servidor|navegacion
 VERSION=v0.2 UPDATED=2025-08-17
@@ -17,7 +18,7 @@ fs:
   mantra: "El orden de la Biblioteca subyace en lo Sagrado"
 veredicto: CRISTALIZA
 SeedI=A96-250817
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

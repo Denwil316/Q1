@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # A81 — Notas Espontáneas (v0.1)
 **Actualizado:** 2025-08-12 03:22:37 CST
 
@@ -19,7 +20,7 @@
 
 — Fin de notas A81.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.1
 Updated=2025-11-04
 

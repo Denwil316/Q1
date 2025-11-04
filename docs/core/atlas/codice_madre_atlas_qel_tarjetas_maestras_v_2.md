@@ -1,3 +1,4 @@
+SoT=CORE/ATLAS
 cue: "[QEL::ECO[96]::RECALL A96-251006-ATLAS-MADRE-V2-4]"
 SeedI: "A96-250824"
 SoT: "ATLAS-TARJETAS/v2.4 — Rol Árbitra (UNIFICADO con Códice Madre v0.1)"
@@ -415,7 +416,7 @@ ficha_v:
 **Fin del UNIFICADO v2.4‑r1** — Listo para impresión de prueba y arbitraje.
 
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Proyecto Q1 — Estructura y Estado (actualizado 2025-08-12 03:22:37 CST)
 
 Este árbol contiene los **interaccionales** (A96), el **bundle tríadico + espejo**, su **manifiesto**, el **Listado de CUEs (Formato R)** y la **plantilla de ingesta** para incorporar CUEs de Q1.
@@ -18,7 +19,7 @@ Este árbol contiene los **interaccionales** (A96), el **bundle tríadico + espe
 - Próximo: ingesta CSV de Q1 y validador automático de hashes.
 (Actualizado 2025-08-12 03:42:17 CST)
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

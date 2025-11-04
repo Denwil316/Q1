@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250814-ATLAS-TARJETAS]
 SOT=ATLAS-TARJETAS/v2.2 TARGET=atlas|tarjetas|glyphas|rumbos|consulta
 VERSION=v2.2 UPDATED=2025-08-14
@@ -186,8 +187,10 @@ _Glyphas, modulación cardinal, preguntas por rumbo y color‑luz (HEX)._
 - **Aura (marcadores):** dirección clara sin rigidez, tono postural asciende, mirada fija y suave
 - **Uso ritual sugerido:** Transformar / Anclar
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v2.2
 Updated=2025-11-04
 
 f151b5fc71
+
+da39a3ee5e

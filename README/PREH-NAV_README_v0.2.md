@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250817-PREH-NAV-README]
 SOT=PREH-NAV/v0.2 TARGET=interfaz|servidor|navegacion
 VERSION=v0.2 UPDATED=2025-08-17
@@ -183,7 +184,7 @@ node scripts/validate_manifest.js
 > Mantra: *El orden de la Biblioteca subyace en lo Sagrado.*
 
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

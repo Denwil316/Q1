@@ -1,3 +1,4 @@
+SoT=CORE/MANUAL
 cue: "[QEL::ECO[96]::RECALL A96-251008-MANUAL-CUEMACHINE]"
 SeedI: "A96-250824"
 SoT: "MANUAL/CUEMACHINE/v1.0"
@@ -226,7 +227,7 @@ scripts/qel_cuemachine_check.sh \
 - **No‑Mentira**: si la verificación falla, se documenta la ruptura y se atiende antes de continuar.
 
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

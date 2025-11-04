@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250813-ALTAR-LLAVE] 
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=altar|llave|esculpidos
 VERSION=v1.0 UPDATED=2025-08-13
@@ -58,7 +59,7 @@ VERSION=v1.0 UPDATED=2025-08-13
 ## E) Recordatorio
 “Nombrar solo tras resonar.” El altar escucha; la llave no obliga.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

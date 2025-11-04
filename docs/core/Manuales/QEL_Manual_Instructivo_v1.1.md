@@ -221,4 +221,4 @@ HASH(10): 7ca6494f4b
 
 - Entrada: LISTADOR/A96-250824/HERRAMIENTAS/v1.4 (r=Centro — *Manual Instructivo QEL v1.1 — Capa Ritual*)
 
-3a591c304f
+c528033ebb

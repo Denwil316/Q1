@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-11-04 00:18:51_
+_Generado: 2025-11-04 17:21:41_
 
 ```text
 .
@@ -68,6 +68,7 @@ _Generado: 2025-11-04 00:18:51_
 │   │   ├── QEL_Glosario_v1.4.md
 │   │   ├── QEL_Libro_Sombras.md
 │   │   ├── QEL_ListadoR_master_v1.0.md
+│   │   ├── QEL_ListadoR_master_v1.0.md.bak
 │   │   ├── QEL_MFH_v1.4.md
 │   │   ├── QEL_Manual_Operativo.md
 │   │   ├── QEL_SoT_Manifest_v0.8.json
@@ -146,6 +147,8 @@ _Generado: 2025-11-04 00:18:51_
 │       └── QEL_CueMachine_v1.0.txt
 ├── memory
 │   ├── archive
+│   │   ├── reports
+│   │   │   └── 250411
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3_completo.md
 │   │   ├── LaminaV_unificada_v1.0.md
@@ -189,6 +192,7 @@ _Generado: 2025-11-04 00:18:51_
 │   │   ├── QEL_Manual_Interpretacion_Sombras_v1.2.md
 │   │   ├── QEL_Manual_Lectura_VF_Tonalpohualli_v1.0.md
 │   │   ├── QEL_Manual_Operativo_historico.md
+│   │   ├── QEL_Manual_auditoria_v1.0
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v0.1.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.0.md
 │   │   ├── QEL_Matriz_Fonemica_Habilidades_v1.2.md
@@ -277,8 +281,11 @@ _Generado: 2025-11-04 00:18:51_
 │       ├── QEL_MotorQEL_Indice_DRAFT.md
 │       └── QEL_MotorQEL_Orbita_DRAFT.md
 ├── out
+│   ├── qel_sot_resolve_report.md
+│   ├── qel_sot_unclassified.csv
 │   ├── qel_trace_report.csv
-│   └── qel_trace_report.md
+│   ├── qel_trace_report.md
+│   └── qel_trace_run.json
 ├── pub
 │   ├── an
 │   │   ├── A81_Notas_Espontaneas_v0.1.md
@@ -313,6 +320,7 @@ _Generado: 2025-11-04 00:18:51_
 │   ├── qel_atlas_microreg.sh
 │   ├── qel_cuemachine_add.sh
 │   ├── qel_cuemachine_check.sh
+│   ├── qel_hash_canonicalize_ledger.sh
 │   ├── qel_indexer.py
 │   ├── qel_inject_anchors.py
 │   ├── qel_install_missing.ps1
@@ -325,6 +333,7 @@ _Generado: 2025-11-04 00:18:51_
 │   ├── qel_secret_init.sh
 │   ├── qel_session_finalize.sh
 │   ├── qel_session_new.sh
+│   ├── qel_sot_resolve.sh
 │   ├── qel_trace_audit.sh
 │   ├── qel_trace_autofix.sh
 │   ├── qel_vcalc.sh
@@ -354,5 +363,5 @@ _Generado: 2025-11-04 00:18:51_
 ├── qel_bootstrap_wsl.sh
 └── yq.1
 
-49 directories, 301 files
+51 directories, 308 files
 ```

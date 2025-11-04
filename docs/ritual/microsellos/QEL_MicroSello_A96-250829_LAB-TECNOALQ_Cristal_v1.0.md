@@ -70,4 +70,4 @@ Estado: CRISTALIZADO · Modo: Centro · Cierre: SIL→UM→Ə
 
 HASH(10): 5d341d185c
 
-c79be9722d
+714d48bbaf

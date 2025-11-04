@@ -1,3 +1,4 @@
+SoT=RITUAL/MICROSELLO
 [QEL::ECO[96]::RECALL A96-250819-PREH-NAV-MICRO-CIERRE]
 SeedI=PREH-NAV::M1
 SOT=PREH-NAV/v0.3 TARGET=cierre|micro-sello|relajacion
@@ -14,7 +15,7 @@ fs:
   triada: "EÍA(.70)-UM(.15)-SIL(.15)"
 mantra: "El orden de la Biblioteca subyace en lo Sagrado"
 veredicto: CRISTALIZA
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

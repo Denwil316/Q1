@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 
 # QEL · SoT Study Guide · v1.0
 > Compilado: 2025-08-13 16:44:51 CST
@@ -35,8 +36,10 @@ Orientar a una persona (o a ti en futuro) para estudiar y comprender el **SoT** 
 - [ ] Conozco el criterio de **promoción** (Cristaliza) sin crear archivos de más.
 - [ ] Puedo leer el **Listado R** para saber qué cambió y por qué.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
 5a3c70e2fa
+
+da39a3ee5e

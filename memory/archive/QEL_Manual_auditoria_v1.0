@@ -1,0 +1,290 @@
+# Manual de Auditoría QEL · Flujo completo (v1.0)
+
+> **Propósito**: Establecer un flujo claro, repetible y humano‑legible para **auditar, corregir y consolidar** la trazabilidad de artefactos QEL (Markdown y afines), integrando ListadoR, Atlas, PREH‑NAV y sellado con HASH(10).
+>
+> **Alcance**: Repositorio `codex` y subárboles relacionados.
+>
+> **Roles**: Tejera (tejido), Jardinera (orden), Geómetra (estructura), Curadora (consistencia), Árbitra (cierre).
+
+---
+
+## 0) Conceptos base
+
+- **Artefacto**: Documento versionado (p. ej., `.md`) con front‑matter mínimo y metadatos QEL (SeedI, SoT, Version, Updated, CUE, HASH(10)).
+- **ListadoR**: Registro maestro humano‑legible que **refiere** a artefactos, con línea(s) de contexto y metadatos adyacentes.
+- **Atlas (JSONL)**: Micro‑registro estructurado por artefacto (`atlas_microreg_v1.0.jsonl`).
+- **Exposición pública**: Copia de artefactos en `apps/preh-nav-m1/public/docs` (para PREH‑NAV).
+- **HASH(10)**: Sello canónico de 10 hex en **última línea** del archivo. Lo garantiza `qel_promote_mac.sh` (y autofix cuando procede).
+
+---
+
+## 1) Flujo de trabajo (visión general)
+
+```
+[Preparación] → [Auditoría] → [Análisis de reporte] → [Autofix seguro]
+                → [Resolución de SoT] → [Promoción + Atlas] → [Finalización] → [Re‑auditoría]
+```
+
+**Orden recomendado (alto nivel):**
+1. **Preparar entorno** (opcional): `qel_verify_env.sh`.
+2. **Auditar**: `qel_trace_audit.sh` (dry‑run). Genera `out/qel_trace_report.csv` + `out/qel_trace_report.md` (apéndice con sello de tiempo).
+3. **Leer reporte**: Priorizar E1/E12/E11/E2 → luego E8/E9/E6/E7.
+4. **Autofix** (cuando proceda): `qel_trace_autofix.sh` (dry‑run → aplicar con `APPLY=1`).
+5. **Resolver SoT** (cuando haya `SoT=UNSET`): `qel_sot_resolve.sh` (heurística y/o fuentes autorizadas).
+6. **Promover + sellar**: `qel_promote_mac.sh` (HASH(10) canónico, ListadoR, copia a `public/docs`).
+7. **Atlas**: `qel_atlas_microreg.sh` (línea JSONL por artefacto).
+8. **Finalizar sesión**: `qel_session_finalize.sh` (VF.PRIMA, MicroSello, Diario, ListadoR, manifests).
+9. **Re‑auditar**: `qel_trace_audit.sh` para confirmar **cero** E1/E2/E11/E12 y mínimos E8/E9/E6.
+
+> **Tip**: Trabaja en **ramas** (`PreH` o feature) y confirma cada fase con commits pequeños.
+
+---
+
+## 2) Scripts y responsabilidades
+
+| Script | Objetivo | Entrada clave | Salida/efecto | Notas |
+|---|---|---|---|---|
+| `qel_verify_env.sh` | Verifica binarios / dependencias | — | Mensajes de verificación | Opcional pero útil en máquinas nuevas. |
+| `qel_trace_audit.sh` | Audita trazabilidad (E1–E12) con progreso y múltiples raíces | `DOCS_DIRS`, `EXCLUDE_DIRS`, `INCLUDE_EXT`, `LISTADOR`, `ATLAS_JSONL`, `CHECK_PUBLIC` | `out/qel_trace_report.csv` y **apéndice** en `out/qel_trace_report.md` | Evita `apps/*/public/docs` para no duplicar; imprime ETA. |
+| `qel_trace_autofix.sh` | Corrige **mínimos seguros** (front‑matter vacío, CUE faltante si se puede derivar, HASH(10) faltante) | `APPLY=1` para aplicar | Archivos modificados + diff en dry‑run | Nunca pisa contenido rico; respeta SoT existente. |
+| `qel_sot_resolve.sh` | Resuelve `SoT=UNSET` con **fuentes autorizadas** | Fuentes (ver §4) | Actualiza SoT y normaliza canónico | Ejecutar tras auditoría y (si aplica) autofix. |
+| `qel_promote_mac.sh` | Promueve artefactos y garantiza **HASH(10)** canónico | Artefacto(s) | HASH(10) en EOF; actualiza ListadoR; copia a `public/docs`; commit | Seed‑aware; respeta política `QEL_SEED_POLICY`. |
+| `qel_atlas_microreg.sh` | Registra entrada Atlas (JSONL) | `--kind`, `--file`, `--title`, etc. | Línea JSONL en `docs/core/atlas_microreg_v1.0.jsonl` | Usa HASH10 si está o lo calcula. |
+| `qel_session_finalize.sh` | Cierre ritual/operativo de sesión | flags `--fecha/--seed/--cue/--vf` | VF.PRIMA, MicroSello, Diario, ListadoR; commits | Con manifiestos para PREH‑NAV. |
+
+---
+
+## 3) Errores (E1–E12) y cómo atacarlos
+
+**Prioridad de corrección:** E1 → E12 → E11 → E2 → E8 → E9 → E6 → E7 → (E10 si se activa)
+
+| Código | Qué detecta | Causas típicas | Corrección recomendada |
+|---|---|---|---|
+| **E1** | Front‑matter incompleto (SeedI/SoT/Version/Updated) | Artefactos históricos, se generaron sin plantilla | Rellenar con `qel_trace_autofix.sh` (mínimo) + revisión humana; luego `promote`. |
+| **E12** | CUE faltante `[QEL::ECO[..]::RECALL ...]` | Documento no tejido por Telar | Si existe ECO/SeedI contexto, `autofix` puede proponerlo; si no, completar manualmente. |
+| **E11** | SoT no canónico | Espacios o minúsculas, o `UNSET` | Normalizar: `QEL`, `PROMOCION/v1.0`, `ATLAS/MICROREG/v1.0`, etc. (ver §4). |
+| **E2** | Falta HASH(10) en EOF o mal formateado | Artefactos sin `promote` | Promover o ejecutar `autofix` para emitir HASH(10); luego consolidar con `promote`. |
+| **E8** | No aparece en ListadoR | Artefacto nuevo u órfano | Añadir bloque en ListadoR (lo hace `promote`); si no, registrar manualmente. |
+| **E9** | No aparece en Atlas | Microregistro no emitido | Ejecutar `qel_atlas_microreg.sh` con metadatos mínimos. |
+| **E6** | Ruta en ListadoR ≠ ruta real | Movido sin actualizar ListadoR | Corregir la ruta en ListadoR o mover el archivo a la ruta registrada. |
+| **E7** | `Updated` inferior al máximo histórico | Retroceso de versión o fecha | Ajustar `Updated` o consolidar entrada en ListadoR. |
+| **E10** | No expuesto en `public/docs` (si `CHECK_PUBLIC=1`) | Falta copia pública | `promote` la crea; o copiar explícitamente. |
+
+> **Criterio**: Siempre preferir **`promote`** para sellar y alinear ListadoR + copia pública. `autofix` es para desbloquear auditorías y homogeneizar mínimos.
+
+---
+
+## 4) Resolución de SoT (cuando hay `UNSET`)
+
+**Orden de fuentes (de mayor a menor autoridad):**
+1. **Bloques del ListadoR** cerca del basename → extraer `SoT=` si existe.
+2. **CUE** del artefacto (cadena RECALL) → puede implicar SoT de la capa.
+3. **Manifiestos PREH‑NAV** (`QEL_SoT_Manifest_*`) → mapa SoT por ruta.
+4. **Heurística de ruta** → p. ej., `docs/ritual/vf/*` ⇒ `SEAL/v1.0` o `VF_PRIMA/v1.0` (según convención vigente).
+5. **Atlas** (si ya existiera la línea del artefacto) → campo `SoT`.
+
+**Normalización canónica**:
+- Mayúsculas + separadores seguros (`/`, `_`, `-`, `.`) → `^[A-Z0-9_./-]+$`.
+- Ejemplos: `QEL`, `PROMOCION/v1.0`, `ATLAS/MICROREG/v1.0`, `RITUAL/SEAL/v1.0`, `CARTAS/LLPE/v1.4`.
+
+**Herramienta**: `qel_sot_resolve.sh` (propuesto) deberá:
+- Leer CSV de auditoría → filtrar filas con `SoT=UNSET` o no canónico.
+- Intentar fuentes 1→5; en dry‑run muestra tabla “file → SoT_sugerido (fuente)”.
+- Con `APPLY=1` escribe `SoT=` en el front‑matter (respetando formato QEL) y agrega nota en el diff.
+
+> **Nota**: Si dos fuentes discrepan, gana 1>2>3>4>5 y se anota “conflicto” en log.
+
+---
+
+## 5) Parámetros y configuración
+
+- `DOCS_DIRS`: Raíces a auditar (separadas por `:` o espacio). Ej.: `docs:memory:README:pub`.
+- `EXCLUDE_DIRS`: Directorios a excluir (separados por `:` o espacio). Ej.: `.git:node_modules:scripts:tools:out:apps/*/src`.
+- `INCLUDE_EXT`: Extensiones a incluir. Por defecto `md,MD`.
+- `LISTADOR`: Ruta al ListadoR maestro. Por defecto `docs/core/QEL_ListadoR_master_v1.0.md`.
+- `ATLAS_JSONL`: Ruta a Atlas. Por defecto `docs/core/atlas_microreg_v1.0.jsonl`.
+- `PUBLIC_DIR`: Carpeta pública PREH‑NAV. Por defecto `apps/preh-nav-m1/public/docs`.
+- `CHECK_PUBLIC`: `0`/`1` para activar E10.
+- `OUT_DIR`, `OUT_CSV`, `OUT_MD`: Carpeta y salidas del reporte.
+- `TOP_N`: Límite de la tabla “Top archivos con más errores”.
+- `PROGRESS_EVERY`: Frecuencia de actualización de progreso (en archivos escaneados).
+
+**Ejemplos de ejecución**:
+```bash
+# Auditoría estándar (múltiples raíces, con progreso):
+bash scripts/qel_trace_audit.sh
+
+# Activar revisión de exposición pública (E10):
+CHECK_PUBLIC=1 bash scripts/qel_trace_audit.sh
+
+# Auditoría centrada sólo en docs/ y memory/ con exclusiones custom:
+DOCS_DIRS="docs memory" EXCLUDE_DIRS=".git node_modules scripts tools out" bash scripts/qel_trace_audit.sh
+```
+
+---
+
+## 6) Interpretación de reportes
+
+### 6.1 CSV (`out/qel_trace_report.csv`)
+Campos: `file,SeedI,SoT,Version,Updated,HASH10,errors`.
+- `errors` es lista separada por `;` (p. ej., `E1;E12;E2`).
+- Útil para **filtrar** y alimentar scripts de resolución (`sot_resolve`, batch promote, etc.).
+
+### 6.2 Markdown (`out/qel_trace_report.md`)
+- **Apéndices** por corrida con sello de tiempo (`## Auditoría — YYYY-MM-DD HH:MM:SS TZ`).
+- Incluye métricas **TC/TI/TT/UH** y **IT** global.
+- Tabla “Top archivos” para priorizar intervención.
+
+---
+
+## 7) Corrección asistida (Autofix seguro)
+
+**Principios**:
+- No pisar contenido rico.
+- Completar mínimos (E1, E12, E2) cuando pueden inferirse sin ambigüedad.
+- Dejar **marcas** en diffs para revisión humana.
+
+**Secuencia**:
+```bash
+# Vista previa (dry-run)
+bash scripts/qel_trace_autofix.sh
+
+# Aplicar cambios mínimos
+APPLY=1 bash scripts/qel_trace_autofix.sh
+```
+Resultados típicos:
+- Inserta bloque mínimo de front‑matter (`SeedI/SoT/Version/Updated`) si estaba vacío.
+- Emite CUE cuando se puede derivar (o deja TODO si no).
+- Calcula y coloca `HASH(10)` en EOF si faltaba.
+
+> **Sello canónico**: Aunque el autofix puede generar HASH(10), la **promoción** es quien garantiza el **formato canónico** final y actualiza ListadoR/public/docs.
+
+---
+
+## 8) Promoción, Atlas y Finalización
+
+1) **Promoción** — `qel_promote_mac.sh`:
+   - Deriva/valida **SeedI**, ajusta **HASH(10)** canónico en EOF.
+   - Actualiza **ListadoR** con metadatos y ruta exacta.
+   - Copia artefacto a **`public/docs`** (exposición PREH‑NAV).
+   - Commit + push (rama según estrategia).
+
+2) **Atlas** — `qel_atlas_microreg.sh`:
+   - Añade línea al `atlas_microreg_v1.0.jsonl` con `KIND, FILE, TITLE, HASH10, ...`.
+   - Útil para búsquedas y paneles.
+
+3) **Finalización** — `qel_session_finalize.sh`:
+   - Genera **VF.PRIMA**, **MicroSello**, **Diario**, actualiza **ListadoR** y manifiestos.
+   - Cierre ritual y operativo de la sesión.
+
+---
+
+## 9) Estrategia de commits y seguridad
+
+- Siempre en ramas de trabajo (`feature/auditoria-YYYYMMDD`).
+- Commits pequeños por lote de correcciones (p. ej., “autofix E1/E2 lote‑1”).
+- `git diff` antes de aplicar; `git tag` en hitos.
+- Respaldo previo si se toca una gran cantidad de archivos.
+
+**Plantilla de commit**:
+```
+Auditoría QEL: autofix mínimos + promoción parcial
+
+- E1/E2/E12 corregidos en N artefactos
+- SoT normalizado (X casos)
+- ListadoR actualizado (Y entradas)
+- Atlas microreg: Z líneas
+```
+
+---
+
+## 10) FAQ y problemas comunes
+
+**P: `find: docs:memory:README:pub: No such file or directory`**
+> R: Ocurre si `find` trata `DOCS_DIRS` como **una** sola ruta. Usa el generador `find_target_files` (ya integrado) o exporta `DOCS_DIRS` como *espacios*: `export DOCS_DIRS="docs memory README pub"`.
+
+**P: El `.md` del reporte se sobreescribe**
+> R: La versión actual añade apéndices con sello de tiempo y solo crea el título si el archivo está vacío.
+
+**P: Mucho `SoT=UNSET`**
+> R: Corre `qel_sot_resolve.sh` (ver §4). Si persisten dudas, decide por ListadoR (autoridad) y registra conflictos en el commit.
+
+**P: `E2` en muchos archivos**
+> R: Promociona artefactos (lo canónico) o usa `autofix` para desbloquear, y luego **promueve** para sellar definitivamente.
+
+**P: Rutas con caracteres raros/UTF‑8**
+> R: La auditoría trabaja `-print0`; cuida el entorno `LC_ALL=C` y evita editar rutas con tildes/espacios sin comillas.
+
+---
+
+## 11) Checklist operativo
+
+- [ ] `qel_trace_audit.sh` (dry‑run) → leer **Top errores**.
+- [ ] `qel_trace_autofix.sh` (dry‑run → APPLY=1) para E1/E2/E12 mínimos.
+- [ ] `qel_sot_resolve.sh` para `SoT=UNSET` y canónicos.
+- [ ] `qel_promote_mac.sh` en artefactos corregidos (HASH canónico + ListadoR + public/docs).
+- [ ] `qel_atlas_microreg.sh` para registrar en Atlas.
+- [ ] `qel_session_finalize.sh` (selos, diarios, manifestos).
+- [ ] `qel_trace_audit.sh` (re‑auditoría) → confirmar saneamiento.
+
+---
+
+## 12) Glosario mínimo
+
+- **SeedI**: Identificador semilla de la eco‑línea (p. ej., `A96-250824`).
+- **SoT** (*System of Type*) : Clasificación canónica del artefacto (capas/procesos QEL).
+- **CUE**: Línea `[QEL::ECO[xx]::RECALL ...]` que ancla el artefacto al eco‑evento.
+- **ListadoR**: Índice maestro humano‑legible de artefactos y metadatos.
+- **Atlas**: Registro estructurado por artefacto en JSONL.
+- **HASH(10)**: Sello de integridad (10 hex) en la **última** línea del archivo.
+- **PREH‑NAV**: Front‑end de consulta (carpeta pública `public/docs`).
+
+---
+
+## 13) Anexos
+
+### 13.1 Variables de entorno rápidas
+```bash
+# Raíces y exclusiones
+export DOCS_DIRS="docs memory README pub"
+export EXCLUDE_DIRS=".git node_modules scripts tools out apps/*/src apps/*/scripts apps/*/dist apps/*/build"
+export INCLUDE_EXT="md,MD"
+
+# Maestros
+export LISTADOR="docs/core/QEL_ListadoR_master_v1.0.md"
+export ATLAS_JSONL="docs/core/atlas_microreg_v1.0.jsonl"
+
+# Auditoría visual
+export PROGRESS_EVERY=200
+```
+
+### 13.2 Secuencia de comandos típica
+```bash
+# 1) Auditoría
+bash scripts/qel_trace_audit.sh
+
+# 2) Autofix mínimos
+bash scripts/qel_trace_autofix.sh           # dry-run
+APPLY=1 bash scripts/qel_trace_autofix.sh   # aplicar
+
+# 3) Resolver SoT pendientes
+bash scripts/qel_sot_resolve.sh             # dry-run
+APPLY=1 bash scripts/qel_sot_resolve.sh     # aplicar
+
+# 4) Promoción y Atlas
+bash scripts/qel_promote_mac.sh --file <artefacto>
+bash scripts/qel_atlas_microreg.sh --kind DOC --file <artefacto> --title "..."
+
+# 5) Finalización
+bash scripts/qel_session_finalize.sh --fecha "YYMMDD" --seed "A96-YYMMDD" --cue "[...]" --vf "..."
+
+# 6) Re-auditoría
+bash scripts/qel_trace_audit.sh
+```
+
+---
+
+> **Mantén este manual junto a los scripts** y actualízalo cuando cambie la política de SeedI, la forma del HASH(10) o la taxonomía de SoT.
+
+*QEL · Telar vivo. Auditoría como práctica de claridad.*
+

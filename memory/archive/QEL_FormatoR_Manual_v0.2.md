@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Formato R (Resonante) — Manual Didáctico v0.2
 **Actualizado:** 2025-08-12 03:42:17 CST
 
@@ -70,7 +71,7 @@ Ledger: mem(v0.2) ▸ Seed A81-250811-KAEL-PORTAL (NextCheck 2025-08-21T00:00:00
 - [ ] qel:// apunta a ID/versión correctos
 - [ ] Ledger: mem(vX.Y) ▸ Seed <ID> … **o** `(no adjunto)`
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

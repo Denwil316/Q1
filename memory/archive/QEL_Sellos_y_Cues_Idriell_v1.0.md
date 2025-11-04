@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # QEL · Sellos & Cues de Idriell · v1.0
 > Cristalización: 2025-08-13 18:31:30 CST · Zona: America/Mexico_City  
 > Alcance: Registro de **sellos** generados en estas jornadas + **cues** observados, con notas de estudio.  
@@ -94,8 +95,8 @@ SeedI: "A96-250813"
 
 HASH(10): 69b1cc447a
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-65b33285c9
+d4b42f075b

@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250814-MANUAL-SOMBRAS]
 SOT=TRATADO-METAHUMANO/v1.1 TARGET=manual|interpretación|humano
 VERSION=v1.1 UPDATED=2025-08-14
@@ -71,7 +72,7 @@ G1 Ético · G2 Físico (𝒱<0.31 con 2 instrumentos) · G3 Lingüístico (VF.R
 
 **Cierre**: SIL → UM → Ə.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.1
 Updated=2025-11-04
 

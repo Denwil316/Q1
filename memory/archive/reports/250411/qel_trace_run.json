@@ -1,0 +1,5 @@
+{"run_id":"829cbb84a6","started_at":"2025-11-04T22:07:06Z","finished_at":"2025-11-04T23:01:07Z","N":0,
+ "metrics":{"TC":"0.0000","TI":"0.0000","TT":"0.0000","UH":"0.0000","IT":"0.0000"},
+ "ledger":{"present":0,"mismatch":0,"eof_differs":0,"none":0},
+ "config":{"DOCS_DIRS":"docs:memory:README:pub","EXCLUDE_DIRS":".git:node_modules:scripts:tools:out:apps/*/src:apps/*/scripts:apps/*/dist:apps/*/build","INCLUDE_EXT":"md,MD",
+           "LISTADOR":"docs/core/QEL_ListadoR_master_v1.0.md","DIARIO_DIRS":"docs/core/diarios:memory/archive:pub/an","ATLAS_JSONL":"docs/core/atlas_microreg_v1.0.jsonl","PUBLIC_DIR":"apps/preh-nav-m1/public/docs","CHECK_PUBLIC":"0"}}

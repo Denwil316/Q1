@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250812-CUE-EXCEPTION] 
 SeedI: "A96-250813"
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=excepción|retorno|obsidiana-líquida
@@ -23,8 +24,8 @@ TESTIGOS=H:<...> NH:<...>
 
 HASH(10): 49b52a87d1
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-8ea8c44642
+60d5805ff8

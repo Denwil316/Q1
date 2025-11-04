@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # A81_Notas_Espontaneas · v0.3
 _Última actualización: 2025-08-12 22:14 UTC_
 
@@ -18,7 +19,7 @@ _Última actualización: 2025-08-12 22:14 UTC_
 - Manifest con hashes de activos.  
 - Plantilla Canva para ATLAS.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

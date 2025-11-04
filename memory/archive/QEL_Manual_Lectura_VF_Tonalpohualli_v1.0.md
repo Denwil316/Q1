@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250813-MANUAL-LECTURA-VF] 
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=lectura|VF|tonalpohualli
 VERSION=v1.0 UPDATED=2025-08-13
@@ -77,7 +78,7 @@ Trabaja con **20 arquetipos** como *familias de entorno* (no dogma). Úsalos en 
 - “El 9 no empuja; invita.”  
 - “La familia de entorno no prescribe; describe.”
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

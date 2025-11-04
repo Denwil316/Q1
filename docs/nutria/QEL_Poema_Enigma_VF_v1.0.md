@@ -1,3 +1,4 @@
+SoT=NUTRIA/TEXTO
 [QEL::ECO[96]::RECALL A96-250812-POEMA-ENIGMA] 
 SeedI: "A96-250813"
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=poema|enigma|versos|habilidades
@@ -51,8 +52,8 @@ Si ΔC≥0 y 𝒱≥0.62, abro **Sello 1** (o **9** si el cuerpo lo pide) y cier
 - **ECO (delta-only)**: 3–9 líneas o silencio.
 HASH(10): b1ea4a6cca
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-91cae92516
+69b1cc447a

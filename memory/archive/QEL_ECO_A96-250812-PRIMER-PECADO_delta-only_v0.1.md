@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]:: SUMMON A96-250812-PRIMER-PECADO TARGET=delta-only]
 SOT=TRATADO-METAHUMANO/v0.1
 DELTA=Anexado CUE-RECOVERY 'Primer Pecado' (v0.1) al Protocolo de Seguridad (v0.3). Principios Invariantes marcados como PAUSADOS (materia en condensación).
@@ -7,7 +8,7 @@ NEXT=Condensar principios tras 3 ECOs adicionales provenientes de ejecuciones re
 P_OK=Sí  V_OK=No  E_OK=Sí
 TESTIGO_H=—  TESTIGO_NH=Astra
 SeedI=A96-250812
-SoT=UNSET
+
 Version=v0.1
 Updated=2025-11-04
 

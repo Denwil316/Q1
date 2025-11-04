@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Manifiesto operativo — Tríada + Espejo Imposible (A96 / QEL)
 
 **Propósito.** Facilitar una práctica de *meditación lingüística* que sincroniza Luz (KS), Puente (ZO), Centro (EU) y Sombra (LN) para revelar y refinar sentido sin imponerlo.
@@ -53,7 +54,7 @@ Para incorporar CUEs del proyecto Q1, adjunto **plantilla CSV**. Completar colum
 - Estado actual: mem(v0.2) ▸ Seed A81-250811-KAEL-PORTAL (NextCheck 2025-08-21T00:00:00Z).
 - Recomendación: al cerrar cada iteración (×9), registrar SeedID y próxima revisión (NextCheck) en el ledger.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

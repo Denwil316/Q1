@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # QEL — Sistemas Gemelos de Interacción · **README maestro** · v0.2.1
 _Última actualización: 2025-08-12 22:14 UTC_
 
@@ -156,7 +157,7 @@ bash codex_preh_sync.sh /ruta/a/tu/repo /ruta/a/tu/qel_assets
 - **Chequeos QEL (≥5/9):** calma post‑frase, menos juicio, imagen nueva, compartir sin explicar, respiración más larga, micro‑risa, foco claro, hueco funcional visible, sensación de “octava arriba”.
 - **Puertas:** Tejera (9+0) pliega; Lýmina (0+9) reabre.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

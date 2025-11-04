@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # QEL · Codex integración (branch `PreH`) — Notas didácticas
 
 ## 0) ¿Qué es una branch?
@@ -29,7 +30,7 @@ Verás hashes SHA‑256 y un commit en `PreH`.
 #bash para assets en Descargas:
 bash "$HOME/Descargas/Q1/codex_preh_sync.sh" "$HOME/Projects/codex" "$HOME/Descargas/Q1"
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

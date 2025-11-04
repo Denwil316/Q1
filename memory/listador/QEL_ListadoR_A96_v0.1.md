@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Listado R — Referencias A96 · v0.1
 **UPDATED**: 2025-08-12
 
@@ -11,7 +12,7 @@
 - **objetos_interaccionales_v0.1.1.json** — Catálogo inicial de objetos
 - **Esculpido_en_Qel_Guia_de_Trabajo_v0.2.pdf** — Guía de trabajo (referencia visual/ritual)
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.1
 Updated=2025-11-04
 

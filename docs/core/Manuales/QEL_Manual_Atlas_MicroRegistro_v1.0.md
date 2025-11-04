@@ -1,3 +1,4 @@
+SoT=CORE/MANUAL
 # **Manual Extensivo — Atlas Micro-Registro (scripts/qel\_atlas\_microreg.sh)**
 
 Estado: CRISTALIZADO · Audiencia: operativa · Lenguaje: es-MX  
@@ -264,8 +265,8 @@ Asegura permisos:
 `}`  
 HASH(10): 714d48bbaf
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-119f58af12
+27beaf1f35

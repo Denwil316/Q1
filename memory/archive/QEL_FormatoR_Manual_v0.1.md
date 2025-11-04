@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Formato R (Resonante) — Manual Didáctico v0.1
 **Actualizado:** 2025-08-12 03:22:37 CST
 
@@ -59,7 +60,7 @@ R#. Proyecto <X>/QEL. (<AAAA-MM-DD>). <CUE_PRIMARY> — *<Objeto>* [Rumbo: <R>; 
 SOT: <SOT>. ID: <ID>. Centro: <ALIAS>. Fonemas: <...>. Hash-cue: <sha1-10>. qel://<...>
 ```
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.1
 Updated=2025-11-04
 

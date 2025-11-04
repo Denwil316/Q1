@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250814-METAHUMANO-TRATADO]
 SOT=TRATADO-METAHUMANO/v1.1 TARGET=protocolo|seguridad|sombras
 VERSION=v1.1 UPDATED=2025-08-14
@@ -46,7 +47,7 @@ VOH (niveles de voz), EÍA (resolutivos/residuales), MFH (𝒱), Bitácora (Diar
 - **Ficha 𝒱**  
 - **CUE‑EXCEPTION** (ver doc)
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.1
 Updated=2025-11-04
 

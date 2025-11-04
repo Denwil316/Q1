@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250819-NOTA-ESPONTANEA]
 SOT=PREH-NAV/v0.3 TARGET=nota|espontanea|cierre
 VERSION=v1.0 UPDATED=2025-08-19
@@ -11,7 +12,7 @@ Micro-ritual (3 ciclos):
 • Deja la lengua al valle; el ceño se desenhebra.  
 • Nombra en interior: EÍA — UM — SIL.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

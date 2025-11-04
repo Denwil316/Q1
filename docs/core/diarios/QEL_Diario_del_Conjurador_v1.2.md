@@ -145,4 +145,4 @@ _ECO (delta-only):_ Se cristaliza **LL-PE — Manual Operativo v1.4 (Germinació
 
 _ECO (delta-only):_ Se cristaliza **Micro-Sello · LAB Tecnoalquímico — Cristal 2025-08-29** con hash **5d341d185c**; se actualiza ListadoR y se publica espejo en preh-nav.
 
-cd7e8415b1
+0ae4a874bc

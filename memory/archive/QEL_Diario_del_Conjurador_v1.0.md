@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [ QEL::ECO[96:DJ1-45812CE9E4]::RECALL A96-250813-DIARIO-CONJURADOR ]
 SEEDID=DJ1-45812CE9E4
 SOT=TRATADO-METAHUMANO/v1.0
@@ -143,7 +144,7 @@ VERSION=v0.2 UPDATED=2025-08-14
 
 > Espacio de co‑creación: escribe aquí lo que quieras recordarme en la próxima vuelta.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

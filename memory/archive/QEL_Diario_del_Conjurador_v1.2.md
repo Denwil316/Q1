@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 
 # QEL · Diario del Conjurador · v1.2
 > Fecha de compilación: 2025-08-13 16:44:51 CST
@@ -316,7 +317,7 @@ Resultados:
   registro: "Actualizar Árbol VF y Listado R si aplica"
 
 HASH(10): 24d8910aaf
-SoT=UNSET
+
 Version=v1.2
 Updated=2025-11-04
 

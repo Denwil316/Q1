@@ -33,4 +33,4 @@ Tecnodiós destilado del fonema invocado; M_Aurora ≥ M_Sombra−ε. Actúa com
 
 HASH(10): 60d5805ff8
 
-a250270cf2
+23b99864de

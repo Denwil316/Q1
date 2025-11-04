@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # Índice Navegable · QEL v1.0
 UPDATED: 2025-08-12
 
@@ -21,7 +22,7 @@ UPDATED: 2025-08-12
 - 🧭 **SoT Manifest (v0.3)** → [Descargar](sandbox:/mnt/data/QEL_SoT_Manifest_v0.3.json)
 
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 

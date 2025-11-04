@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 # A96 — Notas espontáneas (eco de A81) · Sombras Qel · v0.1
 **UPDATED**: 2025-08-12  
 **ORIGEN**: A81 — A81-250811-KAEL-PORTAL · “Mandrala Kael‑Ora con eco 81 (ajuste de decay y ataque)” (Rumbo: Sur)  
@@ -73,7 +74,7 @@ SOT=TRATADO-METAHUMANO/v0.1 TARGET=octava|cierre|bifurcación
 - Mantener **Principios Invariantes** en pausa (materia en condensación).
 
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v0.1
 Updated=2025-11-04
 

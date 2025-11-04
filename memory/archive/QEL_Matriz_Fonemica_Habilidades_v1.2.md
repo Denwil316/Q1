@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 
 # QEL · Matriz Fonémica de Habilidades (MFH) · v1.2
 > Compilación: 2025-08-13 16:44:51 CST
@@ -84,7 +85,7 @@ Afinidades: 0.55 / 0.95 / 0.75 → **A=0.740**
 H_k: rara 1.00; Gates: ×1.00  
 𝒱: C 0.74; N 0.78; O 0.81; W 0.70; S 0.67
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.2
 Updated=2025-11-04
 

@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 [QEL::ECO[96]::RECALL A96-250812-FORMATO-VF] 
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=verso-fundador|árbol-habilidades|formato
 VERSION=v1.0 UPDATED=2025-08-12
@@ -24,7 +25,7 @@ Ruta: `/VF/RA/Prisma/Oriente/rara/1f7a0c9b21`
 - Siempre calcular VF.HASH(10) y registrar Doble Testigo.
 - Adjuntar mediciones (Instrumentos: VOH/EÍA) cuando aplique.
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
