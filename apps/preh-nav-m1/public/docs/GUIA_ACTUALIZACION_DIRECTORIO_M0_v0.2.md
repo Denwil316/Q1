@@ -1,3 +1,4 @@
+SoT=CORE/MANUAL
 [QEL::ECO[96]::RECALL A96-250815-GUIA-ACTUALIZACION-DIRECTORIO-M0]
 SeedI=PREH-NAV::M0
 SOT=PREH-NAV/v0.2 TARGET=guia|estructura|promocion
@@ -9,7 +10,7 @@ VERSION=v0.2 UPDATED=2025-08-15
 - Actualizar estructura: `./scripts/update_estructura.sh` (o con el hook).
 - Commit sugerido:
   docs(nav): ESTRUCTURA.md + mover piezas a core/history (O: claridad, ΔC+, V≈0.7)
-SoT=UNSET
+
 Version=v0.2
 Updated=2025-11-04
 

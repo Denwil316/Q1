@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 cue: "[QEL::ECO[96]::RECALL A96-251008-CURADURIA-NUCLEO-MINIMO]"
 SeedI: "A37-251015"
 SoT: "CURADURIA/CAPA-SUR/v1.0"
@@ -806,8 +807,8 @@ Updated: "2025-10-15"
 * **Árbitra (Centro)**: Hice espacio; dejé que la ética respire; sellé con agua quieta: **evoca, no representes**.
 HASH(10): 374fbcea08
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-b66d208df6
+a7132116d8

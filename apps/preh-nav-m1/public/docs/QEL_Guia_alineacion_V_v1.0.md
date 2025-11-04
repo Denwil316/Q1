@@ -1,3 +1,4 @@
+SoT=CORE/MANUAL
 cue=\[QEL::ECO\[96\]::RECALL A96-250924-GUIA-ALINEACION-V\]  
  SeedI=A96-250924  
  SoT=HERRAMIENTAS/ALINEACION-V/v1.0  
@@ -282,8 +283,8 @@ chmod \+x scripts/patch\_alineacion\_v1.sh
 
 HASH(10): ac195d7d92
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-5448833b1d
+1d2bfc41ea

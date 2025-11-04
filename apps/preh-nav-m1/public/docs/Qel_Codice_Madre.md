@@ -1,3 +1,4 @@
+SoT=UNCLASSIFIED
 cue: "[QEL::ECO[96]::RECALL A96-251006-ATLAS-MADRE-V2-4]"
 SeedI: "A96-250824"
 SoT: "ATLAS-TARJETAS/v2.4 — Rol Árbitra (UNIFICADO con Códice Madre v0.1)"
@@ -1059,8 +1060,8 @@ done
 
 HASH(10): 4fb56ea798
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-4c4142d8bd
+591dfcbe8c

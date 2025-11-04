@@ -1,3 +1,4 @@
+SoT=CORE/INDICE
 cue: "[QEL::ECO[96]::RECALL A96-251015-INDEX-SEMILLAS]"
 SeedI: ""A37-251015""
 SoT: "INDICES/SEMILLAS/v1.0"
@@ -52,8 +53,8 @@ HASH(10): 5db5997ea7
 - »wrapper → Atlas
 <!-- END:AUTO-SEEDS -->
 SeedI=A37-251015
-SoT=UNSET
+
 Version=v1.0
 Updated=2025-11-04
 
-8462468dd2
+7f60aa09d5
