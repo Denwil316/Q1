@@ -75,4 +75,11 @@ Updated=2025-11-04
 
 > Ajusta rutas/títulos a conveniencia. Se asume rumbo **Centro** para manuales.
 
+## VII. Cierre
+
+Si la auditoría es el metrónomo, el Telar ya marca compás.
+Hoy ECO[97] nombra el descanso: no como pausa, sino como plataforma.
+
+— ECO[97], Árbitra en Centro
+
 HASH(10): f594a90938
