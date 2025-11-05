@@ -12,36 +12,44 @@ if command -v jq >/dev/null 2>&1; then have_jq=1; fi
 
 # -------- util --------
 json_escape() {
-  # Escapa comillas/backslashes y controla saltos de línea simples
-  # Reemplaza \ con \\ y " con \"
-  printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g'
+  # Escapa \, " y controla saltos de línea/tabs/CR de forma portable
+  # (sin depender de sed multiline en BSD)
+  local s="${1-}"
+  s=${s//\\/\\\\}
+  s=${s//\"/\\\"}
+  s=${s//$'\n'/\\n}
+  s=${s//$'\r'/}
+  s=${s//$'\t'/\\t}
+  printf '%s' "$s"
 }
-
 trim() { printf '%s' "$1" | awk '{$1=$1;print}'; }
 
-csv_or_repeat_to_array() {
-  # Convierte lista "a,b,c" o valores repetidos en una lista JSON
-  # Uso: csv_or_repeat_to_array "${array_values[@]}"  (bash 3.2-friendly)
-  local tmp=()
+flatten_args_to_csv() {
+  # Junta argumentos (y valores CSV) en un solo CSV
+  local combined=""
   for item in "$@"; do
-    # Split por coma sin mapfile: usa awk para dividir
-    if [ -n "$item" ]; then
-      awk -v s="$item" 'BEGIN{n=split(s,a,","); for(i=1;i<=n;i++){print a[i];}}'
-    fi
-  done | while IFS= read -r val; do
-    val="$(trim "$val")"
-    [ -n "$val" ] && tmp+=("$val")
+    [ -n "$item" ] || continue
+    if [ -z "$combined" ]; then combined="$item"; else combined="$combined,$item"; fi
   done
+  printf '%s' "$combined"
+}
 
-  # Imprimir como JSON array
-  local first=1
-  printf '['
-  for v in "${tmp[@]:-}"; do
-    if [ $first -eq 0 ]; then printf ','; fi
-    printf '"%s"' "$(json_escape "$v")"
-    first=0
+to_json_array() {
+  # Convierte "a,b,c" + args repetidos → ["a","b","c"] (Bash 3.2-friendly)
+  local combined; combined="$(flatten_args_to_csv "$@")"
+  local arr=()
+  if [ -n "$combined" ]; then
+    IFS=',' read -r -a arr <<< "$combined"
+  fi
+  local out="[" first=1 v esc
+  for v in "${arr[@]:-}"; do
+    v="$(trim "$v")"
+    [ -n "$v" ] || continue
+    esc="$(json_escape "$v")"
+    if [ $first -eq 1 ]; then out="$out\"$esc\""; first=0; else out="$out,\"$esc\""; fi
   done
-  printf ']'
+  out="$out]"
+  printf '%s' "$out"
 }
 
 # -------- defaults/flags --------
@@ -82,11 +90,11 @@ Opciones:
   --from <session.json>      # prellenar desde JSON previo (usa jq si disponible)
 
   --fecha YYMMDD             # ej. 251020
-  --tema "…"                 
+  --tema "…"
   --intencion "…"
   --modo M0|M1|M2|M3
   --rumbo "N|S|E|O|Centro"   # múltiple como "N,S" → array
-  --tiempo <minutos>         
+  --tiempo <minutos>
   --refs "a,b,c"             # o repite --refs varias veces
   --veredicto "…"
 
@@ -139,25 +147,18 @@ done
 
 # -------- prefill desde --from (si jq) --------
 if [ -n "$FROM_FILE" ] && [ $have_jq -eq 1 ] && [ -f "$FROM_FILE" ]; then
-  # sólo completa si el destino aún está vacío
   FECHA="${FECHA:-"$(jq -r '.fecha // empty' "$FROM_FILE" 2>/dev/null || true)"}"
   TEMA="${TEMA:-"$(jq -r '.tema // empty' "$FROM_FILE" 2>/dev/null || true)"}"
   INTENCION="${INTENCION:-"$(jq -r '.intencion // empty' "$FROM_FILE" 2>/dev/null || true)"}"
   MODO="${MODO:-"$(jq -r '.modo // empty' "$FROM_FILE" 2>/dev/null || true)"}"
   RUMBO="${RUMBO:-"$(jq -r 'if (.rumbo|type=="array") then (join(",")) else .rumbo end // empty' "$FROM_FILE" 2>/dev/null || true)"}"
   TIEMPO="${TIEMPO:-"$(jq -r '.tiempo // empty' "$FROM_FILE" 2>/dev/null || true)"}"
-  # refs → lista CSV
   if [ ${#REF_FLAGS[@]} -eq 0 ]; then
-    mapfile -t _refs < <(jq -r '.referencias[]? // empty' "$FROM_FILE" 2>/dev/null || true)
-    for r in "${_refs[@]:-}"; do REF_FLAGS+=("$r"); done
+    while IFS= read -r _r; do [ -n "$_r" ] && REF_FLAGS+=("$_r"); done < <(jq -r '.referencias[]? // empty' "$FROM_FILE" 2>/dev/null || true)
   fi
   VEREDICTO="${VEREDICTO:-"$(jq -r '.veredicto // empty' "$FROM_FILE" 2>/dev/null || true)"}"
-  # resultados.*
-  mapfile -t _arts < <(jq -r '.resultados.artefactos[]? // empty' "$FROM_FILE" 2>/dev/null || true)
-  for p in "${_arts[@]:-}"; do ARTEFACTOS+=("$p"); done
-  mapfile -t _micros < <(jq -r '.resultados.micro_sellos[]? // empty' "$FROM_FILE" 2>/dev/null || true)
-  for m in "${_micros[@]:-}"; do MICROSELLOS+=("$m"); done
-  # meta.*
+  while IFS= read -r p; do [ -n "$p" ] && ARTEFACTOS+=("$p"); done < <(jq -r '.resultados.artefactos[]? // empty' "$FROM_FILE" 2>/dev/null || true)
+  while IFS= read -r m; do [ -n "$m" ] && MICROSELLOS+=("$m"); done < <(jq -r '.resultados.micro_sellos[]? // empty' "$FROM_FILE" 2>/dev/null || true)
   META_CUE="${META_CUE:-"$(jq -r '.meta.cue // empty' "$FROM_FILE" 2>/dev/null || true)"}"
   META_SEED="${META_SEED:-"$(jq -r '.meta.SeedI // empty' "$FROM_FILE" 2>/dev/null || true)"}"
   META_SOT="${META_SOT:-"$(jq -r '.meta.SoT // empty' "$FROM_FILE" 2>/dev/null || true)"}"
@@ -182,13 +183,11 @@ if [ $PROMPT -eq 1 ]; then
   [ -n "$MODO" ] || ask "modo (M0|M1|M2|M3)" MODO "M1"
   [ -n "$RUMBO" ] || ask "rumbo (p.ej. Centro o N,S)" RUMBO "Centro"
   [ -n "$TIEMPO" ] || ask "tiempo (min)" TIEMPO "30"
-  # refs (CSV)
   if [ ${#REF_FLAGS[@]} -eq 0 ]; then
     local _r=""; ask "referencias (CSV, 4–7 entradas)" _r ""
     [ -n "$_r" ] && REF_FLAGS+=("$_r")
   fi
   [ -n "$VEREDICTO" ] || ask "veredicto (breve)" VEREDICTO ""
-  # resultados.*
   if [ ${#ARTEFACTOS[@]} -eq 0 ]; then
     local _a=""; ask "artefactos (CSV)" _a ""
     [ -n "$_a" ] && ARTEFACTOS+=("$_a")
@@ -197,7 +196,6 @@ if [ $PROMPT -eq 1 ]; then
     local _m=""; ask "micro_sellos (CSV, opcional)" _m ""
     [ -n "$_m" ] && MICROSELLOS+=("$_m")
   fi
-  # meta (opc.)
   [ -n "$META_CUE" ]  || ask "meta.cue (opcional)" META_CUE ""
   [ -n "$META_SEED" ] || ask "meta.SeedI (opcional)" META_SEED ""
   [ -n "$META_SOT" ]  || ask "meta.SoT (opcional)" META_SOT ""
@@ -206,18 +204,16 @@ if [ $PROMPT -eq 1 ]; then
 fi
 
 # -------- construir JSON --------
-# rumbo: si contiene coma → array; si no → string
 rumbo_json() {
-  if printf '%s' "$RUMBO" | grep -q ','; then
-    csv_or_repeat_to_array "$RUMBO"
-  else
-    printf '"%s"' "$(json_escape "$RUMBO")"
-  fi
+  # Si contiene coma → array; si no → string
+  case "$RUMBO" in
+    *","*) to_json_array "$RUMBO" ;;
+    *)     printf '"%s"' "$(json_escape "$RUMBO")" ;;
+  esac
 }
-
-refs_json() { csv_or_repeat_to_array "${REF_FLAGS[@]:-}"; }
-artefactos_json() { csv_or_repeat_to_array "${ARTEFACTOS[@]:-}"; }
-micros_json() { csv_or_repeat_to_array "${MICROSELLOS[@]:-}"; }
+refs_json()        { to_json_array "${REF_FLAGS[@]:-}"; }
+artefactos_json()  { to_json_array "${ARTEFACTOS[@]:-}"; }
+micros_json()      { to_json_array "${MICROSELLOS[@]:-}"; }
 
 # nombre de salida (respeta QEL_FS_DIR si existe)
 if [ -z "${OUT_FILE:-}" ] && [ $STDOUT -eq 0 ]; then
@@ -227,7 +223,6 @@ if [ -z "${OUT_FILE:-}" ] && [ $STDOUT -eq 0 ]; then
   OUT_FILE="${OUT_DIR%/}/FS_${_d}.json"
 fi
 
-# imprimir JSON
 build_json() {
   cat <<JSON
 {

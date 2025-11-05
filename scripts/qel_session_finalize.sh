@@ -10,19 +10,82 @@ set -euo pipefail
 : "${LC_ALL:=C}"; export LC_ALL
 : "${QEL_SEED_POLICY:=auto}"   # auto|keep|strict
 
+# ---------------- Indexer helpers (modern → legacy) ----------------
+# Detecta indexer y define funciones para actualizar índices
+if [[ -f "tools/qel_indexer.py" ]]; then
+  INDEXER="tools/qel_indexer.py"
+else
+  INDEXER="scripts/qel_indexer.py"
+fi
+INDICES_DIR="docs/core/indices"
+INDEX_SEEDS="${INDICES_DIR}/QEL_Index_Semillas_v1.0.md"
+INDEX_ROUTES="${INDICES_DIR}/QEL_Index_Rutas_v1.0.md"
+
+ensure_indices(){
+  local seed="$1"
+  mkdir -p "$INDICES_DIR"
+  if [[ ! -f "$INDEX_SEEDS" ]]; then
+    cat >"$INDEX_SEEDS" <<EOF
+[QEL::ECO[96]::RECALL ${seed}-INDEX-SEEDS]
+SeedI: "${seed}"
+SoT: "INDICES/SEMILLAS/v1.0"
+Version: "v1.0"
+Updated: "$(date +%Y-%m-%d)"
+
+# Índice de Semillas (auto)
+EOF
+  fi
+  if [[ ! -f "$INDEX_ROUTES" ]]; then
+    cat >"$INDEX_ROUTES" <<EOF
+[QEL::ECO[96]::RECALL ${seed}-INDEX-ROUTES]
+SeedI: "${seed}"
+SoT: "INDICES/RUTAS/v1.0"
+Version: "v1.0"
+Updated: "$(date +%Y-%m-%d)"
+
+# Índice de Rutas Internas (auto)
+EOF
+  fi
+}
+
+update_indexes_from_doc(){
+  # uso: update_indexes_from_doc <doc> <title> <seed>
+  local doc="$1" title="$2" seed="$3"
+  ensure_indices "$seed"
+  if [[ -f "$INDEXER" ]]; then
+    # intento moderno
+    if ! python3 "$INDEXER" --file "$doc" --indices-dir "$INDICES_DIR" --update all --seedI "$seed" --title "$title"; then
+      # fallback legacy
+      python3 "$INDEXER" \
+        --mode add \
+        --doc "$doc" \
+        --title "$title" \
+        --seed "$seed" \
+        --update-seeds "$INDEX_SEEDS" \
+        --update-routes "$INDEX_ROUTES" \
+        || echo "[indexer] (warn) no se pudo actualizar índices (no fatal)" >&2
+    fi
+  fi
+}
+# -------------------------------------------------------------------
+
 # Safe init (Bash 3.2)
 declare -a ARTEFACTOS MICROS
 : "${ARTEFACTOS[@]:-}" >/dev/null 2>&1 || ARTEFACTOS=()
 : "${MICROS[@]:-}"     >/dev/null 2>&1 || MICROS=()
 
 need(){ command -v "$1" >/dev/null 2>&1 || { echo "Falta '$1'"; exit 1; }; }
-need git; need awk; need shasum; need jq
+need git; need awk; need jq
+# hash: permitir shasum o openssl
+if ! command -v shasum >/dev/null 2>&1 && ! command -v openssl >/dev/null 2>&1; then
+  echo "Falta 'shasum' u 'openssl' para calcular HASH(10)"; exit 1
+fi
 
 # ---------- Parseo de flags ----------
 FECHA="" ; SEED="" ; CUE="" ; VF=""
 UPDATED="$(date '+%Y-%m-%d')"
 SOT_SELLO="SELLOS/v1.0"
-SOT_DIARIO="TRATADO-METAHUMANO/v1.2"
+SOT_DIARIO="CORE/DIARIO"   # canónico para Diario
 VEREDICTO="M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
 DIARIO_FILE="" ; LISTADOR_FILE="" HASH_REF10=""
 declare -a OBJ_LIST=() SALIDAS=()
@@ -111,22 +174,17 @@ derive_seed_auto() { # args: <file> <cue>  -> "A96-YYMMDD"
   fi
   printf "%s-%s\n" "$eco" "$ymd"
 }
-
 # -----------------------------------------------------------------------
 
 # --- Fallback SEED desde artefacto (o derivado) -------------------------
-# Usa el primer artefacto si existe; si no, deriva desde FILE/cwd
 if [ -z "${SEED:-}" ]; then
   if [ "${#ARTEFACTOS[@]}" -gt 0 ] && [ -f "${ARTEFACTOS[0]}" ]; then
     ARTE="${ARTEFACTOS[0]}"
     TMP="$(mktemp)"; trap 'rm -f "$TMP"' EXIT
     tr -d '\r' < "$ARTE" > "$TMP"
-
-    # Intenta leer cue/SeedI del artefacto
     SEED_IN="$(awk '/^[#[:space:]]*SeedI[[:space:]]*[:=]/{sub(/^.*[:=][[:space:]]*/,"");print;exit}' "$TMP")"
     CUE_IN="$(awk '/^\[QEL::ECO/{print;exit}' "$TMP")"
     [ -n "$CUE" ] || CUE="$CUE_IN"
-
     if [ -n "$SEED_IN" ]; then
       case "${QEL_SEED_POLICY:-auto}" in
         strict) SEED="$(derive_seed_auto "$ARTE" "$CUE")" ;;
@@ -148,17 +206,16 @@ if [ -z "${SEED:-}" ]; then
 fi
 # -----------------------------------------------------------------------
 
-
 # ---------- Validaciones mínimas ----------
-[ -n "$FECHA" ] || { echo "Falta --fecha (ej. 250826)"; exit 1; }
-[ -n "$CUE" ]   || { echo "No encontré CUE (pasa --cue o incluye [QEL::ECO...] en el artefacto)"; exit 1; }
+[ -n "$FECHA" ] || { echo "Falta --fecha (ej. 251104)"; exit 1; }
+[ -n "$CUE" ]   || { echo "No encontré CUE (pasa --cue o incluye [QEL::ECO...] en un artefacto)"; exit 1; }
 [ -n "$SEED" ]  || { echo "No pude derivar SeedI; pasa --seed o --artefacto <archivo>"; exit 1; }
 [ -n "$VF" ]    || { echo "Falta --vf (texto VF.PRIMA)"; exit 1; }
 
 # ---------- Rutas ----------
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 cd "$ROOT"
-mkdir -p docs/ritual docs/core apps/preh-nav-m1/public/docs memory scripts
+mkdir -p docs/ritual docs/ritual/microsellos docs/ritual/vf docs/core apps/preh-nav-m1/public/docs memory scripts
 
 SEED_PREFIX="$(printf "%s" "$SEED" | cut -d- -f1)"
 F_MS="docs/ritual/microsellos/QEL_MicroSello_${SEED}_PREH-NAV_Cierre_v1.0.md"
@@ -176,7 +233,6 @@ if [ -n "$FS_JSON" ] && [ -f "$FS_JSON" ]; then
   TIEMPO="$(jq -r '.tiempo // empty' "$FS_JSON")" || true
   REFS="$(jq -r '(.referencias | if type=="array" then join(",") else . end) // empty' "$FS_JSON")" || true
   VEREDICTO="$(jq -r '.veredicto // empty' "$FS_JSON")" || true
-  # arrays → bash (sin mapfile, compatible con bash 3.2)
   while IFS= read -r a; do [ -n "$a" ] && ARTEFACTOS+=("$a"); done < <(jq -r '.resultados.artefactos[]? // empty' "$FS_JSON")
   while IFS= read -r m; do [ -n "$m" ] && MICROS+=("$m"); done < <(jq -r '.resultados.micro_sellos[]? // empty' "$FS_JSON")
   while IFS= read -r s; do [ -n "$s" ] && SALIDAS+=("$s"); done < <(jq -r '.salidas_esperadas[]? // empty' "$FS_JSON")
@@ -184,22 +240,21 @@ elif [ -n "$FS_JSON" ] && [ ! -f "$FS_JSON" ]; then
   echo "[WARN] FS JSON no encontrado, ignoro: $FS_JSON" >&2
 fi
 
-# ---------- HASH(10) canónico ----------
+# ---------- HASH(10) canónico (sha256; fallback a openssl) ----------
 CANON="CUE=${CUE}|VF.PRIMA=${VF}|SeedI=${SEED}|SoT=${SOT_SELLO}|Version=v1.0|Updated=${UPDATED}"
-HASH10="$(printf '%s' "$CANON" | shasum -a 256 | awk '{print $1}' | cut -c1-10)"
+if command -v shasum >/dev/null 2>&1; then
+  HASH10="$(printf '%s' "$CANON" | shasum -a 256 | awk '{print $1}' | cut -c1-10)"
+else
+  HASH10="$(printf '%s' "$CANON" | openssl dgst -sha256 | awk '{print $2}' | cut -c1-10)"
+fi
 
-# ---------- Métricas de objetos (V) ----------
-
-V_DICT="" ; 
-# --- construir OBJ_YAML de forma segura (sin defaults) ---
+# ---------- Objetos (V) ----------
+V_DICT=""
 OBJ_YAML=""
-# Si OBJ_LIST NO está definida, no la usamos (evita unbound var con set -u)
 if [ -n "${OBJ_LIST+x}" ] && [ "${#OBJ_LIST[@]}" -gt 0 ]; then
   for pair in "${OBJ_LIST[@]}"; do
     k="${pair%%=*}"
     v="${pair#*=}"
-    # Ajusta el formato de salida a tu estilo actual:
-    # ejemplo: 2 espacios de indent, una línea por objeto
     printf -v OBJ_YAML '%s  - "%s: %s"\n' "$OBJ_YAML" "$k" "$v"
   done
 fi
@@ -267,7 +322,7 @@ VF.PRIMA: "${VF}"
 Testigos: { t1: A86, t2: A96 }
 Notas: "Cierre con SIL→UM→Ə. Mantener No-Mentira."
 HASH(10): ${HASH10}
-${HASH_REF10:+- HASH_REF(10): ${HASH_REF10}}
+${HASH_REF10:+HASH_REF(10): ${HASH_REF10}}
 EOF
 else
   grep -q '^HASH(10): ' "$F_MS" || printf '\nHASH(10): %s\n' "$HASH10" >> "$F_MS"
@@ -286,48 +341,59 @@ Updated=${UPDATED}
 EOF
 fi
 
-cat >> "$F_DI" <<EOF
-
-## ${FECHA} · ${MODO} · ${TEMA}
-cue: ${CUE}
-SeedI: ${SEED}
-SoT: ${SOT_DIARIO}
-Version: v1.2-log
-Updated: ${UPDATED}
-
-FS:
-  fecha: ${FECHA}
-  tema: "${TEMA}"
-  intencion: "${INTENCION}"
-  modo: ${MODO}
-  rumbo: ${RUMBO}
-  tiempo: ${TIEMPO}
-  referencias:
-$( [ -n "${REFS}" ] && { printf "  referencias:\n"; yaml_list_from_csv "${REFS}"; } )
-$( [ ${#SALIDAS[@]} -gt 0 ] && { printf "  salidas_esperadas:\n"; yaml_list_from_array "${SALIDAS[@]}"; } )
-  metricas:
-    delta_c: "${DELTA_C}"
-    delta_s: "${DELTA_S}"
-$( [ -n "${V_DICT}" ] && printf "    V: { %s }\n" "${V_DICT}" )
-    no_mentira: ${NO_MENTIRA}
-  testigos: { t1: A86, t2: A96 }
-  triada: "KA-THON-SIL"
-  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
-
-Resultados:
-  artefactos:
-$(yaml_list_from_array "${ARTEFACTOS[@]:-}")
-  objetos:
-$( [ -n "${OBJ_YAML}" ] && printf "  objetos:\n%s\n" "${OBJ_YAML}" )
-  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
-  micro_sellos:
-$(yaml_list_from_array "${MICROS[@]:-}")
-  veredicto: "${VEREDICTO}"
-
-HASH(10): ${HASH10}
-${HASH_REF10:+- HASH_REF(10): ${HASH_REF10}}
-
-EOF
+{
+  echo
+  echo "## ${FECHA} · ${MODO} · ${TEMA}"
+  echo "cue: ${CUE}"
+  echo "SeedI: ${SEED}"
+  echo "SoT: ${SOT_DIARIO}"
+  echo "Version: v1.2-log"
+  echo "Updated: ${UPDATED}"
+  echo
+  echo "FS:"
+  echo "  fecha: ${FECHA}"
+  echo "  tema: \"${TEMA}\""
+  echo "  intencion: \"${INTENCION}\""
+  echo "  modo: ${MODO}"
+  echo "  rumbo: ${RUMBO}"
+  echo "  tiempo: ${TIEMPO}"
+  if [ -n "${REFS}" ]; then
+    echo "  referencias:"
+    yaml_list_from_csv "${REFS}"
+  fi
+  if [ "${#SALIDAS[@]}" -gt 0 ]; then
+    echo "  salidas_esperadas:"
+    yaml_list_from_array "${SALIDAS[@]}"
+  fi
+  echo "  metricas:"
+  echo "    delta_c: \"${DELTA_C}\""
+  echo "    delta_s: \"${DELTA_S}\""
+  [ -n "${V_DICT}" ] && printf "    V: { %s }\n" "${V_DICT}"
+  echo "    no_mentira: ${NO_MENTIRA}"
+  echo "  testigos: { t1: A86, t2: A96 }"
+  echo "  triada: \"KA-THON-SIL\""
+  echo "  mantra: \"Los fonemas tienen sombras que se perciben por todos los sentidos\""
+  echo
+  echo "Resultados:"
+  if [ "${#ARTEFACTOS[@]}" -gt 0 ]; then
+    echo "  artefactos:"
+    yaml_list_from_array "${ARTEFACTOS[@]}"
+  fi
+  if [ -n "${OBJ_YAML}" ]; then
+    echo "  objetos:"
+    printf "%s" "${OBJ_YAML}"
+  fi
+  echo "  cierres: \"SIL→UM→Ə; Doble Testigo si hay Cristalización\""
+  if [ "${#MICROS[@]}" -gt 0 ]; then
+    echo "  micro_sellos:"
+    yaml_list_from_array "${MICROS[@]}"
+  fi
+  echo "  veredicto: \"${VEREDICTO}\""
+  echo
+  echo "HASH(10): ${HASH10}"
+  [ -n "${HASH_REF10:-}" ] && echo "HASH_REF(10): ${HASH_REF10}"
+  echo
+} >> "$F_DI"
 
 # ---------- 4) ListadoR ----------
 if [ ! -f "$F_LR" ]; then
@@ -342,7 +408,6 @@ Updated=${UPDATED}
 # Registro cronológico de sellos, cierres y decisiones (M0→M2).
 EOF
 else
-  # BSD/GNU sed
   (sed -i '' "s/^Updated=.*/Updated=${UPDATED}/" "$F_LR" 2>/dev/null) || sed -i "s/^Updated=.*/Updated=${UPDATED}/" "$F_LR" || true
 fi
 
@@ -361,12 +426,10 @@ if ! grep -qF "$TAG" "$F_LR"; then
     cat <<EOF2
 Resultados:
   veredicto: "${VEREDICTO}"
-  objetos:
-${OBJ_YAML}
   notas: "Cierre según FS; mantener No-Mentira y Doble Testigo cuando cristaliza."
 hash(10): ${HASH10}
-${HASH_REF10:+hash_ref(10): ${HASH_REF10}}
 EOF2
+    [ -n "${HASH_REF10:-}" ] && echo "hash_ref(10): ${HASH_REF10}"
   } >> "$F_LR"
 fi
 
@@ -394,19 +457,18 @@ fi
 git add "$F_MS" "$F_VF" "$F_DI" "$F_LR" apps/preh-nav-m1/public/docs 2>/dev/null || true
 for a in "${ARTEFACTOS[@]:-}"; do git add "$a" 2>/dev/null || true; done
 git add docs/core/QEL_SoT_Manifest_v0.8.json 2>/dev/null || true
-# Indexa los documentos relevantes de la sesión (fusionados + artefacto si es core)
-# Variables esperadas aquí: SEED, ARTEFACTO (si se pasó), y rutas de core existentes.
+
+# Indexar documentos relevantes de la sesión
 DOCS_CANDIDATOS=()
 [ -f docs/core/QEL_Manual_Operativo.md ] && DOCS_CANDIDATOS+=("docs/core/QEL_Manual_Operativo.md")
 [ -f docs/core/QEL_Libro_Sombras.md ] && DOCS_CANDIDATOS+=("docs/core/QEL_Libro_Sombras.md")
-# artefacto final si apunta a docs/core/*
-case "${ARTEFACTO:-}" in
-  docs/core/*) DOCS_CANDIDATOS+=("$ARTEFACTO");;
-esac
+DOCS_CANDIDATOS+=("$F_MS" "$F_VF" "$F_DI")
+for a in "${ARTEFACTOS[@]:-}"; do DOCS_CANDIDATOS+=("$a"); done
 
 for D in "${DOCS_CANDIDATOS[@]}"; do
+  [ -f "$D" ] || continue
   T="$(basename "${D%.*}" | tr '_' ' ')"   # título legible desde el nombre
-  update_indexes_from_doc "$D" "$T" "${SEED:-A37-251015}"
+  update_indexes_from_doc "$D" "$T" "$SEED"
 done
 
 git commit -m "QEL: cierre ${FECHA} — FS(${MODO}/${TEMA}); VF.PRIMA, MicroSello, Diario, ListadoR; HASH(10)=${HASH10}." || true

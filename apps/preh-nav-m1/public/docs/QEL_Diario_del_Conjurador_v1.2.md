@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-251020
+SeedI=A96-251104
 SoT=DIARIO/V1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1488,3 +1488,55 @@ HASH(10): 72e4dde861
 
 
 0ae4a874bc
+
+## 2025-11-04 — PROMOCIÓN
+- Rubro: Centro
+- Título: Manual de Auditoría
+- Archivo: docs/core/manuales/QEL_Manual_auditoria_v1.2.md
+- Copia: apps/preh-nav-m1/public/docs/QEL_Manual_auditoria_v1.2.md
+- Rumbo: Centro
+- HASH(10): 3cefde1c94
+- SeedI: A96-251104
+
+_ECO (delta-only):_ Se cristaliza **Manual de Auditoría** con hash **3cefde1c94**; se actualiza ListadoR y espejo.
+
+
+## 251104 · M0 · 
+cue: [QEL::ECO[37]::RECALL A96-251104-MANUAL-AUDITORIA-v1.2]
+SeedI: A96-251104
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-11-04
+
+FS:
+  fecha: 251104
+  tema: ""
+  intencion: ""
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+
+
+  metricas:
+    delta_c: ""
+    delta_s: ""
+
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+
+  objetos:
+
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): d862dc9c8e
+
+

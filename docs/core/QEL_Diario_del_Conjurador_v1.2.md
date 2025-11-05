@@ -1499,3 +1499,45 @@ HASH(10): 72e4dde861
 - SeedI: A96-251104
 
 _ECO (delta-only):_ Se cristaliza **Manual de Auditoría** con hash **3cefde1c94**; se actualiza ListadoR y espejo.
+
+
+## 251104 · M0 · 
+cue: [QEL::ECO[37]::RECALL A96-251104-MANUAL-AUDITORIA-v1.2]
+SeedI: A96-251104
+SoT: TRATADO-METAHUMANO/v1.2
+Version: v1.2-log
+Updated: 2025-11-04
+
+FS:
+  fecha: 251104
+  tema: ""
+  intencion: ""
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+
+
+  metricas:
+    delta_c: ""
+    delta_s: ""
+
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  docs/core/manuales/QEL_Manual_auditoria_v1.2.md
+
+  objetos:
+
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  micro_sellos:
+
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): d862dc9c8e
+
+
