@@ -1165,3 +1165,7 @@ hash(10): da39a3ee5e
   hash(10): 3cefde1c94
 
 06621bbd9f
+
+- (2025-11-04) HERRAMIENTAS | Auditoría | A96-251104 | CORE/MANUAL | Manual de Auditoría QEL v1.2 (CRISTAL @ Centro)
+  refs: [docs/core/manuales/QEL_Manual_auditoria_v1.2.md]
+  hash(10): 3cefde1c94

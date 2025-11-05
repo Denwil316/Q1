@@ -1541,3 +1541,14 @@ Resultados:
 HASH(10): d862dc9c8e
 
 
+
+## 2025-11-04 — PROMOCIÓN
+- Rubro: HERRAMIENTAS | Auditoría
+- Título: Manual de Auditoría QEL v1.2
+- Archivo: docs/core/manuales/QEL_Manual_auditoria_v1.2.md
+- Copia: apps/preh-nav-m1/public/docs/docs/core/manuales/QEL_Manual_auditoria_v1.2.md
+- Rumbo: Centro
+- HASH(10): 3cefde1c94
+- SeedI: A96-251104
+
+_ECO (delta-only):_ Se cristaliza **Manual de Auditoría QEL v1.2** con hash **3cefde1c94**; se actualiza ListadoR y espejo.
