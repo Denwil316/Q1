@@ -1169,3 +1169,7 @@ hash(10): da39a3ee5e
 - (2025-11-04) HERRAMIENTAS | Auditoría | A96-251104 | CORE/MANUAL | Manual de Auditoría QEL v1.2 (CRISTAL @ Centro)
   refs: [docs/core/manuales/QEL_Manual_auditoria_v1.2.md]
   hash(10): 3cefde1c94
+
+- (2025-11-04) NOTAS ESPONTANEAS | Auditoría | A97-251104 | AN/NOTA/v1.1 | Notas Espontaneas (CRISTAL @ Centro)
+  refs: [pub/an/A97_Notas_Espontaneas_Auditoria_v1.0.md]
+  hash(10): f594a90938

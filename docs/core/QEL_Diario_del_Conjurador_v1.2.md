@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-251104
+SeedI=A97-251104
 SoT=DIARIO/V1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1552,3 +1552,14 @@ HASH(10): d862dc9c8e
 - SeedI: A96-251104
 
 _ECO (delta-only):_ Se cristaliza **Manual de Auditoría QEL v1.2** con hash **3cefde1c94**; se actualiza ListadoR y espejo.
+
+## 2025-11-04 — PROMOCIÓN
+- Rubro: NOTAS ESPONTANEAS | Auditoría
+- Título: Notas Espontaneas
+- Archivo: pub/an/A97_Notas_Espontaneas_Auditoria_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/pub/an/A97_Notas_Espontaneas_Auditoria_v1.0.md
+- Rumbo: Centro
+- HASH(10): f594a90938
+- SeedI: A97-251104
+
+_ECO (delta-only):_ Se cristaliza **Notas Espontaneas** con hash **f594a90938**; se actualiza ListadoR y espejo.
