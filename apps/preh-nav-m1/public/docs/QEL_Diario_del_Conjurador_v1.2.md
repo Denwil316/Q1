@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-251104
+SeedI=A97-251104
 SoT=DIARIO/V1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1540,4 +1540,61 @@ Resultados:
 
 HASH(10): d862dc9c8e
 
+
+
+## 2025-11-04 — PROMOCIÓN
+- Rubro: HERRAMIENTAS | Auditoría
+- Título: Manual de Auditoría QEL v1.2
+- Archivo: docs/core/manuales/QEL_Manual_auditoria_v1.2.md
+- Copia: apps/preh-nav-m1/public/docs/docs/core/manuales/QEL_Manual_auditoria_v1.2.md
+- Rumbo: Centro
+- HASH(10): 3cefde1c94
+- SeedI: A96-251104
+
+_ECO (delta-only):_ Se cristaliza **Manual de Auditoría QEL v1.2** con hash **3cefde1c94**; se actualiza ListadoR y espejo.
+
+## 2025-11-04 — PROMOCIÓN
+- Rubro: NOTAS ESPONTANEAS | Auditoría
+- Título: Notas Espontaneas
+- Archivo: pub/an/A97_Notas_Espontaneas_Auditoria_v1.0.md
+- Copia: apps/preh-nav-m1/public/docs/pub/an/A97_Notas_Espontaneas_Auditoria_v1.0.md
+- Rumbo: Centro
+- HASH(10): f594a90938
+- SeedI: A97-251104
+
+_ECO (delta-only):_ Se cristaliza **Notas Espontaneas** con hash **f594a90938**; se actualiza ListadoR y espejo.
+
+## 251104 · M1 · Cierre auditoría
+cue: [QEL::ECO[97]::RECALL A97-251104-CIERRE-AUDITORIA-NOTESP]
+SeedI: A97-251104
+SoT: CORE/DIARIO
+Version: v1.2-log
+Updated: 2025-11-04
+
+FS:
+  fecha: 251104
+  tema: "Cierre auditoría"
+  intencion: "Consolidar núcleo"
+  modo: M1
+  rumbo: Centro
+  tiempo: 30
+  referencias:
+  - Manual Auditoría v1.2
+  - Promote/Atlas/Finalize
+  - Notas Espontaneas A97
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  artefactos:
+  - docs/core/manuales/QEL_Manual_auditoria_v1.2.md
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  veredicto: "Infra estable; declarar ECO[97]"
+
+HASH(10): 0a322e39ca
 

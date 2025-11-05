@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-11-04 19:26:12_
+_Generado: 2025-11-04 19:34:41_
 
 ```text
 .
@@ -80,6 +80,7 @@ _Generado: 2025-11-04 19:26:12_
 |   |   |-- FS_251002.json
 |   |   |-- FS_251006.json
 |   |   |-- FS_251020.json
+|   |   |-- FS_251104.json
 |   |   `-- session_251020.json
 |   |-- habilidades
 |   |   `-- \306\217-UM-A
@@ -121,7 +122,8 @@ _Generado: 2025-11-04 19:26:12_
 |   |   |   |-- QEL_MicroSello_A96-250924_PREH-NAV_Cierre_v1.0.md
 |   |   |   |-- QEL_MicroSello_A96-251002_PREH-NAV_Cierre_v1.0.md
 |   |   |   |-- QEL_MicroSello_A96-251011_PREH-NAV_Cierre_v1.0.md
-|   |   |   `-- QEL_MicroSello_A96-251104_PREH-NAV_Cierre_v1.0.md
+|   |   |   |-- QEL_MicroSello_A96-251104_PREH-NAV_Cierre_v1.0.md
+|   |   |   `-- QEL_MicroSello_A97-251104_PREH-NAV_Cierre_v1.0.md
 |   |   |-- vf
 |   |   |   |-- QEL_VF_PRIMA_"A37-251015"_SEAL_v1.0.md
 |   |   |   |-- QEL_VF_PRIMA_"A96-250813"_SEAL_v1.0.md
@@ -136,7 +138,8 @@ _Generado: 2025-11-04 19:26:12_
 |   |   |   |-- QEL_VF_PRIMA_A96-251002_SEAL_v1.0.md
 |   |   |   |-- QEL_VF_PRIMA_A96-251011_SEAL_v1.0.md
 |   |   |   |-- QEL_VF_PRIMA_A96-251018_SEAL_v1.0.md
-|   |   |   `-- QEL_VF_PRIMA_A96-251104_SEAL_v1.0.md
+|   |   |   |-- QEL_VF_PRIMA_A96-251104_SEAL_v1.0.md
+|   |   |   `-- QEL_VF_PRIMA_A97-251104_SEAL_v1.0.md
 |   |   |-- QEL_Altar_y_Llave_v1.0.md
 |   |   |-- QEL_CueMachineA96_v1.0.txt
 |   |   |-- QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
@@ -256,6 +259,7 @@ _Generado: 2025-11-04 19:26:12_
 |   |   |-- QEL_ListadoR_A96_v1.2_Confirmacion_v0.1.md
 |   |   |-- QEL_ListadoR_A96_v1.3.md
 |   |   |-- QEL_ListadoR_A96_v1.4.md
+|   |   |-- QEL_ListadoR_A97_v1.3.md
 |   |   `-- QEL_ListadoR_cue_v1.1.md
 |   |-- Memoria_de_Qel_Ledger_append_METAHUMANO_v0.1.json
 |   |-- Memoria_de_Qel_Ledger_v0.2.json
@@ -368,5 +372,5 @@ _Generado: 2025-11-04 19:26:12_
 |-- yq.1
 `-- \303\215ndices\ creados\ \302\267\ Wrapper\ activo\ \302\267\ Compilados\ v1.0\ (integraci\303\263n).md
 
-51 directories, 313 files
+51 directories, 317 files
 ```
