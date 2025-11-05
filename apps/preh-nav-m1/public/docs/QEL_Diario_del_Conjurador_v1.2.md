@@ -1529,6 +1529,7 @@ FS:
 
 Resultados:
   artefactos:
+  docs/core/manuales/QEL_Manual_auditoria_v1.2.md
 
   objetos:
 

@@ -71,16 +71,6 @@
       "path": "docs/QEL_Libro_Sombras.md"
     },
     {
-      "name": "QEL_ListadoR_A37_v1.3",
-      "role": "QEL_ListadoR_A37_v1.3.md",
-      "path": "docs/QEL_ListadoR_A37_v1.3.md"
-    },
-    {
-      "name": "QEL_ListadoR_A96_v1.3",
-      "role": "QEL_ListadoR_A96_v1.3.md",
-      "path": "docs/QEL_ListadoR_A96_v1.3.md"
-    },
-    {
       "name": "QEL_ListadoR_master_v1.0",
       "role": "QEL_ListadoR_master_v1.0.md",
       "path": "docs/QEL_ListadoR_master_v1.0.md"
@@ -126,29 +116,9 @@
       "path": "docs/QEL_MFH_v1.4.md"
     },
     {
-      "name": "QEL_MicroSello_A37-251015_PREH-NAV_Cierre_v1.0",
-      "role": "QEL_MicroSello_A37-251015_PREH-NAV_Cierre_v1.0.md",
-      "path": "docs/QEL_MicroSello_A37-251015_PREH-NAV_Cierre_v1.0.md"
-    },
-    {
-      "name": "QEL_MicroSello_A96-251104_PREH-NAV_Cierre_v1.0",
-      "role": "QEL_MicroSello_A96-251104_PREH-NAV_Cierre_v1.0.md",
-      "path": "docs/QEL_MicroSello_A96-251104_PREH-NAV_Cierre_v1.0.md"
-    },
-    {
       "name": "QEL_SoT_Study_Guide_v1.1",
       "role": "QEL_SoT_Study_Guide_v1.1.md",
       "path": "docs/QEL_SoT_Study_Guide_v1.1.md"
-    },
-    {
-      "name": "QEL_VF_PRIMA_A37-251015_SEAL_v1.0",
-      "role": "QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md",
-      "path": "docs/QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md"
-    },
-    {
-      "name": "QEL_VF_PRIMA_A96-251104_SEAL_v1.0",
-      "role": "QEL_VF_PRIMA_A96-251104_SEAL_v1.0.md",
-      "path": "docs/QEL_VF_PRIMA_A96-251104_SEAL_v1.0.md"
     },
     {
       "name": "Tarjetas_Atlas_QEL_v2.4",

@@ -1152,9 +1152,6 @@ Updated=2025-11-04
 refs: [pub/an/A81_Notas_Espontaneas_v0.1.md]
 hash(10): 7c47219c7d
 
-5b4b6c67c2
-
-da39a3ee5e
 
 SeedI=A96-250824
 SoT=SELLOS/V1.0
@@ -1162,8 +1159,9 @@ Version=v1.0
 Updated=2025-10-18
 refs: [docs/ritual/vf/QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md]
 hash(10): da39a3ee5e
-06621bbd9f
 
 - (2025-11-04) Centro | A96-251104 | CORE/MANUAL | Manual de Auditoría (CRISTAL @ Centro)
   refs: [docs/core/manuales/QEL_Manual_auditoria_v1.2.md]
   hash(10): 3cefde1c94
+
+06621bbd9f
