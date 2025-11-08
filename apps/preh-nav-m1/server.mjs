@@ -24,22 +24,19 @@ app.use(cors({ origin: true }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
-
 // server.mjs → apps/preh-nav-m1 → sube dos niveles al root del repo
 const ROOT = path.resolve(__dirname, '..', '..');
 const joinRoot = (...p) => path.join(ROOT, ...p);
 
-const SCRIPTS   = joinRoot('scripts');
-const DOCS      = joinRoot('docs');
-const DOCS_CORE = joinRoot('docs', 'core');
-const DOCS_FS   = joinRoot('docs', 'fs');            // carpeta de FS JSON
-const DOCS_RIT  = joinRoot('docs', 'ritual');
-const PREH_PUBLIC  = path.join(__dirname, 'public');
-const MANIFEST     = path.join(PREH_PUBLIC, 'sot-manifest.json');
-const GEN_MANIFEST = path.join(__dirname, 'scripts', 'generate_manifest.mjs');
-const DIST = path.join(__dirname, 'dist');
-
-
+const SCRIPTS     = joinRoot('scripts');
+const DOCS        = joinRoot('docs');
+const DOCS_CORE   = joinRoot('docs', 'core');
+const DOCS_FS     = joinRoot('docs', 'fs');   // carpeta de FS JSON
+const DOCS_RIT    = joinRoot('docs', 'ritual');
+const PREH_PUBLIC = path.join(__dirname, 'public');
+const MANIFEST    = path.join(PREH_PUBLIC, 'sot-manifest.json'); // (si tu script lo genera aquí)
+const GEN_MANIFEST= path.join(__dirname, 'scripts', 'generate_manifest.mjs');
+const DIST        = path.join(__dirname, 'dist');
 
 const SCRIPT_PROMOTE  = path.join(SCRIPTS, 'qel_promote_mac.sh');
 const SCRIPT_MICROREG = path.join(SCRIPTS, 'qel_atlas_microreg.sh');
@@ -80,7 +77,7 @@ function defaultListadoPath() {
 }
 
 // ---------- NUEVOS: rutas del Sistema ----------
-const DIARIO_SIS = joinRoot('docs','core','diarios','QEL_Diario_Sistema_v1.2.md');
+const DIARIO_SIS   = joinRoot('docs','core','diarios','QEL_Diario_Sistema_v1.2.md');
 const LISTADOR_SES = joinRoot('docs','memory','listador','QEL_ListadoR_sesiones.md');
 
 // ---------- HASH_FS helpers ----------
@@ -103,7 +100,7 @@ function runScript(bin, args = [], opts = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(bin, args, {
       cwd: ROOT,
-      shell: true, // para flags con comillas
+      shell: true, // permite flags con comillas
       env: { ...process.env, ...(opts.env || {}) },
     });
     let out = '', err = '';
@@ -123,64 +120,30 @@ function runScript(bin, args = [], opts = {}) {
 }
 
 // -------------------------------------------------------------
-// Estáticos
+// Estáticos (colecciones directas)
 // -------------------------------------------------------------
-app.use('/docs', express.static(path.join(__dirname, 'public', 'docs'))); // publicados
-app.use(express.static(PREH_PUBLIC));
+app.use('/docs',   express.static(path.join(__dirname, 'public', 'docs'))); // publicados
+app.use('/core',   express.static(DOCS_CORE));
+app.use('/ritual', express.static(DOCS_RIT));
+app.use('/memory', express.static(joinRoot('memory')));
+app.use('/atlas',  express.static(joinRoot('docs', 'atlas')));
 
-// Montaje de colecciones (lectura directa de core/ritual/memory/atlas)
-app.use('/core',    express.static(DOCS_CORE));
-app.use('/ritual',  express.static(DOCS_RIT));
-app.use('/memory',  express.static(joinRoot('memory')));
-app.use('/atlas',   express.static(joinRoot('docs', 'atlas')));
-
-// -------------------------------------------------------------
-// Health
-// -------------------------------------------------------------
-app.get('/api/v1/health', (_req, res) => res.json({ ok: true }));
+// IMPORTANTE: servir /public SIN index.html (para que no tape el SPA)
+app.use(express.static(PREH_PUBLIC, { index: false }));
 
 // -------------------------------------------------------------
-// Biblioteca: listado compacto
+// Build del frontend (sin loops)
 // -------------------------------------------------------------
-const EXT_OK = new Set(['.md', '.json', '.yaml', '.yml', '.pdf']);
-function listDir(baseRel, depth = 2) {
-  const base = joinRoot(baseRel);
-  const out = [];
-  const walk = (dir, d) => {
-    if (d < 0) return;
-    for (const name of fs.readdirSync(dir)) {
-      const p = path.join(dir, name);
-      const st = fs.statSync(p);
-      if (st.isDirectory()) walk(p, d - 1);
-      else {
-        const ext = path.extname(name).toLowerCase();
-        if (EXT_OK.has(ext)) {
-          const relPath = path.relative(base, p).split(path.sep).join('/');
-          out.push({ name, rel: relPath });
-        }
-      }
-    }
-  };
-  if (fs.existsSync(base)) walk(base, depth);
-  return out.sort((a, b) => a.rel.localeCompare(b.rel));
-}
-
-app.get('/api/v1/library', (_req, res) => {
-  const data = {
-    core:   listDir('docs/core',   3).map(x => ({ ...x, url: '/core/'   + x.rel })),
-    ritual: listDir('docs/ritual', 3).map(x => ({ ...x, url: '/ritual/' + x.rel })),
-    atlas:  listDir('docs/atlas',  2).map(x => ({ ...x, url: '/atlas/'  + x.rel })),
-    memory: listDir('memory',      2).map(x => ({ ...x, url: '/memory/' + x.rel })),
-  };
-  res.json(data);
-});
-
-// --- Auto-build: asegúrate de construir antes de decidir rutas SPA ---
 async function ensureBuiltOnce() {
   const distIndex = path.join(DIST, 'index.html');
-  if (!process.env.FORCE_BUILD && fs.existsSync(distIndex)) return;
+  const force     = String(process.env.FORCE_BUILD||'').trim() === '1';
+  const autoBuild = String(process.env.AUTO_BUILD||'').trim() === '1'; // por defecto OFF
 
-  console.log('[build] dist/ desactualizado o FORCE_BUILD=1 — construyendo frontend...');
+  if (!force && !autoBuild && fs.existsSync(distIndex)) return;
+
+  console.log('[build] reconstruyendo frontend (motivo:',
+    force ? 'FORCE_BUILD=1' : (autoBuild ? 'AUTO_BUILD=1' : 'dist ausente'), ') …');
+
   await new Promise((resolve, reject) => {
     const p = spawn('npm', ['run', 'build'], { cwd: __dirname, shell: true, stdio: 'inherit' });
     p.on('close', (code) => (code === 0 ? resolve() : reject(new Error('build_failed'))));
@@ -189,53 +152,57 @@ async function ensureBuiltOnce() {
 }
 await ensureBuiltOnce();
 
-// Archivos estáticos del SPA (sin caché para index.html)
+// Endpoint manual para rebuild
+app.post('/api/v1/dev/rebuild', async (_req, res) => {
+  try {
+    console.log('[build] rebuild solicitado vía API');
+    await new Promise((resolve, reject) => {
+      const p = spawn('npm', ['run', 'build'], { cwd: __dirname, shell: true, stdio: 'inherit' });
+      p.on('close', (code) => (code === 0 ? resolve() : reject(new Error('build_failed'))));
+    });
+    res.json({ ok: true, src: 'src/*', out: 'dist/*' });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: String(e) });
+  }
+});
+
+// -------------------------------------------------------------
+// SPA (Vite build) + rutas conocidas
+// -------------------------------------------------------------
+// Sirve primero los assets de dist (pero OJO: NO el index, lo controlamos nosotros)
 app.use(express.static(DIST, {
+  index: false,
   setHeaders: (res, p) => {
     if (p.endsWith('index.html')) res.setHeader('Cache-Control', 'no-store');
   }
 }));
 
-// Rutas SPA conocidas
-const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/vcalc', '/doc'];
-SPA_ROUTES.forEach(r =>
-  app.get(r, (_req, res) => res.sendFile(path.join(DIST, 'index.html')))
-);
-
-// Subrutas SPA (sin comodín '*')
-app.get(/^\/(altar|via|laboratorio|vcalc|doc)\/.+$/, (_req, res) =>
-  res.sendFile(path.join(DIST, 'index.html'))
-);
-
-
-// Páginas estáticas clásicas (se mantienen)
-app.get('/library', (_req, res) => res.sendFile(path.join(PREH_PUBLIC, 'library.html')));
-
-// Servir la app React (build de Vite) si existe; si no, fallback a /vcalc
-if (fs.existsSync(path.join(DIST, 'index.html'))) {
-  // Archivos estáticos del build
-  app.use(express.static(DIST));
-
-const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/doc'];
-SPA_ROUTES.forEach(r =>
-  app.get(r, (_req, res) => res.sendFile(path.join(DIST, 'index.html')))
-);
-
-// Subrutas del SPA (sin comodín '*', compatible con Express 5)
-app.get(/^\/(altar|via|laboratorio|doc)\/.+$/, (_req, res) =>
-  res.sendFile(path.join(DIST, 'index.html'))
-);
-
-  // Nota: mantenemos '/ritual' para servir archivos reales (docs/ritual)
-} else {
-  // si aún no hay build, mandamos a la estática clásica
+// Helper para responder SIEMPRE con el index de dist y dejar un header de debug
+function sendDistIndex(res) {
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-Index-From', path.join(DIST, 'index.html'));
+  res.sendFile(path.join(DIST, 'index.html'));
 }
 
+// Rutas SPA conocidas
+const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/doc'];
+SPA_ROUTES.forEach(r => {
+  app.get(r, (_req, res) => sendDistIndex(res));
+});
+
+// Subrutas SPA (sin comodín '*', Express 5)
+app.get(/^\/(altar|via|laboratorio|doc)\/.+$/, (_req, res) => sendDistIndex(res));
+
+// Compat: /vcalc → /laboratorio/vcalc
+app.get(['/vcalc', '/vcalc.html'], (_req, res) => {
+  res.redirect(302, '/laboratorio/vcalc');
+});
+
 // -------------------------------------------------------------
-// VCALC
+// VCALC (API)
 // -------------------------------------------------------------
 const okRumbo = new Set(['N','O','E','W','S','C']);
-const okClase = new Set(['basica','básica','raro','rara','singular','unico','único','metalica','metálica','obsidiana']);
+const okClase = new Set(['basica','básica','poco comun','poco común','raro','rara','singular','unico','único','metalica','metálica','obsidiana']);
 const okDelta = new Set(['up','flat','down']);
 
 app.post('/api/v1/vcalc', (req, res) => {
@@ -251,8 +218,7 @@ app.post('/api/v1/vcalc', (req, res) => {
     } = req.body || {};
 
     if (!obj || !String(obj).trim()) return res.status(400).json({ error: 'obj requerido' });
-    const Rraw = String(rumbo || 'C').toUpperCase();
-    const R = Rraw;
+    const R = String(rumbo || 'C').toUpperCase();
     if (!okRumbo.has(R)) return res.status(400).json({ error: 'rumbo inválido' });
     if (!okClase.has(String(clase))) return res.status(400).json({ error: 'clase inválida' });
     if (!delta || !okDelta.has(delta.c) || !okDelta.has(delta.s)) return res.status(400).json({ error: 'delta inválido' });
@@ -423,118 +389,7 @@ app.post('/api/v1/finalize', async (req, res) => {
 });
 
 // -------------------------------------------------------------
-// LL_PE (M2/M3): guarda en docs/pe + docs/habilidades/... usando tu script
-// -------------------------------------------------------------
-app.post('/api/v1/llpe', async (req,res)=>{
-  const { vf, seed='', cue='', materia='', nutriaDir='' } = req.body||{};
-  const vfPath = vf || 'docs/atlas/Tarjeta_VF_Kosmos8_v1.0.yaml';
-  try { resolveSafe(vfPath); } catch(e){ return res.status(400).json({ error:'vf_invalid', detail:String(e) }); }
-  if (!fileExists(SCRIPT_LLPE)) return res.status(500).json({ error:'script_missing', bin: SCRIPT_LLPE });
-
-  const jobId = `llpe-${Date.now()}`;
-  jobs.set(jobId,{listeners:new Set()});
-  res.json({ ok:true, jobId });
-
-  const args = [
-    SCRIPT_LLPE,
-    '--vf', `"${str(vfPath)}"`,
-    ...(seed? ['--seed', `"${str(seed)}"`] : []),
-    ...(cue ? ['--cue',  `"${str(cue)}"`]  : []),
-    ...(materia ? ['--materia', `"${str(materia)}"`] : []),
-    ...(nutriaDir ? ['--nutria-dir', `"${resolveSafe(nutriaDir)}"`] : []),
-    '--save', 'true'
-  ];
-
-  try {
-    await runScript('node', args, { onData:(line)=>sseBroadcast(jobId,{ line }) });
-    sseBroadcast(jobId,{ done:true, code:0 });
-  } catch (e) {
-    sseBroadcast(jobId,{ done:true, code:e.code||1, err:e.err, out:e.out });
-  }
-});
-
-// -------------------------------------------------------------
-// HASH del FS + sidecar opcional
-// -------------------------------------------------------------
-app.post('/api/v1/fs/hash', (req,res)=>{
-  try{
-    let payload = req.body?.fs;
-    if (!payload && req.body?.file) {
-      const abs = resolveSafe(req.body.file);
-      payload = JSON.parse(fs.readFileSync(abs,'utf-8'));
-    }
-    if (!payload) return res.status(400).json({ ok:false, error:'fs_missing' });
-    const norm = normalizeJsonForHash(payload);
-    const hash10 = sha1_10(norm);
-    if (req.body?.save && req.body?.file) {
-      const sidecar = req.body.file.replace(/\.json$/i, `.hash.json`);
-      fs.writeFileSync(sidecar, JSON.stringify({ hash10, at: new Date().toISOString() }, null, 2), 'utf-8');
-      return res.json({ ok:true, hash10, saved: sidecar });
-    }
-    return res.json({ ok:true, hash10 });
-  }catch(e){
-    return res.status(500).json({ ok:false, error:String(e) });
-  }
-});
-
-// -------------------------------------------------------------
-// Diario del Sistema (append MD)  +  ListadoR Sesiones (append MD)
-// -------------------------------------------------------------
-app.post('/api/v1/diario/sistema/append', (req,res)=>{
-  try{
-    const p = req.body||{};
-    ensureParentDir(DIARIO_SIS);
-    const FECHA = str(p.fecha);
-    const MODO  = str(p.modo||'M1');
-    const TEMA  = str(p.tema||'');
-    const INT   = str(p.intencion||'');
-    const CUE   = str(p.cue||'');
-    const SEED  = str(p.seed||'');
-    const VF    = str(p.vf||'');
-    const FSF   = str(p.fsFile||'');
-    const HFS   = str(p.hash_fs10||'');
-    const VC    = p.vcalc || null;
-    const ALT   = p.altar || null;
-    const NOTAS = str(p.notas||'');
-
-    const lines = [];
-    lines.push(`## ${FECHA} · ${MODO} · ${TEMA}`);
-    lines.push(`cue: ${CUE}`);
-    lines.push(`SeedI: ${SEED}`);
-    if (INT) lines.push(`Intención: ${INT}`);
-    if (VF)  lines.push(`Veredicto: ${VF}`);
-    if (FSF) lines.push(`FS: ${FSF}`);
-    if (HFS) lines.push(`HASH_FS(10): ${HFS}`);
-    if (VC)  lines.push(`Vcalc: afinidad=${VC.A} rumbo=${VC.rumbo} clase=${VC.clase} gates=${VC.gates} ruido=${VC.ruido} deltaC=${VC.delta?.c} deltaS=${VC.delta?.s}`);
-    if (ALT) lines.push(`Altar: ${JSON.stringify(ALT)}`);
-    if (NOTAS) { lines.push(`Notas:`); lines.push(NOTAS); }
-    lines.push('');
-    fs.appendFileSync(DIARIO_SIS, lines.join('\n')+'\n', 'utf-8');
-
-    return res.json({ ok:true, file: DIARIO_SIS });
-  }catch(e){
-    return res.status(500).json({ ok:false, error:String(e) });
-  }
-});
-
-app.post('/api/v1/listador/sesiones/append', (req,res)=>{
-  try{
-    const p = req.body||{};
-    ensureParentDir(LISTADOR_SES);
-    const line = `- ${str(p.fecha)} · ${str(p.seed)} · ${str(p.tema)}${p.result?` · ${str(p.result)}`:''}${p.hash_fs10?` · HASH_FS(10)=${str(p.hash_fs10)}`:''}`;
-    if (!fs.existsSync(LISTADOR_SES)) {
-      fs.writeFileSync(LISTADOR_SES, `# ListadoR · Sesiones\n\n${line}\n`, 'utf-8');
-    } else {
-      fs.appendFileSync(LISTADOR_SES, `${line}\n`, 'utf-8');
-    }
-    return res.json({ ok:true, file: LISTADOR_SES });
-  }catch(e){
-    return res.status(500).json({ ok:false, error:String(e) });
-  }
-});
-
-// -------------------------------------------------------------
-// Orquestador ritual (todo en un tiro) — legado (RitualStudio actual)
+// Orquestadores rituales
 // -------------------------------------------------------------
 app.post('/api/v1/ritual', async (req, res) => {
   const { file, rubro, titulo, rumbo, kind, title, fs, fecha, seed, cue, vf } = req.body || {};
@@ -601,9 +456,6 @@ app.post('/api/v1/ritual', async (req, res) => {
   }
 });
 
-// -------------------------------------------------------------
-// Orquestador canónico M0/M1 (sin LL_PE ni VCALC)
-// -------------------------------------------------------------
 app.post('/api/v1/ritual/canon/m0m1', async (req,res)=>{
   const { file, fecha, seed, cue, vf, fs, rubro, titulo, rumbo, kind, title } = req.body||{};
   try { resolveSafe(file); } catch(e){ return res.status(400).json({ error:'file_invalid', detail:String(e) }); }
@@ -676,7 +528,7 @@ app.post('/api/v1/ritual/canon/m0m1', async (req,res)=>{
       if (ls.ok) log(`[sistema] listador -> ${ls.file}`);
     }catch(e){ log(`[sistema] append err: ${e}`); }
 
-    // Manifest (si existe)
+    // Manifest
     if (fileExists(GEN_MANIFEST)) {
       await runScript('node', [GEN_MANIFEST], { onData: (l)=>log(`[manifest] ${l}`) });
     }

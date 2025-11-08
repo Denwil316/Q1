@@ -1,34 +1,46 @@
+<!--
+[QEL::ECO[96]::A96-251107-PREH-NAV-VCALC-MODES-M3-CLI]
+SeedI=A96-251107
+SoT=PREH-NAV/vcalc-ui/v1.4
+Version=v1.4
+Updated=2025-11-07
+-->
 <!doctype html>
 <html lang="es">
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PREH-NAV · VCALC (Básico + Avanzado)</title>
+<title>PREH-NAV · VCALC (M1/M2/M3 + CLI + URL presets)</title>
 <style>
-  body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:2rem; max-width:1100px}
+  :root{color-scheme:light dark}
+  body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:2rem; max-width:1150px}
   nav a{margin-right:1rem}
-  fieldset{border:1px solid #e5e5e5; border-radius:10px; padding:1rem; margin:0 0 1rem}
+  fieldset{border:1px solid #e5e5e5; border-radius:12px; padding:1rem; margin:0 0 1rem}
   legend{font-weight:700}
   label{display:block; margin:.45rem 0 .1rem; font-weight:600}
-  input,select{width:100%; max-width:420px; padding:.45rem .6rem; border:1px solid #ccc; border-radius:6px}
+  input,select{width:100%; max-width:420px; padding:.45rem .6rem; border:1px solid #ccc; border-radius:8px}
   .row{display:flex; gap:1rem; flex-wrap:wrap}
-  button{padding:.6rem 1rem; border:0; border-radius:8px; background:#111; color:#fff; cursor:pointer}
-  pre{background:#f6f8fa; padding:1rem; border-radius:8px; overflow:auto; max-height:50vh}
+  button{padding:.6rem 1rem; border:0; border-radius:10px; background:#111; color:#fff; cursor:pointer}
+  button.ghost{background:#f3f3f3; color:#111}
+  pre{background:#f6f8fa; padding:1rem; border-radius:10px; overflow:auto; max-height:55vh}
   small{color:#666}
   .grid3{display:grid; grid-template-columns:240px 120px 120px; gap:.6rem; align-items:end}
-  .pill{display:inline-block; padding:.25rem .5rem; border-radius:999px; background:#f0f0f0; margin-left:.5rem}
+  .pill{display:inline-block; padding:.25rem .6rem; border-radius:999px; background:#f0f0f0; margin-left:.5rem}
   .ok{color:#0a7a3d; font-weight:700}
   .warn{color:#a15a00; font-weight:700}
   .bad{color:#b00020; font-weight:700}
   .muted{color:#666}
   .tips{background:#fafafa; border:1px dashed #ddd; padding:.7rem .9rem; border-radius:10px}
   .inline{display:flex; align-items:center; gap:.5rem}
-  /* Cuando A está en solo-lectura (M2 activo), que se note */
-input[readonly]{
-  background:#f3f3f3;
-  color:#555;
-}
-  .pill.ok{ background:#e7f7ee; color:#0a7a3d }
-  .pill.warn{ background:#fff4e5; color:#a15a00 }
+  input[readonly]{background:#f3f3f3; color:#555}
+  .pill.ok{background:#e7f7ee; color:#0a7a3d}
+  .pill.warn{background:#fff4e5; color:#a15a00}
+  .pill.bad{background:#ffe8e8; color:#b00020}
+  .seg{display:inline-flex; border:1px solid #ddd; border-radius:999px; overflow:hidden}
+  .seg button{background:#fff; color:#111; padding:.35rem .8rem; border-radius:0}
+  .seg button+button{border-left:1px solid #ddd}
+  .seg button.active{background:#111; color:#fff}
+  .hide{display:none}
+  .kpi{font-weight:700}
 </style>
 
 <nav>
@@ -37,12 +49,19 @@ input[readonly]{
 </nav>
 
 <h1>PREH-NAV · VCALC</h1>
-<p>Calcula 𝒱 desde el navegador (POST a <code>/api/v1/vcalc</code>). Usa el modo <b>Avanzado (M2)</b> si quieres que la afinidad <code>A</code> se derive de <i>triada + pesos + afinidades</i> (Lámina 𝒱).</p>
+<p>Calcula 𝒱 desde el navegador (POST a <code>/api/v1/vcalc</code>). Usa <b>M2</b> para derivar <code>A</code> desde <i>triada + pesos + afinidades</i>. Activa <b>M3</b> para ver trazabilidad, factores, <i>badges</i> y ahora también <b>Copiar comando CLI</b>.</p>
 
-<form id="f">
-  <!-- BÁSICO -->
-  <fieldset>
-    <legend>Parámetros (Básico)</legend>
+<!-- Modos M1/M2/M3 -->
+<div class="seg" role="tablist" aria-label="Modos VCALC">
+  <button id="tM1" class="active" data-mode="M1" role="tab" aria-selected="true">M1</button>
+  <button id="tM2" data-mode="M2" role="tab" aria-selected="false">M2</button>
+  <button id="tM3" data-mode="M3" role="tab" aria-selected="false">M3</button>
+</div>
+
+<form id="f" style="margin-top:1rem">
+  <!-- BÁSICO (M1) -->
+  <fieldset id="panelM1">
+    <legend>Parámetros (M1 · Básico)</legend>
     <div class="row">
       <div>
         <label>obj</label>
@@ -52,7 +71,7 @@ input[readonly]{
       <div>
         <label>A (afinidad)</label>
         <input name="A" type="number" min="0" max="1" step="0.0001" value="0.7400" />
-        <small class="muted">En M2 se recalcula desde la triada.</small>
+        <small class="muted">En M2/M3 puede ser derivada por triada.</small>
       </div>
       <div>
         <label>rumbo</label>
@@ -64,7 +83,7 @@ input[readonly]{
         <label>clase</label>
         <select name="clase">
           <option>rara</option><option>singular</option><option>unico</option>
-          <option>basica</option><option>metalica</option><option>obsidiana</option>
+          <option>basica</option><option>poco comun</option><option>metalica</option><option>obsidiana</option>
         </select>
       </div>
       <div>
@@ -88,7 +107,7 @@ input[readonly]{
   </fieldset>
 
   <!-- AVANZADO (M2) -->
-  <fieldset>
+  <fieldset id="panelM2" class="hide">
     <legend>Avanzado (M2) — Lámina 𝒱</legend>
 
     <div class="row">
@@ -127,17 +146,61 @@ input[readonly]{
 
     <div class="row" style="margin-top:.6rem">
       <div>
-        <button type="button" id="norm">Normalizar pesos</button>
+        <button type="button" id="norm" class="ghost">Normalizar pesos</button>
         <small class="muted">Suma w≈1.00</small>
       </div>
       <div>
-        <span> A (triada) = <b id="Atri">0.7400</b> <span class="pill muted" id="sumW">Σw=1.00</span> </span>
+        <span> A (triada) = <b id="Atri" class="kpi">0.7400</b> <span class="pill muted" id="sumW">Σw=1.00</span> </span>
       </div>
     </div>
 
     <div class="tips" id="cardinalTips">
       <b>Tips cardinales</b> (según rumbo):
       <div id="tipTxt" class="muted">—</div>
+    </div>
+  </fieldset>
+
+  <!-- TRAZABILIDAD (M3) -->
+  <fieldset id="panelM3" class="hide">
+    <legend>M3 — Trazabilidad, factores, badges y CLI</legend>
+    <div class="row">
+      <div>
+        <label>UID ε (determinista)</label>
+        <div id="uidKey" class="muted" style="max-width:600px; word-break:break-all">—</div>
+        <small>ε ∈ [0..max] con SHA‑1 (24 bits) → desempate estable.</small>
+      </div>
+    </div>
+
+    <div class="row" style="align-items:flex-start">
+      <div style="min-width:320px">
+        <h4>Badges (factor → estado)</h4>
+        <ul id="badges" class="muted" style="list-style:none; padding-left:0">
+          <li>χ_r: <span id="bXR" class="pill">—</span></li>
+          <li>H_k: <span id="bHK" class="pill">—</span></li>
+          <li>Π_gates: <span id="bGP" class="pill">—</span></li>
+          <li>fΔ: <span id="bFD" class="pill">—</span></li>
+          <li>(1−ρ): <span id="bFR" class="pill">—</span></li>
+          <li>A: <span id="bA" class="pill">—</span></li>
+        </ul>
+      </div>
+      <div style="flex:1">
+        <h4>Desglose numérico</h4>
+        <div class="row">
+          <div>χ_r = <b id="xrVal">—</b></div>
+          <div>H_k = <b id="hkVal">—</b></div>
+          <div>Π_gates = <b id="gpVal">—</b></div>
+          <div>fΔ = <b id="fdVal">—</b></div>
+          <div>(1−ρ) = <b id="frVal">—</b></div>
+        </div>
+        <div class="row" style="margin-top:.4rem">
+          <div>𝒱_canónica = <b id="Vcanon">—</b></div>
+          <div>𝒱_operativa = <b id="Voper">—</b></div>
+          <div>ε = <b id="Uideps">—</b></div>
+        </div>
+        <div class="row" style="margin-top:.6rem">
+          <button type="button" id="btnCli" class="ghost">Copiar comando CLI</button>
+        </div>
+      </div>
     </div>
   </fieldset>
 
@@ -150,113 +213,130 @@ input[readonly]{
 
 <script>
 const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
 const UM_BRAL = 0.62;
+const QEL_UID_EPS_MAX = 0.000005;
 
+// --- Modos ---
+const mode = {cur:'M1'};
+function setMode(m){
+  mode.cur = m;
+  $$('#tM1, #tM2, #tM3').forEach(b => b.classList.toggle('active', b.dataset.mode===m));
+  $('#panelM1').classList.toggle('hide', false);
+  $('#panelM2').classList.toggle('hide', m!=='M2' && m!=='M3');
+  $('#panelM3').classList.toggle('hide', m!=='M3');
+  toggleM2Badge(m==='M2' || m==='M3');
+}
+$('#tM1').onclick=()=>setMode('M1');
+$('#tM2').onclick=()=>setMode('M2');
+$('#tM3').onclick=()=>setMode('M3');
+
+// --- Triada (M2) ---
 function computeA(){
   const w1 = Number($('#w1').value||0), w2 = Number($('#w2').value||0), w3 = Number($('#w3').value||0);
   const a1 = Number($('#a1').value||0), a2 = Number($('#a2').value||0), a3 = Number($('#a3').value||0);
-  const sum = w1 + w2 + w3;
-  const eps = 1e-9;
-
-  // Evita división por cero: si sum≈0, toma pesos iguales
+  const sum = w1 + w2 + w3; const eps = 1e-9;
   const n1 = (sum>eps? w1/sum : 1/3), n2 = (sum>eps? w2/sum : 1/3), n3 = (sum>eps? w3/sum : 1/3);
   const A  = n1*a1 + n2*a2 + n3*a3;
-
   $('#Atri').textContent = A.toFixed(4);
-  const pill = $('#sumW');
-  pill.textContent = 'Σw=' + (sum || 0).toFixed(2);
+  const pill = $('#sumW'); pill.textContent = 'Σw=' + (sum || 0).toFixed(2);
   pill.className = 'pill ' + (Math.abs((sum||0) - 1) < 0.01 ? 'ok' : 'warn');
-
   return A;
 }
-['#w1','#w2','#w3','#a1','#a2','#a3'].forEach(sel => {
-  document.querySelector(sel).addEventListener('input', computeA);
-});
-$('#norm').addEventListener('click', ()=>{
-  const w = [Number($('#w1').value||0), Number($('#w2').value||0), Number($('#w3').value||0)];
-  const s = w[0]+w[1]+w[2] || 1;
-  $('#w1').value = (w[0]/s).toFixed(2);
-  $('#w2').value = (w[1]/s).toFixed(2);
-  $('#w3').value = (w[2]/s).toFixed(2);
-  computeA();
-});
-computeA();
+['#w1','#w2','#w3','#a1','#a2','#a3'].forEach(sel => { document.querySelector(sel).addEventListener('input', ()=>{computeA(); if($('#m2').checked) $('input[name="A"]').value = computeA().toFixed(4);});});
+$('#norm').addEventListener('click', ()=>{ const w=[Number($('#w1').value||0),Number($('#w2').value||0),Number($('#w3').value||0)]; const s=w[0]+w[1]+w[2]||1; $('#w1').value=(w[0]/s).toFixed(2); $('#w2').value=(w[1]/s).toFixed(2); $('#w3').value=(w[2]/s).toFixed(2); computeA(); });
 
-const CARDINAL = {
-  O: 'Oriente (rojo): +2–6 Hz en el arranque; ataque un poco más vivo; infinitivo.',
-  E: 'Oriente (rojo): +2–6 Hz en el arranque; ataque un poco más vivo; infinitivo.',
-  N: 'Norte (negro): −3–8 Hz en la meseta; raíz; voz más baja, más pausas.',
-  W: 'Occidente (blanco): vibrato ±1–2 Hz; ritmo un poco más lento; silencios nítidos.',
-  S: 'Sur (azul): decay 10–25% más largo; bendice y calla.',
-  C: 'Centro: base neutra; usa curva/timbre propios del fonema.'
-};
-function renderTips(){
-  const r = String($('select[name="rumbo"]').value||'C').toUpperCase();
-  $('#tipTxt').textContent = CARDINAL[r] || '—';
-}
-$('select[name="rumbo"]').addEventListener('change', renderTips);
-renderTips();
+const CARDINAL = { O:'Oriente (rojo): +2–6 Hz en el arranque; ataque un poco más vivo; infinitivo.', E:'Oriente (rojo): +2–6 Hz en el arranque; ataque un poco más vivo; infinitivo.', N:'Norte (negro): −3–8 Hz en la meseta; raíz; voz más baja, más pausas.', W:'Occidente (blanco): vibrato ±1–2 Hz; ritmo un poco más lento; silencios nítidos.', S:'Sur (azul): decay 10–25% más largo; bendice y calla.', C:'Centro: base neutra; usa curva/timbre propios del fonema.' };
+function renderTips(){ const r = String(document.querySelector('select[name="rumbo"]').value||'C').toUpperCase(); $('#tipTxt').textContent = CARDINAL[r] || '—'; }
+$('select[name="rumbo"]').addEventListener('change', renderTips); renderTips();
 
-/* --- M2: feedback visual, badge y auto-sync de A --- */
+// --- M2: feedback visual, badge y auto-sync de A ---
 const inputA = document.querySelector('input[name="A"]');
 const m2 = document.querySelector('#m2');
-
-function toggleM2Badge(on){
-  const b = $('#m2badge');
-  b.style.display = on ? 'inline-block' : 'none';
-}
+function toggleM2Badge(on){ const b=$('#m2badge'); b.style.display = on ? 'inline-block' : 'none'; inputA.readOnly = on && m2.checked; }
 function A_fromTriada(){ return computeA().toFixed(4); }
-function syncM2UI(on){
-  inputA.readOnly = on;
-  toggleM2Badge(on);
-  if (on) inputA.value = A_fromTriada();
-}
-
+function syncM2UI(on){ inputA.readOnly = on; toggleM2Badge(on); if (on) inputA.value = A_fromTriada(); }
 // Estado inicial
-syncM2UI(m2.checked);
-
+syncM2UI(m2?.checked || false);
 // Responder a cambios de M2
-m2.addEventListener('change', (e) => syncM2UI(e.target.checked));
-
+m2?.addEventListener('change', (e)=> syncM2UI(e.target.checked));
 // Si cambian pesos/afinidades, refresca A cuando M2 esté activo
-document.querySelectorAll('#w1,#w2,#w3,#a1,#a2,#a3').forEach(el => {
-  el.addEventListener('input', () => { if (m2.checked) inputA.value = A_fromTriada(); });
-});
+$$('#w1,#w2,#w3,#a1,#a2,#a3').forEach(el => { el.addEventListener('input', ()=>{ if (m2?.checked) inputA.value = A_fromTriada(); }); });
 
+// --- Factores (paridad con script bash) ---
+function chi_r(r){ r=String(r||'').toUpperCase(); if(r==='O'||r==='E') return 1.10; if(r==='N')return 1.05; if(r==='C')return 1.00; if(r==='W')return 0.95; if(r==='S')return 0.90; return NaN; }
+function H_k(k){ k=String(k||'').toLowerCase(); if(k==='basica'||k==='básica')return 0.50; if(k==='poco comun'||k==='poco común'||k==='poco-comun'||k==='poco-común')return 0.80; if(k==='rara'||k==='raro'||k==='singular'||k==='unico'||k==='único')return 1.00; if(k==='metalica'||k==='metálica')return 1.20; if(k==='obsidiana')return 1.60; return NaN; }
+function gates_product(csv){ const tokens=String(csv||'').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean); let MED=0.80,DOB=0.90,AUR=1.00; for(const g of tokens){ if(g==='mediacion'||g==='mediación')MED=1.00; if(g==='doble'||g==='doble_testigo')DOB=1.00; if(g==='aurora'||g==='contacto_aurora')AUR=1.00; } return +(MED*DOB*AUR).toFixed(6); }
+function fdelta(dc,ds){ dc=String(dc||'').toLowerCase(); ds=String(ds||'').toLowerCase(); let dC=0,dS=0; if(dc==='up')dC=0.02; else if(dc==='down')dC=-0.02; if(ds==='up')dS=0.02; else if(ds==='down')dS=-0.02; return +(1+dC+dS).toFixed(4); }
+function fruido(r){ const x=Math.max(0, Math.min(0.15, Number(r||0))); return +(1-x).toFixed(4); }
 
-// Si M2 está activo, cada cambio en triada recalcula y refleja A
-function syncAIfM2(){
-  if (m2.checked) {
-    inputA.value = computeA().toFixed(4);
+async function uid_eps(key, max=QEL_UID_EPS_MAX){ try{ const data=new TextEncoder().encode(String(key)); const digest=await crypto.subtle.digest('SHA-1', data); const b=new Uint8Array(digest).slice(0,3); const n=(b[0]<<16)|(b[1]<<8)|b[2]; const val=(n/0xFFFFFF)*max; return +val.toFixed(8); }catch(_){ return 0; } }
+
+function classifyBadge(name,val){
+  switch(name){
+    case 'XR': return val>=1.05 ? 'ok' : (val>=1.00 ? 'warn' : (val<=0.90 ? 'bad':'warn'));
+    case 'HK': return val>=1.00 ? 'ok' : (val>=0.80 ? 'warn' : 'bad');
+    case 'GP': return val>=1.00 ? 'ok' : (val>=0.90 ? 'warn' : 'warn');
+    case 'FD': return val>=1.00 ? 'ok' : (val>=0.98 ? 'warn' : 'bad');
+    case 'FR': return val>=0.98 ? 'ok' : (val>=0.95 ? 'warn' : 'bad');
+    case 'A':  return val>=0.70 ? 'ok' : (val>=0.55 ? 'warn' : 'bad');
+    default: return 'warn';
   }
 }
+function setBadge(el,val,kind){ el.textContent = (isFinite(val)? val.toFixed(2) : '—'); const cls = classifyBadge(kind,val); el.className = 'pill ' + cls; }
 
-// Alterna estado visual y valor de A al (des)activar M2
-m2.addEventListener('change', (e) => {
-  const on = e.target.checked;
-  inputA.readOnly = on;      // feedback visual (CSS ↑)
-  if (on) syncAIfM2();       // inicializa A con la triada
-});
+async function recalcLocal(){
+  const fd = new FormData($('#f'));
+  const obj = String(fd.get('obj')||'');
+  const Araw = Number(fd.get('A')||0);
+  const useM2 = $('#m2')?.checked || (mode.cur==='M3');
+  const A = useM2 ? computeA() : Araw;
+  const rSel = String(fd.get('rumbo')||'C').toUpperCase();
+  const rumbo = (rSel==='E')? 'O' : rSel;
+  const clase = String(fd.get('clase')||'rara');
+  const gatesCsv = String(fd.get('gates')||'');
+  const ruido = Number(fd.get('ruido')||0);
+  const dc = String(fd.get('dc')||'flat');
+  const ds = String(fd.get('ds')||'flat');
 
-// Recalcula al mover pesos/afinidades si M2 está activo
-document.querySelectorAll('#w1,#w2,#w3,#a1,#a2,#a3').forEach(el => {
-  el.addEventListener('input', syncAIfM2);
-});
+  const XR = chi_r(rumbo), HK = H_k(clase), GP = gates_product(gatesCsv), FD = fdelta(dc,ds), FR = fruido(ruido);
+  const Vcanon = +(A*XR*HK*GP).toFixed(4);
+  const Voper  = +Math.min(1, Vcanon*FD*FR).toFixed(4);
+
+  const uidKey = `obj=${obj.trim()}|A=${A.toFixed(4)}|rumbo=${rumbo}|clase=${clase.toLowerCase()}|gates=${gatesCsv.toLowerCase()}`;
+  const UIDE = await uid_eps(uidKey);
+
+  $('#uidKey').textContent = uidKey;
+  $('#xrVal').textContent = isFinite(XR)? XR.toFixed(2) : '—';
+  $('#hkVal').textContent = isFinite(HK)? HK.toFixed(2) : '—';
+  $('#gpVal').textContent = isFinite(GP)? GP.toFixed(2) : '—';
+  $('#fdVal').textContent = isFinite(FD)? FD.toFixed(2) : '—';
+  $('#frVal').textContent = isFinite(FR)? FR.toFixed(2) : '—';
+  $('#Vcanon').textContent = isFinite(Vcanon)? Vcanon.toFixed(4) : '—';
+  $('#Voper').textContent  = isFinite(Voper)? Voper.toFixed(4) : '—';
+  $('#Uideps').textContent = UIDE.toFixed(8);
+
+  setBadge($('#bXR'), XR, 'XR');
+  setBadge($('#bHK'), HK, 'HK');
+  setBadge($('#bGP'), GP, 'GP');
+  setBadge($('#bFD'), FD, 'FD');
+  setBadge($('#bFR'), FR, 'FR');
+  setBadge($('#bA'),  A,  'A');
+
+  return {Vcanon,Voper,UIDE};
+}
+
+$$('input, select').forEach(el=>{ el.addEventListener('input', ()=>{ if(mode.cur==='M3'){ recalcLocal(); } }); });
+
 $('#f').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const fd = new FormData(e.currentTarget);
-
-  // A desde M2 si está activo
-  const useM2 = $('#m2').checked;
+  const useM2 = $('#m2')?.checked || (mode.cur==='M3');
   const AfromTriada = computeA();
-  if(useM2){
-    $('input[name="A"]').value = AfromTriada.toFixed(4);
-  }
+  if(useM2){ $('input[name="A"]').value = AfromTriada.toFixed(4); }
 
-
-  // payload
+  const fd = new FormData(e.currentTarget);
   const rSel  = String(fd.get('rumbo') || 'C').toUpperCase();
-  const rumoN = (rSel === 'E') ? 'O' : rSel;  // E → O (Oriente)
+  const rumoN = (rSel === 'E') ? 'O' : rSel;
   const payload = {
     obj:   fd.get('obj') || '',
     A:     Number(fd.get('A') || 0),
@@ -270,28 +350,18 @@ $('#f').addEventListener('submit', async (e) => {
   $('#out').textContent = 'Calculando…';
   $('#status').textContent = '—';
 
- try{
-  const r = await fetch('/api/v1/vcalc', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify(payload)
-  });
+  try{
+    const r = await fetch('/api/v1/vcalc', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    let j; try { j = await r.json(); } catch { j = null; }
+    if (!r.ok) { const msg = (j && (j.error || j.stderr)) ? (j.error + (j.stderr? ` — ${j.stderr}`:'')) : `HTTP ${r.status}`; throw new Error(msg); }
 
-  let j;
-  try { j = await r.json(); } catch { j = null; }
+    $('#out').textContent = JSON.stringify(j, null, 2);
 
-  if (!r.ok) {
-    const msg = (j && (j.error || j.stderr)) ? (j.error + (j.stderr? ` — ${j.stderr}`:''))
-                                             : `HTTP ${r.status}`;
-    throw new Error(msg);
-  }
-
-  $('#out').textContent = JSON.stringify(j, null, 2);
-
-    // Decisión Lámina 𝒱: V_oper (con Δ y ruido) vs umbral + salvaguardas
-    const Vop   = Number(j?.V_oper ?? j?.V ?? 0);
-    const dc    = String(fd.get('dc')||'flat');
-    const noLie = $('#noMentira').checked;
-    const sigs  = Number($('#signals').value||0);
+    const loc = await recalcLocal();
+    const Vop = Number(j?.V_oper ?? j?.V ?? loc.Voper ?? 0);
+    const dc  = String(fd.get('dc')||'flat');
+    const noLie = $('#noMentira')?.checked ?? true;
+    const sigs  = Number($('#signals')?.value||0);
 
     const dcOK     = (dc === 'up' || dc === 'flat');
     const sigsOK   = (sigs >= 5);
@@ -302,12 +372,7 @@ $('#f').addEventListener('submit', async (e) => {
       verdict = `Cristalizable ✓  — V_final=${Vop.toFixed(2)} ≥ ${UM_BRAL} | ΔC≥0 | No-Mentira | señales ${sigs}/9`;
       $('#status').className = 'ok';
     }else{
-      const fail = [
-        umbralOK ? null : `V_final < ${UM_BRAL}`,
-        dcOK ? null : 'ΔC<0',
-        noLie ? null : 'No-Mentira apagada',
-        sigsOK ? null : 'Señales <5/9'
-      ].filter(Boolean).join(' · ');
+      const fail = [ umbralOK ? null : `V_final < ${UM_BRAL}`, dcOK ? null : 'ΔC<0', noLie ? null : 'No-Mentira apagada', sigsOK ? null : 'Señales <5/9' ].filter(Boolean).join(' · ');
       verdict = `Mantener en líquido/germina — ${fail}`;
       $('#status').className = umbralOK ? 'warn' : 'bad';
     }
@@ -319,5 +384,87 @@ $('#f').addEventListener('submit', async (e) => {
     $('#status').className = 'muted';
   }
 });
+
+// --- Copiar comando CLI ---
+function bashQuote(s){ return '"' + String(s).replace(/(["\`$])/g, '\$1') + '"'; }
+function normalizeClase(c){
+  const t = String(c||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const map = { 'basica':'basica','poco comun':'poco comun','poco-comun':'poco comun','rara':'rara','raro':'raro','singular':'singular','unico':'unico','metalica':'metalica','obsidiana':'obsidiana' };
+  return map[t] || 'singular';
+}
+function normalizeGates(csv){
+  const toks = String(csv||'').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean);
+  const allow = new Set(['mediacion','mediación','doble','doble_testigo','aurora','contacto_aurora']);
+  const canon = toks.filter(t=>allow.has(t)).map(t=>{
+    if(t.startsWith('medi')) return 'mediacion';
+    if(t.startsWith('doble')) return 'doble';
+    if(t.startsWith('aurora') || t.includes('contacto')) return 'aurora';
+    return t; });
+  return canon.join(',');
+}
+function buildCli(){
+  const fd = new FormData(document.querySelector('#f'));
+  const rSel = String(fd.get('rumbo')||'C').toUpperCase();
+  const rumbo = (rSel === 'E') ? 'O' : rSel;
+  const useM2 = (document.querySelector('#m2')?.checked) || (mode.cur==='M3');
+  const A = useM2 ? computeA() : Number(fd.get('A')||0);
+  const ruido = Math.min(0.15, Math.max(0, Number(fd.get('ruido')||0)));
+  const clase = normalizeClase(fd.get('clase'));
+  const gates = normalizeGates(fd.get('gates'));
+  const dc = String(fd.get('dc')||'flat');
+  const ds = String(fd.get('ds')||'flat');
+  const obj = fd.get('obj') || '';
+
+  const parts = [ 'scripts/qel_vcalc.sh', '--obj', bashQuote(obj), '--afinidad', A.toFixed(2), '--rumbo', rumbo, '--clase', bashQuote(clase), gates ? '--gates ' + bashQuote(gates) : null, '--ruido', ruido.toString(), '--delta-c', dc, '--delta-s', ds, '--emit', 'json' ].filter(Boolean);
+  return parts.join(' ');
+}
+$('#btnCli')?.addEventListener('click', async () => {
+  const cmd = buildCli();
+  try{ await navigator.clipboard.writeText(cmd); alert('Comando copiado: ' + cmd); }
+  catch(_){ const ta = document.createElement('textarea'); ta.value = cmd; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); alert('Comando copiado (fallback)'); }
+});
+
+// --- URL presets ---
+function truthy(v){ return /^(1|true|on|yes|y)$/i.test(String(v||'')); }
+function applyQueryParams(){
+  const sp = new URLSearchParams(location.search);
+  const m = (sp.get('m') || sp.get('mode') || '').toUpperCase();
+  if(['M1','M2','M3'].includes(m)) setMode(m);
+
+  const setName = (name, val) => { if(val==null) return; const el = document.querySelector(`[name="${name}"]`); if(el) el.value = val; };
+  const setId   = (id,   val) => { if(val==null) return; const el = document.getElementById(id); if(el) el.value = val; };
+
+  // Básicos
+  setName('obj', sp.get('obj'));
+  setName('A', sp.get('afinidad') ?? sp.get('A'));
+  const r = (sp.get('rumbo')||'').toUpperCase(); if(r) setName('rumbo', r);
+  setName('clase', sp.get('clase'));
+  setName('gates', sp.get('gates'));
+  setName('ruido', sp.get('ruido'));
+  setName('dc', sp.get('dc'));
+  setName('ds', sp.get('ds'));
+
+  // Salvaguardas y señales (M2/M3)
+  setId('signals', sp.get('signals'));
+  const nm = sp.get('nomentira') ?? sp.get('noMentira');
+  if(nm!=null && document.getElementById('noMentira')) document.getElementById('noMentira').checked = truthy(nm);
+
+  // Triada
+  ['w1','w2','w3','a1','a2','a3','p1','p2','p3'].forEach(k=> setId(k, sp.get(k)) );
+
+  // Forzar M2 por query (o a_or=triada)
+  const m2q = sp.get('m2') ?? sp.get('a_or');
+  if(m2q!=null && document.getElementById('m2')){
+    const on = truthy(m2q) || String(m2q).toLowerCase()==='triada';
+    document.getElementById('m2').checked = on; syncM2UI(on);
+    if(on && mode.cur==='M1') setMode('M2');
+  }
+}
+
+// Init
+setMode('M1');
+applyQueryParams();
+computeA();
+if(mode.cur==='M3') recalcLocal();
 </script>
 </html>

@@ -1,13 +1,14 @@
 // apps/preh-nav-m1/src/App.tsx
 import React from 'react'
-import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate, Navigate } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import { useManifest } from './components/ManifestContext'
-import VcalcPage from './pages/VcalcPage'
 import RitualStudio from './pages/RitualStudio'
 import QelWizard from './pages/QelWizard'
-import QelWorkspace from './pages/QelWorkspace'
 import DocViewer from './components/DocViewer'
+import VcalcPage from "./pages/VcalcPage";
+import QelWorkspace from "./pages/QelWorkspace";
+
 import './styles.css'
 
 // Un “guard” para que si el Provider fallara, no truene la UI:
@@ -41,7 +42,7 @@ function Shell() {
             <Link to="/altar">Altar</Link>
             <Link to="/via">Vía</Link>
             <Link to="/laboratorio">Laboratorio</Link>
-            <Link to="/vcalc">VCALC</Link>   {/* ← nuevo */}
+            <Link to="/laboratorio/vcalc">VCALC</Link>
           </nav>
         </header>
         <section className="content">
@@ -62,17 +63,38 @@ function Home() {
   )
 }
 
+function LabLayout() {
+  return (
+    <div>
+      {/* pestañas rápidas del laboratorio */}
+      <nav style={{display:'flex', gap:8, marginBottom:12}}>
+        <Link to="/laboratorio" className="pill">Workspace</Link>
+        <Link to="/laboratorio/vcalc" className="pill">VCALC</Link>
+      </nav>
+      <Outlet />
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Shell />}>
           <Route index element={<Home />} />
+          <Route path="/" element={<Navigate to="/altar" replace />} />
           <Route path="altar" element={<RitualStudio />} />
           <Route path="via" element={<QelWizard />} />
-          <Route path="laboratorio" element={<QelWorkspace />} />
           <Route path="doc/:slug" element={<DocViewer />} />
-          <Route path="/vcalc" element={<VcalcPage />} />   {/* ← nuevo */}
+
+          {/* Laboratorio con VCALC anidado */}
+          <Route path="laboratorio" element={<LabLayout />}>
+            <Route index element={<QelWorkspace />} />
+            <Route path="vcalc" element={<VcalcPage />} />
+          </Route>
+
+          {/* Compatibilidad: /vcalc → /laboratorio/vcalc */}
+          <Route path="vcalc" element={<Navigate to="/laboratorio/vcalc" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

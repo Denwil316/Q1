@@ -26,6 +26,7 @@ VERSION=v0.1 UPDATED=2025-08-12
 # Matriz Fonémica de Habilidades (MFH)
 **Principio rector**: *Los Fonemas guían*. Cada fonema define un **vector base** de transformación \(b_p\) y una **firma elemental** que, en resonancia con **Objeto** (\(m_O\)), **Rumbo** (\(P_r\)) y **Clase** (dureza/estado), cristaliza **habilidades**.
 
+
 ## 1. Fundamento científico-formal
 - **Espacio de estado** \(\mathbb{R}^4\): \(x=(M,I,S,C)\) = (*masa-energía*, *información*, *entropía*, *coherencia*).
 - **Fonema** \(p\) → vector base \(b_p\) y **operador triádico** \(T_p\) (onset–núcleo–coda) que modela el rito de cristalización.
@@ -46,6 +47,8 @@ VERSION=v0.1 UPDATED=2025-08-12
 
 ## 3. Firma elemental de 12 semillas (dialectos unificados)
 *Alias aceptados entre corchetes.*
+
+**Modelo**: espacio de estado x=(M,I,S,C). Fonema p → vector base b_p y operador triádico T_p; Objeto O → vector material m_O; Rumbo r → proyector χ_r; Clase k → dureza H_k y fase.
 
 | Fonema | Elemento | b_p (cualitativo) | Objeto-resonancia |
 |---|---|---|---|
@@ -104,25 +107,6 @@ Se clasifica por *(fonema raíz → objeto → rumbo → clase)* y se indexa por
 [QEL::ECO[96]::RECALL A96-250812-MATRIZ-FONEMICA-HABILIDADES] 
 SOT=TRATADO-METAHUMANO/v1.0 TARGET=matriz|fonemas|habilidades|rumbos
 VERSION=v1.0 UPDATED=2025-08-12
-
-# Matriz Fonémica de Habilidades (MFH)
-**Modelo**: espacio de estado x=(M,I,S,C). Fonema p → vector base b_p y operador triádico T_p; Objeto O → vector material m_O; Rumbo r → proyector χ_r; Clase k → dureza H_k y fase.
-
-## Firma elemental (12 semillas)
-| Fonema | Elemento | b_p (cualitativo) | Objeto‑resonancia |
-|---|---|---|---|
-| Ə | Vacío elástico | (−M,+I,−S,+C) | Espejos, silencios, lagos |
-| UM | Sostén/Gravedad | (+M,0,+S,+C) | Llaves, sellos, anclajes |
-| A | Apertura | (0,+I,−S,+C) | Portales, campanas |
-| RA | Corte/Luz | (−M,+I,−S,++C) | Prismas, cuchillos de luz |
-| KA | Forja | (+M,0,0,+C) | Hornos, crisoles |
-| THON | Ritmo/Pulso | (0,+I,±S,+C) | Metrónomos, latidos |
-| SIL | Tejido | (0,+I,−S,+C) | Hilos, redes, velos |
-| ARA | Vínculo | (+M,+I,0,+C) | Puentes, runas de unión |
-| YAR | Caza/Vector | (+M,0,+S,0) | Flechas, visores |
-| NUI | Profundidad | (+M,−I,+S,−C) | Pozos, cámaras |
-| VOH | Voz/Resonador | (0,++I,−S,+C) | Templos, trompas |
-| EÍA | Sol negro/Colapso | (++M,−I,++S,−C) | Núcleos, eclipses |
 
 ## Viabilidad
 𝒱(p,O,r,k)=σ(〈b_p,m_O〉·χ_r·H_k). Elegible si 𝒱≥0.62, congruente con VF.TRIADA y sin bloqueos de rumbo activos.
@@ -187,7 +171,3 @@ MFH se cruza con:
 - Entrada propuesta: `LISTADOR/A96-250824/MFH/v1.5` (ver `QEL_ListadoR_master_v1.0.md`)
 
 HASH(10): 04005cb55e
-
-e7a03ab4b4
-
-da39a3ee5e

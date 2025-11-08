@@ -53,29 +53,63 @@ uid_eps(){ # $1=key  $2=max (def QEL_UID_EPS_MAX o 0.000005)
   awk -v n="$n" -v maxn="$maxn" -v max="$max" 'BEGIN{printf "%.8f", (n/maxn)*max}'
 }
 
+# [QEL::ECO[96]::A96-251107-VCALC-USAGE]
+# SeedI=A96-251107
+# SoT=HERRAMIENTAS/VCALC/usage-v0.3
+# Version=v0.3
+# Updated=2025-11-07
+
 usage_core(){
-cat <<USAGE
+cat <<'USAGE'
 Uso (core):
-  scripts/qel_vcalc.sh --obj "Kael/Prisma" --afinidad 0.72 --rumbo N \\
-    --clase singular --gates "mediacion,doble" --ruido 0.04 \\
-    --delta-c up --delta-s flat [--emit quiet|json]
+  scripts/qel_vcalc.sh --obj "Fonema/Objeto" --afinidad 0.72 --rumbo N \
+    --clase "poco comun|rara|singular|unico|basica|metalica|obsidiana" \
+    --gates "mediacion[,doble][,aurora]" \
+    --ruido 0.04 --delta-c up|flat|down --delta-s up|flat|down [--emit pretty|quiet|json]
 
 Subcomandos:
-  scripts/qel_vcalc.sh io        # modo interactivo (humano)
-  scripts/qel_vcalc.sh json ...  # modo objeto (lee JSON)
+  scripts/qel_vcalc.sh io          # modo interactivo
+  scripts/qel_vcalc.sh json ...    # modo objeto (lee JSON)
+
+Notas importantes:
+  - No uses corchetes ni barras verticales en los valores. Ej.: --afinidad 0.84, --rumbo W
+  - Si un valor tiene espacios, enciérralo entre comillas. Ej.: --clase "poco comun"
+  - Decimales con punto. Ej.: 0.60, no 0,60.
 
 Flags core:
-  --obj "Fonema/Objeto"             (requerido)
-  --afinidad [0..1]                 (def=0.60)
-  --rumbo N|O|E|W|S|C                 (def=C)
-  --clase comun|raro|singular|unico (def=singular)
+  --obj "Fonema/Objeto"         (requerido; ej. "Zeh/Lente")
+  --afinidad [0..1]             (def=0.60)
+  --rumbo N|O|E|W|S|C           (def=C)  # O=Oriente, E=Este (ambos elevan χ_r=1.10)
+  --clase <ver lista abajo>     (def=singular)
   --gates "mediacion[,doble][,aurora]"
-  --ruido [0..1] (clip 0.15)        (def=0.00)
-  --delta-c up|flat|down            (def=flat)
-  --delta-s up|flat|down            (def=flat)
-  --emit pretty|quiet|json          (def=pretty)
+  --ruido [0..1] (clip 0.15)    (def=0.00)
+  --delta-c up|flat|down        (def=flat)
+  --delta-s up|flat|down        (def=flat)
+  --emit pretty|quiet|json      (def=pretty)
+
+Clases válidas (alias aceptados):
+  basica|básica        → H_k=0.50
+  "poco comun"|"poco común"|poco-comun|poco-común   → H_k=0.80
+  rara|raro|singular|unico|único                    → H_k=1.00
+  metalica|metálica    → H_k=1.20
+  obsidiana            → H_k=1.60
+
+Gates válidos (producto Π_gates):
+  mediacion|mediación
+  doble|doble_testigo
+  aurora|contacto_aurora
+  # Cualquier otro token se ignora (no falla).
+
+Ejemplos:
+  scripts/qel_vcalc.sh --obj "Kael/Prisma" --afinidad 0.72 --rumbo O \
+    --clase singular --gates "mediacion,doble" --ruido 0.03 --delta-c up --emit json
+
+  echo '{"obj":"Nai/Llave","afinidad":0.72,"rumbo":"W","clase":"unico",\
+"gates":["mediacion","aurora"],"ruido":0.12,"delta":{"c":"up","s":"up"}}' \
+  | scripts/qel_vcalc.sh json
 USAGE
 }
+
 
 # ---------- Tablas SoT (operativas) ----------
 chi_r(){ case "$(upper "$1")" in
