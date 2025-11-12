@@ -91,10 +91,6 @@ La **multiplicación** “×” no es aritmética: es **acoplamiento** (I y S se
 
 ---
 
-## 
-
-## 
-
 ### **2\) Naturaleza fenomenológica (cómo se presenta)**
 
 QEL se manifiesta como **coincidencia rítmica** entre:  
@@ -124,14 +120,6 @@ Cuando los tres compases **entran en fase**, se percibe:
 QEL **no separa** estos planos: los **sincroniza**. Si uno falta, hay rito estético, matemática formal o poesía sonora —pero **no** QEL.
 
 ---
-
-## 
-
-## 
-
-## 
-
-## 
 
 ### **4\) Finalidad (para qué sirve)**
 
@@ -165,12 +153,6 @@ Cada giro recorre **cuatro rumbos** (8+1, 7+2, 6+3, 5+4) y culmina en el **8º**
 
 ---
 
-## 
-
-## 
-
-## 
-
 ### **6\) Condiciones de validez (ética invariante)**
 
 Para que QEL sea QEL:
@@ -202,10 +184,6 @@ Para que QEL sea QEL:
 Si estos indicadores no aparecen, se recomienda **re-entrar** por Oriente (8+1: Sün-Ida).
 
 ---
-
-## 
-
-## 
 
 ### **8\) Límites y modos de fallo (qué no es QEL)**
 
@@ -1281,10 +1259,6 @@ Se trabaja sobre la **matriz 8×9**: **ocho rumbos** (cuatro de **Luz** y sus cu
 
 ---
 
-### 
-
-### 
-
 ### **9\) Procedimiento del ciclo completo (pseudocódigo en limpio)**
 
 yaml  
@@ -1314,10 +1288,6 @@ CopiarEditar
    `reiniciar por Oriente (Sün-Ida) en ciclo corto`
 
 ---
-
-### 
-
-### 
 
 ### **10\) Guía de navegación por rumbos (ciclo completo)**
 
@@ -1369,8 +1339,6 @@ CopiarEditar
 
 ---
 
-### 
-
 ### **12\) Solución de fallos frecuentes**
 
 * **No aparece vector en 9º**: vuelve a **Occidente** y re-haz **Zeh-Vun** (220↔196 Hz) hasta que el juicio caiga.
@@ -1406,28 +1374,6 @@ En todo el recorrido, recuerda: **Despertar, Recordar, Anclar, Transformar, Libe
 
 **Cierre del Protocolo**  
  El **ciclo corto** es el latido; el **ciclo completo**, la respiración profunda. Con **Oriente** abres sin hablar, con **Norte** recuerdas sin aferrarte, con **Occidente** ves sin poseer, con **Sur** dices lo justo y dejas **elipsis**. **Tejera** pliega (9+0) para que dure; **Lýmina** reabre (0+9) para que juegue. Si el cuerpo asiente y el texto deja espacio, QEL ha ocurrido.
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
 
 # **VII. Plantillas listas para uso — Desglose del Ocho (fiel y jugable)**
 
@@ -1734,22 +1680,6 @@ Permanece como **técnica** de **contracción/emerger** por excelencia:
  **soplo** → **canto invertido** → **trazo con la sombra** → **cristal-cuento**.
 
 **Instrucción intangible:** no “mejorar” estos elementos; **usarlos** con la ética fijada.
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
-
-# 
 
 # **X. Glosario mínimo (consulta rápida y fiel)**
 

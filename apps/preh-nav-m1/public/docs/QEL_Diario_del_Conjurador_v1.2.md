@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A97-251104
+SeedI=A96-251112
 SoT=DIARIO/V1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1584,4 +1584,44 @@ Resultados:
   veredicto: "Infra estable; declarar ECO[97]"
 
 HASH(10): 0a322e39ca
+
+
+## 2025-11-12 — PROMOCIÓN
+- Rubro: MFH
+- Título: Matriz Fónemica de Habilidades
+- Archivo: docs/core/QEL_MFH_v2.0.md
+- Copia: apps/preh-nav-m1/public/docs/docs/core/QEL_MFH_v2.0.md
+- Rumbo: Centro
+- HASH(10): 6cffc4e0d9
+- SeedI: A96-251112
+
+_ECO (delta-only):_ Se cristaliza **Matriz Fónemica de Habilidades** con hash **6cffc4e0d9**; se actualiza ListadoR y espejo.
+
+## 251107 · M0 · 
+cue: [QEL::ECO[96]::RECALL A96-251107-MFH-CAPA-SUR-V2-0]
+SeedI: A96-251112
+SoT: CORE/DIARIO
+Version: v1.2-log
+Updated: 2025-11-12
+
+FS:
+  fecha: 251107
+  tema: ""
+  intencion: ""
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): 8c23bbe06b
 
