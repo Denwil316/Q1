@@ -1173,3 +1173,7 @@ hash(10): da39a3ee5e
 - (2025-11-04) NOTAS ESPONTANEAS | Auditoría | A97-251104 | AN/NOTA/v1.1 | Notas Espontaneas (CRISTAL @ Centro)
   refs: [pub/an/A97_Notas_Espontaneas_Auditoria_v1.0.md]
   hash(10): f594a90938
+
+- (2025-11-12) MFH | A96-251112 | "MFH/v2.0" | Matriz Fónemica de Habilidades (CRISTAL @ Centro)
+  refs: [docs/core/QEL_MFH_v2.0.md]
+  hash(10): 6cffc4e0d9

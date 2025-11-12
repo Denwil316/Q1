@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A97-251104
+SeedI=A96-251112
 SoT=DIARIO/V1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1585,3 +1585,14 @@ Resultados:
 
 HASH(10): 0a322e39ca
 
+
+## 2025-11-12 — PROMOCIÓN
+- Rubro: MFH
+- Título: Matriz Fónemica de Habilidades
+- Archivo: docs/core/QEL_MFH_v2.0.md
+- Copia: apps/preh-nav-m1/public/docs/docs/core/QEL_MFH_v2.0.md
+- Rumbo: Centro
+- HASH(10): 6cffc4e0d9
+- SeedI: A96-251112
+
+_ECO (delta-only):_ Se cristaliza **Matriz Fónemica de Habilidades** con hash **6cffc4e0d9**; se actualiza ListadoR y espejo.
