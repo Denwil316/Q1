@@ -1,6 +1,6 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-11-17 15:26:16_
+_Generado: 2025-11-17 15:28:11_
 
 ```text
 .
@@ -125,6 +125,7 @@ _Generado: 2025-11-17 15:26:16_
 |   |   |   |-- QEL_MicroSello_A96-251011_PREH-NAV_Cierre_v1.0.md
 |   |   |   |-- QEL_MicroSello_A96-251104_PREH-NAV_Cierre_v1.0.md
 |   |   |   |-- QEL_MicroSello_A96-251112_PREH-NAV_Cierre_v1.0.md
+|   |   |   |-- QEL_MicroSello_A96-251117_PREH-NAV_Cierre_v1.0.md
 |   |   |   `-- QEL_MicroSello_A97-251104_PREH-NAV_Cierre_v1.0.md
 |   |   |-- vf
 |   |   |   |-- QEL_VF_PRIMA_"A37-251015"_SEAL_v1.0.md
@@ -142,6 +143,7 @@ _Generado: 2025-11-17 15:26:16_
 |   |   |   |-- QEL_VF_PRIMA_A96-251018_SEAL_v1.0.md
 |   |   |   |-- QEL_VF_PRIMA_A96-251104_SEAL_v1.0.md
 |   |   |   |-- QEL_VF_PRIMA_A96-251112_SEAL_v1.0.md
+|   |   |   |-- QEL_VF_PRIMA_A96-251117_SEAL_v1.0.md
 |   |   |   `-- QEL_VF_PRIMA_A97-251104_SEAL_v1.0.md
 |   |   |-- QEL_Altar_y_Llave_v1.0.md
 |   |   |-- QEL_CueMachineA96_v1.0.txt
@@ -378,5 +380,5 @@ _Generado: 2025-11-17 15:26:16_
 |-- yq.1
 `-- \303\215ndices\ creados\ \302\267\ Wrapper\ activo\ \302\267\ Compilados\ v1.0\ (integraci\303\263n).md
 
-51 directories, 323 files
+51 directories, 325 files
 ```

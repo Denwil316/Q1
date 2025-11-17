@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-11-12T18:42:01.880Z",
+  "Updated": "2025-11-17T21:27:56.443Z",
   "manifest": [
     {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
@@ -288,6 +288,18 @@
       "version": "",
       "updated": "",
       "hash10": "6cffc4e0d9",
+      "kind": "core-doc"
+    },
+    {
+      "name": "QEL_scripts_cs.md",
+      "path": "docs/core/manuales/QEL_scripts_cs.md",
+      "title": "Capa SUR · Cheat-Sheet Operativo de Scripts (Tejera)",
+      "cue": "",
+      "seed": "A96-251112",
+      "sot": "CHEATSHEETS/SCRIPTS/v1.4",
+      "version": "v1.4",
+      "updated": "2025-11-14",
+      "hash10": "17cea84111",
       "kind": "core-doc"
     },
     {

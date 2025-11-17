@@ -1637,3 +1637,32 @@ HASH(10): 8c23bbe06b
 - SeedI: A96-251112
 
 _ECO (delta-only):_ Se cristaliza **QEL · Cheat-Sheet Operativo de Scripts (v1.4)** con hash **17cea84111**; se actualiza ListadoR y espejo.
+
+## 251117 · M0 · 
+cue: [QEL::ECO[96]::RECALL A96-251117-CHEATSHEET-SCRIPTS]
+SeedI: A96-251117
+SoT: CORE/DIARIO
+Version: v1.2-log
+Updated: 2025-11-17
+
+FS:
+  fecha: 251117
+  tema: ""
+  intencion: ""
+  modo: M0
+  rumbo: Centro
+  tiempo: 30
+  metricas:
+    delta_c: ""
+    delta_s: ""
+    no_mentira: true
+  testigos: { t1: A86, t2: A96 }
+  triada: "KA-THON-SIL"
+  mantra: "Los fonemas tienen sombras que se perciben por todos los sentidos"
+
+Resultados:
+  cierres: "SIL→UM→Ə; Doble Testigo si hay Cristalización"
+  veredicto: "M1 asentado; Árbol/Manifest actualizados; cierres SIL→UM→Ə con Doble Testigo"
+
+HASH(10): ea23ff273b
+
