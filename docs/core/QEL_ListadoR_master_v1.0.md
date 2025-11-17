@@ -1177,3 +1177,7 @@ hash(10): da39a3ee5e
 - (2025-11-12) MFH | A96-251112 | "MFH/v2.0" | Matriz Fónemica de Habilidades (CRISTAL @ Centro)
   refs: [docs/core/QEL_MFH_v2.0.md]
   hash(10): 6cffc4e0d9
+
+- (2025-11-17) CORE/MANUAL | A96-251112 | CHEATSHEETS/SCRIPTS/v1.4 | QEL · Cheat-Sheet Operativo de Scripts (v1.4) (CRISTAL @ Centro)
+  refs: [docs/core/manuales/QEL_scripts_cs.md]
+  hash(10): 17cea84111

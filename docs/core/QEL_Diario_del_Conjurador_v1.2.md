@@ -1626,3 +1626,14 @@ Resultados:
 
 HASH(10): 8c23bbe06b
 
+
+## 2025-11-17 — PROMOCIÓN
+- Rubro: CORE/MANUAL
+- Título: QEL · Cheat-Sheet Operativo de Scripts (v1.4)
+- Archivo: docs/core/manuales/QEL_scripts_cs.md
+- Copia: apps/preh-nav-m1/public/docs/docs/core/manuales/QEL_scripts_cs.md
+- Rumbo: Centro
+- HASH(10): 17cea84111
+- SeedI: A96-251112
+
+_ECO (delta-only):_ Se cristaliza **QEL · Cheat-Sheet Operativo de Scripts (v1.4)** con hash **17cea84111**; se actualiza ListadoR y espejo.
