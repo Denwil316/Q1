@@ -1,140 +1,175 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# [QEL::ECO[96]::RECALL A96-250821-HELP]
-# SeedI=A96-250821
-# SoT=HERRAMIENTAS/v0.1
-# Version=v0.1
-# Updated=2025-08-21
 
-# Imprime guía de uso de los scripts del repo Codex (vista rápida y ejemplos).
+# [QEL::ECO[96]::RECALL A96-251117-QEL-SCRIPTS-HELP]
+# SeedI=A96-251117
+# SoT=HERRAMIENTAS/HELP/v1.4
+# Version=v1.4
+# Updated=2025-11-17
+
+# Ayuda centralizada para los scripts QEL.
 # Uso:
 #   scripts/qel_scripts_help.sh            # guía completa
-#   scripts/qel_scripts_help.sh <script>   # sección específica (ej: qel_vcalc.sh)
+#   scripts/qel_scripts_help.sh <seccion>  # p.ej. vcalc, finalize, promote, atlas, cuemachine, audit, autofix, sot, manifest, estructura, serve, install, verify
+#
+# Notas:
+# - Mantiene compatibilidad con flujos Win/macOS/WSL.
+# - Ejemplos listos para copiar/pegar (usar comillas simples cuando metas JSON).
 
-SECTIONS=(
-  "qel_vcalc.sh"
-  "qel_session_finalize.sh"
-  "apply_qel_update.sh"
-  "gen_manifest.sh"
-  "serve_preh_nav.sh"
-  "update_estructura.sh"
-  "fix_prehnav_layout.sh"
-  "cx_navegador.zsh"
-  "pre-commit-codex-structure.sh"
-  "apps/preh-nav-m1/scripts/generate_manifest.mjs"
-  "apps/preh-nav-m1/scripts/watch_manifest.mjs"
-)
+hr(){ printf '%*s\n' "$(tput cols 2>/dev/null || echo 80)" | tr ' ' '-'; }
+p(){ printf "%s\n" "$1"; }
+sec(){ hr; printf "## %s\n\n" "$1"; }
 
-print_section() {
-  case "$1" in
-    qel_vcalc.sh)
-cat <<'EOS'
-[qel_vcalc.sh] — Calcula 𝒱 (viabilidad) por objeto
-Propósito: obtener un número 0..1 para decidir cristal (≥0.85), líquido (0.70–0.84) o germinar (<0.70).
-Uso:
-  scripts/qel_vcalc.sh --obj "Kael/Prisma" --afinidad 0.90 --rumbo N \
-    --clase singular --gates "mediacion,doble" --ruido 0.03 --delta-c up --delta-s up
-Flags: --obj, --afinidad [0..1], --rumbo N|O|W|S|C, --clase comun|raro|singular|unico,
-       --gates (coma), --ruido [0..1], --delta-c up|flat|down, --delta-s up|flat|down, --quiet
-Tip: añade --quiet para imprimir sólo el número y encadenarlo al botón rojo.
-EOS
-;;
-    qel_session_finalize.sh)
-cat <<'EOS'
-[qel_session_finalize.sh] — Botón rojo de cierre de sesión (VF.PRIMA, MicroSello, Diario, ListadoR, manifest)
-Uso mínimo:
-  scripts/qel_session_finalize.sh --fecha 250820 --seed A96-250820 \
-    --cue "[QEL::ECO[96]::A96-250820-SEAL]" \
-    --vf "Aurora existe; el contacto espera; mi verdad no miente."
-Puedes repetir --obj varias veces para registrar 𝒱:
-  --obj "Kael/Prisma=0.89" --obj "Vun/Trompa=0.85" --obj "Nai→Prisma(Excepción)=0.70"
-Salida: crea/actualiza en docs/ritual/, docs/core/ y memory/, expone a public/ y lanza git (rama PreH).
-EOS
-;;
-    apply_qel_update.sh)
-cat <<'EOS'
-[apply_qel_update.sh] — Aplica un ZIP de actualización QEL
-Uso:
-  scripts/apply_qel_update.sh --zip ~/Downloads/qel_update_*.zip [--branch PreH] [--expose-public] [--no-git]
-Hace backup .bak, copia docs/core|tools y memory/, regenera manifest y (opcional) publica a public/docs/.
-EOS
-;;
-    gen_manifest.sh)
-cat <<'EOS'
-[gen_manifest.sh] — Genera/elabora sot-manifest.json para PREH-NAV
-Uso:
-  scripts/gen_manifest.sh
-Requisitos: Node y/o jq según tu implementación. Busca en docs/ y exporta a apps/preh-nav-m1/public/sot-manifest.json.
-EOS
-;;
-    serve_preh_nav.sh)
-cat <<'EOS'
-[serve_preh_nav.sh] — Levanta el navegador PREH-NAV (vite dev server típico)
-Uso:
-  scripts/serve_preh_nav.sh
-Tip: asegúrate de estar en el root del repo; instala deps con npm/yarn si es la primera vez.
-EOS
-;;
-    update_estructura.sh)
-cat <<'EOS'
-[update_estructura.sh] — Recalcula y guarda ESTRUCTURA.md (árbol del repo)
-Uso:
-  scripts/update_estructura.sh
-Salida: actualiza ESTRUCTURA.md con la hora de generación.
-EOS
-;;
-    fix_prehnav_layout.sh)
-cat <<'EOS'
-[fix_prehnav_layout.sh] — Ajustes de layout/estilos del PREH-NAV (parches rápidos)
-Uso:
-  scripts/fix_prehnav_layout.sh
-Aplica sed/patch para corregir detalles de UI cuando cambian dependencias.
-EOS
-;;
-    cx_navegador.zsh)
-cat <<'EOS'
-[cx_navegador.zsh] — Atajos zsh para flujo del navegador (alias/funciones)
-Uso:
-  source scripts/cx_navegador.zsh
-Provee alias para arrancar, limpiar cache, y abrir rutas frecuentes del PREH-NAV.
-EOS
-;;
-    pre-commit-codex-structure.sh)
-cat <<'EOS'
-[pre-commit-codex-structure.sh] — Hook de verificación de estructura antes del commit
-Uso:
-  scripts/pre-commit-codex-structure.sh
-Tip: integra con git hooks para bloquear commits si faltan docs clave.
-EOS
-;;
-    apps/preh-nav-m1/scripts/generate_manifest.mjs)
-cat <<'EOS'
-[apps/preh-nav-m1/scripts/generate_manifest.mjs] — Generador JS del manifest en la app
-Uso:
-  (cd apps/preh-nav-m1 && node scripts/generate_manifest.mjs)
-Lee docs/, compone JSON y escribe public/sot-manifest.json. Respeta CWD de la app.
-EOS
-;;
-    apps/preh-nav-m1/scripts/watch_manifest.mjs)
-cat <<'EOS'
-[apps/preh-nav-m1/scripts/watch_manifest.mjs] — Watcher del manifest (dev)
-Uso:
-  (cd apps/preh-nav-m1 && node scripts/watch_manifest.mjs)
-Observa cambios en docs/ y regenera manifest automáticamente durante el desarrollo.
-EOS
-;;
-    *) echo "(sin sección para $1)";;
+HELP_ALL(){
+
+sec "VCALC (operativa) + MFH (formal)"
+cat <<'H'
+
+1) scripts/qel_vcalc.sh
+- Función: calcula 𝒱 por dos rutas en paralelo:
+  • VCALC → V_canon = clip(A·χ_r·H_k·Π_gates); V_oper = V_canon×F_Δ×F_ρ
+  • MFH   → V_mfh = clip/logistic(A·χ_r·H_k[·Π_gates opcional])
+- Flags (núcleo):
+  --obj, --afinidad, --rumbo N|O|E|W|S|C, --clase (básica|poco común|singular|metálica|obsidiana),
+  --gates "mediacion[,doble][,aurora]", --ruido, --delta-c up|flat|down, --delta-s up|flat|down,
+  --emit pretty|quiet|json
+- Flags (MFH):
+  --mfh clip|logistic|auto (def=clip), --mfh-k 12, --mfh-x0 0.62, --mfh-include-gates true|false (def=false)
+
+Ejemplos:
+  scripts/qel_vcalc.sh --obj "Kael/Prisma" --afinidad 0.72 --rumbo O --clase singular \
+    --gates "mediacion,doble" --ruido 0.03 --delta-c up --delta-s flat \
+    --mfh clip --mfh-include-gates false --emit pretty
+
+  echo '{"obj":"Kael/Prisma","afinidad":0.72,"rumbo":"O","clase":"singular","gates":["mediacion","doble"],"ruido":0.03,"delta":{"c":"up","s":"flat"}}' \
+  | scripts/qel_vcalc.sh json --mfh clip --mfh-include-gates false
+
+  scripts/qel_vcalc.sh --obj "Kael/Prisma" --afinidad 0.62 --rumbo E --clase singular \
+    --mfh logistic --mfh-k 12 --mfh-x0 0.62 --emit pretty
+
+2) scripts/qel_vcalc_json.sh (wrapper)
+- Pasa JSON → qel_vcalc.sh json y re-emite la salida con "V" (oper) + "V_mfh".
+- Flags espejo MFH: --mfh, --mfh-k, --mfh-x0, --mfh-include-gates
+
+3) scripts/qel_vcalc_io.sh (wrapper)
+- Abre el modo interactivo (pregunta VCALC+MFH) y ofrece salida pretty o JSON.
+H
+
+sec "Sesiones (new/finalize)"
+cat <<'H'
+1) scripts/qel_session_new.sh
+- Crea FS inicial (fecha, tema, intención, modo, rumbo, tiempo, refs, salidas_esperadas, métricas, testigos, triada, mantra).
+- Salida: FS_YYMMDD.json (y eco en consola).
+- Uso típico:
+  scripts/qel_session_new.sh
+  # responder prompts (o usar flags si tu versión los acepta)
+
+2) scripts/qel_session_finalize.sh
+- Cierra sesión: genera VF.PRIMA, MicroSello, actualiza ListadoR/Diario, expone a PREH-NAV si procede.
+- Ejemplo:
+  scripts/qel_session_finalize.sh \
+    --fecha $(date +%y%m%d) \
+    --vf "Cheat-Sheet de scripts v1.4 validado; QA OK" \
+    --cue "[QEL::ECO[96]::RECALL A96-$(date +%y%m%d)-CHEATSHEET-SCRIPTS]" \
+    --seed "A96-$(date +%y%m%d)" \
+    --fs-json FS_$(date +%y%m%d).json --no-mentira true
+H
+
+sec "Promoción y Atlas"
+cat <<'H'
+1) scripts/qel_promote_mac.sh
+- Promueve un documento (rubro, file, titulo, rumbo), garantiza HASH(10) en EOF.
+- Ejemplo:
+  scripts/qel_promote_mac.sh \
+    --rubro "CORE/MANUAL" \
+    --file "docs/core/manuales/QEL_scripts_cs.md" \
+    --titulo "QEL · Cheat-Sheet Operativo de Scripts (v1.4)" \
+    --rumbo "Centro"
+
+2) scripts/qel_atlas_microreg.sh
+- Inserta línea JSONL en docs/core/atlas_microreg_v1.0.jsonl (kind, file, title, hash, …).
+- Ejemplo:
+  scripts/qel_atlas_microreg.sh \
+    --kind "CORE/MANUAL" \
+    --file "docs/core/manuales/QEL_scripts_cs.md" \
+    --title "QEL · Cheat-Sheet Operativo de Scripts (v1.4)"
+H
+
+sec "CueMachine (ledger + firma)"
+cat <<'H'
+1) scripts/qel_cuemachine_add.sh
+- Agrega entrada al ledger con CUE, SeedI, SoT, Version, Updated, target. Evita duplicados salvo --allow-duplicate.
+- Ejemplo:
+  scripts/qel_cuemachine_add.sh \
+    --cm-file docs/cuemachine/ledger.txt \
+    --cue   "[QEL::ECO[96]::RECALL A96-$(date +%y%m%d)-CHEATSHEET-SCRIPTS]" \
+    --seed  "A96-$(date +%y%m%d)" \
+    --sot   "CHEATSHEETS/SCRIPTS/v1.4" \
+    --version "v1.4" --updated "$(date +%F)" \
+    --target "docs/core/manuales/QEL_scripts_cs.md" --verbose
+
+2) scripts/qel_cuemachine_check.sh
+- Actualiza cadena, firma HMAC, verifica y bloquea ledger.
+- Ejemplo:
+  scripts/qel_cuemachine_check.sh \
+    --cm-file docs/cuemachine/ledger.txt \
+    --update-chain --sign --verify --verify-sign --lock --verbose
+
+3) scripts/qel_secret_init.sh (previo a firmar)
+- Crea y guarda secreto HMAC en macOS Keychain (o usa var de entorno). Muestra hash10 del secreto.
+H
+
+sec "Auditoría, autofix, SoT resolver"
+cat <<'H'
+1) scripts/qel_trace_audit.sh
+- Auditoría integral (front-matter, CUE, HASH, ListadoR, Atlas, duplicados, métricas).
+- Salidas: out/qel_trace_report.csv|md, out/qel_trace_run.json
+
+2) scripts/qel_trace_autofix.sh
+- Autofix conservador de front-matter, EOF hash, SoT y bloques básicos de ListadoR.
+- Usar primero en dry-run y luego APPLY=1.
+
+3) scripts/qel_sot_resolve.sh
+- Normaliza/deriva SoT: de ListadoR, PREH-NAV (opcional), reglas por ruta; reporta UNCLASSIFIED.
+- Puede escribir SoT al archivo y actualizar ListadoR (policy keep|soft|force).
+H
+
+sec "Manifest y PREH-NAV"
+cat <<'H'
+1) scripts/gen_manifest.sh
+- Genera apps/preh-nav-m1/public/sot-manifest.json vía scripts/generate_manifest.mjs
+
+2) scripts/gen_core_manifest.sh / gen_core_manifest.mjs
+- Indexa docs/core → QEL_SoT_Manifest_v0.8.json (metadatos + hash10)
+
+3) scripts/serve_preh_nav.sh
+- Servidor http estático para navegar repo/PREH-NAV.
+- Ejemplo: scripts/serve_preh_nav.sh 8080 127.0.0.1
+H
+
+sec "Instalación / Verificación"
+cat <<'H'
+1) scripts/qel_install_missing.sh  (y .ps1 en Windows)
+- Instala git/LFS, node, jq/yq, ripgrep, fd, make; configura git/corepack.
+
+2) scripts/qel_verify_env.sh
+- Verifica toolchain, LFS, manifests y settings (Win/WSL/macOS).
+H
+}
+
+SECTION(){
+  case "${1:-}" in
+    vcalc|vcalc_json|vcalc_io|finalize|promote|atlas|cuemachine|audit|autofix|sot|manifest|estructura|serve|install|verify)
+      HELP_ALL | awk -v s="$1" '
+        BEGIN{IGNORECASE=1; show=0}
+        /^## /{ if (show) exit; if ($0 ~ s) show=1 }
+        { if (show) print $0 }
+      '
+    ;;
+    *)
+      HELP_ALL
+    ;;
   esac
 }
 
-if [ $# -eq 0 ]; then
-  echo "=== QEL · Instructivo de scripts (Codex) ==="
-  echo "(ejecuta: scripts/qel_scripts_help.sh <script> para ver sección específica)"
-  echo
-  for s in "${SECTIONS[@]}"; do
-    print_section "$s"
-    echo
-  done
-else
-  print_section "$1"
-fi
+SECTION "${1-}"

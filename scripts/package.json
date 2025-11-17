@@ -1,21 +1,20 @@
 {
   "scripts": {
-    "qel:help": "scripts/qel help",
-    "qel:doctor": "scripts/qel doctor",
-
-    "qel:hash": "scripts/qel hash10",
-    "qel:promote": "scripts/qel promote",
-    "qel:promote:manual": "scripts/qel promote --rubro HERRAMIENTAS --file docs/core/QEL_Manual_Esculpido_en_Qel_v1.0.md --titulo \"Manual del Esculpido en Qel\" --rumbo Sur",
-
-    "qel:doc:move": "scripts/qel doc move",
-    "qel:structure": "scripts/qel structure update",
-
-    "qel:core:publish": "scripts/qel nav publish --mode copy",
-    "qel:core:link:watch": "scripts/qel nav publish --mode link --watch",
-
-    "qel:manifest": "scripts/qel manifest build",
-    "qel:manifest:sync": "scripts/qel manifest sync",
-    "qel:manifest:core": "scripts/qel manifest core",
-    "qel:serve": "scripts/qel nav serve 8080 127.0.0.1"
+    "qel:help": "scripts/qel_scripts_help.sh",
+    "qel:vcalc": "scripts/qel_vcalc.sh --obj \"Kael/Prisma\" --afinidad 0.72 --rumbo O --clase singular --emit pretty",
+    "qel:vcalc:json": "scripts/qel_vcalc_json.sh",
+    "qel:session:new": "scripts/qel_session_new.sh",
+    "qel:session:finalize": "scripts/qel_session_finalize.sh",
+    "qel:promote": "scripts/qel_promote_mac.sh",
+    "qel:atlas": "scripts/qel_atlas_microreg.sh",
+    "qel:cue:add": "scripts/qel_cuemachine_add.sh",
+    "qel:cue:check": "scripts/qel_cuemachine_check.sh --cm-file docs/cuemachine/ledger.txt --update-chain --sign --verify --verify-sign --lock",
+    "qel:audit": "scripts/qel_trace_audit.sh",
+    "qel:autofix": "scripts/qel_trace_autofix.sh",
+    "qel:sot:resolve": "scripts/qel_sot_resolve.sh",
+    "qel:manifest": "scripts/gen_manifest.sh",
+    "qel:manifest:core": "scripts/gen_core_manifest.sh",
+    "qel:serve": "scripts/serve_preh_nav.sh 8080 127.0.0.1",
+    "qel:estructura": "scripts/update_estructura.sh"
   }
 }
