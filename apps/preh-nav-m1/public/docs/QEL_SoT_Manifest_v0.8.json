@@ -1,6 +1,6 @@
 {
   "Version": "v0.8",
-  "Updated": "2025-11-05T01:34:33.050Z",
+  "Updated": "2025-11-12T18:42:01.880Z",
   "manifest": [
     {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
@@ -79,7 +79,7 @@
       "path": "docs/core/QEL_Diario_del_Conjurador_v1.2.md",
       "title": "Diario del Conjurador (v1.2)",
       "cue": "",
-      "seed": "A97-251104",
+      "seed": "A96-251112",
       "sot": "DIARIO/V1.2",
       "version": "v1.2",
       "updated": "2025-08-30",
@@ -279,15 +279,15 @@
       "kind": "core-doc"
     },
     {
-      "name": "QEL_MFH_v1.4.md",
-      "path": "docs/core/QEL_MFH_v1.4.md",
-      "title": "Tejera en Sur — Unificación Cuerpo/Ritmo (v1.5)",
+      "name": "QEL_MFH_v2.0.md",
+      "path": "docs/core/QEL_MFH_v2.0.md",
+      "title": "MFH v2.0 — **Capa SUR** (Tejera · cuerpo/ritmo)",
       "cue": "",
-      "seed": "A96-250824",
-      "sot": "MFH/V1.5",
-      "version": "v1.5",
-      "updated": "2025-08-24",
-      "hash10": "04005cb55e",
+      "seed": "",
+      "sot": "",
+      "version": "",
+      "updated": "",
+      "hash10": "6cffc4e0d9",
       "kind": "core-doc"
     },
     {
