@@ -1,19 +1,50 @@
 # Estructura de Codex (/Users/EAJ/Projects/codex)
 
-_Generado: 2025-11-17 15:31:21_
+_Generado: 2025-11-17 17:39:32_
 
 ```text
 .
+├── --emit
+├── --materia
+├── --preset
+├── --ruido
+├── --vf
+├── .DS_Store
+├── .gitignore
+├── .qelrc
+├── .vscode
+│   └── settings.json
+├── ESTRUCTURA.md
+├── Índices creados · Wrapper activo · Compilados v1.0 (integración).md
+├── LICENSE
+├── Makefile
 ├── README
+│   ├── .DS_Store
 │   ├── PREH-NAV_README_v0.2.md
 │   ├── README.md
 │   ├── README_Consolidado_v0.4.md
 │   ├── README_Q1 (1).md
 │   ├── README_Q1.md
 │   └── README_QEL_MASTER_v0.2.1.md
+├── README.md
 ├── apps
+│   ├── .DS_Store
 │   └── preh-nav-m1
+│       ├── .DS_Store
+│       ├── PLAN_ORG_Codex_M0.md
+│       ├── dist
+│       │   ├── .DS_Store
+│       │   ├── assets
+│       │   ├── docs
+│       │   ├── index.html
+│       │   ├── library.html
+│       │   ├── sot-manifest.json
+│       │   └── vcalc.html
+│       ├── index.html
+│       ├── package-lock.json
+│       ├── package.json
 │       ├── public
+│       │   ├── .DS_Store
 │       │   ├── docs
 │       │   ├── library.html
 │       │   ├── sot-manifest.json
@@ -21,50 +52,23 @@ _Generado: 2025-11-17 15:31:21_
 │       ├── scripts
 │       │   ├── generate_manifest.mjs
 │       │   └── watch_manifest.mjs
+│       ├── server.mjs
 │       ├── src
+│       │   ├── .DS_Store
+│       │   ├── App.tsx
 │       │   ├── components
 │       │   ├── lib
-│       │   ├── pages
-│       │   ├── App.tsx
 │       │   ├── main.tsx
+│       │   ├── pages
 │       │   └── styles.css
-│       ├── PLAN_ORG_Codex_M0.md
-│       ├── index.html
-│       ├── package-lock.json
-│       ├── package.json
-│       ├── server.mjs
 │       ├── tsconfig.json
 │       ├── tsconfig.tsbuildinfo
 │       └── vite.config.ts
 ├── docs
+│   ├── .DS_Store
 │   ├── attachments
 │   ├── core
-│   │   ├── atlas
-│   │   │   ├── Tarjetas_Atlas_QEL_v2.4.md
-│   │   │   └── codice_madre_atlas_qel_tarjetas_maestras_v_2.md
-│   │   ├── cartas
-│   │   │   ├── LLPE_Kosmos8_Primera_v1.3.yaml
-│   │   │   └── VF_Apertura_EUM_Llavev1.0.json
-│   │   ├── diarios
-│   │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
-│   │   │   └── QEL_Diario_del_Conjurador_v1.5.md
-│   │   ├── indices
-│   │   │   ├── QEL_Index_Rutas_v1.0.md
-│   │   │   └── QEL_Index_Semillas_v1.0.md
-│   │   ├── manuales
-│   │   │   ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
-│   │   │   ├── NAVEGADOR_M0_Manual_v0.2.md
-│   │   │   ├── QEL_FormatoR_Manual_v1.1.md
-│   │   │   ├── QEL_Guia_alineacion_V_v1.0.md
-│   │   │   ├── QEL_LLPE_Manual_v1.4.md
-│   │   │   ├── QEL_Manual_Atlas_MicroRegistro_v1.0.md
-│   │   │   ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
-│   │   │   ├── QEL_Manual_Instructivo_v1.1.md
-│   │   │   ├── QEL_Manual_Interpretación_Sombras_v1.3.md
-│   │   │   ├── QEL_Manual_auditoria_v1.2.md
-│   │   │   ├── QEL_SoT_Study_Guide_v1.1.md
-│   │   │   ├── QEL_scripts_cs.md
-│   │   │   └── manual_cue_machine_qel_v.1.md
+│   │   ├── .DS_Store
 │   │   ├── QEL_Curacion_Nucleo_Minimo.md
 │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
 │   │   ├── QEL_Glosario_v1.4.md
@@ -75,7 +79,34 @@ _Generado: 2025-11-17 15:31:21_
 │   │   ├── QEL_Manual_Operativo.md
 │   │   ├── QEL_SoT_Manifest_v0.8.json
 │   │   ├── Qel_Codice_Madre.md
-│   │   └── atlas_microreg_v1.0.jsonl
+│   │   ├── atlas
+│   │   │   ├── .DS_Store
+│   │   │   ├── Tarjetas_Atlas_QEL_v2.4.md
+│   │   │   └── codice_madre_atlas_qel_tarjetas_maestras_v_2.md
+│   │   ├── atlas_microreg_v1.0.jsonl
+│   │   ├── cartas
+│   │   │   ├── LLPE_Kosmos8_Primera_v1.3.yaml
+│   │   │   └── VF_Apertura_EUM_Llavev1.0.json
+│   │   ├── diarios
+│   │   │   ├── QEL_Diario_del_Conjurador_v1.2.md
+│   │   │   └── QEL_Diario_del_Conjurador_v1.5.md
+│   │   ├── indices
+│   │   │   ├── QEL_Index_Rutas_v1.0.md
+│   │   │   └── QEL_Index_Semillas_v1.0.md
+│   │   └── manuales
+│   │       ├── GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md
+│   │       ├── NAVEGADOR_M0_Manual_v0.2.md
+│   │       ├── QEL_FormatoR_Manual_v1.1.md
+│   │       ├── QEL_Guia_alineacion_V_v1.0.md
+│   │       ├── QEL_LLPE_Manual_v1.4.md
+│   │       ├── QEL_Manual_Atlas_MicroRegistro_v1.0.md
+│   │       ├── QEL_Manual_Esculpido_en_Qel_v1.0.md
+│   │       ├── QEL_Manual_Instructivo_v1.1.md
+│   │       ├── QEL_Manual_Interpretación_Sombras_v1.3.md
+│   │       ├── QEL_Manual_auditoria_v1.2.md
+│   │       ├── QEL_SoT_Study_Guide_v1.1.md
+│   │       ├── QEL_scripts_cs.md
+│   │       └── manual_cue_machine_qel_v.1.md
 │   ├── fs
 │   │   ├── FS_250924.json
 │   │   ├── FS_251002.json
@@ -87,6 +118,7 @@ _Generado: 2025-11-17 15:31:21_
 │   │   └── Ə-UM-A
 │   │       └── Llave
 │   ├── nutria
+│   │   ├── .DS_Store
 │   │   ├── ACL-QEL.md
 │   │   ├── Astra.md
 │   │   ├── Kósmos 8.md
@@ -101,6 +133,14 @@ _Generado: 2025-11-17 15:31:21_
 │   ├── pe
 │   │   └── PEe2c82e10e1.md
 │   ├── ritual
+│   │   ├── .DS_Store
+│   │   ├── QEL_Altar_y_Llave_v1.0.md
+│   │   ├── QEL_CueMachineA96_v1.0.txt
+│   │   ├── QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
+│   │   ├── QEL_Meditaciones_Primordiales_v1.0.md
+│   │   ├── QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
+│   │   ├── QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
+│   │   ├── QEL_Sello_A96-250824_Centro_Sur_Norte_EIA-A-THON_Cierre_SIL-UM-Əv1.0.md
 │   │   ├── cuemachine
 │   │   │   ├── QEL_CueMachineA96_v1.0.txt.chain
 │   │   │   ├── QEL_CueMachineA96_v1.0.txt.sig
@@ -127,40 +167,48 @@ _Generado: 2025-11-17 15:31:21_
 │   │   │   ├── QEL_MicroSello_A96-251112_PREH-NAV_Cierre_v1.0.md
 │   │   │   ├── QEL_MicroSello_A96-251117_PREH-NAV_Cierre_v1.0.md
 │   │   │   └── QEL_MicroSello_A97-251104_PREH-NAV_Cierre_v1.0.md
-│   │   ├── vf
-│   │   │   ├── QEL_VF_PRIMA_"A37-251015"_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_"A96-250813"_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A37-251019_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A37-251020_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-250812_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-250901_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-250924_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-251002_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-251011_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-251018_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-251104_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-251112_SEAL_v1.0.md
-│   │   │   ├── QEL_VF_PRIMA_A96-251117_SEAL_v1.0.md
-│   │   │   └── QEL_VF_PRIMA_A97-251104_SEAL_v1.0.md
-│   │   ├── QEL_Altar_y_Llave_v1.0.md
-│   │   ├── QEL_CueMachineA96_v1.0.txt
-│   │   ├── QEL_Meditacion_Reiteracion_Lun-Nai_v1.1.md
-│   │   ├── QEL_Meditaciones_Primordiales_v1.0.md
-│   │   ├── QEL_Sello_A96-250814_Oriente_RA-VOH-EIA__Silencio-UM-A_v1.0.md
-│   │   ├── QEL_Sello_A96-250817_PREH-NAV_Cristal_v0.2.md
-│   │   ├── QEL_Sello_A96-250824_Centro_Sur_Norte_EIA-A-THON_Cierre_SIL-UM-Əv1.0.md
-│   │   └── qel_manual_vcalc_v_1_0.md
+│   │   ├── qel_manual_vcalc_v_1_0.md
+│   │   └── vf
+│   │       ├── QEL_VF_PRIMA_"A37-251015"_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_"A96-250813"_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A37-251015_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A37-251019_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A37-251020_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-250812_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-250820_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-250824_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-250901_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-250924_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-251002_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-251011_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-251018_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-251104_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-251112_SEAL_v1.0.md
+│   │       ├── QEL_VF_PRIMA_A96-251117_SEAL_v1.0.md
+│   │       └── QEL_VF_PRIMA_A97-251104_SEAL_v1.0.md
 │   └── tools
+│       ├── .DS_Store
 │       ├── QEL_Aurora_Spec_v1.2.md
 │       ├── QEL_CUE_Exception_v1.0.md
 │       └── QEL_CueMachine_v1.0.txt
+├── install-man-page.sh
 ├── memory
+│   ├── .DS_Store
+│   ├── Memoria_de_Qel_Ledger_append_METAHUMANO_v0.1.json
+│   ├── Memoria_de_Qel_Ledger_v0.2.json
+│   ├── Q1_CUES_template.csv
+│   ├── QEL_A96-251208-OBJ_EU-SEMILLA_v0.1.delta.json
+│   ├── QEL_A96-251208-OBJ_EU-SEMILLA_v0.1.json
+│   ├── QEL_A96-251208-OBJ_KS-CRIOLAMPARA_v0.1.delta.json
+│   ├── QEL_A96-251208-OBJ_KS-CRIOLAMPARA_v0.1.json
+│   ├── QEL_A96-251208-OBJ_LN-ESPEJO_v0.1.delta.json
+│   ├── QEL_A96-251208-OBJ_LN-ESPEJO_v0.1.json
+│   ├── QEL_A96-251208-OBJ_ZO-PRISMA_v0.1.delta.json
+│   ├── QEL_A96-251208-OBJ_ZO-PRISMA_v0.1.json
+│   ├── QEL_A96_MANIFIESTO_TRIADA_ESPEJO_v0.2.md
+│   ├── QEL_Arbol_Habilidades_MP_v1.0.md
+│   ├── acceso_delta_v0.1.1.jsonl
 │   ├── archive
-│   │   ├── reports
-│   │   │   └── 250411
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md
 │   │   ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.3_completo.md
 │   │   ├── LaminaV_unificada_v1.0.md
@@ -213,6 +261,7 @@ _Generado: 2025-11-17 15:31:21_
 │   │   ├── QEL_PR_TEMPLATE_v0.2.2.md
 │   │   ├── QEL_Sellos_y_Cues_Idriell_v1.0.md
 │   │   ├── QEL_Sistema_Completo_v0.2_Consolidado.md
+│   │   ├── QEL_Sistema_Completo_v0.4_Consolidado.zip
 │   │   ├── QEL_Sistema_Consolidado_v0.2_Confirmacion_v0.1.md
 │   │   ├── QEL_SoT_Atlas_251018.md
 │   │   ├── QEL_SoT_Atlas_v1.0_250826.md
@@ -242,13 +291,20 @@ _Generado: 2025-11-17 15:31:21_
 │   │   ├── README_QEL_memoria_v0.1.1.txt
 │   │   ├── Tarjetas_Atlas_QEL_v0.2.1.md
 │   │   ├── Tarjetas_Atlas_QEL_v2.2.md
-│   │   └── Tarjetas_Atlas_QEL_v2.3.md
+│   │   ├── Tarjetas_Atlas_QEL_v2.3.md
+│   │   └── reports
+│   │       └── 250411
+│   ├── codex_preh_sync.sh
 │   ├── cue-recovery
 │   │   ├── CUE-RECOVERY_Plantilla_Caos_v0.2.1.md
 │   │   ├── CUE-RECOVERY_Plantilla_Caos_v0.2.md
 │   │   ├── CUE-RECOVERY_Schema_v0.2.1.json
 │   │   ├── CUE-RECOVERY_Schema_v0.2.json
 │   │   └── Cue_METAHUMANO_TRATADO_v0.1.txt
+│   ├── eco_pairs_A81.py
+│   ├── hs_err_pid936.log
+│   ├── ledger_criolampara_schema_v0.1.1.json
+│   ├── ledger_criolampara_template_v0.1.1.jsonl
 │   ├── listador
 │   │   ├── Listado_CUEs_FormatoR_Q1+A96_v0.1.md
 │   │   ├── Listado_CUEs_FormatoR_Q1+A96_v0.2.md
@@ -267,24 +323,6 @@ _Generado: 2025-11-17 15:31:21_
 │   │   ├── QEL_ListadoR_A96_v1.4.md
 │   │   ├── QEL_ListadoR_A97_v1.3.md
 │   │   └── QEL_ListadoR_cue_v1.1.md
-│   ├── Memoria_de_Qel_Ledger_append_METAHUMANO_v0.1.json
-│   ├── Memoria_de_Qel_Ledger_v0.2.json
-│   ├── Q1_CUES_template.csv
-│   ├── QEL_A96-251208-OBJ_EU-SEMILLA_v0.1.delta.json
-│   ├── QEL_A96-251208-OBJ_EU-SEMILLA_v0.1.json
-│   ├── QEL_A96-251208-OBJ_KS-CRIOLAMPARA_v0.1.delta.json
-│   ├── QEL_A96-251208-OBJ_KS-CRIOLAMPARA_v0.1.json
-│   ├── QEL_A96-251208-OBJ_LN-ESPEJO_v0.1.delta.json
-│   ├── QEL_A96-251208-OBJ_LN-ESPEJO_v0.1.json
-│   ├── QEL_A96-251208-OBJ_ZO-PRISMA_v0.1.delta.json
-│   ├── QEL_A96-251208-OBJ_ZO-PRISMA_v0.1.json
-│   ├── QEL_A96_MANIFIESTO_TRIADA_ESPEJO_v0.2.md
-│   ├── QEL_Arbol_Habilidades_MP_v1.0.md
-│   ├── acceso_delta_v0.1.1.jsonl
-│   ├── codex_preh_sync.sh
-│   ├── eco_pairs_A81.py
-│   ├── ledger_criolampara_schema_v0.1.1.json
-│   ├── ledger_criolampara_template_v0.1.1.jsonl
 │   ├── object_aliases_v0.1.1.json
 │   ├── objetos_interaccionales_cues_v0.1.csv
 │   ├── objetos_interaccionales_cues_v0.1.json
@@ -294,13 +332,11 @@ _Generado: 2025-11-17 15:31:21_
 │   └── test
 │       ├── QEL_MotorQEL_Indice_DRAFT.md
 │       └── QEL_MotorQEL_Orbita_DRAFT.md
-├── out
-│   ├── qel_sot_resolve_report.md
-│   ├── qel_sot_unclassified.csv
-│   ├── qel_trace_report.csv
-│   ├── qel_trace_report.md
-│   └── qel_trace_run.json
+├── package-lock.json
+├── package.json
 ├── pub
+│   ├── .DS_Store
+│   ├── README_QEL_MASTER_v0.2.1.md
 │   ├── an
 │   │   ├── A81_Notas_Espontaneas_v0.1.md
 │   │   ├── A81_Notas_Espontaneas_v0.2.md
@@ -309,18 +345,44 @@ _Generado: 2025-11-17 15:31:21_
 │   │   ├── A96_Notas_Espontaneas_Sombras_Qel_v0.2.md
 │   │   └── A97_Notas_Espontaneas_Auditoria_v1.0.md
 │   ├── atlas
+│   │   ├── Tarjetas_Atlas_QEL_v0.1 (1).pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.1.1_color.pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.1.2_color.pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.1.3_color.pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.1.pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.1_color (1).pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.1_color.pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.2.1_color.pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.2.2_color.pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.2.3_color.pdf
+│   │   ├── Tarjetas_Atlas_QEL_v0.2.4_color.pdf
+│   │   └── Tarjetas_Atlas_QEL_v0.2_color.pdf
 │   ├── codice
+│   │   ├── Codice_QEL_v0.1 (1).pdf
+│   │   ├── Codice_QEL_v0.1 (2).pdf
+│   │   └── Codice_QEL_v0.1.pdf
 │   ├── cue-recovery
 │   │   ├── CUE-RECOVERY_Plantilla_Caos_v0.2.1.md
 │   │   └── CUE-RECOVERY_Schema_v0.2.1.json
 │   ├── ecri
-│   │   └── Los Tres Árboles Iluminados (DS).md
+│   │   ├── Astra.docx
+│   │   ├── Kósmos 8.docx
+│   │   ├── Los Tres Árboles Iluminados (DS).md
+│   │   ├── Lýmina.docx
+│   │   ├── PCdI.docx
+│   │   └── Poemas.docx
 │   ├── mandrala
+│   │   ├── QEL_Mandrala_Template_v0.2.pdf
+│   │   └── QEL_Mandrala_Template_v0.2.svg
 │   ├── manifests
 │   │   └── QEL_SoT_Manifest_v0.2.json
-│   ├── manuales
-│   │   └── INSTALL_NOTES_PREH.md
-│   └── README_QEL_MASTER_v0.2.1.md
+│   └── manuales
+│       ├── Esculpido_en_Qel_Guia_de_Trabajo_v0.2.pdf
+│       ├── INSTALL_NOTES_PREH.md
+│       ├── QEL_Codex_SoT_v0.2_A81.pdf
+│       ├── QEL_Workflow_Guide_v0.2.pdf
+│       └── Tratado Metahumano V0.pdf
+├── qel_bootstrap_wsl.sh
 ├── scripts
 │   ├── apply_qel_update.sh
 │   ├── cx_navegador.zsh
@@ -330,6 +392,7 @@ _Generado: 2025-11-17 15:31:21_
 │   ├── gen_manifest.sh
 │   ├── package.json
 │   ├── pre-commit-codex-structure.sh
+│   ├── pre-push-codex-structure.sh
 │   ├── qel
 │   ├── qel_apply_curaduria_changes.sh
 │   ├── qel_atlas_microreg.sh
@@ -362,23 +425,8 @@ _Generado: 2025-11-17 15:31:21_
 │   └── update_estructura.sh
 ├── tools
 │   └── qel
-├── --emit
-├── --materia
-├── --preset
-├── --ruido
-├── --vf
-├── .gitignore
-├── .qelrc
-├── ESTRUCTURA.md
-├── Índices creados · Wrapper activo · Compilados v1.0 (integración).md
-├── LICENSE
-├── Makefile
-├── README.md
-├── install-man-page.sh
-├── package-lock.json
-├── package.json
-├── qel_bootstrap_wsl.sh
 └── yq.1
 
-51 directories, 325 files
+54 directories, 369 files
+
 ```
