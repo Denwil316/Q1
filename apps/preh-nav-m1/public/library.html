@@ -1,231 +1,816 @@
 <!doctype html>
 <html lang="es">
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PREH-NAV · Biblioteca</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PREH-NAV · Biblioteca</title>
 
-<!-- Estilos base -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
-<style>
-  :root{ --bg:#fff; --fg:#111; --muted:#666; --border:#e5e5e5; --panel:#fafafa }
-  *{ box-sizing:border-box }
-  body{ margin:0; font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--fg); background:var(--bg) }
-  header{ display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--border) }
-  nav a{ margin-right:1rem; text-decoration:none; color:var(--fg) }
-  nav a.active{ font-weight:700 }
-  .wrap{ display:grid; grid-template-columns: 340px 1fr; gap:0; min-height: calc(100vh - 56px) }
-  aside{ border-right:1px solid var(--border); padding:14px }
-  main{ padding:18px 22px; }
-  h1{ font-size:18px; margin:0 0 8px }
-  h2{ font-size:14px; margin:18px 0 8px; color:#333 }
-  .search{ display:flex; gap:8px; margin:8px 0 12px }
-  .search input{ flex:1; padding:.55rem .65rem; border:1px solid var(--border); border-radius:8px }
-  .group{ margin-bottom:10px }
-  .count{ color:var(--muted); font-weight:600; margin-left:6px; font-size:12px }
-  ul.files{ list-style:none; padding:0; margin:6px 0 0; max-height:38vh; overflow:auto; border:1px solid var(--border); border-radius:10px; background:#fff }
-  ul.files li{ border-bottom:1px solid var(--border) }
-  ul.files li:last-child{ border-bottom:0 }
-  .file{ display:flex; gap:8px; align-items:center; padding:8px 10px; cursor:pointer }
-  .file small{ color:var(--muted) }
-  .file:hover{ background:#f6f8fa }
-  .badge{ display:inline-block; padding:.15rem .45rem; border-radius:999px; background:#f0f0f0; font-size:12px; }
-  .row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap }
-  .muted{ color:var(--muted) }
-  .viewerHead{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin:0 0 12px; }
-  .viewerHead .row a{ text-decoration:none; color:#0366d6 }
-  .docTitle{ font-weight:700 }
-  .panel{ background:var(--panel); border:1px dashed var(--border); padding:8px 10px; border-radius:10px; color:#333; }
-  .md{ max-width: 80ch; }
-  .md h1, .md h2, .md h3{ margin-top:1.2em }
-  .md pre{ background:#f6f8fa; padding:1rem; border-radius:8px; overflow:auto }
-  iframe.pdf{ width:100%; height:78vh; border:1px solid var(--border); border-radius:10px }
-  .empty{ color:var(--muted); font-style:italic; }
-  footer{ padding:12px 16px; border-top:1px solid var(--border); color:var(--muted); font-size:13px }
-  @media (max-width: 980px){
-    .wrap{ grid-template-columns:1fr }
-    aside{ border-right:0; border-bottom:1px solid var(--border) }
-  }
-</style>
+  <!-- QEL metadata -->
+  <!-- cue: [QEL::ECO[96]::RECALL A96-260119-PREH-NAV-LIBRARY-TOGGLE-TREE] -->
+  <!-- SeedI: A37-260119 -->
+  <!-- SoT: PREH-NAV/LIBRARY/HTML/v0.5 -->
+  <!-- Version: v0.5 -->
+  <!-- Updated: 2026-01-19 -->
 
-<header>
-  <nav>
-    <a href="/vcalc.html">VCALC</a>
-    <a href="/library.html" class="active"><b>Biblioteca</b></a>
-  </nav>
-  <div class="muted">PREH-NAV · lector de docs</div>
-</header>
+  <!-- Highlight.js (light + dark). Se activa por toggle. -->
+  <link id="hljsLight" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+  <link id="hljsDark"  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark-dimmed.min.css" disabled>
 
-<div class="wrap">
-  <aside>
-    <h1>Biblioteca</h1>
-    <div class="search">
-      <input id="q" placeholder="Filtrar por nombre…" />
-    </div>
+  <style>
+    /*
+      Tema: variables.
+      Default: sigue `prefers-color-scheme` si no hay preferencia guardada.
+      Se setea con <html data-theme="light|dark">.
+    */
 
-    <div class="group" id="grp-core">
-      <h2>Core <span class="count" id="cnt-core">0</span></h2>
-      <ul class="files" id="list-core"></ul>
-    </div>
+    :root{
+      --radius: 16px;
+      --shadow: 0 10px 34px rgba(0,0,0,.08);
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      --fontMono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-    <div class="group" id="grp-ritual">
-      <h2>Ritual <span class="count" id="cnt-ritual">0</span></h2>
-      <ul class="files" id="list-ritual"></ul>
-    </div>
+      --viewerSize: 16px;
+      --viewerLH: 1.75;
+      --maxch: 82ch;
 
-    <div class="group" id="grp-atlas">
-      <h2>Atlas <span class="count" id="cnt-atlas">0</span></h2>
-      <ul class="files" id="list-atlas"></ul>
-    </div>
-
-    <div class="group" id="grp-memory">
-      <h2>Memory <span class="count" id="cnt-memory">0</span></h2>
-      <ul class="files" id="list-memory"></ul>
-    </div>
-
-    <div class="panel" style="margin-top:10px">
-      <b>Tipos soportados</b>: <span class="badge">.md</span> <span class="badge">.json</span> <span class="badge">.yml</span> <span class="badge">.yaml</span> <span class="badge">.pdf</span>
-      <div class="muted" style="margin-top:6px">Los .md se renderizan; PDF se incrusta; otros se muestran como texto.</div>
-    </div>
-  </aside>
-
-  <main>
-    <div class="viewerHead">
-      <div class="docTitle" id="docTitle">Selecciona un documento…</div>
-      <div class="row">
-        <a id="openRaw" href="#" target="_blank" rel="noopener" class="muted">abrir crudo ↗</a>
-        <a id="copyLink" href="#" class="muted">copiar enlace</a>
-      </div>
-    </div>
-    <div id="viewer" class="md empty">—</div>
-  </main>
-</div>
-
-<footer>
-  Render MD con <code>marked</code> + <code>DOMPurify</code>, resaltado <code>highlight.js</code>. Soporta <code>?src=/core/...</code>.
-</footer>
-
-<!-- Libs para render seguro -->
-<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
-
-<script>
-const $  = s => document.querySelector(s);
-const $$ = s => Array.from(document.querySelectorAll(s));
-
-const lists = {
-  core:   $('#list-core'),
-  ritual: $('#list-ritual'),
-  atlas:  $('#list-atlas'),
-  memory: $('#list-memory')
-};
-
-async function loadLibrary(){
-  const res = await fetch('/api/v1/library');
-  const data = await res.json();
-  // Rellena listas
-  for (const key of Object.keys(lists)){
-    const ul = lists[key];
-    ul.innerHTML = '';
-    const arr = data[key] || [];
-    $('#cnt-' + key).textContent = arr.length;
-    for (const it of arr){
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <div class="file" data-url="${it.url}" title="${it.rel}">
-          <div class="badge">${ext(it.name)}</div>
-          <div>
-            <div>${escapeHtml(it.name)}</div>
-            <small>${escapeHtml(it.rel)}</small>
-          </div>
-        </div>`;
-      ul.appendChild(li);
+      /* Light (quiet) */
+      --bg: #f6f2ea;
+      --paper: #fbf8f1;
+      --fg: #1f2328;
+      --muted: #66707a;
+      --border: #d8d0c4;
+      --panel: #efe8dd;
+      --hover: #f1ebe0;
+      --link: #2f6f7e;
+      --codebg: #efe9df;
+      --listbg: #ffffff;
     }
-  }
-}
 
-function ext(name){ return (name.split('.').pop() || '').toLowerCase(); }
-function isMd(name){ return /\.md$/i.test(name); }
-function isPdf(name){ return /\.pdf$/i.test(name); }
-function isTextual(name){ return /\.(md|txt|json|ya?ml)$/i.test(name); }
+    :root[data-theme="dark"]{
+      /* Dark (apagado, no OLED puro) */
+      --bg: #0f1419;
+      --paper: #141b22;
+      --fg: #d7dde5;
+      --muted: #97a3b0;
+      --border: #2a3440;
+      --panel: #1b2430;
+      --hover: #1f2a36;
+      --link: #7fc6d6;
+      --codebg: #0f1720;
+      --listbg: #0f1419;
+      --shadow: 0 10px 34px rgba(0,0,0,.35);
+    }
 
-// Muy simple para subtítulos y evitar XSS en los títulos de lista
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])) }
+    *{ box-sizing:border-box }
+    html, body{ height:100% }
+    body{
+      margin:0;
+      font:16px/1.6 var(--font);
+      color:var(--fg);
+      background:var(--bg);
+    }
 
-// Render según extensión
-async function renderDoc(url, display){
-  $('#docTitle').textContent = display || url;
-  $('#openRaw').href = url;
-  $('#viewer').classList.remove('empty');
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 16px;
+      border-bottom:1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 92%, var(--paper) 8%);
+      backdrop-filter: blur(6px);
+    }
 
-  const e = ext(url);
-  if (isPdf(url)){
-    $('#viewer').innerHTML = `<iframe class="pdf" src="${url}"></iframe>`;
-    return;
-  }
+    nav a{ margin-right:1rem; text-decoration:none; color:var(--fg) }
+    nav a.active{ font-weight:700 }
 
-  const res = await fetch(url);
-  if (!res.ok){
-    $('#viewer').innerHTML = `<div class="panel">Error al cargar: ${res.status} ${res.statusText}</div>`;
-    return;
-  }
-  const text = await res.text();
+    .hdrRight{ display:flex; align-items:center; gap:10px; flex-wrap:wrap }
 
-  if (isMd(url)){
-    const html = marked.parse(text, { mangle:false, headerIds:true });
-    const safe = DOMPurify.sanitize(html);
-    $('#viewer').innerHTML = safe;
-    hljs.highlightAll();
-  } else if (isTextual(url)){
-    // JSON/YAML/otros texto
-    $('#viewer').innerHTML = `<pre><code>${escapeHtml(text)}</code></pre>`;
-    hljs.highlightAll();
-  } else {
-    $('#viewer').innerHTML = `<div class="panel">Tipo no soportado para vista previa. <a href="${url}" target="_blank" rel="noopener">Abrir crudo</a></div>`;
-  }
-  // Actualiza la URL para deep-linking
-  const u = new URL(location.href);
-  u.searchParams.set('src', url);
-  history.replaceState(null, '', u.toString());
-}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      font-size: 13px;
+      user-select:none;
+    }
 
-function hookClicks(){
-  for (const el of $$('.file')){
-    el.addEventListener('click', () => renderDoc(el.dataset.url, el.title));
-  }
-}
+    .btn{
+      border:1px solid var(--border);
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+      color: var(--fg);
+      font-size: 13px;
+    }
+    .btn:hover{ background: var(--hover) }
 
-function filterList(q){
-  const needle = q.trim().toLowerCase();
-  for (const item of $$('.file')){
-    const name = item.textContent.toLowerCase();
-    item.parentElement.style.display = (!needle || name.includes(needle)) ? '' : 'none';
-  }
-}
+    .wrap{
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap: 14px;
+      padding: 14px;
+      min-height: calc(100vh - 56px);
+    }
 
-$('#q').addEventListener('input', e => filterList(e.target.value));
+    aside{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--paper);
+      padding:12px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
 
-$('#copyLink').addEventListener('click', (e)=>{
-  e.preventDefault();
-  try{
-    navigator.clipboard.writeText(location.href);
-    $('#copyLink').textContent = 'copiado ✓';
-    setTimeout(()=>$('#copyLink').textContent = 'copiar enlace', 1200);
-  }catch{}
-});
+    main{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--paper);
+      padding:18px 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
 
-(async function init(){
-  await loadLibrary();
-  hookClicks();
+    h1{ font-size:17px; margin:0 0 10px }
 
-  // Deep-link: ?src=/core/...
-  const src = new URLSearchParams(location.search).get('src');
-  if (src){
-    // Busca nombre “bonito” si está en listas
-    const match = $(`.file[data-url="${CSS.escape(src)}"]`);
-    const display = match ? match.getAttribute('title') : src;
-    renderDoc(src, display);
-  }
-})();
-</script>
+    .controls{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:8px 0 10px;
+    }
+
+    .search{ display:flex; gap:8px; margin:8px 0 10px }
+    .search input{
+      flex:1;
+      padding:.58rem .7rem;
+      border:1px solid var(--border);
+      border-radius: 12px;
+      background: var(--listbg);
+      color: var(--fg);
+      outline: none;
+    }
+    .search input:focus{ box-shadow: 0 0 0 3px color-mix(in srgb, var(--link) 18%, transparent) }
+
+    /* Colecciones (acordeón) */
+    .collection{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      overflow:hidden;
+      background: color-mix(in srgb, var(--paper) 70%, var(--listbg) 30%);
+      margin-bottom: 10px;
+    }
+
+    .collection > summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 10px;
+      background: color-mix(in srgb, var(--paper) 88%, var(--panel) 12%);
+      border-bottom:1px solid var(--border);
+      user-select:none;
+    }
+
+    .collection > summary::-webkit-details-marker{ display:none }
+
+    .colTitle{ font-weight:700; font-size:13px }
+    .colMeta{ color:var(--muted); font-size:12px; display:flex; gap:8px; align-items:center }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:.18rem .55rem;
+      border-radius:999px;
+      background: var(--panel);
+      font-size:12px;
+      border: 1px solid color-mix(in srgb, var(--border) 85%, var(--paper) 15%);
+      line-height: 1.2;
+      user-select:none;
+    }
+
+    /* Árbol */
+    .tree{
+      padding: 8px 8px 10px;
+      background: var(--listbg);
+      max-height: 24vh;
+      overflow:auto;
+    }
+
+    .folder{
+      margin: 2px 0;
+      border-radius: 10px;
+    }
+
+    .folder > summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      user-select:none;
+      color: color-mix(in srgb, var(--fg) 92%, var(--muted) 8%);
+    }
+    .folder > summary:hover{ background: var(--hover) }
+    .folder > summary::-webkit-details-marker{ display:none }
+
+    .caret{ width: 14px; text-align:center; color: var(--muted) }
+    .ficon{ width: 18px; text-align:center; color: var(--muted) }
+
+    .folderChildren{ padding-left: 16px }
+
+    .fileRow{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      cursor:pointer;
+    }
+    .fileRow:hover{ background: var(--hover) }
+
+    .fileName{ font-size: 13px }
+    .fileHint{ margin-left:auto; color: var(--muted); font-size:12px }
+
+    .ext{
+      font-family: var(--fontMono);
+      font-size: 11px;
+      padding: .12rem .35rem;
+      border-radius: 10px;
+      border: 1px solid color-mix(in srgb, var(--border) 85%, var(--paper) 15%);
+      background: color-mix(in srgb, var(--panel) 80%, var(--paper) 20%);
+      color: color-mix(in srgb, var(--fg) 85%, var(--muted) 15%);
+    }
+
+    .panel{
+      background: var(--panel);
+      border:1px dashed var(--border);
+      padding:10px 12px;
+      border-radius: 14px;
+      color: color-mix(in srgb, var(--fg) 90%, var(--muted) 10%);
+      margin-top: 10px;
+    }
+
+    .muted{ color: var(--muted) }
+
+    /* Viewer */
+    .viewerHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin:0 0 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .viewerHead .row a{ text-decoration:none; color:var(--link) }
+    .docTitle{ font-weight:700; line-height: 1.25 }
+    .row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap }
+
+    #viewer{
+      font-size: var(--viewerSize);
+      line-height: var(--viewerLH);
+      color: var(--fg);
+      overflow:auto;
+      padding: 8px 6px 16px;
+    }
+
+    .md{ max-width: var(--maxch); margin: 0 auto; }
+    .md h1, .md h2, .md h3{ margin-top:1.25em; line-height: 1.2 }
+    .md p{ margin: 0.9em 0 }
+    .md blockquote{
+      margin: 1em 0;
+      padding: 8px 12px;
+      border-left: 3px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 70%, var(--paper) 30%);
+      border-radius: 12px;
+      color: color-mix(in srgb, var(--fg) 90%, var(--muted) 10%);
+    }
+
+    .md pre{
+      background: var(--codebg);
+      padding: 1rem;
+      border-radius: 14px;
+      overflow:auto;
+      border: 1px solid color-mix(in srgb, var(--border) 85%, var(--paper) 15%);
+      font-family: var(--fontMono);
+      font-size: 0.93em;
+    }
+
+    .md code{
+      font-family: var(--fontMono);
+      background: color-mix(in srgb, var(--panel) 70%, var(--paper) 30%);
+      padding: 0 .25em;
+      border-radius: 8px;
+    }
+
+    iframe.pdf{ width:100%; height:78vh; border:1px solid var(--border); border-radius: 14px }
+    .empty{ color:var(--muted); font-style:italic; }
+
+    footer{ padding:12px 16px; border-top:1px solid var(--border); color:var(--muted); font-size:13px }
+
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns:1fr }
+      .tree{ max-height: 34vh }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/vcalc.html">VCALC</a>
+      <a href="/library" class="active"><b>Biblioteca</b></a>
+    </nav>
+
+    <div class="hdrRight">
+      <div class="pill">PREH-NAV · biblioteca · <span id="apiVer">api?</span></div>
+      <button class="btn" id="themeToggle" title="Cambiar tema">Tema</button>
+      <button class="btn" id="Aminus" title="Disminuir tamaño">A−</button>
+      <button class="btn" id="Aplus"  title="Aumentar tamaño">A+</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside>
+      <h1>Biblioteca</h1>
+
+      <div class="search">
+        <input id="q" placeholder="Filtrar por nombre o ruta…" />
+      </div>
+
+      <div class="controls">
+        <button class="btn" id="expandAll">Expandir</button>
+        <button class="btn" id="collapseAll">Colapsar</button>
+        <span class="pill" style="box-shadow:none">Rutas persistentes</span>
+      </div>
+
+      <div id="nav"></div>
+
+      <div class="panel" id="libStatus" style="display:none"></div>
+
+      <div class="panel">
+        <b>Tipos soportados</b>: <span class="tag">.md</span> <span class="tag">.json</span> <span class="tag">.yml</span> <span class="tag">.yaml</span> <span class="tag">.pdf</span>
+        <div class="muted" style="margin-top:6px">Markdown se renderiza; PDF se incrusta; otros se muestran como texto.</div>
+      </div>
+    </aside>
+
+    <main>
+      <div class="viewerHead">
+        <div>
+          <div class="docTitle" id="docTitle">Selecciona un documento…</div>
+          <div class="muted" id="docPath" style="margin-top:4px"></div>
+        </div>
+        <div class="row">
+          <a id="openRaw" href="#" target="_blank" rel="noopener" class="muted">abrir ↗</a>
+          <a id="copyLink" href="#" class="muted">copiar enlace</a>
+        </div>
+      </div>
+      <div id="viewer" class="md empty">—</div>
+    </main>
+  </div>
+
+  <footer>
+    Render MD con <code>marked</code> + <code>DOMPurify</code>, resaltado <code>highlight.js</code>. Deep-link con <code>?src=/docs/...</code> o <code>?src=/core/...</code>.
+  </footer>
+
+  <!-- Libs para render seguro -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/common.min.js"></script>
+
+  <script>
+    const $  = s => document.querySelector(s);
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+    }
+
+    // ------------------
+    // Tema (Claro/Oscuro)
+    // ------------------
+
+    const THEME_KEY = 'qel.theme'; // 'light' | 'dark'
+
+    function systemPrefersDark(){
+      return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+
+    function getTheme(){
+      const saved = localStorage.getItem(THEME_KEY);
+      if (saved === 'light' || saved === 'dark') return saved;
+      return systemPrefersDark() ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme){
+      const t = (theme === 'dark') ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+
+      // highlight.js theme
+      const l = $('#hljsLight');
+      const d = $('#hljsDark');
+      if (l && d){
+        l.disabled = (t === 'dark');
+        d.disabled = (t !== 'dark');
+      }
+
+      const btn = $('#themeToggle');
+      if (btn) btn.textContent = (t === 'dark') ? 'Oscuro' : 'Claro';
+    }
+
+    function toggleTheme(){
+      const cur = document.documentElement.getAttribute('data-theme') || getTheme();
+      const next = (cur === 'dark') ? 'light' : 'dark';
+      localStorage.setItem(THEME_KEY, next);
+      applyTheme(next);
+    }
+
+    // ------------------
+    // Catálogo
+    // ------------------
+
+    const NAV_STATE_KEY = 'qel.nav.open.v1';
+
+    function loadNavState(){
+      try { return JSON.parse(localStorage.getItem(NAV_STATE_KEY) || '{}'); }
+      catch { return {}; }
+    }
+
+    function saveNavState(state){
+      localStorage.setItem(NAV_STATE_KEY, JSON.stringify(state || {}));
+    }
+
+    let navState = loadNavState();
+
+    const GROUPS = [
+      { key:'published', label:'Publicados', tag:'PUB', hint:'/docs' },
+      { key:'core',      label:'Core',      tag:'CORE', hint:'/core (+pub-core)' },
+      { key:'ritual',    label:'Ritual',    tag:'RIT', hint:'/ritual (+pub-rit)' },
+      { key:'atlas',     label:'Atlas',     tag:'ATL', hint:'/atlas (+pub-atl)' },
+      { key:'tools',     label:'Tools',     tag:'TLS', hint:'/tools' },
+      { key:'fs',        label:'FS',        tag:'FS',  hint:'/fs' },
+      { key:'memory',    label:'Memory',    tag:'MEM', hint:'/memory (+pub-mem)' },
+    ];
+
+    function ext(name){ return (String(name).split('.').pop() || '').toLowerCase(); }
+    function isMd(name){ return /\.md$/i.test(name); }
+    function isPdf(name){ return /\.pdf$/i.test(name); }
+    function isTextual(name){ return /\.(md|txt|json|ya?ml)$/i.test(name); }
+
+    function showStatus(html){
+      const box = $('#libStatus');
+      box.style.display = '';
+      box.innerHTML = html;
+    }
+
+    function hideStatus(){
+      const box = $('#libStatus');
+      box.style.display = 'none';
+      box.innerHTML = '';
+    }
+
+    function stateKey(groupKey, path){
+      return `${groupKey}::${path}`;
+    }
+
+    function getFolderOpen(groupKey, folderPath, depth){
+      const k = stateKey(groupKey, folderPath);
+      if (k in navState) return !!navState[k];
+      // default: abre nivel 0/1 para que sea "orgánico"
+      return depth <= 1;
+    }
+
+    function setFolderOpen(groupKey, folderPath, isOpen){
+      navState[stateKey(groupKey, folderPath)] = !!isOpen;
+      saveNavState(navState);
+    }
+
+    function buildTree(items){
+      const root = { folders: new Map(), files: [] };
+
+      for (const it of (items || [])){
+        const rel = String(it.rel || it.name || '');
+        const parts = rel.split('/').filter(Boolean);
+        if (!parts.length) continue;
+
+        let node = root;
+        for (let i=0; i<parts.length; i++){
+          const part = parts[i];
+          const isLast = (i === parts.length - 1);
+          if (isLast){
+            node.files.push({
+              name: it.name || part,
+              rel,
+              url: it.url,
+              origin: it.origin,
+              bucket: it.bucket,
+            });
+          } else {
+            if (!node.folders.has(part)) node.folders.set(part, { folders: new Map(), files: [] });
+            node = node.folders.get(part);
+          }
+        }
+      }
+
+      // Ordenar
+      function sortNode(n){
+        n.files.sort((a,b)=>String(a.name).localeCompare(String(b.name), 'es'));
+        const entries = Array.from(n.folders.entries()).sort((a,b)=>String(a[0]).localeCompare(String(b[0]), 'es'));
+        n.folders = new Map(entries);
+        for (const [,child] of n.folders) sortNode(child);
+      }
+      sortNode(root);
+      return root;
+    }
+
+    function renderTree(groupKey, rootNode, container){
+      container.innerHTML = '';
+
+      const frag = document.createDocumentFragment();
+
+      function folderNode(name, node, parentPath, depth){
+        const folderPath = parentPath ? (parentPath + '/' + name) : name;
+        const details = document.createElement('details');
+        details.className = 'folder';
+        details.open = getFolderOpen(groupKey, folderPath, depth);
+
+        const summary = document.createElement('summary');
+        summary.innerHTML = `
+          <span class="caret">${details.open ? '▾' : '▸'}</span>
+          <span class="ficon">🗂</span>
+          <span class="fileName">${escapeHtml(name)}</span>
+        `;
+
+        // Al abrir/cerrar, persiste
+        details.addEventListener('toggle', ()=>{
+          const isOpen = details.open;
+          const caret = summary.querySelector('.caret');
+          if (caret) caret.textContent = isOpen ? '▾' : '▸';
+          setFolderOpen(groupKey, folderPath, isOpen);
+        });
+
+        const childWrap = document.createElement('div');
+        childWrap.className = 'folderChildren';
+
+        // Render subfolders
+        for (const [subName, subNode] of node.folders.entries()){
+          childWrap.appendChild(folderNode(subName, subNode, folderPath, depth + 1));
+        }
+
+        // Render files
+        for (const f of node.files){
+          const row = document.createElement('div');
+          row.className = 'fileRow';
+          row.dataset.url = f.url;
+          row.dataset.rel = f.rel;
+          row.dataset.group = groupKey;
+          row.title = f.rel;
+          row.innerHTML = `
+            <span class="ficon">📄</span>
+            <span class="ext">${escapeHtml(ext(f.name))}</span>
+            <span class="fileName">${escapeHtml(f.name)}</span>
+            <span class="fileHint">${escapeHtml((f.origin||'').toString().toUpperCase())}</span>
+          `;
+          childWrap.appendChild(row);
+        }
+
+        details.appendChild(summary);
+        details.appendChild(childWrap);
+        return details;
+      }
+
+      // Root-level folders
+      for (const [folderName, folder] of rootNode.folders.entries()){
+        frag.appendChild(folderNode(folderName, folder, '', 0));
+      }
+
+      // Root-level files (si los hay)
+      for (const f of rootNode.files){
+        const row = document.createElement('div');
+        row.className = 'fileRow';
+        row.dataset.url = f.url;
+        row.dataset.rel = f.rel;
+        row.dataset.group = groupKey;
+        row.title = f.rel;
+        row.innerHTML = `
+          <span class="ficon">📄</span>
+          <span class="ext">${escapeHtml(ext(f.name))}</span>
+          <span class="fileName">${escapeHtml(f.name)}</span>
+          <span class="fileHint">${escapeHtml((f.origin||'').toString().toUpperCase())}</span>
+        `;
+        frag.appendChild(row);
+      }
+
+      container.appendChild(frag);
+    }
+
+    function renderNav(data, q){
+      hideStatus();
+      $('#apiVer').textContent = escapeHtml(String(data?.version || 'api?'));
+
+      const nav = $('#nav');
+      nav.innerHTML = '';
+
+      let totalAll = Number(data?.counts?.all || 0);
+      if (!totalAll){
+        showStatus(
+          `<b>Biblioteca sin documentos.</b><br>` +
+          `<span class="muted">Abre <code>/api/v1/library</code> para revisar <code>exists</code> y <code>counts</code>.</span>`
+        );
+      }
+
+      const needle = (q || '').trim().toLowerCase();
+
+      for (const g of GROUPS){
+        const items = Array.isArray(data?.[g.key]) ? data[g.key] : [];
+        const filtered = !needle ? items : items.filter(it => {
+          const s = `${it.name||''} ${it.rel||''}`.toLowerCase();
+          return s.includes(needle);
+        });
+
+        const det = document.createElement('details');
+        det.className = 'collection';
+        det.open = (navState[`COL::${g.key}`] ?? (g.key === 'published' || g.key === 'core'));
+
+        det.addEventListener('toggle', ()=>{
+          navState[`COL::${g.key}`] = !!det.open;
+          saveNavState(navState);
+        });
+
+        const summary = document.createElement('summary');
+        summary.innerHTML = `
+          <span class="colTitle">${escapeHtml(g.label)}</span>
+          <span class="colMeta">
+            <span class="tag">${escapeHtml(g.tag)}</span>
+            <span>${escapeHtml(String(filtered.length))}</span>
+          </span>
+        `;
+
+        const tree = document.createElement('div');
+        tree.className = 'tree';
+        tree.dataset.group = g.key;
+
+        // Construye árbol desde `rel`.
+        const t = buildTree(filtered);
+        renderTree(g.key, t, tree);
+
+        det.appendChild(summary);
+        det.appendChild(tree);
+        nav.appendChild(det);
+      }
+
+      if (needle && !document.querySelector('.fileRow')){
+        showStatus(
+          `<b>Sin resultados.</b><br>` +
+          `<span class="muted">No hay coincidencias para: <code>${escapeHtml(needle)}</code></span>`
+        );
+      }
+    }
+
+    let libraryData = null;
+
+    async function loadLibrary(){
+      const res = await fetch('/api/v1/library', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+      const data = await res.json();
+      if (!data || data.ok === false) throw new Error(data?.error || 'Respuesta inválida');
+      return data;
+    }
+
+    // ------------------
+    // Viewer
+    // ------------------
+
+    async function renderDoc(url, rel){
+      $('#docTitle').textContent = rel || url;
+      $('#docPath').textContent = url;
+      $('#openRaw').href = url;
+      $('#viewer').classList.remove('empty');
+
+      if (isPdf(url)){
+        $('#viewer').innerHTML = `<iframe class="pdf" src="${url}"></iframe>`;
+        return;
+      }
+
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok){
+        $('#viewer').innerHTML = `<div class="panel">Error al cargar: ${res.status} ${res.statusText}</div>`;
+        return;
+      }
+
+      const text = await res.text();
+
+      if (isMd(url)){
+        const html = marked.parse(text, { mangle:false, headerIds:true });
+        const safe = DOMPurify.sanitize(html);
+        $('#viewer').innerHTML = `<div class="md">${safe}</div>`;
+        hljs.highlightAll();
+      } else if (isTextual(url)){
+        $('#viewer').innerHTML = `<pre><code>${escapeHtml(text)}</code></pre>`;
+        hljs.highlightAll();
+      } else {
+        $('#viewer').innerHTML = `<div class="panel">Tipo no soportado. <a href="${url}" target="_blank" rel="noopener">Abrir</a></div>`;
+      }
+
+      const u = new URL(location.href);
+      u.searchParams.set('src', url);
+      history.replaceState(null, '', u.toString());
+    }
+
+    function setViewerSize(px){
+      const v = Math.max(13, Math.min(22, px));
+      document.documentElement.style.setProperty('--viewerSize', v + 'px');
+      localStorage.setItem('qel.viewerSize', String(v));
+    }
+
+    // ------------------
+    // Init / Events
+    // ------------------
+
+    document.addEventListener('click', (e)=>{
+      const row = e.target.closest && e.target.closest('.fileRow');
+      if (!row) return;
+      const url = row.dataset.url;
+      const rel = row.dataset.rel || url;
+      renderDoc(url, rel);
+    });
+
+    $('#copyLink').addEventListener('click', (e)=>{
+      e.preventDefault();
+      try{
+        navigator.clipboard.writeText(location.href);
+        $('#copyLink').textContent = 'copiado ✓';
+        setTimeout(()=>$('#copyLink').textContent = 'copiar enlace', 1200);
+      }catch{}
+    });
+
+    $('#Aminus').addEventListener('click', ()=>{
+      const cur = Number(getComputedStyle(document.documentElement).getPropertyValue('--viewerSize').replace('px','')) || 16;
+      setViewerSize(cur - 1);
+    });
+    $('#Aplus').addEventListener('click', ()=>{
+      const cur = Number(getComputedStyle(document.documentElement).getPropertyValue('--viewerSize').replace('px','')) || 16;
+      setViewerSize(cur + 1);
+    });
+
+    $('#themeToggle').addEventListener('click', ()=>toggleTheme());
+
+    $('#expandAll').addEventListener('click', ()=>{
+      // abre todas las carpetas visibles
+      document.querySelectorAll('details.folder').forEach(d => { d.open = true; });
+    });
+
+    $('#collapseAll').addEventListener('click', ()=>{
+      document.querySelectorAll('details.folder').forEach(d => { d.open = false; });
+    });
+
+    let filterTimer = null;
+    $('#q').addEventListener('input', (e)=>{
+      const q = e.target.value;
+      clearTimeout(filterTimer);
+      filterTimer = setTimeout(()=>{
+        if (!libraryData) return;
+        renderNav(libraryData, q);
+      }, 80);
+    });
+
+    (async function init(){
+      // Tema + prefs
+      applyTheme(getTheme());
+
+      const savedSize = Number(localStorage.getItem('qel.viewerSize') || '16');
+      if (savedSize) setViewerSize(savedSize);
+
+      try{
+        libraryData = await loadLibrary();
+        renderNav(libraryData, '');
+
+        const src = new URLSearchParams(location.search).get('src');
+        if (src){
+          renderDoc(src, src);
+        }
+      }catch(err){
+        showStatus(
+          `<b>No pude cargar <code>/api/v1/library</code></b><br>` +
+          `<span class="muted">${escapeHtml(String(err))}</span><br><br>` +
+          `<span class="muted">Reinicia el servidor (<code>node server.mjs</code>) y valida que <code>/api/v1/library</code> responda JSON.</span>`
+        );
+      }
+    })();
+
+  </script>
+</body>
 </html>

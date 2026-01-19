@@ -12,35 +12,183 @@ Updated=2025-11-07
 <title>PREH-NAV · VCALC (M1/M2/M3 + CLI + URL presets)</title>
 <style>
   :root{color-scheme:light dark}
-  body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; margin:2rem; max-width:1150px}
-  nav a{margin-right:1rem}
-  fieldset{border:1px solid #e5e5e5; border-radius:12px; padding:1rem; margin:0 0 1rem}
-  legend{font-weight:700}
-  label{display:block; margin:.45rem 0 .1rem; font-weight:600}
-  input,select{width:100%; max-width:420px; padding:.45rem .6rem; border:1px solid #ccc; border-radius:8px}
-  .row{display:flex; gap:1rem; flex-wrap:wrap}
-  button{padding:.6rem 1rem; border:0; border-radius:10px; background:#111; color:#fff; cursor:pointer}
-  button.ghost{background:#f3f3f3; color:#111}
-  pre{background:#f6f8fa; padding:1rem; border-radius:10px; overflow:auto; max-height:55vh}
-  small{color:#666}
-  .grid3{display:grid; grid-template-columns:240px 120px 120px; gap:.6rem; align-items:end}
-  .pill{display:inline-block; padding:.25rem .6rem; border-radius:999px; background:#f0f0f0; margin-left:.5rem}
-  .ok{color:#0a7a3d; font-weight:700}
-  .warn{color:#a15a00; font-weight:700}
-  .bad{color:#b00020; font-weight:700}
-  .muted{color:#666}
-  .tips{background:#fafafa; border:1px dashed #ddd; padding:.7rem .9rem; border-radius:10px}
-  .inline{display:flex; align-items:center; gap:.5rem}
-  input[readonly]{background:#f3f3f3; color:#555}
-  .pill.ok{background:#e7f7ee; color:#0a7a3d}
-  .pill.warn{background:#fff4e5; color:#a15a00}
-  .pill.bad{background:#ffe8e8; color:#b00020}
-  .seg{display:inline-flex; border:1px solid #ddd; border-radius:999px; overflow:hidden}
-  .seg button{background:#fff; color:#111; padding:.35rem .8rem; border-radius:0}
-  .seg button+button{border-left:1px solid #ddd}
-  .seg button.active{background:#111; color:#fff}
+
+  /* Quiet palette (sin toggle; respeta preferencia del sistema) */
+  :root{
+    --bg:#f6f2ea;
+    --paper:#fbf8f1;
+    --fg:#1f2328;
+    --muted:#66707a;
+    --border:#d8d0c4;
+    --panel:#efe8dd;
+    --hover:#f1ebe0;
+    --code:#efe9df;
+
+    --radius:14px;
+    --radiusSm:10px;
+    --gap:12px;
+
+    --ok:#0a7a3d;
+    --warn:#a15a00;
+    --bad:#b00020;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1419;
+      --paper:#141b22;
+      --fg:#d7dde5;
+      --muted:#97a3b0;
+      --border:#2a3440;
+      --panel:#1b2430;
+      --hover:#1f2a36;
+      --code:#0f1720;
+    }
+  }
+
+  *{box-sizing:border-box}
+  body{
+    font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    margin:0;
+    padding: clamp(14px, 2vw, 26px);
+    max-width: 1180px;
+    color: var(--fg);
+    background: var(--bg);
+  }
+
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 14px;
+    align-items:center;
+    margin: 0 0 14px;
+  }
+
+  nav a{margin-right:0; text-decoration:none; color: var(--fg)}
+  nav a:hover{ text-decoration: underline }
+
+  h1{ margin: 0 0 8px }
+  p{ margin: 0 0 14px; color: var(--muted) }
+
+  fieldset{
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+    margin: 0 0 12px;
+    background: color-mix(in srgb, var(--paper) 84%, var(--panel) 16%);
+  }
+
+  legend{font-weight:800; padding:0 6px}
+
+  label{
+    display:block;
+    margin:.45rem 0 .12rem;
+    font-weight:700;
+    color: color-mix(in srgb, var(--fg) 92%, var(--muted) 8%);
+  }
+
+  input,select{
+    width:100%;
+    max-width: 100%;
+    padding:.52rem .66rem;
+    border:1px solid color-mix(in srgb, var(--border) 92%, transparent);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--paper) 78%, var(--bg) 22%);
+    color: var(--fg);
+    min-width: 0;
+    outline: none;
+  }
+
+  input:focus, select:focus{ box-shadow: 0 0 0 3px color-mix(in srgb, var(--fg) 18%, transparent) }
+
+  input[readonly]{background: color-mix(in srgb, var(--paper) 60%, var(--panel) 40%); color: color-mix(in srgb, var(--fg) 72%, var(--muted) 28%)}
+
+  /*
+    CAMBIO CLAVE: .row pasa de flex a grid auto-fit
+    -> evita encimados / overflow cuando hay muchos campos en una fila.
+  */
+  .row{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--gap);
+    align-items: end;
+  }
+
+  /* Para filas con elementos cortos (M3) */
+  .row > div{ min-width: 0 }
+
+  button{
+    padding:.62rem 1rem;
+    border:1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--fg) 92%, var(--paper) 8%);
+    color: var(--paper);
+    cursor:pointer;
+  }
+  button:hover{ filter: brightness(1.04) }
+
+  button.ghost{
+    background: color-mix(in srgb, var(--paper) 78%, var(--panel) 22%);
+    color: var(--fg);
+    border: 1px solid var(--border);
+  }
+
+  pre{
+    background: var(--code);
+    padding: 1rem;
+    border-radius: 12px;
+    overflow:auto;
+    max-height: 55vh;
+    border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  }
+
+  small{color: var(--muted)}
+
+  /*
+    CAMBIO CLAVE: .grid3 deja de ser fijo (240/120/120)
+    -> ahora es responsivo y no se rompe en ventanas medianas.
+  */
+  .grid3{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap:.6rem;
+    align-items:end;
+  }
+  @media (max-width: 860px){
+    .grid3{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  }
+  @media (max-width: 520px){
+    .grid3{ grid-template-columns: 1fr; }
+  }
+
+  .pill{
+    display:inline-block;
+    padding:.25rem .6rem;
+    border-radius:999px;
+    background: color-mix(in srgb, var(--paper) 70%, var(--panel) 30%);
+    margin-left:.5rem;
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  }
+
+  .ok{color: var(--ok); font-weight:800}
+  .warn{color: var(--warn); font-weight:800}
+  .bad{color: var(--bad); font-weight:800}
+  .muted{color: var(--muted)}
+
+  .tips{background: color-mix(in srgb, var(--paper) 78%, var(--panel) 22%); border:1px dashed color-mix(in srgb, var(--border) 80%, transparent); padding:.7rem .9rem; border-radius:10px}
+  .inline{display:flex; align-items:center; gap:.5rem; flex-wrap:wrap}
+
+  .pill.ok{background: color-mix(in srgb, var(--ok) 10%, var(--paper) 90%); color: var(--ok); border-color: color-mix(in srgb, var(--ok) 25%, var(--border) 75%)}
+  .pill.warn{background: color-mix(in srgb, var(--warn) 10%, var(--paper) 90%); color: var(--warn); border-color: color-mix(in srgb, var(--warn) 25%, var(--border) 75%)}
+  .pill.bad{background: color-mix(in srgb, var(--bad) 10%, var(--paper) 90%); color: var(--bad); border-color: color-mix(in srgb, var(--bad) 25%, var(--border) 75%)}
+
+  .seg{display:inline-flex; border:1px solid var(--border); border-radius:999px; overflow:hidden; background: var(--paper)}
+  .seg button{background: transparent; color: var(--fg); padding:.35rem .8rem; border-radius:0; border:0; border-right:1px solid var(--border)}
+  .seg button:last-child{ border-right:0 }
+  .seg button.active{background: color-mix(in srgb, var(--fg) 92%, var(--paper) 8%); color: var(--paper)}
+
   .hide{display:none}
-  .kpi{font-weight:700}
+  .kpi{font-weight:800}
 </style>
 
 <nav>

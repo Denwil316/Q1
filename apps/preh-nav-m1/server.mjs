@@ -31,6 +31,9 @@ const joinRoot = (...p) => path.join(ROOT, ...p);
 const SCRIPTS     = joinRoot('scripts');
 const DOCS        = joinRoot('docs');
 const DOCS_CORE   = joinRoot('docs', 'core');
+const DOCS_ATLAS  = joinRoot('docs', 'atlas');
+const DOCS_TOOLS  = joinRoot('docs', 'tools');
+const MEMORY_DIR  = joinRoot('memory');
 const DOCS_FS     = joinRoot('docs', 'fs');   // carpeta de FS JSON
 const DOCS_RIT    = joinRoot('docs', 'ritual');
 const PREH_PUBLIC = path.join(__dirname, 'public');
@@ -122,11 +125,222 @@ function runScript(bin, args = [], opts = {}) {
 // -------------------------------------------------------------
 // Estáticos (colecciones directas)
 // -------------------------------------------------------------
+// Publicados (lo que qel_promote_* copia a apps/preh-nav-m1/public/docs)
+app.use('/docs',   express.static(path.join(__dirname, 'public', 'docs')));
+
+// Repo (whitelist seguro)
+app.use('/core',   express.static(DOCS_CORE));
+app.use('/ritual', express.static(DOCS_RIT));
+app.use('/atlas',  express.static(DOCS_ATLAS));
+app.use('/tools',  express.static(DOCS_TOOLS));
+app.use('/fs',     express.static(DOCS_FS));
+app.use('/memory', express.static(MEMORY_DIR));
+
+// Biblioteca (HTML estático). Se sirve ANTES del SPA.
+const LIBRARY_HTML = path.join(PREH_PUBLIC, 'library.html');
+app.get(['/library', '/biblioteca', '/library.html'], (_req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-QEL-Library', 'v0.4');
+  res.sendFile(LIBRARY_HTML);
+});
+
+// /public estático (SIN index.html; y sin caché en HTML para que iteres rápido)
+app.use(express.static(PREH_PUBLIC, {
+  index: false,
+  setHeaders: (res, filePath) => {
+    if (String(filePath).endsWith('.html')) res.setHeader('Cache-Control', 'no-store');
+  }
+}));
+
+// -------------------------------------------------------------
+// Biblioteca: catálogo multi-carpeta (public/docs + repo docs/* + memory)
+// -------------------------------------------------------------
+const PUBLIC_DOCS = path.join(PREH_PUBLIC, 'docs');
+
+function toPosix(p){ return p.split(path.sep).join('/'); }
+function encodeUrlPath(relPosix){
+  return String(relPosix).split('/').map(encodeURIComponent).join('/');
+}
+
+function classifyPublished(name, relPosix){
+  const n = String(name || '').toLowerCase();
+  const r = String(relPosix || '').toLowerCase();
+
+  // Si algún día existen subcarpetas dentro de public/docs, respétalas.
+  if (r.startsWith('core/')) return 'core';
+  if (r.startsWith('ritual/')) return 'ritual';
+  if (r.startsWith('atlas/')) return 'atlas';
+  if (r.startsWith('memory/')) return 'memory';
+
+  // Heurística por nombre (public/docs suele ser plano)
+  if (/(listador|listado?r|listadorr|listador_sesiones)/.test(n)) return 'memory';
+  if (/(microsello|vf_prima|vf\-prima|ritual|meditacion|meditaciones|sellos)/.test(n)) return 'ritual';
+  if (/(atlas|tarjetas|tarjeta|sot_.*manifest|manifest)/.test(n)) return 'atlas';
+  return 'core';
+}
+
+function walkFiles(absDir, urlBase, origin, bucket){
+  const out = [];
+  if (!fs.existsSync(absDir)) return out;
+
+  const skipDirs = new Set(['.git','node_modules','dist','build','.vite','coverage','__pycache__']);
+  const maxFiles = 8000;
+
+  const stack = [absDir];
+  let seen = 0;
+
+  while (stack.length){
+    const dir = stack.pop();
+    let ents = [];
+    try { ents = fs.readdirSync(dir, { withFileTypes: true }); }
+    catch { continue; }
+
+    for (const ent of ents){
+      const name = ent.name;
+      if (!name) continue;
+      if (name.startsWith('.')) continue;
+      if (name === '.DS_Store') continue;
+      if (ent.isSymbolicLink && ent.isSymbolicLink()) continue;
+
+      const abs = path.join(dir, name);
+
+      if (ent.isDirectory()){
+        if (skipDirs.has(name)) continue;
+        stack.push(abs);
+        continue;
+      }
+      if (!ent.isFile()) continue;
+
+      if (!/\.(md|txt|json|ya?ml|pdf)$/i.test(name)) continue;
+
+      let stat;
+      try { stat = fs.statSync(abs); }
+      catch { continue; }
+
+      // Evita archivos gigantes en catálogo (igual puedes servirlos directo si los abres por URL)
+      if (stat.size > 25 * 1024 * 1024) continue;
+
+      const rel = toPosix(path.relative(absDir, abs));
+      const url = `${urlBase}/${encodeUrlPath(rel)}`;
+
+      out.push({
+        name,
+        rel,
+        url,
+        bytes: stat.size,
+        mtime: stat.mtimeMs,
+        origin,
+        bucket,
+      });
+
+      seen += 1;
+      if (seen >= maxFiles) break;
+    }
+    if (seen >= maxFiles) break;
+  }
+
+  return out;
+}
+
+app.get('/api/v1/library', (_req, res) => {
+  try {
+    const publishedRaw = walkFiles(PUBLIC_DOCS, '/docs', 'pub', 'published');
+    const coreRepo     = walkFiles(DOCS_CORE,   '/core',   'repo', 'core');
+    const ritualRepo   = walkFiles(DOCS_RIT,    '/ritual', 'repo', 'ritual');
+    const atlasRepo    = walkFiles(DOCS_ATLAS,  '/atlas',  'repo', 'atlas');
+    const toolsRepo    = walkFiles(DOCS_TOOLS,  '/tools',  'repo', 'tools');
+    const fsRepo       = walkFiles(DOCS_FS,     '/fs',     'repo', 'fs');
+    const memoryRepo   = walkFiles(MEMORY_DIR,  '/memory', 'repo', 'memory');
+
+    // Publicados → buckets (heurística)
+    const published = { all: [], core: [], ritual: [], atlas: [], memory: [] };
+    for (const it of publishedRaw){
+      const g = classifyPublished(it.name, it.rel);
+      it.bucket = g;
+      published.all.push(it);
+      (published[g] || published.core).push(it);
+    }
+
+    const sortByRel = (a,b) => String(a.rel).localeCompare(String(b.rel), 'es');
+
+    const groups = {
+      published: published.all.sort(sortByRel),
+      core:   [...published.core,   ...coreRepo].sort(sortByRel),
+      ritual: [...published.ritual, ...ritualRepo].sort(sortByRel),
+      atlas:  [...published.atlas,  ...atlasRepo].sort(sortByRel),
+      tools:  toolsRepo.sort(sortByRel),
+      fs:     fsRepo.sort(sortByRel),
+      memory: [...published.memory, ...memoryRepo].sort(sortByRel),
+    };
+
+    const all = [
+      ...groups.published,
+      ...coreRepo,
+      ...ritualRepo,
+      ...atlasRepo,
+      ...toolsRepo,
+      ...fsRepo,
+      ...memoryRepo,
+    ].sort((a,b)=>{
+      const oa = String(a.bucket||'').localeCompare(String(b.bucket||''),'es');
+      if (oa) return oa;
+      return sortByRel(a,b);
+    });
+
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({
+      ok: true,
+      version: 'v0.4',
+      roots: {
+        published: PUBLIC_DOCS,
+        core: DOCS_CORE,
+        ritual: DOCS_RIT,
+        atlas: DOCS_ATLAS,
+        tools: DOCS_TOOLS,
+        fs: DOCS_FS,
+        memory: MEMORY_DIR,
+      },
+      exists: {
+        published: fs.existsSync(PUBLIC_DOCS),
+        core: fs.existsSync(DOCS_CORE),
+        ritual: fs.existsSync(DOCS_RIT),
+        atlas: fs.existsSync(DOCS_ATLAS),
+        tools: fs.existsSync(DOCS_TOOLS),
+        fs: fs.existsSync(DOCS_FS),
+        memory: fs.existsSync(MEMORY_DIR),
+      },
+      counts: {
+        all: all.length,
+        published: groups.published.length,
+        core: groups.core.length,
+        ritual: groups.ritual.length,
+        atlas: groups.atlas.length,
+        tools: groups.tools.length,
+        fs: groups.fs.length,
+        memory: groups.memory.length,
+      },
+      all,
+      ...groups,
+    });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: String(e) });
+  }
+});
+
+
 app.use('/docs',   express.static(path.join(__dirname, 'public', 'docs'))); // publicados
 app.use('/core',   express.static(DOCS_CORE));
 app.use('/ritual', express.static(DOCS_RIT));
-app.use('/memory', express.static(joinRoot('memory')));
-app.use('/atlas',  express.static(joinRoot('docs', 'atlas')));
+app.use('/memory', express.static(MEMORY_DIR));
+app.use('/atlas',  express.static(DOCS_ATLAS));
+app.use('/tools',  express.static(DOCS_TOOLS));
+app.use('/fs',     express.static(DOCS_FS));
+
+// Biblioteca (HTML estático) — /library debe ganarle al fallback SPA
+app.get(['/library','/biblioteca'], (_req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.sendFile(path.join(PREH_PUBLIC, 'library.html'));
+});
 
 // IMPORTANTE: servir /public SIN index.html (para que no tape el SPA)
 app.use(express.static(PREH_PUBLIC, { index: false }));
@@ -185,7 +399,7 @@ function sendDistIndex(res) {
 }
 
 // Rutas SPA conocidas
-const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/doc', '/library'];
+const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/doc'];
 SPA_ROUTES.forEach(r => {
   app.get(r, (_req, res) => sendDistIndex(res));
 });
