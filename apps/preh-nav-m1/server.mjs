@@ -185,7 +185,7 @@ function sendDistIndex(res) {
 }
 
 // Rutas SPA conocidas
-const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/doc'];
+const SPA_ROUTES = ['/', '/altar', '/via', '/laboratorio', '/doc', '/library'];
 SPA_ROUTES.forEach(r => {
   app.get(r, (_req, res) => sendDistIndex(res));
 });
