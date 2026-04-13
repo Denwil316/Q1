@@ -1677,3 +1677,14 @@ HASH(10): ea23ff273b
 - SeedI: A96-260413
 
 _ECO (delta-only):_ Se cristaliza **ACI · KO8 · Árbol del Cielo Invertido** con hash **ae75fa0808**; se actualiza ListadoR y espejo.
+
+## 2026-04-13 — PROMOCIÓN
+- Rubro: CORE/ARBOL
+- Título: ACI · KO8 · Árbol del Cielo Invertido
+- Archivo: docs/core/arboles/ACI_KO8.md
+- Copia: apps/preh-nav-m1/public/docs/docs/core/arboles/ACI_KO8.md
+- Rumbo: Espejo
+- HASH(10): ae75fa0808
+- SeedI: A96-260413
+
+_ECO (delta-only):_ Se cristaliza **ACI · KO8 · Árbol del Cielo Invertido** con hash **ae75fa0808**; se actualiza ListadoR y espejo.
