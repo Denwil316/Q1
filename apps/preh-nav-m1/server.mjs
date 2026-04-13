@@ -5,6 +5,7 @@
 // -------------------------------------------------------------
 import express from 'express';
 import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 import { spawn } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -16,7 +17,18 @@ import crypto from 'crypto';
 // -------------------------------------------------------------
 const app = express();
 app.use(express.json({ limit: '2mb' }));
-app.use(cors({ origin: true }));
+
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:5173,http://localhost:3030').split(',');
+app.use(cors({ origin: ALLOWED_ORIGINS }));
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: { error: 'too_many_requests' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use('/api/', apiLimiter);
 
 // -------------------------------------------------------------
 // Paths y helpers
@@ -77,6 +89,28 @@ function defaultDiarioPath() {
 }
 function defaultListadoPath() {
   return joinRoot('docs', 'core', 'QEL_ListadoR_master_v1.0.md');
+}
+
+function sanitizeInput(str, allowChars = /^[a-zA-Z0-9_\-.\s]+$/) {
+  const s = String(str ?? '').trim();
+  if (!s || !allowChars.test(s)) return null;
+  return s;
+}
+
+function sanitizePathInput(str) {
+  const s = String(str ?? '').trim();
+  if (!s || /[&;`$|]/.test(s) || /\.\./.test(s)) return null;
+  return s;
+}
+
+function isValidFile(file) {
+  if (!file || typeof file !== 'string') return false;
+  const sanitized = sanitizePathInput(file);
+  if (!sanitized) return false;
+  try {
+    resolveSafe(sanitized);
+    return true;
+  } catch { return false; }
 }
 
 // ---------- NUEVOS: rutas del Sistema ----------
@@ -520,6 +554,10 @@ app.post('/api/v1/session/new', (req, res) => {
 // -------------------------------------------------------------
 app.post('/api/v1/promote', async (req, res) => {
   const { file, rubro = 'CURADURIA', titulo, rumbo } = req.body || {};
+  if (!isValidFile(file)) return res.status(400).json({ error: 'file_invalid' });
+  const safeRubro = sanitizeInput(rubro) || 'CURADURIA';
+  const safeTitulo = sanitizeInput(titulo);
+  const safeRumbo = sanitizeInput(rumbo);
   try { resolveSafe(file); } catch(e){ return res.status(400).json({ error: 'file_invalid', detail: String(e) }); }
   if (!fileExists(SCRIPT_PROMOTE, true)) return res.status(500).json({ error: 'script_missing', bin: SCRIPT_PROMOTE });
 
@@ -529,10 +567,10 @@ app.post('/api/v1/promote', async (req, res) => {
 
   const args = [
     SCRIPT_PROMOTE,
-    '--rubro', `"${str(rubro)}"`,
+    '--rubro', `"${safeRubro}"`,
     '--file', `"${str(file)}"`,
-    ...(titulo ? ['--titulo', `"${str(titulo)}"`] : []),
-    ...(rumbo ? ['--rumbo', `"${str(rumbo)}"`] : []),
+    ...(safeTitulo ? ['--titulo', `"${safeTitulo}"`] : []),
+    ...(safeRumbo ? ['--rumbo', `"${safeRumbo}"`] : []),
   ];
   try {
     await runScript('bash', args, { onData: (line)=>sseBroadcast(jobId, { line }) });
@@ -544,6 +582,12 @@ app.post('/api/v1/promote', async (req, res) => {
 
 app.post('/api/v1/microreg', async (req, res) => {
   const { kind='PROMO', file, title, gates='no_mentira,doble_testigo', rumbo='Centro', triada='SIL·UM·Ə', obj, clase='basica' } = req.body || {};
+  if (!isValidFile(file)) return res.status(400).json({ error: 'file_invalid' });
+  const safeKind = sanitizeInput(kind, /^[A-Z]+$/) || 'PROMO';
+  const safeTitle = sanitizeInput(title);
+  const safeRumbo = sanitizeInput(rumbo) || 'Centro';
+  const safeObj = sanitizeInput(obj);
+  const safeClase = sanitizeInput(clase);
   try { resolveSafe(file); } catch(e){ return res.status(400).json({ error: 'file_invalid', detail: String(e) }); }
   if (!fileExists(SCRIPT_MICROREG, true)) return res.status(500).json({ error: 'script_missing', bin: SCRIPT_MICROREG });
 
@@ -553,14 +597,14 @@ app.post('/api/v1/microreg', async (req, res) => {
 
   const args = [
     SCRIPT_MICROREG,
-    '--kind', `"${str(kind)}"`,
+    '--kind', `"${safeKind}"`,
     '--file', `"${str(file)}"`,
-    ...(title ? ['--title', `"${str(title)}"`] : []),
-    '--rumbo', `"${str(rumbo)}"`,
-    '--triada', `"${str(triada)}"`,
-    '--gates', `"${str(gates)}"`,
-    ...(obj ? ['--obj', `"${str(obj)}"`] : []),
-    '--clase', `"${str(clase)}"`,
+    ...(safeTitle ? ['--title', `"${safeTitle}"`] : []),
+    '--rumbo', `"${safeRumbo}"`,
+    '--triada', `"${triada}"`,
+    '--gates', `"${gates}"`,
+    ...(safeObj ? ['--obj', `"${safeObj}"`] : []),
+    '--clase', `"${safeClase || 'basica'}"`,
   ];
   try {
     await runScript('bash', args, { onData: (line)=>sseBroadcast(jobId, { line }) });
@@ -572,6 +616,13 @@ app.post('/api/v1/microreg', async (req, res) => {
 
 app.post('/api/v1/finalize', async (req, res) => {
   const { fecha, seed, cue, vf, fsJson, diarioFile, listadorFile } = req.body || {};
+  const safeFecha = sanitizeInput(fecha, /^[0-9\-]+$/);
+  const safeSeed = sanitizeInput(seed);
+  const safeCue = sanitizeInput(cue);
+  const safeVf = sanitizeInput(vf);
+  if (!safeFecha || !safeSeed || !safeCue || !safeVf) {
+    return res.status(400).json({ error: 'invalid_params' });
+  }
   const diar = diarioFile ? resolveSafe(diarioFile) : defaultDiarioPath();
   const list = listadorFile ? resolveSafe(listadorFile) : defaultListadoPath();
   if (!fileExists(SCRIPT_FINALIZE, true)) return res.status(500).json({ error: 'script_missing', bin: SCRIPT_FINALIZE });
@@ -582,10 +633,10 @@ app.post('/api/v1/finalize', async (req, res) => {
 
   const args = [
     SCRIPT_FINALIZE,
-    '--fecha', `"${str(fecha)}"`,
-    '--seed', `"${str(seed)}"`,
-    '--cue', `"${str(cue)}"`,
-    '--vf', `"${str(vf)}"`,
+    '--fecha', `"${safeFecha}"`,
+    '--seed', `"${safeSeed}"`,
+    '--cue', `"${safeCue}"`,
+    '--vf', `"${safeVf}"`,
     ...(fsJson ? ['--fs-json', `"${str(fsJson)}"`] : []),
     '--diario-file', `"${diar}"`,
     '--listador-file', `"${list}"`,
@@ -607,6 +658,16 @@ app.post('/api/v1/finalize', async (req, res) => {
 // -------------------------------------------------------------
 app.post('/api/v1/ritual', async (req, res) => {
   const { file, rubro, titulo, rumbo, kind, title, fs, fecha, seed, cue, vf } = req.body || {};
+  if (!isValidFile(file)) return res.status(400).json({ error: 'file_invalid' });
+  const safeRubro = sanitizeInput(rubro) || 'CURADURIA';
+  const safeTitulo = sanitizeInput(titulo);
+  const safeRumbo = sanitizeInput(rumbo);
+  const safeKind = sanitizeInput(kind, /^[A-Z]+$/);
+  const safeTitle = sanitizeInput(title);
+  const safeFecha = sanitizeInput(fecha, /^[0-9\-]+$/);
+  const safeSeed = sanitizeInput(seed);
+  const safeCue = sanitizeInput(cue);
+  const safeVf = sanitizeInput(vf);
   try { resolveSafe(file); } catch(e){ return res.status(400).json({ error: 'file_invalid', detail: String(e) }); }
 
   const jobId = `ritual-${Date.now()}`;
@@ -629,19 +690,19 @@ app.post('/api/v1/ritual', async (req, res) => {
     // 2) promote
     await runScript('bash', [
       SCRIPT_PROMOTE,
-      '--rubro', `"${str(rubro || 'CURADURIA')}"`,
+      '--rubro', `"${safeRubro}"`,
       '--file', `"${str(file)}"`,
-      ...(titulo ? ['--titulo', `"${str(titulo)}"`] : []),
-      ...(rumbo ?  ['--rumbo', `"${str(rumbo)}"`] : []),
+      ...(safeTitulo ? ['--titulo', `"${safeTitulo}"`] : []),
+      ...(safeRumbo ?  ['--rumbo', `"${safeRumbo}"`] : []),
     ], { onData: log });
 
     // 3) microreg
     await runScript('bash', [
       SCRIPT_MICROREG,
-      '--kind', `"${str(kind || 'PROMO')}"`,
+      '--kind', `"${safeKind || 'PROMO'}"`,
       '--file', `"${str(file)}"`,
-      ...(title ? ['--title', `"${str(title)}"`] : []),
-      '--rumbo', `"${str(rumbo || 'Centro')}"`,
+      ...(safeTitle ? ['--title', `"${safeTitle}"`] : []),
+      '--rumbo', `"${safeRumbo || 'Centro'}"`,
       '--triada', `"SIL·UM·Ə"`,
       '--gates', `"no_mentira,doble_testigo"`,
       '--clase', `"basica"`,
@@ -650,10 +711,10 @@ app.post('/api/v1/ritual', async (req, res) => {
     // 4) finalize
     await runScript('bash', [
       SCRIPT_FINALIZE,
-      '--fecha', `"${str(fecha)}"`,
-      '--seed', `"${str(seed)}"`,
-      '--cue', `"${str(cue)}"`,
-      '--vf', `"${str(vf)}"`,
+      '--fecha', `"${safeFecha || ''}"`,
+      '--seed', `"${safeSeed || ''}"`,
+      '--cue', `"${safeCue || ''}"`,
+      '--vf', `"${safeVf || ''}"`,
       ...(fsPath ? ['--fs-json', `"${fsPath}"`] : []),
       '--diario-file', `"${defaultDiarioPath()}"`,
       '--listador-file', `"${defaultListadoPath()}"`,
@@ -672,6 +733,16 @@ app.post('/api/v1/ritual', async (req, res) => {
 
 app.post('/api/v1/ritual/canon/m0m1', async (req,res)=>{
   const { file, fecha, seed, cue, vf, fs, rubro, titulo, rumbo, kind, title } = req.body||{};
+  if (!isValidFile(file)) return res.status(400).json({ error:'file_invalid' });
+  const safeRubro = sanitizeInput(rubro) || 'CURADURIA';
+  const safeTitulo = sanitizeInput(titulo);
+  const safeRumbo = sanitizeInput(rumbo);
+  const safeKind = sanitizeInput(kind, /^[A-Z]+$/);
+  const safeTitle = sanitizeInput(title);
+  const safeFecha = sanitizeInput(fecha, /^[0-9\-]+$/);
+  const safeSeed = sanitizeInput(seed);
+  const safeCue = sanitizeInput(cue);
+  const safeVf = sanitizeInput(vf);
   try { resolveSafe(file); } catch(e){ return res.status(400).json({ error:'file_invalid', detail:String(e) }); }
 
   const jobId = `ritual-m0m1-${Date.now()}`;
@@ -694,19 +765,19 @@ app.post('/api/v1/ritual/canon/m0m1', async (req,res)=>{
     // Promote
     await runScript('bash', [
       SCRIPT_PROMOTE,
-      '--rubro', `"${str(rubro || 'CURADURIA')}"`,
+      '--rubro', `"${safeRubro}"`,
       '--file',  `"${str(file)}"`,
-      ...(titulo? ['--titulo', `"${str(titulo)}"`] : []),
-      ...(rumbo ? ['--rumbo',  `"${str(rumbo)}"`] : []),
+      ...(safeTitulo? ['--titulo', `"${safeTitulo}"`] : []),
+      ...(safeRumbo ? ['--rumbo',  `"${safeRumbo}"`] : []),
     ], { onData: log });
 
     // Microreg
     await runScript('bash', [
       SCRIPT_MICROREG,
-      '--kind', `"${str(kind || 'PROMO')}"`,
+      '--kind', `"${safeKind || 'PROMO'}"`,
       '--file', `"${str(file)}"`,
-      ...(title? ['--title', `"${str(title)}"`] : []),
-      '--rumbo', `"${str(rumbo || 'Centro')}"`,
+      ...(safeTitle? ['--title', `"${safeTitle}"`] : []),
+      '--rumbo', `"${safeRumbo || 'Centro'}"`,
       '--triada', `"SIL·UM·Ə"`,
       '--gates',  `"no_mentira,doble_testigo"`,
       '--clase',  `"basica"`,
@@ -715,10 +786,10 @@ app.post('/api/v1/ritual/canon/m0m1', async (req,res)=>{
     // Finalize
     await runScript('bash', [
       SCRIPT_FINALIZE,
-      '--fecha', `"${str(fecha)}"`,
-      '--seed',  `"${str(seed)}"`,
-      '--cue',   `"${str(cue)}"`,
-      '--vf',    `"${str(vf)}"`,
+      '--fecha', `"${safeFecha || ''}"`,
+      '--seed',  `"${safeSeed || ''}"`,
+      '--cue',   `"${safeCue || ''}"`,
+      '--vf',    `"${safeVf || ''}"`,
       ...(fsPath? ['--fs-json', `"${fsPath}"`] : []),
       '--diario-file',  `"${defaultDiarioPath()}"`,
       '--listador-file',`"${defaultListadoPath()}"`,
