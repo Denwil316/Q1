@@ -1181,3 +1181,7 @@ hash(10): da39a3ee5e
 - (2025-11-17) CORE/MANUAL | A96-251112 | CHEATSHEETS/SCRIPTS/v1.4 | QEL · Cheat-Sheet Operativo de Scripts (v1.4) (CRISTAL @ Centro)
   refs: [docs/core/manuales/QEL_scripts_cs.md]
   hash(10): 17cea84111
+
+- (2026-04-13) CORE/ARBOL | A96-260413 | "JRDN-FRCTL/v1.0" | ACI · KO8 · Árbol del Cielo Invertido (CRISTAL @ Espejo)
+  refs: [docs/core/arboles/ACI_KO8.md]
+  hash(10): ae75fa0808
