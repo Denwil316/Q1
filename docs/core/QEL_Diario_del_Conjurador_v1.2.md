@@ -1667,23 +1667,12 @@ Resultados:
 HASH(10): ea23ff273b
 
 ## 2026-04-13 — PROMOCIÓN
-- Rubro: CORE/ARBOL
-- Título: ACI · KO8 · Árbol del Cielo Invertido
+- Rubro: JARDIN
+- Título: Árbol del Cielo Invertido
 - Archivo: docs/core/arboles/ACI_KO8.md
 - Copia: apps/preh-nav-m1/public/docs/docs/core/arboles/ACI_KO8.md
-- Rumbo: Espejo
+- Rumbo: Centro
 - HASH(10): 4275fbc018
 - SeedI: KO8-260402-ACI
 
-_ECO (delta-only):_ Se cristaliza **ACI · KO8 · Árbol del Cielo Invertido** con hash **4275fbc018**; se actualiza ListadoR y espejo.
-
-## 2026-04-13 — PROMOCIÓN
-- Rubro: CORE/ARBOL
-- Título: ACI · KO8 · Árbol del Cielo Invertido
-- Archivo: docs/core/arboles/ACI_KO8.md
-- Copia: apps/preh-nav-m1/public/docs/docs/core/arboles/ACI_KO8.md
-- Rumbo: Espejo
-- HASH(10): 4275fbc018
-- SeedI: KO8-260402-ACI
-
-_ECO (delta-only):_ Se cristaliza **ACI · KO8 · Árbol del Cielo Invertido** con hash **4275fbc018**; se actualiza ListadoR y espejo.
+_ECO (delta-only):_ Se cristaliza **Árbol del Cielo Invertido** con hash **4275fbc018**; se actualiza ListadoR y espejo.
