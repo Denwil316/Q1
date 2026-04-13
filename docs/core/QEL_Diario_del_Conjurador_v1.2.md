@@ -1,5 +1,5 @@
 [QEL::ECO[96]::RECALL A96-20250830-DIARIO]
-SeedI=A96-260413
+SeedI=KO8-260402-ACI
 SoT=DIARIO/V1.2
 Version=v1.2
 Updated=2025-08-30
@@ -1710,3 +1710,14 @@ _ECO (delta-only):_ Se cristaliza **ACI · KO8 · Árbol del Cielo Invertido** c
 - SeedI: A96-260413
 
 _ECO (delta-only):_ Se cristaliza **ACI · KO8 · Árbol del Cielo Invertido** con hash **ae75fa0808**; se actualiza ListadoR y espejo.
+
+## 2026-04-13 — PROMOCIÓN
+- Rubro: CORE/ARBOL
+- Título: ACI · KO8 · Árbol del Cielo Invertido
+- Archivo: docs/core/arboles/ACI_KO8.md
+- Copia: apps/preh-nav-m1/public/docs/docs/core/arboles/ACI_KO8.md
+- Rumbo: Espejo
+- HASH(10): 4275fbc018
+- SeedI: KO8-260402-ACI
+
+_ECO (delta-only):_ Se cristaliza **ACI · KO8 · Árbol del Cielo Invertido** con hash **4275fbc018**; se actualiza ListadoR y espejo.

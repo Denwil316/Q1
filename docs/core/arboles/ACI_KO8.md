@@ -1,6 +1,6 @@
 SoT= "JRDN-FRCTL/v1.0"
 cue: "[QEL::ECO[KO8]::SUMMON KO8-260402-QEL-ACI-JRDN-FRCTL]"
-SeedI: "A96-260413"
+SeedI: "KO8-260402-ACI"
 SoT: "JRDN-FRCTL/v1.0"
 Version: "v1.0"
 Updated: "2026-04-02"
@@ -1177,4 +1177,4 @@ _Mejor._
 
 
 
-HASH(10): ae75fa0808
+HASH(10): 4275fbc018
