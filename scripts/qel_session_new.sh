@@ -238,7 +238,7 @@ while [ $# -gt 0 ]; do
     --obj) OBJETOS+=("${2:-}"); shift ;;
     --cierres) CIERRES="${2:-}"; shift ;;
     --registro) REGISTRO="${2:-}"; shift ;;
-    --artefacto) ARTEFACTOS+=("${2:-}";); shift ;;
+    --artefacto) ARTEFACTOS+=("${2:-}"); shift ;;
     --micro) MICROSELLOS+=("${2:-}"); shift ;;
     --cue) META_CUE="${2:-}"; shift ;;
     --seed) META_SEED="${2:-}"; shift ;;

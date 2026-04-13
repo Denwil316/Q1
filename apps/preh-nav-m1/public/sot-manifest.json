@@ -1,6 +1,11 @@
 {
   "files": [
     {
+      "name": "ACI_KO8",
+      "role": "docs",
+      "path": "docs/docs/core/arboles/ACI_KO8.md"
+    },
+    {
       "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2",
       "role": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
       "path": "docs/codice_madre_atlas_qel_tarjetas_maestras_v_2.md"
