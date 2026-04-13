@@ -44,8 +44,8 @@ get_kv(){
   awk -v k="$key" '
     BEGIN{ bom=sprintf("%c%c%c",239,187,191) }
     { sub("^" bom,"",$0) }
-    $0 ~ "^[#[:space:]]*" k "[[:space:]]*=" { sub(/^.*=[[:space:]]*/,""); print; exit }
-    $0 ~ "^[#[:space:]]*" k "[[:space:]]*:" { sub(/^.*:[[:space:]]*/,""); print; exit }
+    $0 ~ "^[#[:space:]]*" k "[[:space:]]*=" { sub(/^[^=]*=[[:space:]]*["]?/,""); sub(/["]*$/,""); print; exit }
+    $0 ~ "^[#[:space:]]*" k "[[:space:]]*:" { sub(/^[^:]*:[[:space:]]*["]?/,""); sub(/["]*$/,""); print; exit }
   ' "$src"
 }
 
@@ -61,10 +61,38 @@ get_cue(){
 }
 
 # --- Seed derivation helpers (portables) ---------------------------------
-get_eco_from_cue() { # -> "A96" (default A96 si no encuentra)
+get_eco_from_cue() { # -> "KO8" o "A96" (ECO sin prefijo A)
   local cue="${1-}" n
-  n="$(printf "%s" "$cue" | sed -nE 's/.*ECO\[([0-9]+)\].*/\1/p' | head -1)"
-  [ -n "$n" ] && printf "A%s\n" "$n" || printf "A96\n"
+  n="$(printf "%s" "$cue" | sed -nE 's/.*ECO\[([0-9A-Z]+)\].*/\1/p' | head -1)"
+  [ -n "$n" ] && printf "%s\n" "$n" || printf "A96\n"
+}
+
+get_eco_prefixed() { # -> "AKO8" o "A96" (ECO con prefijo A, legacy)
+  local eco
+  eco="$(get_eco_from_cue "$1")"
+  if [[ "$eco" != A* ]]; then
+    printf "A%s\n" "$eco"
+  else
+    printf "%s\n" "$eco"
+  fi
+}
+
+validate_seed_format() { # args: <seed> <eco> -> 0 si válido, 1 si no
+  local seed="$1" eco="$2"
+  # Formato: ECO-YYMMDD[-SUFIJO] donde ECO es [A-Z][0-9A-Z]{1,5}
+  [[ "$seed" =~ ^[A-Z][0-9A-Z]{1,5}-[0-9]{6}(-[A-Za-z0-9]+)?$ ]] && return 0 || return 1
+}
+
+propose_seed_correction() { # args: <existing_seed> <eco> <ymd> -> sugiere versión corregida
+  local existing="$1" eco="$2" ymd="$3"
+  local base="${eco}-${ymd}"
+  local sufix
+  if [[ "$existing" =~ ^[A-Z][0-9A-Z]+-[0-9]{6}-(.+)$ ]]; then
+    sufix="${BASH_REMATCH[1]}"
+    printf "%s-%s\n" "$base" "$sufix"
+  else
+    printf "%s\n" "$base"
+  fi
 }
 
 git_first_date_ymd(){ # -> YYMMDD primer commit que añadió el archivo
@@ -94,7 +122,7 @@ fs_mtime_ymd(){ # -> YYMMDD por mtime (último recurso)
   date -r "$(stat -f '%m' "$f" 2>/dev/null)" +%y%m%d 2>/dev/null || date +%y%m%d
 }
 
-derive_seed_auto(){ # args: <file> <cue> -> "A96-YYMMDD"
+derive_seed_auto(){ # args: <file> <cue> -> "KO8-YYMMDD" o "A96-YYMMDD"
   local f="$1" cue="${2-}" eco ymd
   eco="$(get_eco_from_cue "$cue")"
   if ! ymd="$(git_first_date_ymd "$f")"; then
@@ -110,12 +138,13 @@ derive_seed_auto(){ # args: <file> <cue> -> "A96-YYMMDD"
 
 ensure_seed_in_file(){
   local file="$1" seed="$2"
+  local quoted='"'
   # actualiza si existe
   if grep -Eq '^[#[:space:]]*SeedI[[:space:]]*:' "$file"; then
-    sed -i '' -E "s/^([#[:space:]]*SeedI[[:space:]]*:[[:space:]]*).*/\1\"$seed\"/" "$file"; return
+    sed -i -E "s|^([#[:space:]]*SeedI[[:space:]]*:[[:space:]]*).*|\1${quoted}${seed}${quoted}|" "$file"; return
   fi
   if grep -Eq '^[#[:space:]]*SeedI[[:space:]]*=' "$file"; then
-    sed -i '' -E "s/^([#[:space:]]*SeedI[[:space:]]*=[[:space:]]*).*/\1$seed/" "$file"; return
+    sed -i -E "s|^([#[:space:]]*SeedI[[:space:]]*=[[:space:]]*).*|\1${seed}|" "$file"; return
   fi
   # inserta debajo de cue o al inicio
   local tmp; tmp="$(mktemp)"
@@ -123,10 +152,10 @@ ensure_seed_in_file(){
     BEGIN{ inserted=0; }
     {
       if(!inserted && ($0 ~ /^[#[:space:]]*cue[[:space:]]*[:=]/ || $0 ~ /^[#[:space:]]*\[QEL::ECO/)){
-        print $0; print "SeedI: \"" SEED "\""; inserted=1
+        print $0; print "SeedI= " SEED; inserted=1
       } else { print $0 }
     }
-    END{ if(!inserted) print "SeedI: \"" SEED "\""}
+    END{ if(!inserted) print "SeedI= " SEED}
   ' "$file" > "$tmp" && mv "$tmp" "$file"
 }
 
@@ -145,7 +174,7 @@ Updated=${TODAY}
 # Diario del Conjurador (v1.2)
 EOF
   else
-    sed -i '' -E "1,80s/^([#[:space:]]*SeedI[[:space:]]*=[[:space:]]*).*/\1$seed/" "$DIARIO" || true
+    sed -i -E "1,80s/^([#[:space:]]*SeedI[[:space:]]*=[[:space:]]*).*/\1$seed/" "$DIARIO" || true
   fi
 }
 
@@ -180,11 +209,22 @@ log "SeedI=$SEED SoT=$SOT Version=$VERSION Updated=$UPDATED"
 
 # SeedI esperado (ECO + fecha de origen)
 [ -n "$CUE" ] || CUE="[QEL::ECO[96]::RECALL]"
+ECO="$(get_eco_from_cue "$CUE")"
+ORIGIN_YMD="$(git_first_date_ymd "$FILE")" || ORIGIN_YMD="$(fs_birth_ymd "$FILE")" || ORIGIN_YMD="$(fs_mtime_ymd "$FILE")"
 EXPECTED_SEED="$(derive_seed_auto "$FILE" "$CUE")"
 
 case "$QEL_SEED_POLICY" in
   keep)
-    [ -n "$SEED" ] || SEED="$EXPECTED_SEED"
+    if [ -z "$SEED" ]; then
+      SEED="$EXPECTED_SEED"
+    else
+      if validate_seed_format "$SEED" "$ECO"; then
+        : # SeedI válido, se respeta
+      else
+        SEED="$(propose_seed_correction "$SEED" "$ECO" "$ORIGIN_YMD")"
+        echo "[WARN] SeedI tenía formato inválido, propuesto: $SEED" >&2
+      fi
+    fi
     ;;
   strict)
     SEED="$EXPECTED_SEED"
@@ -193,11 +233,12 @@ case "$QEL_SEED_POLICY" in
     if [ -z "$SEED" ]; then
       SEED="$EXPECTED_SEED"
     else
-      ECO_PREFIX="$(get_eco_from_cue "$CUE")-"
-      case "$SEED" in
-        "$ECO_PREFIX"*) : ;;
-        *)               SEED="$EXPECTED_SEED" ;;
-      esac
+      if validate_seed_format "$SEED" "$ECO"; then
+        : # SeedI válido con formato correcto, se respeta
+      else
+        SEED="$(propose_seed_correction "$SEED" "$ECO" "$ORIGIN_YMD")"
+        echo "[WARN] SeedI tenía formato inválido, propuesto: $SEED" >&2
+      fi
     fi
     ;;
 esac
