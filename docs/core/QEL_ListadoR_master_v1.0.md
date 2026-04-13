@@ -1189,3 +1189,7 @@ hash(10): da39a3ee5e
 - (2026-04-13) CORE/ARBOL | A96-260413 | "JRDN-FRCTL/v1.0" | ACI · KO8 · Árbol del Cielo Invertido (CRISTAL @ Espejo)
   refs: [docs/core/arboles/ACI_KO8.md]
   hash(10): ae75fa0808
+
+- (2026-04-13) CORE/ARBOL | A96-260413 | "JRDN-FRCTL/v1.0" | ACI · KO8 · Árbol del Cielo Invertido (CRISTAL @ Espejo)
+  refs: [docs/core/arboles/ACI_KO8.md]
+  hash(10): ae75fa0808
