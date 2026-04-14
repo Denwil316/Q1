@@ -1,17 +1,22 @@
 // apps/preh-nav-m1/src/lib/api.ts
-export type Job = { ok: boolean; jobId: string }
+import type { Job, LibraryResponse, FS } from '../types';
+
+export type { Job };
 
 async function j<T>(p: Promise<Response>): Promise<T> {
   const r = await p
-  if (!r.ok) throw new Error(`HTTP ${r.status}`)
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({ error: `HTTP ${r.status}` }))
+    throw new Error(err.error || `HTTP ${r.status}`)
+  }
   return r.json()
 }
 
 export async function getLibrary() {
-  return j<{ core:any[]; ritual:any[]; atlas:any[]; memory:any[] }>(fetch('/api/v1/library'))
+  return j<LibraryResponse>(fetch('/api/v1/library'))
 }
 
-export async function sessionNew(fsPayload: any) {
+export async function sessionNew(fsPayload: FS) {
   return j<{ ok: boolean; file: string }>(
     fetch('/api/v1/session/new', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(fsPayload) })
   )

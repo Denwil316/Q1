@@ -1,21 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Stepper, { Step } from '../components/Stepper';
 import TagInput from '../components/TagInput';
-
-type Modo = 'M0'|'M1'|'M2'|'M3';
-
-interface FS {
-  fecha: string;          // YYMMDD
-  tema: string;
-  intencion: string;
-  modo: Modo;
-  rumbo: string;
-  tiempo: number;
-  referencias?: string[];
-  salidas_esperadas?: string[];
-  resultados?: { artefactos?: string[]; micro_sellos?: string[]; };
-  meta?: Record<string, any>;
-}
+import { DEFAULT_PATHS } from '../config/paths';
+import type { FS, Modo } from '../types';
 
 export default function QelWizard() {
   const todayYYMMDD = new Date().toISOString().slice(2,10).replace(/-/g,'').slice(2);
@@ -62,7 +49,7 @@ export default function QelWizard() {
   });
 
   // Promote / Microreg / Finalize
-  const [file, setFile] = useState<string>('docs/ritual/microsellos/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md');
+  const [file, setFile] = useState<string>(DEFAULT_PATHS.microsello);
   const [rubro, setRubro] = useState<string>('CURADURIA');
   const [titulo, setTitulo] = useState<string>('');
   const [rumboUI, setRumboUI] = useState<string>('Centro');
@@ -109,9 +96,9 @@ export default function QelWizard() {
     setLogs([]);
     const payload = {
       fecha: fs.fecha, seed, cue, vf,
-      fsJson: `docs/fs/FS_${fs.fecha.slice(2)}.json`,
-      diarioFile: 'docs/core/QEL_Diario_del_Conjurador_v1.2.md',
-      listadorFile: 'docs/core/QEL_ListadoR_master_v1.0.md'
+      fsJson: DEFAULT_PATHS.fs(fs.fecha),
+      diarioFile: DEFAULT_PATHS.diario,
+      listadorFile: DEFAULT_PATHS.listador
     };
     const r = await fetch('/api/v1/finalize', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
     if (r.ok && r.jobId) { setJobId(r.jobId); openSSE(r.jobId); }

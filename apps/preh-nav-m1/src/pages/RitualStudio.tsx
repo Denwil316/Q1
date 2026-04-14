@@ -1,22 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Stepper, { Step } from '../components/Stepper';
 import TagInput from '../components/TagInput';
+import { DEFAULT_PATHS } from '../config/paths';
+import type { FS } from '../types';
 
 type Delta = 'up'|'flat'|'down';
 type Modo = 'M0'|'M1'|'M2'|'M3';
-
-interface FS {
-  fecha: string;
-  tema: string;
-  intencion: string;
-  modo: Modo;
-  rumbo: string;
-  tiempo: number;
-  referencias?: string[];
-  salidas_esperadas?: string[];
-  resultados?: { artefactos?: string[]; micro_sellos?: string[]; };
-  meta?: Record<string, any>;
-}
 
 const VCALC_UNLOCK_AT_STEP = 0; // 0=tras FS; 1=tras Promote; 2=tras Microreg; 3=tras Finalize
 
@@ -48,10 +37,13 @@ export default function RitualStudio() {
   const [vf, setVf]     = useState<string>('Listo');
 
   // Microsello seleccionado
-  const [file, setFile] = useState<string>('docs/ritual/microsellos/QEL_MicroSello_A37-251020_CURADURIA_v1.0.md');
+  const [file, setFile] = useState<string>(DEFAULT_PATHS.microsello);
   const [titulo, setTitulo] = useState<string>('');
   const [rubro, setRubro]   = useState<string>('CURADURIA');
   const [rumboUI, setRumboUI] = useState<string>('Centro');
+
+  // Loading states
+  const [loading, setLoading] = useState<Record<string, boolean>>({});
 
   // ---------- stepper ----------
   const steps: Step[] = useMemo(()=>[
@@ -85,56 +77,76 @@ export default function RitualStudio() {
 
   // ---------- acciones ----------
   const createFS = async () => {
+    setLoading(prev => ({ ...prev, fs: true }));
     setLogs([]);
-    const res = await fetch('/api/v1/session/new', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(fs)
-    }).then(r=>r.json());
-    if (res.ok) {
-      appendLog(`[fs] guardado ${res.file}`);
-      setStep(1);
-    } else {
-      appendLog(`[fs][error] ${res.error||'falló'}`);
+    try {
+      const res = await fetch('/api/v1/session/new', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(fs)
+      }).then(r=>r.json());
+      if (res.ok) {
+        appendLog(`[fs] guardado ${res.file}`);
+        setStep(1);
+      } else {
+        appendLog(`[fs][error] ${res.error||'falló'}`);
+      }
+    } finally {
+      setLoading(prev => ({ ...prev, fs: false }));
     }
   };
 
   const doPromote = async () => {
+    setLoading(prev => ({ ...prev, promote: true }));
     setLogs([]);
-    const payload = { file, rubro, titulo, rumbo: rumboUI };
-    const r = await fetch('/api/v1/promote', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
-    if (r.ok && r.jobId) {
-      setJobId(r.jobId); openSSE(r.jobId);
-      setStep(2);
-    } else appendLog(`[promote][error] ${r.error||'falló'}`);
+    try {
+      const payload = { file, rubro, titulo, rumbo: rumboUI };
+      const r = await fetch('/api/v1/promote', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
+      if (r.ok && r.jobId) {
+        setJobId(r.jobId); openSSE(r.jobId);
+        setStep(2);
+      } else appendLog(`[promote][error] ${r.error||'falló'}`);
+    } finally {
+      setLoading(prev => ({ ...prev, promote: false }));
+    }
   };
 
   const doMicroreg = async () => {
+    setLoading(prev => ({ ...prev, microreg: true }));
     setLogs([]);
-    const payload = {
-      kind: 'PROMO', file,
-      title: titulo || undefined,
-      rumbo: rumboUI, triada: 'SIL·UM·Ə', gates: 'no_mentira,doble_testigo',
-      clase: 'basica'
-    };
-    const r = await fetch('/api/v1/microreg', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
-    if (r.ok && r.jobId) {
-      setJobId(r.jobId); openSSE(r.jobId);
-      setStep(3);
-    } else appendLog(`[microreg][error] ${r.error||'falló'}`);
+    try {
+      const payload = {
+        kind: 'PROMO', file,
+        title: titulo || undefined,
+        rumbo: rumboUI, triada: 'SIL·UM·Ə', gates: 'no_mentira,doble_testigo',
+        clase: 'basica'
+      };
+      const r = await fetch('/api/v1/microreg', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
+      if (r.ok && r.jobId) {
+        setJobId(r.jobId); openSSE(r.jobId);
+        setStep(3);
+      } else appendLog(`[microreg][error] ${r.error||'falló'}`);
+    } finally {
+      setLoading(prev => ({ ...prev, microreg: false }));
+    }
   };
 
   const doFinalize = async () => {
+    setLoading(prev => ({ ...prev, finalize: true }));
     setLogs([]);
-    const payload = {
-      fecha: fs.fecha, seed, cue, vf,
-      fsJson: `docs/fs/FS_${fs.fecha.slice(2)}.json`, // si deseas exactitud YYYY, adapta
-      diarioFile: 'docs/core/QEL_Diario_del_Conjurador_v1.2.md',
-      listadorFile: 'docs/core/QEL_ListadoR_master_v1.0.md'
-    };
-    const r = await fetch('/api/v1/finalize', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
-    if (r.ok && r.jobId) {
-      setJobId(r.jobId); openSSE(r.jobId);
-    } else appendLog(`[finalize][error] ${r.error||'falló'}`);
+    try {
+      const payload = {
+        fecha: fs.fecha, seed, cue, vf,
+        fsJson: DEFAULT_PATHS.fs(fs.fecha),
+        diarioFile: DEFAULT_PATHS.diario,
+        listadorFile: DEFAULT_PATHS.listador
+      };
+      const r = await fetch('/api/v1/finalize', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).then(r=>r.json());
+      if (r.ok && r.jobId) {
+        setJobId(r.jobId); openSSE(r.jobId);
+      } else appendLog(`[finalize][error] ${r.error||'falló'}`);
+    } finally {
+      setLoading(prev => ({ ...prev, finalize: false }));
+    }
   };
 
   const vcalcEnabled = step >= VCALC_UNLOCK_AT_STEP;
@@ -209,7 +221,9 @@ export default function RitualStudio() {
             />
 
             <div className="actions">
-              <button className="btn" onClick={createFS} disabled={step>0}>Guardar FS</button>
+              <button className="btn" onClick={createFS} disabled={step>0 || loading.fs}>
+                {loading.fs ? 'Guardando...' : 'Guardar FS'}
+              </button>
             </div>
           </section>
 
@@ -236,7 +250,9 @@ export default function RitualStudio() {
               </div>
             </div>
             <div className="actions">
-              <button className="btn" onClick={doPromote} disabled={step<1}>Promote</button>
+              <button className="btn" onClick={doPromote} disabled={step<1 || loading.promote}>
+                {loading.promote ? 'Procesando...' : 'Promote'}
+              </button>
             </div>
           </section>
 
@@ -244,7 +260,9 @@ export default function RitualStudio() {
           <section className="card">
             <h2>Microregistro</h2>
             <div className="actions">
-              <button className="btn" onClick={doMicroreg} disabled={step<2}>Microreg</button>
+              <button className="btn" onClick={doMicroreg} disabled={step<2 || loading.microreg}>
+                {loading.microreg ? 'Procesando...' : 'Microreg'}
+              </button>
             </div>
           </section>
 
@@ -266,7 +284,9 @@ export default function RitualStudio() {
               </div>
             </div>
             <div className="actions">
-              <button className="btn" onClick={doFinalize} disabled={step<3}>Finalize</button>
+              <button className="btn" onClick={doFinalize} disabled={step<3 || loading.finalize}>
+                {loading.finalize ? 'Procesando...' : 'Finalize'}
+              </button>
             </div>
           </section>
         </div>

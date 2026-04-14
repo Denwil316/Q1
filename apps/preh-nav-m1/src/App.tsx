@@ -1,15 +1,20 @@
 // apps/preh-nav-m1/src/App.tsx
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate, Navigate } from 'react-router-dom'
 import Sidebar from './components/Sidebar'
 import { useManifest } from './components/ManifestContext'
-import RitualStudio from './pages/RitualStudio'
-import QelWizard from './pages/QelWizard'
 import DocViewer from './components/DocViewer'
-import VcalcPage from "./pages/VcalcPage";
-import QelWorkspace from "./pages/QelWorkspace";
 
 import './styles.css'
+
+const RitualStudio = lazy(() => import('./pages/RitualStudio'))
+const QelWizard = lazy(() => import('./pages/QelWizard'))
+const VcalcPage = lazy(() => import('./pages/VcalcPage'))
+const QelWorkspace = lazy(() => import('./pages/QelWorkspace'))
+
+function LoadingFallback() {
+  return <div style={{ padding: 16 }}>Cargando...</div>
+}
 
 // Un “guard” para que si el Provider fallara, no truene la UI:
 function useSafeManifest() {
@@ -83,14 +88,14 @@ export default function App() {
         <Route element={<Shell />}>
           <Route index element={<Home />} />
           <Route path="/" element={<Navigate to="/altar" replace />} />
-          <Route path="altar" element={<RitualStudio />} />
-          <Route path="via" element={<QelWizard />} />
+          <Route path="altar" element={<Suspense fallback={<LoadingFallback />}><RitualStudio /></Suspense>} />
+          <Route path="via" element={<Suspense fallback={<LoadingFallback />}><QelWizard /></Suspense>} />
           <Route path="doc/:slug" element={<DocViewer />} />
 
           {/* Laboratorio con VCALC anidado */}
           <Route path="laboratorio" element={<LabLayout />}>
-            <Route index element={<QelWorkspace />} />
-            <Route path="vcalc" element={<VcalcPage />} />
+            <Route index element={<Suspense fallback={<LoadingFallback />}><QelWorkspace /></Suspense>} />
+            <Route path="vcalc" element={<Suspense fallback={<LoadingFallback />}><VcalcPage /></Suspense>} />
           </Route>
 
           {/* Compatibilidad: /vcalc → /laboratorio/vcalc */}

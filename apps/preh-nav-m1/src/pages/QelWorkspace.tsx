@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import TagInput from '../components/TagInput';
 import Stepper from '../components/Stepper';
+import { DEFAULT_PATHS } from '../config/paths';
 
 type Mode = 'M1'|'M2'|'M3';
 type Delta = 'up'|'flat'|'down';
@@ -128,7 +129,7 @@ export default function QelWorkspace() {
   };
 
   // ---------- LL_PE ----------
-  const [vfPath, setVfPath] = useState<string>('docs/core/cartas/LLPE_Kosmos8_Primera_v1.3.yaml');
+  const [vfPath, setVfPath] = useState<string>(DEFAULT_PATHS.vf);
   const [seed, setSeed] = useState<string>('');
   const [cue,  setCue]  = useState<string>('');
   const [materia, setMateria] = useState<string>('');
@@ -186,7 +187,7 @@ export default function QelWorkspace() {
   };
 
   // ---------- Hash de FS ----------
-  const [fsFile, setFsFile]   = useState<string>('docs/fs/FS_251020.json');
+  const [fsFile, setFsFile]   = useState<string>(DEFAULT_PATHS.fsDefault);
   const [fsJson, setFsJson]   = useState<string>('');
   const [hashOut, setHashOut] = useState<any>(null);
   const [saveSidecar, setSaveSidecar] = useState<boolean>(false);

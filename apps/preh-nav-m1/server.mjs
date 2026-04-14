@@ -70,10 +70,15 @@ function isInsideRoot(abs) {
   const rel = path.relative(ROOT, abs);
   return !rel.startsWith('..') && !path.isAbsolute(rel);
 }
+const ALLOWED_EXTENSIONS = ['.md', '.json', '.txt', '.html', '.css', '.js', '.ts', '.tsx', '.yaml', '.yml', '.sh', '.mjs', '.cjs'];
+const BLOCKED_EXTENSIONS = ['.exe', '.sh', '.bat', '.cmd', '.ps1', '.so', '.dll', '.dylib', '.env', '.key', '.pem'];
+
 function resolveSafe(relPath) {
   const abs = path.resolve(ROOT, relPath);
   if (!isInsideRoot(abs)) throw new Error(`path_outside_root: ${relPath}`);
-  return abs;
+  const ext = path.extname(abs).toLowerCase();
+  if (BLOCKED_EXTENSIONS.includes(ext)) throw new Error(`extension_blocked: ${ext}`);
+  return abs
 }
 function fileExists(p, mustExec = false) {
   try {
@@ -132,7 +137,34 @@ function sha1_10(s) {
   return crypto.createHash('sha1').update(s).digest('hex').slice(0,10);
 }
 
-// spawn promisificado + callback de logs
+const FETCH_TIMEOUT_MS = 10000;
+const FETCH_MAX_RETRIES = 2;
+
+async function fetchWithTimeout(url, options = {}, timeout = FETCH_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    clearTimeout(id);
+    return response;
+  } catch (e) {
+    clearTimeout(id);
+    throw e;
+  }
+}
+
+async function fetchWithRetry(url, options = {}, retries = FETCH_MAX_RETRIES) {
+  let lastError;
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await fetchWithTimeout(url, options);
+    } catch (e) {
+      lastError = e;
+      if (i < retries - 1) await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+    }
+  }
+  throw lastError;
+}
 function runScript(bin, args = [], opts = {}) {
   return new Promise((resolve, reject) => {
     const child = spawn(bin, args, {
@@ -510,7 +542,18 @@ app.post('/api/v1/vcalc', (req, res) => {
 // -------------------------------------------------------------
 // SSE (logs en vivo)
 // -------------------------------------------------------------
-const jobs = new Map(); // jobId -> { listeners: Set(res) }
+const jobs = new Map(); // jobId -> { listeners: Set(res), created: timestamp }
+const JOB_TTL_MS = 30 * 60 * 1000; // 30 min
+
+function cleanupJobs() {
+  const now = Date.now();
+  for (const [jobId, job] of jobs) {
+    if (now - job.created > JOB_TTL_MS || job.listeners.size === 0) {
+      jobs.delete(jobId);
+    }
+  }
+}
+setInterval(cleanupJobs, 5 * 60 * 1000); // cleanup cada 5 min
 
 function sseInit(res) {
   res.writeHead(200, { 'Content-Type':'text/event-stream', 'Cache-Control':'no-cache', 'Connection':'keep-alive' });
@@ -528,7 +571,7 @@ function sseBroadcast(jobId, data) {
 app.get('/api/v1/logs/:jobId', (req, res) => {
   const { jobId } = req.params;
   sseInit(res);
-  if (!jobs.has(jobId)) jobs.set(jobId, { listeners: new Set() });
+  if (!jobs.has(jobId)) jobs.set(jobId, { listeners: new Set(), created: Date.now() });
   jobs.get(jobId).listeners.add(res);
   req.on('close', () => jobs.get(jobId)?.listeners.delete(res));
 });
@@ -562,7 +605,7 @@ app.post('/api/v1/promote', async (req, res) => {
   if (!fileExists(SCRIPT_PROMOTE, true)) return res.status(500).json({ error: 'script_missing', bin: SCRIPT_PROMOTE });
 
   const jobId = `promote-${Date.now()}`;
-  jobs.set(jobId, { listeners: new Set() });
+  jobs.set(jobId, { listeners: new Set(), created: Date.now() });
   res.json({ ok: true, jobId });
 
   const args = [
@@ -592,7 +635,7 @@ app.post('/api/v1/microreg', async (req, res) => {
   if (!fileExists(SCRIPT_MICROREG, true)) return res.status(500).json({ error: 'script_missing', bin: SCRIPT_MICROREG });
 
   const jobId = `microreg-${Date.now()}`;
-  jobs.set(jobId, { listeners: new Set() });
+  jobs.set(jobId, { listeners: new Set(), created: Date.now() });
   res.json({ ok: true, jobId });
 
   const args = [
@@ -628,7 +671,7 @@ app.post('/api/v1/finalize', async (req, res) => {
   if (!fileExists(SCRIPT_FINALIZE, true)) return res.status(500).json({ error: 'script_missing', bin: SCRIPT_FINALIZE });
 
   const jobId = `finalize-${Date.now()}`;
-  jobs.set(jobId, { listeners: new Set() });
+  jobs.set(jobId, { listeners: new Set(), created: Date.now() });
   res.json({ ok: true, jobId });
 
   const args = [
@@ -671,7 +714,7 @@ app.post('/api/v1/ritual', async (req, res) => {
   try { resolveSafe(file); } catch(e){ return res.status(400).json({ error: 'file_invalid', detail: String(e) }); }
 
   const jobId = `ritual-${Date.now()}`;
-  jobs.set(jobId, { listeners: new Set() });
+  jobs.set(jobId, { listeners: new Set(), created: Date.now() });
   res.json({ ok: true, jobId });
 
   const log = (m)=> sseBroadcast(jobId, { line: m });
@@ -727,6 +770,7 @@ app.post('/api/v1/ritual', async (req, res) => {
 
     sseBroadcast(jobId, { done: true, code: 0 });
   } catch (e) {
+    console.error(`[ritual/canon/m0m1] error:`, e);
     sseBroadcast(jobId, { done: true, code: e.code || 1, err: e.err, out: e.out });
   }
 });
@@ -811,7 +855,7 @@ app.post('/api/v1/ritual/canon/m0m1', async (req,res)=>{
         body: JSON.stringify({ fecha, seed, tema: fs?.tema||'', result:'OK', hash_fs10: fsHash10 })
       }).then(r=>r.json());
       if (ls.ok) log(`[sistema] listador -> ${ls.file}`);
-    }catch(e){ log(`[sistema] append err: ${e}`); }
+    }catch(e){ console.error(`[sistema] append err:`, e); log(`[sistema] append err: ${e}`); }
 
     // Manifest
     if (fileExists(GEN_MANIFEST)) {
@@ -820,8 +864,95 @@ app.post('/api/v1/ritual/canon/m0m1', async (req,res)=>{
 
     sseBroadcast(jobId,{ done:true, code:0 });
   } catch (e) {
+    console.error(`[ritual/canon/m0m1] finalize error:`, e);
     sseBroadcast(jobId,{ done:true, code:e.code||1, err:e.err, out:e.out });
   }
+});
+
+// -------------------------------------------------------------
+// LL_PE endpoint (M2/M3)
+// -------------------------------------------------------------
+app.post('/api/v1/llpe', async (req, res) => {
+  const { file, vf, seed, cue, materia, nutriaDir } = req.body || {};
+  if (!file) return res.status(400).json({ error: 'file_required' });
+  if (!isValidFile(file)) return res.status(400).json({ error: 'file_invalid' });
+  
+  try { resolveSafe(file); } catch(e){ return res.status(400).json({ error:'file_invalid', detail:String(e) }); }
+  
+  const jobId = `llpe-${Date.now()}`;
+  jobs.set(jobId,{listeners:new Set(), created:Date.now()});
+  res.json({ ok:true, jobId });
+  const log = (m)=> sseBroadcast(jobId,{ line:m });
+  
+  try {
+    const scriptPath = path.join(SCRIPTS, 'qel_llpe.sh');
+    if (!fs.existsSync(scriptPath)) {
+      log(`[llpe] script no encontrado: ${scriptPath}`);
+      sseBroadcast(jobId,{ done:true, code:1 });
+      return;
+    }
+    
+    const args = [file];
+    if (vf) args.push('--vf', vf);
+    if (seed) args.push('--seed', seed);
+    if (cue) args.push('--cue', cue);
+    if (materia) args.push('--materia', materia);
+    if (nutriaDir) args.push('--nutria-dir', nutriaDir);
+    
+    const result = await runScript('bash', [scriptPath, ...args], { onData: (l)=>log(`[llpe] ${l}`) });
+    log(`[llpe] completado`);
+    sseBroadcast(jobId,{ done:true, code:0 });
+  } catch (e) {
+    log(`[llpe] error: ${e.message || e}`);
+    sseBroadcast(jobId,{ done:true, code:1 });
+  }
+});
+
+// -------------------------------------------------------------
+// FS Hash endpoint
+// -------------------------------------------------------------
+app.post('/api/v1/fs/hash', (req, res) => {
+  const { file, fs: fsObj, save } = req.body || {};
+  
+  try {
+    if (fsObj && typeof fsObj === 'object') {
+      const hash10 = sha1_10(normalizeJsonForHash(fsObj));
+      let savedPath;
+      if (save) {
+        ensureDir(DOCS_FS);
+        const yymmdd = new Date().toISOString().slice(2,10).replace(/-/g,'').slice(0,6);
+        savedPath = path.join(DOCS_FS, `FS_${yymmdd}_hash.json`);
+        fs.writeFileSync(savedPath, JSON.stringify({ hash10, fs: fsObj, created: new Date().toISOString() }, null, 2), 'utf-8');
+      }
+      return res.json({ ok: true, hash10, saved: savedPath });
+    }
+    
+    if (file) {
+      if (!isValidFile(file)) return res.status(400).json({ error: 'file_invalid' });
+      try { resolveSafe(file); } catch(e){ return res.status(400).json({ error:'file_invalid', detail:String(e) }); }
+      const raw = fs.readFileSync(file, 'utf-8');
+      const parsed = JSON.parse(raw);
+      const hash10 = sha1_10(normalizeJsonForHash(parsed));
+      return res.json({ ok: true, hash10 });
+    }
+    
+    return res.status(400).json({ error: 'file_or_fs_required' });
+  } catch (e) {
+    return res.status(500).json({ ok: false, error: String(e) });
+  }
+});
+
+// -------------------------------------------------------------
+// Health check endpoint
+// -------------------------------------------------------------
+app.get('/api/v1/health', (_req, res) => {
+  res.json({ 
+    ok: true, 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    jobs: jobs.size,
+    memory: process.memoryUsage()
+  });
 });
 
 // -------------------------------------------------------------

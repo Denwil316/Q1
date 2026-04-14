@@ -6,6 +6,7 @@
 	import ReactMarkdown from 'react-markdown'
 	import remarkGfm from 'remark-gfm'
 	import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize'
 	import { dec } from '../lib/b64url'
 
 	export default function DocViewer() {
@@ -66,7 +67,7 @@
 
 	  return <div className="viewer">
 	    <h2>{path}</h2>
-	    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
+	    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw, rehypeSanitize]}>{content}</ReactMarkdown>
 	    <hr/>
 	    <h3>Notas</h3>
 	    <textarea value={note} onChange={e=>setNote(e.target.value)} placeholder="Escribe tus notas…" style={{width:'100%', minHeight:180}}/>
