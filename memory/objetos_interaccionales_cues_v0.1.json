@@ -1,0 +1,50 @@
+[
+  {
+    "SOT": "Kael-Sün :: Criolámpara",
+    "ECO≈": "47",
+    "E_CLASS": "E7",
+    "RUMBO≈": "Oriente",
+    "PLANO≈": "mixto",
+    "FONEMAS": "Kael + Sün",
+    "CUE_TRIGGER": "Inhala «Kael», exhala «Sün» ×9 con dedos índice+medio en esternón (1″).",
+    "CUE_MEASURE": "Brillo percibido 0–10 → τ; registra Δτ y sensación térmica (frío↔cálido).",
+    "CUE_AUDIT": "t, α(9 palabras), σ(52″), τ_pre, τ_post, Δτ, nota corporal.",
+    "CUE_SAFETY": "No anclar si σ<0.6 o ansiedad ↑; repetir 52″ de silencio."
+  },
+  {
+    "SOT": "Zeh-Ora :: Prisma",
+    "ECO≈": "80",
+    "E_CLASS": "E0",
+    "RUMBO≈": "Norte",
+    "PLANO≈": "Rito",
+    "FONEMAS": "Zeh + Ora",
+    "CUE_TRIGGER": "Visualiza prisma a la altura de la garganta; pronuncia «Zeh–O–ra» en 3 pulsos ×9.",
+    "CUE_MEASURE": "Ruido mental 0–10 (↓ es mejor), nitidez de borde 0–3, claridad de intención (α).",
+    "CUE_AUDIT": "t, α_pre, α_post, ruido_pre/post, notas del filtro.",
+    "CUE_SAFETY": "Evita sobreesfuerzo vocal; si hay rigidez, baja a ×6 y respira nasal."
+  },
+  {
+    "SOT": "Vun-Ida :: Semilla",
+    "ECO≈": "48",
+    "E_CLASS": "E0",
+    "RUMBO≈": "Sur",
+    "PLANO≈": "Numero",
+    "FONEMAS": "Vun + Ida",
+    "CUE_TRIGGER": "Mano sobre el bajo vientre; susurra «Vun» al inhalar y «Ida» al exhalar ×9; plantar imagen-semillla.",
+    "CUE_MEASURE": "Estabilidad de la imagen 0–10, calidez abdominal 0–10, constancia de α en 9 ciclos.",
+    "CUE_AUDIT": "t, α_estabilidad, calor, #ciclos completados, visión emergente.",
+    "CUE_SAFETY": "Si somnolencia >7/10, reduce a ×6 y camina 2′ antes de repetir."
+  },
+  {
+    "SOT": "Lun-Nai :: Objeto imposible / del lector",
+    "ECO≈": "03",
+    "E_CLASS": "E3",
+    "RUMBO≈": "Occidente",
+    "PLANO≈": "Lengua",
+    "FONEMAS": "Lun + Nai",
+    "CUE_TRIGGER": "Mira el Lago de Obsidiana; pronuncia «Lun…Nai» una vez y guarda 52″ de silencio.",
+    "CUE_MEASURE": "Conteo de reflejos veraces 0–3 vs. distorsiones; nitidez del borde del lago 0–10.",
+    "CUE_AUDIT": "t, σ, #reflejos, #distorsiones, metáfora recibida (1 línea).",
+    "CUE_SAFETY": "Si aparecen recuerdos intrusivos intensos, abre los ojos, respira 4–6 y cierra el rito."
+  }
+]

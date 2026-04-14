@@ -1,0 +1,18 @@
+{
+  "fecha":"251006",
+  "tema":"Tarjetas Atlas",
+  "intencion":"Promover, registrar y sellar el Códice Madre v2.4-final",
+  "modo":"M1",
+  "rumbo":"Centro",
+  "tiempo":20,
+  "referencias":["Lamina V unificada","MFH v1.4","SoT Atlas","Glosario v1.4"],
+  "veredicto":"Cristalización v2.4-final; Doble Testigo; cierres SIL→UM→Ə",
+  "resultados":{
+    "artefactos":[
+      "docs/atlas/Codice_Madre_Tarjetas_v2.4_final.md"
+    ],
+    "micro_sellos":[
+      "PROMO: Códice v2.4-final"
+    ]
+  }
+}

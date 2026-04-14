@@ -1,0 +1,141 @@
+{
+  "files": [
+    {
+      "name": "ACI_KO8",
+      "role": "docs",
+      "path": "docs/docs/core/arboles/ACI_KO8.md"
+    },
+    {
+      "name": "codice_madre_atlas_qel_tarjetas_maestras_v_2",
+      "role": "codice_madre_atlas_qel_tarjetas_maestras_v_2.md",
+      "path": "docs/codice_madre_atlas_qel_tarjetas_maestras_v_2.md"
+    },
+    {
+      "name": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2",
+      "role": "GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md",
+      "path": "docs/GUIA_ACTUALIZACION_DIRECTORIO_M0_v0.2.md"
+    },
+    {
+      "name": "manual_cue_machine_qel_v.1",
+      "role": "manual_cue_machine_qel_v.1.md",
+      "path": "docs/manual_cue_machine_qel_v.1.md"
+    },
+    {
+      "name": "NAVEGADOR_M0_Manual_v0.2",
+      "role": "NAVEGADOR_M0_Manual_v0.2.md",
+      "path": "docs/NAVEGADOR_M0_Manual_v0.2.md"
+    },
+    {
+      "name": "Qel_Codice_Madre",
+      "role": "Qel_Codice_Madre.md",
+      "path": "docs/Qel_Codice_Madre.md"
+    },
+    {
+      "name": "QEL_Curacion_Nucleo_Minimo",
+      "role": "QEL_Curacion_Nucleo_Minimo.md",
+      "path": "docs/QEL_Curacion_Nucleo_Minimo.md"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.2",
+      "role": "QEL_Diario_del_Conjurador_v1.2.md",
+      "path": "docs/QEL_Diario_del_Conjurador_v1.2.md"
+    },
+    {
+      "name": "QEL_Diario_del_Conjurador_v1.5",
+      "role": "QEL_Diario_del_Conjurador_v1.5.md",
+      "path": "docs/QEL_Diario_del_Conjurador_v1.5.md"
+    },
+    {
+      "name": "QEL_FormatoR_Manual_v1.1",
+      "role": "QEL_FormatoR_Manual_v1.1.md",
+      "path": "docs/QEL_FormatoR_Manual_v1.1.md"
+    },
+    {
+      "name": "QEL_Glosario_v1.4",
+      "role": "QEL_Glosario_v1.4.md",
+      "path": "docs/QEL_Glosario_v1.4.md"
+    },
+    {
+      "name": "QEL_Guia_alineacion_V_v1.0",
+      "role": "QEL_Guia_alineacion_V_v1.0.md",
+      "path": "docs/QEL_Guia_alineacion_V_v1.0.md"
+    },
+    {
+      "name": "QEL_Index_Rutas_v1.0",
+      "role": "QEL_Index_Rutas_v1.0.md",
+      "path": "docs/QEL_Index_Rutas_v1.0.md"
+    },
+    {
+      "name": "QEL_Index_Semillas_v1.0",
+      "role": "QEL_Index_Semillas_v1.0.md",
+      "path": "docs/QEL_Index_Semillas_v1.0.md"
+    },
+    {
+      "name": "QEL_Libro_Sombras",
+      "role": "QEL_Libro_Sombras.md",
+      "path": "docs/QEL_Libro_Sombras.md"
+    },
+    {
+      "name": "QEL_ListadoR_master_v1.0",
+      "role": "QEL_ListadoR_master_v1.0.md",
+      "path": "docs/QEL_ListadoR_master_v1.0.md"
+    },
+    {
+      "name": "QEL_LLPE_Manual_v1.4",
+      "role": "QEL_LLPE_Manual_v1.4.md",
+      "path": "docs/QEL_LLPE_Manual_v1.4.md"
+    },
+    {
+      "name": "QEL_Manual_Atlas_MicroRegistro_v1.0",
+      "role": "QEL_Manual_Atlas_MicroRegistro_v1.0.md",
+      "path": "docs/QEL_Manual_Atlas_MicroRegistro_v1.0.md"
+    },
+    {
+      "name": "QEL_Manual_auditoria_v1.2",
+      "role": "QEL_Manual_auditoria_v1.2.md",
+      "path": "docs/QEL_Manual_auditoria_v1.2.md"
+    },
+    {
+      "name": "QEL_Manual_Esculpido_en_Qel_v1.0",
+      "role": "QEL_Manual_Esculpido_en_Qel_v1.0.md",
+      "path": "docs/QEL_Manual_Esculpido_en_Qel_v1.0.md"
+    },
+    {
+      "name": "QEL_Manual_Instructivo_v1.1",
+      "role": "QEL_Manual_Instructivo_v1.1.md",
+      "path": "docs/QEL_Manual_Instructivo_v1.1.md"
+    },
+    {
+      "name": "QEL_Manual_Interpretación_Sombras_v1.3",
+      "role": "QEL_Manual_Interpretación_Sombras_v1.3.md",
+      "path": "docs/QEL_Manual_Interpretación_Sombras_v1.3.md"
+    },
+    {
+      "name": "QEL_Manual_Operativo",
+      "role": "QEL_Manual_Operativo.md",
+      "path": "docs/QEL_Manual_Operativo.md"
+    },
+    {
+      "name": "QEL_MFH_v2.0",
+      "role": "QEL_MFH_v2.0.md",
+      "path": "docs/QEL_MFH_v2.0.md"
+    },
+    {
+      "name": "QEL_scripts_cs",
+      "role": "QEL_scripts_cs.md",
+      "path": "docs/QEL_scripts_cs.md"
+    },
+    {
+      "name": "QEL_SoT_Study_Guide_v1.1",
+      "role": "QEL_SoT_Study_Guide_v1.1.md",
+      "path": "docs/QEL_SoT_Study_Guide_v1.1.md"
+    },
+    {
+      "name": "Tarjetas_Atlas_QEL_v2.4",
+      "role": "Tarjetas_Atlas_QEL_v2.4.md",
+      "path": "docs/Tarjetas_Atlas_QEL_v2.4.md"
+    }
+  ],
+  "recommended_core": [],
+  "optional": []
+}

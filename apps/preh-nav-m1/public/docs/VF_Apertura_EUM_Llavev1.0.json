@@ -1,0 +1,11 @@
+{
+"VF.PRIMA": "Apertura I — Llave de Matrices",
+"cue": "VF::A96-250824::apertura-eum",
+"rumbo": "C",
+"clase": "singular",
+"triada": "Ə·UM·A",
+"pesos": [0.40, 0.35, 0.25],
+"objeto": "Llave",
+"gates": ["mediacion", "doble"],
+"SeedI": "A96-250824"
+}

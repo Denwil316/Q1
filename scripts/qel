@@ -1,0 +1,489 @@
+#!/usr/bin/env bash
+# [QEL::ECO[96]::RECALL A96-250824-QEL-WRAPPER]
+# SeedI=A96-250824
+# SoT=HERRAMIENTAS/v0.3 TARGET=wrapper|orquestador
+# Version=v0.3
+# Updated=2025-08-24
+
+set -euo pipefail
+
+# ---------- CONFIG ----------
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+SCRIPTS="$ROOT/scripts"
+APPS="$ROOT/apps/preh-nav-m1"
+PUB_DOCS="$APPS/public/docs"
+FRONT_MANIFEST="$APPS/public/sot-manifest.json"
+MASTER_MANIFEST="$ROOT/docs/core/QEL_SoT_Manifest_v0.8.json"
+
+# .qelrc opcional: variables por defecto (SEEDI, LISTADOR, etc.)
+if [ -f "$ROOT/.qelrc" ]; then
+  # shellcheck source=/dev/null
+  source "$ROOT/.qelrc"
+fi
+
+SEEDI_DEFAULT="${SEEDI_DEFAULT:-A96-250824}"
+LISTADOR_PATH_DEFAULT="${LISTADOR_PATH_DEFAULT:-$ROOT/memory/QEL_ListadoR_A96_v1.4.md}"
+CUE_PREFIX_DEFAULT="${CUE_PREFIX_DEFAULT:-[QEL::ECO[96]::RECALL}"
+DRYRUN=0
+
+# ---------- UTILES ----------
+log(){ printf "[QEL] %s\n" "$*"; }
+die(){ printf "[QEL][ERR] %s\n" "$*" >&2; exit 1; }
+has(){ command -v "$1" >/dev/null 2>&1; }
+today(){ date +%F; }
+ts(){ date +%Y%m%d%H%M%S; }
+hash10(){ # sha256 → 10
+  if has shasum; then
+    printf '%s' "$1" | shasum -a 256 | awk '{print $1}' | cut -c1-10
+  elif has sha256sum; then
+    printf '%s' "$1" | sha256sum | awk '{print $1}' | cut -c1-10
+  else
+    printf 'nohash%06d' "$RANDOM"
+  fi
+}
+ensure(){ has "$1" || die "Falta dependencia: $1"; }
+
+# Idempotente: añade o actualiza claves k=v en cabecera del archivo.
+set_header_kv(){
+  local file="$1"; shift
+  local tmp="${file}.tmp.$(ts)"
+  cp "$file" "$tmp"
+  for kv in "$@"; do
+    local k="${kv%%=*}"
+    local v="${kv#*=}"
+    if grep -q "^${k}=" "$tmp"; then
+      awk -v K="$k" -v V="$v" 'BEGIN{FS=OFS="="} {if($0~"^"K"="){print K"="V} else print $0}' "$tmp" > "${tmp}.2" && mv "${tmp}.2" "$tmp"
+    else
+      printf '%s=%s\n' "$k" "$v" | cat - "$tmp" > "${tmp}.2" && mv "${tmp}.2" "$tmp"
+    fi
+  done
+  mv "$tmp" "$file"
+}
+
+append_if_missing(){
+  local file="$1"; shift
+  local tag="$1"; shift
+  grep -qF -- "$tag" "$file" || { printf "\n%s\n" "$tag" >> "$file"; [ "$DRYRUN" -eq 1 ] && log "dry-run append: $tag"; }
+}
+
+# Bump menor de Version=vX.Y → vX.(Y+1)
+bump_minor(){
+  local v="$1"
+  if [[ "$v" =~ ^v([0-9]+)\.([0-9]+)$ ]]; then
+    local maj="${BASH_REMATCH[1]}"; local min="${BASH_REMATCH[2]}"
+    printf 'v%s.%s' "$maj" "$((min+1))"
+  else
+    printf 'v1.1'
+  fi
+}
+
+read_header_val(){ # read Version/SoT/Updated etc.
+  local file="$1" key="$2"
+  grep -E "^${key}=" "$file" | head -1 | cut -d'=' -f2- | tr -d '\r'
+}
+
+# ---------- SUBCOMANDOS ----------
+
+help(){
+cat <<'HLP'
+Uso: scripts/qel <subcomando> [opciones]
+
+Subcomandos principales:
+  help                        Muestra esta ayuda.
+  doctor                      Verifica dependencias y rutas.
+  structure update            Actualiza ESTRUCTURA.md y ejecuta pre-commit-codex-structure.sh
+  manifest build              Regenera el manifiesto del front (apps/.../public/sot-manifest.json)
+  manifest core               Regenera el manifest maestro de docs/core (QEL_SoT_Manifest_v0.8.json)
+  manifest sync               Concilia maestro v0.8 con front y muestra diff (requiere jq)
+  nav publish [--mode copy|link] [--watch]
+                              Publica docs/core → apps/.../public/docs y regenera manifest (opcional watch)
+  nav serve [port] [bind]     Sirve con scripts/serve_preh_nav.sh
+  promote --rubro R --file F --titulo T [--cue CUE] [--rumbo Sur|N|O|W|C] [--seed SEEDI]
+                              Promoción (Cristalización): bump Version, cabeceras, ListadoR y manifiesto maestro
+  apply --zip Z [--branch B] [--expose-public] [--no-git]
+                              Proxy a scripts/apply_qel_update.sh
+  session finalize [args...]  Proxy a scripts/qel_session_finalize.sh (pasa flags tal cual)
+  vcalc [args...]             Proxy a scripts/qel_vcalc.sh (cálculo 𝒱)
+  doc move --from A --to B [--commit] [--msg "..."]   Mueve archivos sin cristalizar (opcional commit)
+  hash10 --file F [--mode canon|file] [--titulo T] [--canon "CUE=...|..."] [--print-canon] [--write]
+                              Calcula HASH(10). Con --write lo inserta/actualiza en el archivo.
+
+
+Global:
+  --dry-run                   Simula sin escribir (en promote/nav/manifest build).
+
+HLP
+}
+
+doctor(){
+  log "Verificando dependencias..."
+  for cmd in git node jq tree python3 awk sed bc; do
+    has "$cmd" || log "⚠️  faltante sugerido: $cmd"
+  done
+  [ -d "$APPS" ] || die "No existe apps/preh-nav-m1"
+  [ -d "$PUB_DOCS" ] || die "No existe $PUB_DOCS (créalo con mkdir -p)"
+  log "OK rutas base."
+}
+
+structure_update(){
+  log "Estructura → ESTRUCTURA.md"
+  "$SCRIPTS/update_estructura.sh"
+  log "pre-commit-codex-structure.sh"
+  "$SCRIPTS/pre-commit-codex-structure.sh"
+}
+
+manifest_build(){
+  if [ "$DRYRUN" -eq 1 ]; then log "dry-run manifest build"; return 0; fi
+  if [ -f "$SCRIPTS/gen_manifest.sh" ]; then
+    "$SCRIPTS/gen_manifest.sh"
+  else
+    ( cd "$APPS" && node scripts/generate_manifest.mjs )
+  fi
+}
+
+manifest_sync(){
+  ensure jq
+  [ -f "$MASTER_MANIFEST" ] || die "Falta $MASTER_MANIFEST"
+  manifest_build
+  if [ ! -f "$FRONT_MANIFEST" ]; then die "Falta $FRONT_MANIFEST"; fi
+  log "Diff maestro (v0.8) vs front:"
+  jq -S . "$MASTER_MANIFEST" > /tmp/qel_master.json
+  jq -S . "$FRONT_MANIFEST"  > /tmp/qel_front.json
+  if diff -u /tmp/qel_master.json /tmp/qel_front.json | sed -n '1,200p'; then
+    log "Sin diferencias relevantes."
+  fi
+}
+
+nav_publish(){
+  local MODE="copy"; local WATCH=0
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --mode) MODE="$2"; shift 2;;
+      --watch) WATCH=1; shift 1;;
+      --dry-run) DRYRUN=1; shift 1;;
+      *) break;;
+    esac
+  done
+  mkdir -p "$PUB_DOCS"
+  log "Publicando docs/core → $PUB_DOCS (modo: $MODE)"
+  if [ "$MODE" = "link" ]; then
+    # enlaza sólo archivos .md/.json visibles
+    while IFS= read -r -d '' f; do
+      rel="${f#"$ROOT/"}"; base="$(basename "$f")"
+      [ "$DRYRUN" -eq 1 ] && { log "dry-run ln -sf $f $PUB_DOCS/$base"; continue; }
+      ln -sf "$f" "$PUB_DOCS/$base"
+    done < <(find "$ROOT/docs/core" -type f \( -name "*.md" -o -name "*.json" \) -print0)
+  else
+    # copia limpia
+    [ "$DRYRUN" -eq 1 ] || rm -rf "$PUB_DOCS"/*
+    while IFS= read -r -d '' f; do
+      base="$(basename "$f")"
+      if [ "$DRYRUN" -eq 1 ]; then
+        log "dry-run cp $f → $PUB_DOCS/$base"
+      else
+        cp -f "$f" "$PUB_DOCS/$base"
+      fi
+    done < <(find "$ROOT/docs/core" -type f \( -name "*.md" -o -name "*.json" \) -print0)
+  fi
+  manifest_build
+  if [ "$WATCH" -eq 1 ]; then
+    log "watch_manifest.mjs (dev)"
+    ( cd "$APPS" && node scripts/watch_manifest.mjs ) &
+  fi
+}
+
+nav_serve(){
+  local PORT="${1:-8080}" BIND="${2:-127.0.0.1}"
+  "$SCRIPTS/serve_preh_nav.sh" "$PORT" "$BIND"
+}
+
+apply_zip(){
+  "$SCRIPTS/apply_qel_update.sh" "$@"
+}
+
+session_finalize(){
+  "$SCRIPTS/qel_session_finalize.sh" "$@"
+}
+
+vcalc_proxy(){
+  "$SCRIPTS/qel_vcalc.sh" "$@"
+}
+
+promote(){
+  local RUBRO="" FILE="" TITULO="" CUE="" RUMBO="Sur" SEEDI="${SEEDI_DEFAULT}"
+  local ARCHIVE_OLD=0
+
+  # ---- parseo de flags (único bucle) ----
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --rubro) RUBRO="$2"; shift 2;;
+      --file) FILE="$2"; shift 2;;
+      --titulo) TITULO="$2"; shift 2;;
+      --cue) CUE="$2"; shift 2;;
+      --rumbo) RUMBO="$2"; shift 2;;
+      --seed) SEEDI="$2"; shift 2;;
+      --archive-old) ARCHIVE_OLD=1; shift 1;;
+      --dry-run) DRYRUN=1; shift 1;;
+      *) die "Flag desconocida: $1";;
+    esac
+  done
+
+  [ -n "$RUBRO" ] || die "Falta --rubro (o SoT en cabecera)"
+  [ -n "$FILE" ]  || die "Falta --file"
+  [ -n "$TITULO" ]|| die "Falta --titulo"
+  [ -f "$FILE" ]  || die "No existe $FILE"
+
+ # Si no vino --rubro, intenta inferirlo de la cabecera SoT
+  if [ -z "$RUBRO" ]; then
+    sot_in_header="$(read_header_val "$FILE" "SoT" || true)"
+    if [ -n "$sot_in_header" ]; then
+      RUBRO="${sot_in_header%%/*}"   # toma lo de antes del "/"
+    fi
+  fi
+  # ---- desvío opcional al wrapper mac (si y solo si lo pides) ----
+  if [[ "${OSTYPE:-}" == darwin* ]] && [ -n "${QEL_USE_MAC_WRAPPER:-}" ] && [ -x "$SCRIPTS/qel_promote_mac.sh" ]; then
+    ARGS=(--rubro "$RUBRO" --file "$FILE" --titulo "$TITULO" --rumbo "$RUMBO" --seed "$SEEDI")
+    [ -n "${CUE:-}" ] && ARGS+=(--cue "$CUE")
+    [ "${DRYRUN:-0}" -eq 1 ] && ARGS+=(--dry-run)
+    exec "$SCRIPTS/qel_promote_mac.sh" "${ARGS[@]}"
+  fi
+
+  # ---- archivado previo opcional ----
+  if [ "$ARCHIVE_OLD" -eq 1 ]; then
+    local HIST_DIR="${ARCHIVE_HISTORY_DIR:-$ROOT/docs/history}"
+    local MEM_DIR="${ARCHIVE_MEMORY_DIR:-$ROOT/memory/archive}"
+    mkdir -p "$HIST_DIR" "$MEM_DIR"
+    local TS="$(date +%Y%m%d%H%M%S)"
+    local BASE="$(basename "$FILE")"
+    cp -f "$FILE" "$HIST_DIR/${BASE%.md}_arch_${TS}.md"
+    cp -f "$FILE" "$MEM_DIR/${BASE%.md}_arch_${TS}.md"
+    log "Archivado previo → $HIST_DIR/ y $MEM_DIR/"
+  fi
+
+  # ---- metadatos y bump ----
+  CUE="${CUE:-$CUE_PREFIX_DEFAULT ${SEEDI}-${RUBRO}]}"
+  local UPDATED; UPDATED="$(today)"
+  local CURV; CURV="$(read_header_val "$FILE" "Version")"; CURV="${CURV:-v1.0}"
+  local NEXT; NEXT="$(bump_minor "$CURV")"
+
+  log "Promoción: $(basename "$FILE")  $CURV → $NEXT"
+  [ "$DRYRUN" -eq 1 ] && log "dry-run set_header_kv cue=$CUE SeedI=$SEEDI SoT=$RUBRO/$NEXT Version=$NEXT Updated=$UPDATED"
+  if [ "$DRYRUN" -eq 0 ]; then
+    set_header_kv "$FILE" "cue=$CUE" "SeedI=$SEEDI" "SoT=$RUBRO/$NEXT" "Version=$NEXT" "Updated=$UPDATED"
+  fi
+
+  # ---- apéndices mínimos ----
+  append_if_missing "$FILE" "## Relaciones según SoT"
+  append_if_missing "$FILE" "## Listado R — referencia"
+  append_if_missing "$FILE" "- Entrada: LISTADOR/$SEEDI/$RUBRO/$NEXT (r=$RUMBO — *$TITULO*)"
+
+  # ---- HASH(10) obligatorio ----
+  local CANON="CUE=${CUE}|SeedI=${SEEDI}|SoT=${RUBRO}/${NEXT}|Version=${NEXT}|Updated=${UPDATED}|Titulo=${TITULO}"
+  local H10; H10="$(hash10 "$CANON")"
+  set_or_update_hash10 "$FILE" "$H10"
+
+  # ---- ListadoR (elige el más reciente) ----
+  local LISTADOR; LISTADOR="$LISTADOR_PATH_DEFAULT"
+  if ls "$ROOT/memory/QEL_ListadoR_A96_v"*.md >/dev/null 2>&1; then
+    LISTADOR="$(ls -t "$ROOT"/memory/QEL_ListadoR_A96_v*.md | head -1)"
+  fi
+  [ -f "$LISTADOR" ] || {
+    log "No hay ListadoR; creando $LISTADOR"
+    echo -e "[QEL] ListadoR creado\nSeedI=$SEEDI\nSoT=LISTADOR/A96/$(basename "$LISTADOR" | sed -E 's/.*_v([0-9.]+)\.md/\1/')\nVersion=$(basename "$LISTADOR" | sed -E 's/.*_v([0-9.]+)\.md/v\1/')\nUpdated=$UPDATED\n" > "$LISTADOR"
+  }
+
+  local RLINE="R?. Proyecto A96/QEL. ($UPDATED). QEL|A96|$RUBRO|$SEEDI|$NEXT|$RUMBO — *$TITULO*  [${H10}]"
+  if [ "$DRYRUN" -eq 1 ]; then
+    log "dry-run >> $LISTADOR :: $RLINE"
+  else
+    printf "%s\n" "$RLINE" >> "$LISTADOR"
+  fi
+
+  # ---- Manifest maestro v0.8 (si existe) ----
+  if [ -f "$MASTER_MANIFEST" ] && has jq; then
+    local NAME; NAME="$(basename "$FILE")"
+    local TMP="$MASTER_MANIFEST.tmp.$(ts)"
+    jq --arg name "$NAME" --arg sot "$RUBRO" --arg ver "$NEXT" --arg upd "$UPDATED" \
+       '
+       .Version=$ver | .Updated=$upd |
+       .manifest = (
+         (.manifest // []) |
+         ( map( if .name==$name then .version=$ver | .updated=$upd | .sot=$sot else . end )
+           + if any(.name==$name; .) then [] else [{"name":$name,"sot":$sot,"version":$ver,"updated":$upd,"hash10":"placeholder"}] end
+         )
+       )
+       ' "$MASTER_MANIFEST" > "$TMP" && mv "$TMP" "$MASTER_MANIFEST"
+  fi
+
+  # ---- Publicación al Navegador ----
+  mkdir -p "$PUB_DOCS"
+  if [ "$DRYRUN" -eq 1 ]; then
+    log "dry-run cp $FILE → $PUB_DOCS/"
+  else
+    cp -f "$FILE" "$PUB_DOCS/"
+  fi
+  manifest_build
+
+  # ---- Git suave ----
+  if has git; then
+    git add "$FILE" "$LISTADOR" "$MASTER_MANIFEST" "$PUB_DOCS" 2>/dev/null || true
+    git commit -m "QEL: Promoción ($RUBRO) $(basename "$FILE") → $NEXT [${H10}]" || true
+  fi
+
+  log "Promoción completada. HASH(10)=${H10}"
+}
+
+doc_move(){
+  local FROM="" TO="" DO_COMMIT=0 MSG="QEL: move document"
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --from) FROM="$2"; shift 2;;
+      --to)   TO="$2";   shift 2;;
+      --commit) DO_COMMIT=1; shift 1;;
+      --msg) MSG="$2"; shift 2;;
+      *) die "Flag desconocida: $1";;
+    esac
+  done
+  [ -n "$FROM" ] && [ -n "$TO" ] || die "Faltan --from y/o --to"
+  [ -f "$FROM" ] || die "No existe $FROM"
+  mkdir -p "$(dirname "$TO")"
+
+  log "Move: $FROM → $TO"
+  if has git && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git mv -v "$FROM" "$TO"
+    [ $DO_COMMIT -eq 1 ] && git commit -m "$MSG" || true
+  else
+    mv "$FROM" "$TO"
+    if has git; then
+      git add -A 2>/dev/null || true
+      [ $DO_COMMIT -eq 1 ] && git commit -m "$MSG" || true
+    fi
+  fi
+  log "OK move."
+}
+
+# Lee el primer H1 como título (si no pasas --titulo)
+get_title_from_file(){
+  local file="$1"
+  grep -m1 '^# ' "$file" | sed 's/^# //'
+}
+
+# Construye CANON desde cabeceras + (opcional) título
+build_canon(){
+  local file="$1" titulo="$2"
+  local cue seed sot ver upd
+  cue="$(read_header_val "$file" "cue")"
+  seed="$(read_header_val "$file" "SeedI")"
+  sot="$(read_header_val "$file" "SoT")"
+  ver="$(read_header_val "$file" "Version")"
+  upd="$(read_header_val "$file" "Updated")"
+  [ -z "$titulo" ] && titulo="$(get_title_from_file "$file")"
+  printf 'CUE=%s|SeedI=%s|SoT=%s|Version=%s|Updated=%s|Titulo=%s' "$cue" "$seed" "$sot" "$ver" "$upd" "$titulo"
+}
+
+# Reemplaza o añade la línea HASH(10): <hash>
+set_or_update_hash10(){
+  local file="$1" h="$2"
+  if grep -q '^HASH(10): ' "$file"; then
+    if [[ "$OSTYPE" == darwin* ]]; then
+      sed -i '' -E "s/^HASH\(10\): .*/HASH(10): $h/" "$file"
+    else
+      sed -i -E "s/^HASH\(10\): .*/HASH(10): $h/" "$file"
+    fi
+  else
+    printf "\nHASH(10): %s\n" "$h" >> "$file"
+  fi
+}
+
+hash10_cmd(){
+  local FILE="" MODE="canon" TITULO="" WRITE=0 PRINT_CANON=0 CANON_IN=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --file) FILE="$2"; shift 2;;
+      --mode) MODE="$2"; shift 2;;        # canon | file
+      --titulo) TITULO="$2"; shift 2;;
+      --canon) CANON_IN="$2"; shift 2;;   # si mandas el CANON explícito
+      --print-canon) PRINT_CANON=1; shift 1;;
+      --write) WRITE=1; shift 1;;
+      *) die "Flag desconocida: $1";;
+    esac
+  done
+  [ -n "$FILE" ] || die "Falta --file"
+  [ -f "$FILE" ] || die "No existe $FILE"
+
+  local H10 CANON
+  if [ "$MODE" = "file" ]; then
+    if has shasum; then
+      H10="$(shasum -a 256 "$FILE" | awk '{print $1}' | cut -c1-10)"
+    elif has sha256sum; then
+      H10="$(sha256sum "$FILE" | awk '{print $1}' | cut -c1-10)"
+    else
+      die "Falta shasum/sha256sum para modo file"
+    fi
+    CANON="FILE::<$(basename "$FILE")>"
+  else
+    if [ -n "$CANON_IN" ]; then
+      CANON="$CANON_IN"
+    else
+      CANON="$(build_canon "$FILE" "$TITULO")"
+    fi
+    H10="$(hash10 "$CANON")"
+  fi
+
+  [ $PRINT_CANON -eq 1 ] && echo "$CANON" >&2
+  echo "$H10"
+
+  if [ $WRITE -eq 1 ]; then
+    set_or_update_hash10 "$FILE" "$H10"
+    log "HASH(10) escrito en $(basename "$FILE") → $H10"
+  fi
+}
+
+manifest_core(){
+  if [ "$DRYRUN" -eq 1 ]; then
+    log "dry-run core manifest"
+    return 0
+  fi
+ if [ -f "$SCRIPTS/gen_core_manifest.sh" ]; then
+  "$SCRIPTS/gen_core_manifest.sh"
+else
+  node "$SCRIPTS/gen_core_manifest.mjs"
+fi
+}
+
+# ---------- ROUTER ----------
+SUB="${1:-help}"; shift || true
+case "$SUB" in
+  help|-h|--help) help ;;
+  doctor) doctor ;;
+  structure) case "${1:-}" in
+               update) shift; structure_update "$@";;
+               *) help;;
+             esac ;;
+  manifest) case "${1:-}" in
+              build) shift; manifest_build "$@";;
+              sync)  shift; manifest_sync "$@";;
+              core)  shift; manifest_core "$@";;
+              *) help;;
+            esac ;;
+  nav) case "${1:-}" in
+         publish) shift; nav_publish "$@";;
+         serve)   shift; nav_serve "$@";;
+         *) help;;
+       esac ;;
+  promote) promote "$@";;
+  apply)   apply_zip "$@";;
+  session) case "${1:-}" in
+             finalize) shift; session_finalize "$@";;
+             *) help;;
+           esac ;;
+  vcalc) vcalc_proxy "$@";;
+  doc) case "${1:-}" in
+         move) shift; doc_move "$@";;
+         *) help;;
+       esac ;;
+  hash10) hash10_cmd "$@";;
+  --dry-run) DRYRUN=1; shift; "$0" "$@";;
+  *) help; exit 2;;
+esac
+

@@ -1,0 +1,52 @@
+{
+  "sot_name": "QEL",
+  "version": "0.3",
+  "updated": "2025-08-12",
+  "anchors": [
+    "A81",
+    "A96"
+  ],
+  "assets": {
+    "PROTOCOLO": "QEL_Tratado_Metahumano_Protocolo_Seguridad_Sombras_v1.0.md",
+    "MFH": "QEL_Matriz_Fonemica_Habilidades_v1.0.md",
+    "VF": "QEL_Formato_VF_Arbol_Habilidades_v1.0.md",
+    "AURORA": "QEL_Aurora_Spec_v1.0.md",
+    "CUE_EXCEPTION": "QEL_CUE_Exception_v1.0.md",
+    "GLOSARIO": "QEL_Glosario_v1.0.md",
+    "MANUAL_SOMBRAS": "QEL_Manual_Interpretacion_Sombras_v1.0.md",
+    "POEMA_ENIGMA": "QEL_Poema_Enigma_VF_v1.0.md",
+    "CUEMACHINE": "QEL_CueMachine_v1.0.txt",
+    "INSTRUMENTOS": "QEL_Instrumentos_Medicion_v1.0.md",
+    "LISTADO_R": "QEL_ListadoR_A96_v1.0.md",
+    "ESCULPIDO": "Esculpido_en_Qel_Guia_de_Trabajo_v0.3.md",
+    "INDEX": "QEL_Index_v1.0.md",
+    "DIARIO": "QEL_Diario_del_Conjurador_v1.1.md",
+    "ARBOL_MP": "QEL_Arbol_Habilidades_MP_v1.0.md"
+  },
+  "ethic": [
+    "Primacía Fonémica",
+    "Conservación de Coherencia",
+    "Cristalización Triádica",
+    "Puertas de Rumbo",
+    "Verso Fundador como Llave",
+    "Doble Testigo Reproducible",
+    "Compatibilidad MFH",
+    "Dualidad Obsidiana",
+    "No‑Mentira Idriell"
+  ],
+  "sot": {
+    "id": "A96",
+    "title": "Source of Truth for QEL A96",
+    "version": "0.3.1",
+    "updated": "250813",
+    "description": "Inventario maestro de assets, índices operativos (ECO/Seed), metadatos y checksums.",
+    "links": {
+      "LISTADO_R": "QEL_ListadoR_A96_v1.0.md",
+      "CUEMACHINE": "QEL_CueMachine_v1.0.txt"
+    }
+  },
+  "checksums": {
+    "QEL_Arbol_Habilidades_MP_v1.0.md": "0ff84c0dead5e1a562bbbbd2a51e49fd4ae8e7ce1023666eeda4678625337c48",
+    "QEL_Diario_del_Conjurador_v1.1.md": "47c9ac75fbfd2daa8a2d4803cb2a18bbbdae1c34979c36fdfd4bb509e95c58de"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CUE-RECOVERY v0.2.1",
+  "type": "object",
+  "properties": {
+    "SOT": {
+      "type": "string"
+    },
+    "CHAT": {
+      "type": "string"
+    },
+    "WHEN≈": {
+      "type": "string"
+    },
+    "ECO≈": {
+      "type": "string"
+    },
+    "KEYS": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "RUMBO≈": {
+      "type": "string",
+      "enum": [
+        "Oriente",
+        "Norte",
+        "Occidente",
+        "Sur",
+        "desconocido"
+      ]
+    },
+    "PLANO≈": {
+      "type": "string",
+      "enum": [
+        "Rito",
+        "Numero",
+        "Lengua",
+        "mixto",
+        "desconocido"
+      ]
+    },
+    "FONEMAS≈": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ASSET≈": {
+      "type": "string"
+    },
+    "CONTEXT≈": {
+      "type": "string"
+    },
+    "AUTHOR≈": {
+      "type": "string",
+      "enum": [
+        "usuario",
+        "modelo",
+        "mixto"
+      ]
+    },
+    "CONFIDENCE≈": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    }
+  },
+  "required": [
+    "SOT",
+    "CHAT"
+  ]
+}
